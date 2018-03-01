@@ -1,0 +1,136 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ldsightclient_jgd"
+    android:installLocation="auto"
+    android:versionCode="3"
+    android:versionName="1.0" >
+
+    <!-- 版本：景观灯、安置小区智能照明      功能：八通道 -->
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:name="com.ldsight.application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/main_logo"
+        android:label="@string/app_name"
+        android:theme="@style/MyNoTitle" >
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="MgElFGSnbnfZZHLutrr1k5qIEcsAnhv3" />
+
+        <activity
+            android:name="com.ldsight.act.LoginAct"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ldsight.act.MainAct"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.ldsight.act.DeviceMainAct"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.ldsight.act.ParameterAct"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.ldsight.act.AddDeviceAct"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.ldsight.act.DeviceParamAct"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.ldsight.act.AlertManageAct"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name="com.ldsight.act.JurisdictionLoginAct" >
+        </activity>
+        <activity android:name="com.ldsight.act.AddUserAct" >
+        </activity>
+        <activity android:name="com.ldsight.act.UserInformationAct" >
+        </activity>
+        <activity android:name="com.ldsight.act.TouristMainAct" >
+        </activity>
+        <activity android:name="com.ldsight.act.AddElectricBox" >
+        </activity>
+        <activity android:name="com.ldsight.act.BaiDuMapAct" >
+        </activity>
+        <activity android:name="com.ldsight.act.SingleLightControlAct" >
+        </activity>
+        <activity android:name="com.ldsight.act.CheckoutActivity" >
+        </activity>
+        <activity android:name="com.ldsight.act.SingleLightAct" >
+        </activity>
+        <activity android:name="com.ldsight.act.AlarmRecordAct" >
+        </activity>
+        <activity android:name="com.ldsight.act.WarningInformationAct" >
+        </activity>
+        <activity
+            android:name="com.ldsight.act.SingleLightDialogItemAct"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.ldsight.act.ElectricBoxInformationDialog"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+            <activity
+            android:name="com.ldsight.act.BrightenMainListDialogItemAct"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+
+        <activity android:name="com.ldsight.act.DeviceTiming" />
+        <activity android:name="com.ldsight.act.CatalogAct" />
+        <activity android:name="com.ldsight.act.BrightenMain" />
+        <activity android:name="com.ldsight.act.BrightenTiming" />
+        <activity android:name="com.ldsight.act.SingleLightSettingAct" />
+        <activity android:name="com.ldsight.act.MonitorMainAct"
+            android:theme="@style/MonitorMainPageIndicator"/>
+
+
+
+        <service android:name="com.ldsight.service.OnlineService" >
+        </service>
+        <service android:name="com.ldsight.service.UpdateService" >
+        </service>
+
+        <receiver android:name="com.ldsight.service.UpdateService$onclickCancelListener" >
+            <intent-filter android:priority="100" >
+                <action android:name="action_cancel_download_apk" >
+                </action>
+            </intent-filter>
+        </receiver>
+    </application>
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+
+
+</manifest>
