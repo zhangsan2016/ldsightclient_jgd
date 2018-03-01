@@ -21,6 +21,7 @@ public class NetMonitorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         TextView text = new TextView(getActivity());
         text.setGravity(Gravity.CENTER);
+
         text.setText("NetMonitorFragment");
         text.setTextSize(20 * getResources().getDisplayMetrics().density);
         text.setPadding(20, 20, 20, 20);
