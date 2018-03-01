@@ -33,6 +33,7 @@ public class NetMonitorFragment extends Fragment {
 
 
 
+
         return layout;
 
     }
