@@ -103,6 +103,7 @@
         </service>
         <service android:name="com.ldsight.service.UpdateService" >
         </service>
+        <service android:name="tvonvif.finder.CameraService"></service>
 
         <receiver android:name="com.ldsight.service.UpdateService$onclickCancelListener" >
             <intent-filter android:priority="100" >

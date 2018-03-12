@@ -1,0 +1,274 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:1:1-136:12
+	package
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:2:5-44
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:5:5-30
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+	android:versionCode
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:4:5-28
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:1:11-69
+	android:installLocation
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:3:5-35
+uses-sdk
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:8:5-10:41
+MERGED from [ldsightclient_jgd:ViewPagerIndicator_library:unspecified] C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ViewPagerIndicator_library\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:40
+MERGED from [com.android.support:support-v4:20.0.0] C:\Users\ldgd\.android\build-cache\65dd0f3b75e932a53ebfe5974baf02b9a00f7c28\output\AndroidManifest.xml:16:5-42
+	android:targetSdkVersion
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:10:9-38
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:9:9-35
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
+application
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:12:5-113:19
+MERGED from [com.android.support:support-v4:20.0.0] C:\Users\ldgd\.android\build-cache\65dd0f3b75e932a53ebfe5974baf02b9a00f7c28\output\AndroidManifest.xml:17:5-19
+	android:label
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:16:9-41
+	android:allowBackup
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:14:9-35
+	android:icon
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:15:9-43
+	android:theme
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:17:9-41
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:13:9-61
+meta-data#com.baidu.lbsapi.API_KEY
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:18:9-20:64
+	android:value
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:20:13-61
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:19:13-52
+activity#com.ldsight.act.LoginAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:22:9-30:20
+	android:screenOrientation
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:24:13-49
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:23:13-52
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:25:13-29:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:26:17-69
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:26:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:28:17-77
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:28:27-74
+activity#com.ldsight.act.MainAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:31:9-35:20
+	android:screenOrientation
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:34:13-49
+	android:launchMode
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:33:13-48
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:32:13-51
+activity#com.ldsight.act.DeviceMainAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:36:9-39:20
+	android:screenOrientation
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:38:13-49
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:37:13-57
+activity#com.ldsight.act.ParameterAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:40:9-44:20
+	android:screenOrientation
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:43:13-49
+	android:launchMode
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:42:13-43
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:41:13-56
+activity#com.ldsight.act.AddDeviceAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:45:9-48:20
+	android:screenOrientation
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:47:13-49
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:46:13-56
+activity#com.ldsight.act.DeviceParamAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:49:9-52:20
+	android:screenOrientation
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:51:13-49
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:50:13-58
+activity#com.ldsight.act.AlertManageAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:53:9-56:20
+	android:screenOrientation
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:55:13-49
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:54:13-58
+activity#com.ldsight.act.JurisdictionLoginAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:57:9-58:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:57:19-70
+activity#com.ldsight.act.AddUserAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:59:9-60:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:59:19-60
+activity#com.ldsight.act.UserInformationAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:61:9-62:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:61:19-68
+activity#com.ldsight.act.TouristMainAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:63:9-64:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:63:19-64
+activity#com.ldsight.act.AddElectricBox
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:65:9-66:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:65:19-64
+activity#com.ldsight.act.BaiDuMapAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:67:9-68:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:67:19-61
+activity#com.ldsight.act.SingleLightControlAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:69:9-70:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:69:19-71
+activity#com.ldsight.act.CheckoutActivity
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:71:9-72:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:71:19-66
+activity#com.ldsight.act.SingleLightAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:73:9-74:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:73:19-64
+activity#com.ldsight.act.AlarmRecordAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:75:9-76:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:75:19-64
+activity#com.ldsight.act.WarningInformationAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:77:9-78:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:77:19-71
+activity#com.ldsight.act.SingleLightDialogItemAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:79:9-82:20
+	android:theme
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:81:13-56
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:80:13-68
+activity#com.ldsight.act.ElectricBoxInformationDialog
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:83:9-86:20
+	android:theme
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:85:13-56
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:84:13-72
+activity#com.ldsight.act.BrightenMainListDialogItemAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:87:13-90:20
+	android:theme
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:89:13-56
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:88:13-73
+activity#com.ldsight.act.DeviceTiming
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:92:9-65
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:92:19-62
+activity#com.ldsight.act.CatalogAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:93:9-63
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:93:19-60
+activity#com.ldsight.act.BrightenMain
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:94:9-65
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:94:19-62
+activity#com.ldsight.act.BrightenTiming
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:95:9-67
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:95:19-64
+activity#com.ldsight.act.SingleLightSettingAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:96:9-74
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:96:19-71
+activity#com.ldsight.act.MonitorMainAct
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:97:9-98:62
+	android:theme
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:98:13-60
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:97:19-64
+service#com.ldsight.service.OnlineService
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:102:9-103:19
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:102:18-66
+service#com.ldsight.service.UpdateService
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:104:9-105:19
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:104:18-66
+receiver#com.ldsight.service.UpdateService$onclickCancelListener
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:107:9-112:20
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:107:19-89
+intent-filter#action_cancel_download_apk
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:108:13-111:29
+	android:priority
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:108:28-50
+action#action_cancel_download_apk
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:109:17-110:26
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:109:25-66
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:115:5-71
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:115:22-68
+uses-permission#android.permission.USE_CREDENTIALS
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:116:5-74
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:116:22-71
+uses-permission#android.permission.MANAGE_ACCOUNTS
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:117:5-74
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:117:22-71
+uses-permission#android.permission.AUTHENTICATE_ACCOUNTS
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:118:5-80
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:118:22-77
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:119:5-67
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:119:22-64
+uses-permission#com.android.launcher.permission.READ_SETTINGS
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:120:5-85
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:120:22-82
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:121:5-76
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:121:22-73
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:122:5-76
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:122:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:123:5-75
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:123:22-72
+uses-permission#android.permission.BROADCAST_STICKY
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:124:5-75
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:124:22-72
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:125:5-73
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:125:22-70
+uses-permission#android.permission.CAMERA
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:126:5-65
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:126:22-62
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:128:5-79
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:128:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:131:5-81
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:131:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:132:5-84
+	android:name
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:132:22-81
