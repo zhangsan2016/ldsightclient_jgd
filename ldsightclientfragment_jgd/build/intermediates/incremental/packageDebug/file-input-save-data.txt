@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Mar 13 15:38:43 CST 2018
+#Tue Mar 13 17:47:23 CST 2018
 210.set=NATIVE_RESOURCE
 282.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\parameter_main.xml
 14.set=ANDROID_RESOURCE
