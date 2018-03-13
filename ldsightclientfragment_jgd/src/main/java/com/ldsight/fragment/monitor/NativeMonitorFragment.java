@@ -11,6 +11,7 @@ import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -131,6 +132,13 @@ public class NativeMonitorFragment extends Fragment {
         return rootView;
     }
 
+/*   @Override
+    public void onCreate(Bundle savedInstanceState) {
+        this.getActivity().getWindow().setFormat(PixelFormat.TRANSLUCENT);
+       this.getActivity().getHolder().setFormat(PixelFormat.TRANSPARENT);
+        super.onCreate(savedInstanceState);
+
+    }*/
 
     static class MyHandle extends Handler {
 
@@ -149,7 +157,7 @@ public class NativeMonitorFragment extends Fragment {
                     try {
                         Bitmap bitmap = (Bitmap) msg.obj;
 
-                       /* int width = bitmap.getWidth();
+                        int width = bitmap.getWidth();
                         int height = bitmap.getHeight();
                         // 设置想要的大小
                         int newWidth = msg.arg1;
@@ -170,16 +178,16 @@ public class NativeMonitorFragment extends Fragment {
                         if (!mbitmap.isRecycled()) {
                             mbitmap.recycle();
                              System.gc();
-                        }*/
+                        }
 
-                        NativeMonitorFragment activity = mActivity.get();
+              /*          NativeMonitorFragment activity = mActivity.get();
                         Canvas canvas = activity.mHolder.lockCanvas();
                         canvas.drawBitmap(bitmap, 0, 0, null);
                         activity.mHolder.unlockCanvasAndPost(canvas);
                         if (!bitmap.isRecycled()) {
                             bitmap.recycle();
                             System.gc();
-                        }
+                        }*/
 
 
 
