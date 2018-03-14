@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import com.example.ldsightclient_jgd.R;
 import com.googlecode.javacv.cpp.opencv_core;
+import com.ldsight.util.LogUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -180,10 +181,7 @@ public class NativeMonitorFragment extends Fragment {
                              System.gc();
                         }
 
-                        if (!bitmap.isRecycled()) {
-                            bitmap.recycle();
-                            System.gc();
-                        }
+
 
               /*          NativeMonitorFragment activity = mActivity.get();
                         Canvas canvas = activity.mHolder.lockCanvas();
@@ -440,9 +438,20 @@ public class NativeMonitorFragment extends Fragment {
 
     @Override
     public void onDestroy() {
+        super.onDestroy();
         NativeMonitorFragment.this.getActivity().unbindService(mServiceConnection);
         mServiceConnection = null;
         mLoginDialog.dismiss();
-        super.onDestroy();
+        LogUtil.e("onvif  onDestroy被执行");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        NativeMonitorFragment.this.getActivity().unbindService(mServiceConnection);
+        mServiceConnection = null;
+        mLoginDialog.dismiss();
+        LogUtil.e("View  onDestroy被执行");
+
     }
 }

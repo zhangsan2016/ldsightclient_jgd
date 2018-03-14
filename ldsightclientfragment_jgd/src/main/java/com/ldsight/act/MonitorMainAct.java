@@ -36,5 +36,10 @@ public class MonitorMainAct extends FragmentActivity {
 
     }
 
+/*    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+        LogUtil.e("MonitorMainAct  onDestroy 执行");
+    }*/
 }

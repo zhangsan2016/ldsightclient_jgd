@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Mar 14 09:20:52 CST 2018
+#Wed Mar 14 18:19:13 CST 2018
 210.set=NATIVE_RESOURCE
 282.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacv\\ProCamTransformer.cl
 14.set=ANDROID_RESOURCE
@@ -185,7 +185,7 @@
 171.set=ANDROID_RESOURCE
 34.set=NATIVE_RESOURCE
 182.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libjnipostproc.so
-138.set=NATIVE_RESOURCE
+138.set=ANDROID_RESOURCE
 80.set=ANDROID_RESOURCE
 28.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\device_top_item_shape.xml
 41.set=ANDROID_RESOURCE
@@ -284,7 +284,7 @@
 62.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_
 214.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_
 83.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\off2.png
-137.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_
+137.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
 12.set=ANDROID_RESOURCE
 266.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_
 189.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_
@@ -372,7 +372,7 @@
 63.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 215.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 84.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\switch_selector.xml
-138.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
+138.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_
 22.set=JAVA_RESOURCE
 267.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_
 113.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_
@@ -789,7 +789,7 @@ count=335
 239.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\org\\apache\\http\\entity\\mime\\version.properties
 62.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\list_item_shape.xml
 214.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\cb_test_pattern_cancel_select_all.png
-137.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\net_monitor_fragment.xml
+137.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libavutil.so
 215.set=JAVA_RESOURCE
 266.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\btn_single_light_control_check_selector.xml
 189.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\btn_login_background.xml
@@ -833,7 +833,7 @@ count=335
 253.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libjniavutil.so
 176.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\alert_manage_list_item.xml
 151.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\main_fragment.xml
-137.set=ANDROID_RESOURCE
+137.set=NATIVE_RESOURCE
 280.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\assets\\Icon_mark3.png
 289.set=ANDROID_RESOURCE
 40.set=ANDROID_RESOURCE
@@ -873,7 +873,7 @@ count=335
 317.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libjniopencv_videostab.so
 63.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\assets\\Icon_mark5.png
 215.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\assets\\cfg\\l\\DVHotcity.cfg
-138.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libavutil.so
+138.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\net_monitor_fragment.xml
 225.set=ANDROID_RESOURCE
 267.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\togglebutton.xml
 113.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\btn_login_normal.9.png

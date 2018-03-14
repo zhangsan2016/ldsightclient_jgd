@@ -25,6 +25,7 @@ android {
 
 }
 
+
 dependencies {
     compile 'com.android.support:support-v4:20.+'
     compile files('libs/achartengine-1.1.0.jar')
@@ -37,4 +38,6 @@ dependencies {
     compile files('libs/javacv.jar')
     compile files('libs/javacpp.jar')
     compile files('libs/maven-plugin-api-2.0.9.jar')
+
+
 }

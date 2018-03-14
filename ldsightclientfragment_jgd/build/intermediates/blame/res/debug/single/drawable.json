@@ -24,12 +24,12 @@
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\light_make_switch.xml"
     },
     {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\cable_is_abnormal.xml",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\cable_is_abnormal.xml"
-    },
-    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\switch_selector2.xml",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\switch_selector2.xml"
+    },
+    {
+        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\cable_is_abnormal.xml",
+        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\cable_is_abnormal.xml"
     },
     {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\single_light_control_shape.xml",
