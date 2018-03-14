@@ -180,6 +180,11 @@ public class NativeMonitorFragment extends Fragment {
                              System.gc();
                         }
 
+                        if (!bitmap.isRecycled()) {
+                            bitmap.recycle();
+                            System.gc();
+                        }
+
               /*          NativeMonitorFragment activity = mActivity.get();
                         Canvas canvas = activity.mHolder.lockCanvas();
                         canvas.drawBitmap(bitmap, 0, 0, null);
