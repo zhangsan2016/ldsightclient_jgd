@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Mar 08 10:21:19 CST 2018
+#Thu Mar 15 11:24:52 CST 2018
 76.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
 5.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 42.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
@@ -22,7 +22,7 @@
 79.set=NATIVE_RESOURCE
 32.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 65.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacpp\\properties\\macosx-x86.properties
-17.set=ANDROID_RESOURCE
+17.set=NATIVE_RESOURCE
 75.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libopencv_nonfree.so
 50.set=JAVA_RESOURCE
 68.set=NATIVE_RESOURCE
@@ -44,7 +44,7 @@
 55.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\res\\resources-debug.ap_\\res\\menu-v11\\activity_main.xml
 35.set=JAVA_RESOURCE
 21.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacpp\\properties\\windows-x86_64-cuda.properties
-16.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
+16.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\res\\resources-debug.ap_
 49.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacpp\\properties\\linux-arm.properties
 31.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
 59.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libjniopencv_contrib.so
@@ -85,7 +85,7 @@
 82.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libjniopencv_objdetect.so
 33.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
 66.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libopencv_highgui.so
-17.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\res\\resources-debug.ap_
+17.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
 27.set=JAVA_RESOURCE
 76.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libjniopencv_video.so
 60.set=NATIVE_RESOURCE
@@ -94,7 +94,7 @@ count=83
 5.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacpp\\properties\\windows-x86_64.properties
 27.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 42.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libjniswscale.so
-16.set=NATIVE_RESOURCE
+16.set=ANDROID_RESOURCE
 37.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
 67.set=NATIVE_RESOURCE
 52.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libjniopencv_nonfree.so
@@ -111,7 +111,7 @@ count=83
 70.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
 34.set=ANDROID_RESOURCE
 80.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
-26.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacpp\\properties\\macosx-x86-cuda.properties
+26.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacpp\\properties\\windows-x86.properties
 64.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
 23.set=NATIVE_RESOURCE
 36.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libjniavutil.so
@@ -130,7 +130,7 @@ count=83
 19.set=NATIVE_RESOURCE
 44.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
 52.set=NATIVE_RESOURCE
-16.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libopencv_legacy.so
+16.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-mdpi-v4\\ic_launcher.png
 54.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 3.set=NATIVE_RESOURCE
 20.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
@@ -170,11 +170,11 @@ count=83
 33.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libopencv_flann.so
 71.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main
 6.set=JAVA_RESOURCE
-17.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-mdpi-v4\\ic_launcher.png
+17.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libopencv_legacy.so
 0.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 44.set=NATIVE_RESOURCE
 81.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
-27.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacpp\\properties\\windows-x86.properties
+27.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacpp\\properties\\macosx-x86-cuda.properties
 65.base=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 33.set=NATIVE_RESOURCE
 37.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\tvonvif\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\folders\\2000\\1f\\main\\lib\\armeabi\\libopencv_objdetect.so

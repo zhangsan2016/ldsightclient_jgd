@@ -215,13 +215,14 @@ public class LoginAct extends Activity {
 										startActivity(intent);*/
 
 
+								// 启动心跳包服务
+								Intent online = new Intent(MyApplication.getInstance(), OnlineService.class);
+								startService(online);
+
 								Intent intent = new Intent(
 										LoginAct.this, CatalogAct.class);
 								startActivity(intent);
 
-								// 启动心跳包服务
-								Intent online = new Intent(MyApplication.getInstance(), OnlineService.class);
-								startService(online);
 
 								LoginAct.this.finish();
 

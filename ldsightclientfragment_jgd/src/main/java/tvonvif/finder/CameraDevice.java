@@ -63,6 +63,7 @@ public class CameraDevice implements IPCam {
 			soap.setOnHttpSoapListener(listener);
 			soap.start();
 		}
+
 	}
 	
 	public void setOnSoapDoneListener(OnSoapDoneListener listener) {

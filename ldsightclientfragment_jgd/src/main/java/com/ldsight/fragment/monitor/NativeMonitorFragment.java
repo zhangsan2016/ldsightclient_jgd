@@ -82,7 +82,7 @@ public class NativeMonitorFragment extends Fragment {
                 @Override
                 public void onServiceDisconnected(ComponentName name) {
                     mService = null;
-                    mAdapter = null;
+                    mService.stopSelf();
                 }
 
                 @Override
@@ -328,6 +328,7 @@ public class NativeMonitorFragment extends Fragment {
 
         @Override
         public void run() {
+
             runGrabberThread = true;
             while (runGrabberThread) {
                 opencv_core.IplImage src = mDevice.grab();
@@ -347,6 +348,13 @@ public class NativeMonitorFragment extends Fragment {
                 msgStr.arg1 = mSurfaceView.getWidth();
                 msgStr.arg2 = mSurfaceView.getHeight();
                 mHandler.sendMessage(msgStr);
+
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+               // LogUtil.e("NativeMonitorFragment " + Thread.currentThread().getName());
             }
         }
     }
@@ -438,20 +446,16 @@ public class NativeMonitorFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         NativeMonitorFragment.this.getActivity().unbindService(mServiceConnection);
         mServiceConnection = null;
+    //    mService.stopSelf();
         mLoginDialog.dismiss();
+        mProgressDialog.dismiss();
+        runGrabberThread = false;
         LogUtil.e("onvif  onDestroy被执行");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        NativeMonitorFragment.this.getActivity().unbindService(mServiceConnection);
-        mServiceConnection = null;
-        mLoginDialog.dismiss();
-        LogUtil.e("View  onDestroy被执行");
+        super.onDestroy();
 
     }
+
+
 }

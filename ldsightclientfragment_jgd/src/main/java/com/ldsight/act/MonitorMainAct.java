@@ -1,5 +1,6 @@
 package com.ldsight.act;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -8,7 +9,10 @@ import android.view.Window;
 
 import com.example.ldsightclient_jgd.R;
 import com.ldsight.adapter.MonitorMainFragmentAdapter;
+import com.ldsight.util.LogUtil;
 import com.viewpagerindicator.TabPageIndicator;
+
+import tvonvif.finder.CameraService;
 
 /**
  * Created by ldgd on 2018/2/28.
@@ -28,6 +32,7 @@ public class MonitorMainAct extends FragmentActivity {
         FragmentPagerAdapter adapter = new MonitorMainFragmentAdapter(getSupportFragmentManager());
 
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        pager.setOffscreenPageLimit(2); // 缓存界面数
         pager.setAdapter(adapter);
 
         TabPageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
@@ -36,10 +41,21 @@ public class MonitorMainAct extends FragmentActivity {
 
     }
 
-/*    @Override
+    @Override
     protected void onDestroy() {
         super.onDestroy();
+        Intent intent = new Intent(this, CameraService.class);
+        this.stopService(intent);
 
+        this.finish();
         LogUtil.e("MonitorMainAct  onDestroy 执行");
-    }*/
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        LogUtil.e("onBackPressed  onDestroy 执行");
+
+
+    }
 }
