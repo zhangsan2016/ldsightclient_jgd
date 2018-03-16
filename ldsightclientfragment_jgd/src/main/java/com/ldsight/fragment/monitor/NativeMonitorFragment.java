@@ -112,7 +112,7 @@ public class NativeMonitorFragment extends Fragment {
         }
 
 
-       NativeMonitorFragment.this.getActivity().bindService(new Intent(NativeMonitorFragment.this.getActivity().getApplicationContext(), CameraService.class),
+        NativeMonitorFragment.this.getActivity().bindService(new Intent(NativeMonitorFragment.this.getActivity().getApplicationContext(), CameraService.class),
                 mServiceConnection, Service.BIND_AUTO_CREATE);
 
         mHandler = new MyHandle(this);
@@ -171,14 +171,16 @@ public class NativeMonitorFragment extends Fragment {
                         Bitmap mbitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
 
 
+                        if (mbitmap != null) {
 
-                        NativeMonitorFragment activity = mActivity.get();
-                        Canvas canvas = activity.mHolder.lockCanvas();
-                        canvas.drawBitmap(mbitmap, 0, 0, null);
-                        activity.mHolder.unlockCanvasAndPost(canvas);
-                        if (!mbitmap.isRecycled()) {
-                            mbitmap.recycle();
-                             System.gc();
+                            NativeMonitorFragment activity = mActivity.get();
+                            Canvas canvas = activity.mHolder.lockCanvas();
+                            canvas.drawBitmap(mbitmap, 0, 0, null);
+                            activity.mHolder.unlockCanvasAndPost(canvas);
+                            if (!mbitmap.isRecycled()) {
+                                mbitmap.recycle();
+                                System.gc();
+                            }
                         }
 
 
@@ -191,8 +193,6 @@ public class NativeMonitorFragment extends Fragment {
                             bitmap.recycle();
                             System.gc();
                         }*/
-
-
 
 
                     } catch (Exception e) {
@@ -215,9 +215,9 @@ public class NativeMonitorFragment extends Fragment {
     }
 
 
-    public  void setmHideSurfaceView(){
+    public void setmHideSurfaceView() {
 
-        if(mSurfaceView != null){
+        if (mSurfaceView != null) {
             mSurfaceView.setVisibility(View.GONE);
         }
 
@@ -226,9 +226,9 @@ public class NativeMonitorFragment extends Fragment {
 
     private void findView(View rootView) {
         mListView = (ListView) rootView.findViewById(R.id.listView1);
-        mButton = (Button)  rootView.findViewById(R.id.button1);
+        mButton = (Button) rootView.findViewById(R.id.button1);
         mButton.setOnClickListener(mButtonClickListener);
-        mSurfaceView = (SurfaceView)  rootView.findViewById(R.id.surfaceView1);
+        mSurfaceView = (SurfaceView) rootView.findViewById(R.id.surfaceView1);
         mHolder = mSurfaceView.getHolder();
         mProgressDialog = new ProgressDialog(NativeMonitorFragment.this.getActivity());
         mProgressDialog.setTitle("请稍等...");
@@ -257,8 +257,8 @@ public class NativeMonitorFragment extends Fragment {
                     etUser.setText(cd2.username);
                     etPwd.setText(cd2.password);
                 } else {
-				/*	etUser.setText("");
-					etPwd.setText("");*/
+                /*	etUser.setText("");
+                    etPwd.setText("");*/
                 }
             }
         });
@@ -350,11 +350,11 @@ public class NativeMonitorFragment extends Fragment {
                 mHandler.sendMessage(msgStr);
 
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(20);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-               // LogUtil.e("NativeMonitorFragment " + Thread.currentThread().getName());
+                // LogUtil.e("NativeMonitorFragment " + Thread.currentThread().getName());
             }
         }
     }
@@ -401,7 +401,7 @@ public class NativeMonitorFragment extends Fragment {
                 convertView = View.inflate(mContext,
                         android.R.layout.simple_expandable_list_item_2, null);
             }
-            CameraDevice device =cameraDevices.get(position);
+            CameraDevice device = cameraDevices.get(position);
             TextView title = (TextView) convertView
                     .findViewById(android.R.id.text1);
             title.setTextColor(Color.BLACK);
@@ -448,7 +448,7 @@ public class NativeMonitorFragment extends Fragment {
     public void onDestroy() {
         NativeMonitorFragment.this.getActivity().unbindService(mServiceConnection);
         mServiceConnection = null;
-    //    mService.stopSelf();
+        //    mService.stopSelf();
         mLoginDialog.dismiss();
         mProgressDialog.dismiss();
         runGrabberThread = false;
@@ -457,5 +457,10 @@ public class NativeMonitorFragment extends Fragment {
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        runGrabberThread = false;
 
+    }
 }

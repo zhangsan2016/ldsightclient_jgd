@@ -33,6 +33,10 @@ public class CameraFinder{
 		new Thread(mSearchingRunnable).start();
 	}
 
+	public void setmIsSearching(boolean mIsSearching) {
+		this.mIsSearching = mIsSearching;
+	}
+
 	public List<CameraDevice> getCameraList() {
 		return mCameraList;
 	}
