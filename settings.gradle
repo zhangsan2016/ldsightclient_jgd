@@ -1,1 +1,1 @@
-include ':app', ':ldsightclientfragment_jgd', ':ViewPagerIndicator_library', ':tvonvif'
+include ':app', ':ldsightclientfragment_jgd', ':ViewPagerIndicator_library', ':tvonvif', ':EnvironmentalMonitoring'
