@@ -42,13 +42,13 @@ public class CatalogAct extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 
-		if (v == illumination) {
+		if (v == illumination) {  // 照明
 
 			Intent intent = new Intent(CatalogAct.this, ParameterAct.class);
 			intent.putExtra(ParameterAct.FRAGMENT_FLAG, ParameterAct.MAIN);
 			startActivity(intent);
 
-		} else if (v == brighten) {
+		} else if (v == brighten) { // 亮化
 
 			Intent intent = new Intent(CatalogAct.this, BrightenMain.class);
 			startActivity(intent);
@@ -56,7 +56,7 @@ public class CatalogAct extends Activity implements OnClickListener {
 		} else if (v == monitoring) {
 
 			Intent intent = new Intent(CatalogAct.this, MonitorMainAct.class);
-			startActivity(intent);
+			startActivity(intent); // 监控
 
 		}
 	}

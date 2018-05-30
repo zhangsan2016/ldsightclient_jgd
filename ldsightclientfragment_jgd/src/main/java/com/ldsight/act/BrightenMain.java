@@ -252,6 +252,7 @@ public class BrightenMain extends Activity {
 									int position, long id) {
 
 				// 跳转到单灯设置界面
+
 				Intent intent = new Intent(BrightenMain.this,
 						SingleLightSettingAct.class);
 				intent.putExtra("uuid", azfUuid);
