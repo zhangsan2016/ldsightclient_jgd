@@ -44,6 +44,7 @@ import tvonvif.finder.CameraService;
 import tvonvif.finder.OnCameraFinderListener;
 import tvonvif.finder.OnSoapDoneListener;
 
+import static com.example.ldsightclient_jgd.R.id.ll_view;
 import static com.googlecode.javacv.cpp.opencv_core.cvCreateImage;
 import static com.googlecode.javacv.cpp.opencv_imgproc.CV_BGR2RGBA;
 import static com.googlecode.javacv.cpp.opencv_imgproc.cvCvtColor;
@@ -54,7 +55,10 @@ import static com.googlecode.javacv.cpp.opencv_imgproc.cvCvtColor;
  */
 
 public class NativeMonitorFragment extends Fragment {
-
+    /**
+     * 显示播放器
+     */
+    private static final int PLAYER_SHOW = 3;
     public static final String TAG = "tvOnvifFinder";
     private ListView mListView;
     private Button mButton;
@@ -69,7 +73,7 @@ public class NativeMonitorFragment extends Fragment {
     private static CameraService mService;
     private static ServiceConnection mServiceConnection;
     private int mNowIndex = -1;
-    private View ll_View;
+    public static View ll_View;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -102,7 +106,6 @@ public class NativeMonitorFragment extends Fragment {
                                         @Override
                                         public void run() {
 
-                                            ll_View.setVisibility(View.VISIBLE);
                                             mAdapter.setCameraDevices(mService.getFinder().getCameraList());
 
                                         }
@@ -124,6 +127,7 @@ public class NativeMonitorFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+
                 mNowIndex = position;
                 mLoginDialog.show();
 
@@ -135,7 +139,13 @@ public class NativeMonitorFragment extends Fragment {
         return rootView;
     }
 
-/*   @Override
+    @Override
+    public void onResume() {
+        super.onResume();
+        ll_View.setVisibility(View.GONE);
+    }
+
+    /*   @Override
     public void onCreate(Bundle savedInstanceState) {
         this.getActivity().getWindow().setFormat(PixelFormat.TRANSLUCENT);
        this.getActivity().getHolder().setFormat(PixelFormat.TRANSPARENT);
@@ -144,6 +154,7 @@ public class NativeMonitorFragment extends Fragment {
     }*/
 
     static class MyHandle extends Handler {
+
 
         WeakReference<NativeMonitorFragment> mActivity;
 
@@ -204,6 +215,10 @@ public class NativeMonitorFragment extends Fragment {
                     break;
                 case 2:
                     mActivity.get().showToast("登录失败");
+                    break;
+                case PLAYER_SHOW:
+                    ll_View.setVisibility(View.VISIBLE);
+                    break;
                 default:
                     break;
             }
@@ -215,7 +230,6 @@ public class NativeMonitorFragment extends Fragment {
     public void showToast(String str) {
         Toast.makeText(NativeMonitorFragment.this.getActivity(), str, Toast.LENGTH_LONG).show();
     }
-
 
     public void setmHideSurfaceView() {
 
@@ -231,7 +245,7 @@ public class NativeMonitorFragment extends Fragment {
         mButton = (Button) rootView.findViewById(R.id.button1);
         mButton.setOnClickListener(mButtonClickListener);
         mSurfaceView = (SurfaceView) rootView.findViewById(R.id.surfaceView1);
-        ll_View = rootView.findViewById(R.id.ll_view);
+        ll_View = rootView.findViewById(ll_view);
         mHolder = mSurfaceView.getHolder();
         mProgressDialog = new ProgressDialog(NativeMonitorFragment.this.getActivity());
         mProgressDialog.setTitle("请稍等...");
@@ -299,6 +313,8 @@ public class NativeMonitorFragment extends Fragment {
                         public void onSoapDone(CameraDevice device, boolean success) {
                             // TODO Auto-generated method stub
                             if (success) {
+                               Message msgStr = mHandler.obtainMessage(PLAYER_SHOW, null);
+                                mHandler.sendMessage(msgStr);
                                 mService.getDb().addCamera(device);
                                 new Thread(new VideoPlayer(device)).start();
                             } else {

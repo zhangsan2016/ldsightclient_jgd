@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Jun 05 17:23:37 CST 2018
+#Tue Jun 05 17:54:56 CST 2018
 210.set=NATIVE_RESOURCE
 282.file=C\:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\com\\googlecode\\javacv\\ProCamTransformer.cl
 14.set=ANDROID_RESOURCE
