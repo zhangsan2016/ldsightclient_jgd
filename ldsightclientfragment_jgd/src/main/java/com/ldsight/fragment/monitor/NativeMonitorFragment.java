@@ -69,6 +69,7 @@ public class NativeMonitorFragment extends Fragment {
     private static CameraService mService;
     private static ServiceConnection mServiceConnection;
     private int mNowIndex = -1;
+    private View ll_View;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,6 +102,7 @@ public class NativeMonitorFragment extends Fragment {
                                         @Override
                                         public void run() {
 
+                                            ll_View.setVisibility(View.VISIBLE);
                                             mAdapter.setCameraDevices(mService.getFinder().getCameraList());
 
                                         }
@@ -229,6 +231,7 @@ public class NativeMonitorFragment extends Fragment {
         mButton = (Button) rootView.findViewById(R.id.button1);
         mButton.setOnClickListener(mButtonClickListener);
         mSurfaceView = (SurfaceView) rootView.findViewById(R.id.surfaceView1);
+        ll_View = rootView.findViewById(R.id.ll_view);
         mHolder = mSurfaceView.getHolder();
         mProgressDialog = new ProgressDialog(NativeMonitorFragment.this.getActivity());
         mProgressDialog.setTitle("请稍等...");

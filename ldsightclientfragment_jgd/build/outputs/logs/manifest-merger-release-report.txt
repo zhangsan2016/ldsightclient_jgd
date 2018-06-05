@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:1:1-137:12
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:1:1-135:12
 	package
 		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:2:5-44
 		INJECTED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
@@ -265,14 +265,14 @@ ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\
 	android:name
 		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:127:22-62
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:129:5-79
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:128:5-79
 	android:name
-		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:129:22-76
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:128:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:132:5-81
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:130:5-81
 	android:name
-		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:132:22-78
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:130:22-78
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:133:5-84
+ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:131:5-84
 	android:name
-		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:133:22-81
+		ADDED from C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:131:22-81

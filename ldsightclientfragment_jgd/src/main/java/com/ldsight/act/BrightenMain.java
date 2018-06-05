@@ -340,6 +340,7 @@ public class BrightenMain extends Activity {
 						} catch (Exception e) {
 						}
 					}
+					updataHandler.sendEmptyMessage(-1);
 				}
 			}
 		}.start();
@@ -349,8 +350,8 @@ public class BrightenMain extends Activity {
 	private void initData() {
 		brightenDevices = new ArrayList<BrightenDevice>();
 
-		BrightenDevice brightenDevice = new BrightenDevice();
-		brightenDevices.add(brightenDevice);
+	/*	BrightenDevice brightenDevice = new BrightenDevice();
+		brightenDevices.add(brightenDevice);*/
 
 		adapter = new BrightenMainListAdapter(this, brightenDevices);
 		brightenMainList.setAdapter(adapter);

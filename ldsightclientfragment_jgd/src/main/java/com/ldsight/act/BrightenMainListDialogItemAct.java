@@ -40,6 +40,8 @@ public class BrightenMainListDialogItemAct extends Activity {
 				.getSerializableExtra("equipment_information");
 
 		findViews();
+
+		// 设置传递过来的参数到Dialog中
 		setData(brightenDevice);
 
 	}
