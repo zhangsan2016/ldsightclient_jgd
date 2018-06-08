@@ -14,99 +14,106 @@ import com.example.ldsightclient_jgd.R;
 import com.ldsight.act.BrightenMainListDialogItemAct;
 import com.ldsight.entity.BrightenDevice;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class BrightenMainListAdapter extends BaseAdapter {
 
-	private Context mContext;
-	private List<BrightenDevice> brightenDevices;
-	private LayoutInflater mInflater;
+    private Context mContext;
+    private List<BrightenDevice> brightenDevices;
+    private LayoutInflater mInflater;
+    DecimalFormat df;
 
-	public BrightenMainListAdapter(Context context,
-								   List<BrightenDevice> brightenDevices) {
+    public BrightenMainListAdapter(Context context,
+                                   List<BrightenDevice> brightenDevices) {
 
-		this.mContext = context;
-		this.brightenDevices = brightenDevices;
-		mInflater = LayoutInflater.from(mContext);
-	}
+        this.mContext = context;
+        this.brightenDevices = brightenDevices;
+        mInflater = LayoutInflater.from(mContext);
 
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return brightenDevices.size();
-	}
+        df = new DecimalFormat("000");
+    }
 
-	@Override
-	public BrightenDevice getItem(int id) {
-		// TODO Auto-generated method stub
-		return brightenDevices.get(id);
-	}
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return brightenDevices.size();
+    }
 
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    @Override
+    public BrightenDevice getItem(int id) {
+        // TODO Auto-generated method stub
+        return brightenDevices.get(id);
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
 
-		ViewHolder holder = null;
-		if (convertView == null) {
-			holder = new ViewHolder();
-			convertView = mInflater.inflate(R.layout.brighten_main_item, null);
-			holder.tv_id = (TextView) convertView.findViewById(R.id.tv_id);
-			holder.tv_state = (TextView) convertView
-					.findViewById(R.id.tv_state);
-			holder.tv_details = (TextView) convertView
-					.findViewById(R.id.tv_details);
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-		final BrightenDevice brightenDevice = brightenDevices.get(position);
+        ViewHolder holder = null;
+        if (convertView == null) {
+            holder = new ViewHolder();
+            convertView = mInflater.inflate(R.layout.brighten_main_item, null);
+            if (position % 2 == 0) {
+                convertView.setBackgroundResource(R.drawable.brighten_main_listview_item_bg);
+            }
+            holder.tv_id = (TextView) convertView.findViewById(R.id.tv_id);
+            holder.tv_state = (TextView) convertView
+                    .findViewById(R.id.tv_state);
+            holder.tv_details = (TextView) convertView
+                    .findViewById(R.id.tv_details);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
 
-		int id = brightenDevice.getDeviceId();
-		int status = brightenDevice.getStatus();
+        final BrightenDevice brightenDevice = brightenDevices.get(position);
 
-		holder.tv_id.setText(id + "");
-		holder.tv_state.setText(status + "");
+        int id = brightenDevice.getDeviceId();
+        int status = brightenDevice.getStatus();
 
-		// 设置详情点击事件
-		holder.tv_details.setOnClickListener(new OnClickListener() {
+        holder.tv_id.setText(df.format(id));
+        holder.tv_state.setText(status + "");
 
-			@Override
-			public void onClick(View view) {
+        // 设置详情点击事件
+        holder.tv_details.setOnClickListener(new OnClickListener() {
 
-				System.out.println("BrightenDevice 详情被点击！");
+            @Override
+            public void onClick(View view) {
 
-				Intent intent = new Intent(mContext,
-						BrightenMainListDialogItemAct.class);
-				Bundle mBundle = new Bundle();
-				mBundle.putSerializable("equipment_information", brightenDevice);
-				intent.putExtras(mBundle);
-				mContext.startActivity(intent);
-				
+                System.out.println("BrightenDevice 详情被点击！");
+
+                Intent intent = new Intent(mContext,
+                        BrightenMainListDialogItemAct.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("equipment_information", brightenDevice);
+                intent.putExtras(mBundle);
+                mContext.startActivity(intent);
+
 				
 			/*	Intent intent = new Intent(mContext,
-						ElectricBoxInformationDialog.class);
+                        ElectricBoxInformationDialog.class);
 				Bundle mBundle = new Bundle();
 				mBundle.putSerializable("equipment_information", brightenDevice);
 				intent.putExtras(mBundle);
 				mContext.startActivity(intent);*/
 
-			}
-		});
+            }
+        });
 
-		return convertView;
-	}
+        return convertView;
+    }
 
-	class ViewHolder {
-		TextView tv_id;
-		TextView tv_state;
-		TextView tv_details;
+    class ViewHolder {
+        TextView tv_id;
+        TextView tv_state;
+        TextView tv_details;
 
-	}
+    }
 
 }
