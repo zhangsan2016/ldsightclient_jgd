@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/catalog_lighting_bg">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
 
-        <Button
+
+        <com.ldsight.View.DrawableHorizontalButton
             android:id="@+id/illumination"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:alpha="0.8"
-            android:background="@drawable/btn_login_selector"
-            android:text="照明"
+            android:background="@drawable/btn_catalog_lighting_selector"
+            android:drawableLeft="@drawable/catalog_lighting_btn_ico"
+            android:text="智慧照明"
             android:textColor="#fff"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
-        <Button
+
+        <com.ldsight.View.DrawableHorizontalButton
             android:id="@+id/brighten"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:alpha="0.8"
-            android:background="@drawable/btn_login_selector"
-            android:text="亮化"
+            android:background="@drawable/btn_catalog_brighten_selector"
+            android:drawableLeft="@drawable/catalog_brighte_btn_ico"
+            android:text="智慧亮化"
             android:textColor="#fff"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
-        <Button
+        <com.ldsight.View.DrawableHorizontalButton
             android:id="@+id/monitoring"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:alpha="0.8"
-            android:background="@drawable/btn_login_selector"
-            android:text="监控"
+            android:background="@drawable/btn_catalog_monitoring_selector"
+            android:drawableLeft="@drawable/catalog_monitoring_btn_ico"
+            android:text="智慧监控"
             android:textColor="#fff"
-            android:textSize="20sp"/>
-        
-        
-        
+            android:textSize="25sp" />
+
     </LinearLayout>
 
 </RelativeLayout>

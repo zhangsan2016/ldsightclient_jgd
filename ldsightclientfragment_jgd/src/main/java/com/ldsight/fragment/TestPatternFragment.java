@@ -601,6 +601,15 @@ public class TestPatternFragment extends Fragment {
 													.equals("SZ1025")) {
 												continue;
 											}
+										}else if (cku.getUserName().equals(
+												"csazf")) {
+											if (!streetId.equals("SZ1061")
+													&& !streetId
+													.equals("SZ1062")
+													&& !streetId
+													.equals("SZ1063")) {
+												continue;
+											}
 										} else if (cku.getUserName().equals(
 												"ysdx")) {
 											if (!streetId.equals("SZ1012")
@@ -687,6 +696,8 @@ public class TestPatternFragment extends Fragment {
 													&& !streetId.equals("SZ1058")) {
 												continue;
 											}
+										}else{
+											return;
 										}
 
 										StreetAndDevice streetAndDevice = new StreetAndDevice();

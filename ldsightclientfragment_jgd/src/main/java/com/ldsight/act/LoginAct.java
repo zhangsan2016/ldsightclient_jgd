@@ -265,7 +265,7 @@ public class LoginAct extends Activity {
 				} else if (error instanceof TimeoutError) {
 				}
 				stopProgress();
-				showToast(error.getMessage());
+				showToast("网络连接超时，服务器或本地网络异常 ：" + error.getMessage());
 			}
 		});
 
