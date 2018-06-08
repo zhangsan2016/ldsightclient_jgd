@@ -590,33 +590,34 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int single_light_control_increase=0x7f02007b;
         public static final int single_light_control_reduce=0x7f02007c;
         public static final int single_light_control_shape=0x7f02007d;
-        public static final int switch_selector=0x7f02007e;
-        public static final int switch_selector2=0x7f02007f;
-        public static final int system_log=0x7f020080;
-        public static final int test_pattern_cancel_select_all=0x7f020081;
-        public static final int test_pattern_deselect=0x7f020082;
-        public static final int test_pattern_fragment_stop_lights=0x7f020083;
-        public static final int test_pattern_list_item_id_shape=0x7f020084;
-        public static final int test_pattern_select_all=0x7f020085;
-        public static final int test_patternl_select=0x7f020086;
-        public static final int test_patternl_uncheck=0x7f020087;
-        public static final int text_selector=0x7f020088;
-        public static final int text_view_shape=0x7f020089;
-        public static final int time_img_below=0x7f02008a;
-        public static final int time_img_left=0x7f02008b;
-        public static final int time_text_selector=0x7f02008c;
-        public static final int togglebutton=0x7f02008d;
-        public static final int triangle_left=0x7f02008e;
-        public static final int update_time2=0x7f02008f;
-        public static final int update_timebg=0x7f020090;
-        public static final int user=0x7f020091;
-        public static final int vpi__tab_indicator=0x7f020092;
-        public static final int vpi__tab_selected_focused_holo=0x7f020093;
-        public static final int vpi__tab_selected_holo=0x7f020094;
-        public static final int vpi__tab_selected_pressed_holo=0x7f020095;
-        public static final int vpi__tab_unselected_focused_holo=0x7f020096;
-        public static final int vpi__tab_unselected_holo=0x7f020097;
-        public static final int vpi__tab_unselected_pressed_holo=0x7f020098;
+        public static final int single_light_setting_device_title_bg=0x7f02007e;
+        public static final int switch_selector=0x7f02007f;
+        public static final int switch_selector2=0x7f020080;
+        public static final int system_log=0x7f020081;
+        public static final int test_pattern_cancel_select_all=0x7f020082;
+        public static final int test_pattern_deselect=0x7f020083;
+        public static final int test_pattern_fragment_stop_lights=0x7f020084;
+        public static final int test_pattern_list_item_id_shape=0x7f020085;
+        public static final int test_pattern_select_all=0x7f020086;
+        public static final int test_patternl_select=0x7f020087;
+        public static final int test_patternl_uncheck=0x7f020088;
+        public static final int text_selector=0x7f020089;
+        public static final int text_view_shape=0x7f02008a;
+        public static final int time_img_below=0x7f02008b;
+        public static final int time_img_left=0x7f02008c;
+        public static final int time_text_selector=0x7f02008d;
+        public static final int togglebutton=0x7f02008e;
+        public static final int triangle_left=0x7f02008f;
+        public static final int update_time2=0x7f020090;
+        public static final int update_timebg=0x7f020091;
+        public static final int user=0x7f020092;
+        public static final int vpi__tab_indicator=0x7f020093;
+        public static final int vpi__tab_selected_focused_holo=0x7f020094;
+        public static final int vpi__tab_selected_holo=0x7f020095;
+        public static final int vpi__tab_selected_pressed_holo=0x7f020096;
+        public static final int vpi__tab_unselected_focused_holo=0x7f020097;
+        public static final int vpi__tab_unselected_holo=0x7f020098;
+        public static final int vpi__tab_unselected_pressed_holo=0x7f020099;
     }
     public static final class id {
         public static final int add_device_list=0x7f0b001d;
@@ -633,7 +634,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int bt_check=0x7f0b0127;
         public static final int bt_current_state=0x7f0b00c1;
         public static final int bt_minus=0x7f0b0123;
-        public static final int bt_relay_switch=0x7f0b013e;
+        public static final int bt_relay_switch=0x7f0b013f;
         public static final int bt_send=0x7f0b011e;
         public static final int bt_setting=0x7f0b0057;
         public static final int bt_single_linght_check=0x7f0b0011;
@@ -644,7 +645,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int btn_add_device_back=0x7f0b001e;
         public static final int btn_add_device_edit=0x7f0b0023;
         public static final int btn_add_user=0x7f0b011d;
-        public static final int btn_calibrate_time_server=0x7f0b0136;
+        public static final int btn_calibrate_time_server=0x7f0b0137;
         public static final int btn_device_param_back=0x7f0b00cf;
         public static final int btn_device_param_ok=0x7f0b00cc;
         public static final int btn_login=0x7f0b00ed;
@@ -654,13 +655,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int btn_setting_fragment_alert_manage=0x7f0b011b;
         public static final int btn_setting_fragment_alert_sound=0x7f0b010f;
         public static final int btn_setting_fragment_back=0x7f0b0120;
-        public static final int btn_test_pattern_fragment_25=0x7f0b0149;
-        public static final int btn_test_pattern_fragment_50=0x7f0b0148;
-        public static final int btn_test_pattern_fragment_75=0x7f0b0147;
-        public static final int btn_test_pattern_fragment_down=0x7f0b014a;
-        public static final int btn_test_pattern_fragment_invert=0x7f0b0145;
-        public static final int btn_test_pattern_fragment_select_all=0x7f0b0144;
-        public static final int btn_test_pattern_fragment_up=0x7f0b0146;
+        public static final int btn_test_pattern_fragment_25=0x7f0b014a;
+        public static final int btn_test_pattern_fragment_50=0x7f0b0149;
+        public static final int btn_test_pattern_fragment_75=0x7f0b0148;
+        public static final int btn_test_pattern_fragment_down=0x7f0b014b;
+        public static final int btn_test_pattern_fragment_invert=0x7f0b0146;
+        public static final int btn_test_pattern_fragment_select_all=0x7f0b0145;
+        public static final int btn_test_pattern_fragment_up=0x7f0b0147;
         public static final int button1=0x7f0b00ce;
         public static final int button2=0x7f0b0121;
         public static final int button4=0x7f0b003b;
@@ -712,25 +713,25 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int cb_7=0x7f0b0055;
         public static final int cb_8=0x7f0b0056;
         public static final int cb_9=0x7f0b0072;
-        public static final int cb_a=0x7f0b0141;
-        public static final int cb_m=0x7f0b013f;
-        public static final int cb_test_pattern_select_all=0x7f0b013a;
-        public static final int checkBox3=0x7f0b0140;
-        public static final int checkbtn_test_pattern_list_item_selected=0x7f0b014c;
-        public static final int complete=0x7f0b0154;
+        public static final int cb_a=0x7f0b0142;
+        public static final int cb_m=0x7f0b0140;
+        public static final int cb_test_pattern_select_all=0x7f0b013b;
+        public static final int checkBox3=0x7f0b0141;
+        public static final int checkbtn_test_pattern_list_item_selected=0x7f0b014d;
+        public static final int complete=0x7f0b0155;
         public static final int edit_device_param_password=0x7f0b00cd;
         public static final int edit_device_param_street_id=0x7f0b00ca;
         public static final int edit_device_param_street_name=0x7f0b00cb;
         public static final int etPWD=0x7f0b0100;
-        public static final int et_checkUserPassword=0x7f0b0150;
-        public static final int et_contact=0x7f0b0153;
+        public static final int et_checkUserPassword=0x7f0b0151;
+        public static final int et_contact=0x7f0b0154;
         public static final int et_electric_uuid=0x7f0b0026;
         public static final int et_lightid=0x7f0b0010;
         public static final int et_number_id=0x7f0b003c;
         public static final int et_street_name=0x7f0b0025;
-        public static final int et_title=0x7f0b0151;
-        public static final int et_userPassword=0x7f0b014f;
-        public static final int et_work_units=0x7f0b0152;
+        public static final int et_title=0x7f0b0152;
+        public static final int et_userPassword=0x7f0b0150;
+        public static final int et_work_units=0x7f0b0153;
         public static final int etuserName=0x7f0b00fe;
         public static final int fragment_layout=0x7f0b0102;
         public static final int id=0x7f0b0131;
@@ -776,13 +777,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ll_spacing_start_time4=0x7f0b0084;
         public static final int ll_spacing_start_time5=0x7f0b008e;
         public static final int ll_spacing_start_time6=0x7f0b0098;
-        public static final int ll_test_pattern_deselect=0x7f0b0138;
-        public static final int ll_test_pattern_select_all=0x7f0b0139;
+        public static final int ll_test_pattern_deselect=0x7f0b0139;
+        public static final int ll_test_pattern_select_all=0x7f0b013a;
         public static final int ll_view=0x7f0b00fb;
         public static final int ll_warning_back=0x7f0b0005;
         public static final int lv_alarm_record=0x7f0b0006;
         public static final int lv_single_light=0x7f0b0007;
-        public static final int ly_linear_graph=0x7f0b0137;
+        public static final int ly_linear_graph=0x7f0b0138;
         public static final int main_list=0x7f0b00f0;
         public static final int main_pattern_layout=0x7f0b0103;
         public static final int map_pattern_layout=0x7f0b0106;
@@ -797,6 +798,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int rl_add_user=0x7f0b0114;
         public static final int rl_administrator=0x7f0b003d;
         public static final int rl_average_user=0x7f0b003f;
+        public static final int rl_device_main_refresh=0x7f0b0135;
         public static final int rl_download_configuration=0x7f0b0116;
         public static final int rl_setting_dandengkongzhi=0x7f0b0113;
         public static final int rl_setting_fragment_alert_manage=0x7f0b0112;
@@ -811,7 +813,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int sb_brightness6=0x7f0b00db;
         public static final int sb_single_light_brightness=0x7f0b012a;
         public static final int scrollView1=0x7f0b0117;
-        public static final int se_test_pattem_fragment_light=0x7f0b0142;
+        public static final int se_test_pattem_fragment_light=0x7f0b0143;
         public static final int setting_layout=0x7f0b00f4;
         public static final int single_light_control_start_lamp=0x7f0b0125;
         public static final int single_light_control_stop_lamp=0x7f0b0126;
@@ -824,10 +826,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int system_map_layout=0x7f0b00f1;
         public static final int tb_Light_make=0x7f0b00c2;
         public static final int tb_alarm_lamp_switch=0x7f0b0128;
-        public static final int tb_relay_switch=0x7f0b013d;
+        public static final int tb_relay_switch=0x7f0b013e;
         public static final int test_pattern_layout=0x7f0b00f3;
-        public static final int test_pattern_list=0x7f0b013b;
-        public static final int test_pattern_stop_lights=0x7f0b0143;
+        public static final int test_pattern_list=0x7f0b013c;
+        public static final int test_pattern_stop_lights=0x7f0b0144;
         public static final int textView1=0x7f0b0012;
         public static final int textView10=0x7f0b0032;
         public static final int textView11=0x7f0b0033;
@@ -883,7 +885,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tv_device_status=0x7f0b006a;
         public static final int tv_device_type=0x7f0b0014;
         public static final int tv_device_volt=0x7f0b0016;
-        public static final int tv_deviceid=0x7f0b0135;
+        public static final int tv_deviceid=0x7f0b0136;
         public static final int tv_download_configuration=0x7f0b011f;
         public static final int tv_dvid=0x7f0b0009;
         public static final int tv_electric_box_state=0x7f0b00bc;
@@ -891,7 +893,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tv_energy=0x7f0b012f;
         public static final int tv_guangqiangdu=0x7f0b00a8;
         public static final int tv_id=0x7f0b0058;
-        public static final int tv_jidianqi=0x7f0b013c;
+        public static final int tv_jidianqi=0x7f0b013d;
         public static final int tv_line=0x7f0b012d;
         public static final int tv_luminance1=0x7f0b005e;
         public static final int tv_luminance2=0x7f0b0060;
@@ -954,12 +956,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int txt_pass_word=0x7f0b00ec;
         public static final int txt_psum=0x7f0b00af;
         public static final int txt_street_name=0x7f0b00a6;
-        public static final int txt_test_pattern_list_item_street_name=0x7f0b014b;
-        public static final int txt_test_pattern_list_item_uuid=0x7f0b014d;
+        public static final int txt_test_pattern_list_item_street_name=0x7f0b014c;
+        public static final int txt_test_pattern_list_item_uuid=0x7f0b014e;
         public static final int txt_user_name=0x7f0b00ea;
         public static final int txt_volt=0x7f0b00b3;
         public static final int underline=0x7f0b0002;
-        public static final int userName=0x7f0b014e;
+        public static final int userName=0x7f0b014f;
     }
     public static final class integer {
         public static final int default_circle_indicator_orientation=0x7f0a0000;
@@ -1041,8 +1043,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class style {
         /**  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+
+        
          */
         public static final int AppBaseTheme=0x7f040000;
+        /**  All customizations that are NOT specific to a particular API-level can go here. 
+         */
         public static final int AppTheme=0x7f040001;
         public static final int CustomText=0x7f040002;
         public static final int MonitorMainPageIndicator=0x7f040003;

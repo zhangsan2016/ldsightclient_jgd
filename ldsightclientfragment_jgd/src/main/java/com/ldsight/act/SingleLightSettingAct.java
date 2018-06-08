@@ -34,7 +34,7 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 	private TextView tv_deviceid;
 	private RelativeLayout top;
 	private LinearLayout llPrevDeviceMain;
-	private LinearLayout llDeviceMainRefresh;
+	private RelativeLayout rlDeviceMainRefresh;
 	private TextView tvDate;
 	private LinearLayout llElectricParameter1;
 	private TextView textView3;
@@ -104,7 +104,8 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 		deviceUuid = (byte[]) getIntent().getByteArrayExtra("uuid");
 		// 当前设备id
 		deviceId = getIntent().getIntExtra("deviceId", 0);
-		tv_deviceid.setText("设备号：" + deviceId);
+		DecimalFormat df = new DecimalFormat("000");
+		tv_deviceid.setText("设备号：" + df.format(deviceId));
 
 	}
 
@@ -122,7 +123,7 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 	private void findViews() {
 		top = (RelativeLayout) findViewById(R.id.top);
 		llPrevDeviceMain = (LinearLayout) findViewById(R.id.ll_prev_device_main);
-		llDeviceMainRefresh = (LinearLayout) findViewById(R.id.ll_device_main_refresh);
+		rlDeviceMainRefresh = (RelativeLayout) findViewById(R.id.rl_device_main_refresh);
 		tvDate = (TextView) findViewById(R.id.tv_date);
 		llElectricParameter1 = (LinearLayout) findViewById(R.id.ll_electric_parameter1);
 		textView3 = (TextView) findViewById(R.id.textView3);
@@ -161,7 +162,7 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 		btCalibrateTimeServer = (Button) findViewById(R.id.btn_calibrate_time_server);
 		btSetting.setOnClickListener(this);
 		rlyPrimaryTiming.setOnClickListener(this);
-		llDeviceMainRefresh.setOnClickListener(this);
+		rlDeviceMainRefresh.setOnClickListener(this);
 		btCalibrateTimeServer.setOnClickListener(this);
 		llPrevDeviceMain.setOnClickListener(this);
 	}
@@ -240,7 +241,7 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 			intent.putExtra("deviceId", deviceId);
 			startActivityForResult(intent, 0);
 
-		} else if (v == llDeviceMainRefresh) {
+		} else if (v == rlDeviceMainRefresh) {
 
 			// 刷新
 			refresh();

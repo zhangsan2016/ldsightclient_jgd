@@ -1,84 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/brighten_main_bg"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/top"
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="55dp"
-        android:background="#01B087">
+        android:layout_height="70dp"
+        android:background="#4381A6"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <LinearLayout
             android:id="@+id/ll_prev_device_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_margin="10dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/return2" />
+            <!--      <ImageView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:src="@drawable/return2" />-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="3dp"
-                android:text="返回"
+                android:drawableLeft="@drawable/brighten_main_arrows"
+                android:drawablePadding="15dp"
+                android:text="智慧云照明"
                 android:textColor="#FFFFFF"
-                android:textSize="16dp" />
+                android:textSize="26dp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_deviceid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="设备号：0"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
 
-        <LinearLayout
-            android:id="@+id/ll_device_main_refresh"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/rl_device_main_refresh"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp">
 
-            <ImageView
+            <TextView
+                android:id="@+id/tv_deviceid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/refresh2" />
+                android:text="设备号：0"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+            <!--      <ImageView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/refresh2" />-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="3dp"
+                android:drawableLeft="@drawable/refresh2"
                 android:text="刷新"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
-        </LinearLayout>
-    </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@id/ll_spacing_start_time1"
         android:layout_below="@id/top"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:orientation="vertical">
+            android:layout_marginTop="2dp"
+            android:background="@drawable/brighten_main_title_bg"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,7 +96,7 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="系统时间"
-                android:textSize="16dp" />
+                android:textSize="26dp" />
 
             <TextView
                 android:id="@+id/tv_date"
@@ -96,10 +104,56 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:layout_marginLeft="30dp"
                 android:gravity="center"
                 android:text="2016-08-13 16:12:27"
-                android:textColor="#34BEFF" />
+                android:textSize="25dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/single_light_setting_device_title_bg"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
+
+            <TextView
+                style="@style/main_list_item_parametext_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="电箱参数"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                style="@style/main_list_item_parametext_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="电箱电压"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/main_list_item_parametext_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="电箱电流"
+                android:textColor="@android:color/white" />
+
+
+            <TextView
+                style="@style/main_list_item_parametext_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="电箱状态"
+                android:textColor="@android:color/white" />
+
+
         </LinearLayout>
 
 
@@ -107,7 +161,7 @@
             android:layout_width="fill_parent"
             android:layout_height="110dp"
             android:layout_marginTop="5dp"
-            android:background="#ffffff"
+            android:background="@drawable/brighten_main_title_bg"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -115,14 +169,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1.2"
                 android:gravity="center_horizontal"
+
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/main_list_item_parametext_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:text="电箱参数" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -133,6 +182,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="#EFEFEF" />
 
                     <LinearLayout
@@ -205,12 +255,6 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/main_list_item_parametext_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:text="电箱电压" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -221,6 +265,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="#EFEFEF" />
 
                     <LinearLayout
@@ -295,13 +340,6 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView2"
-                    style="@style/main_list_item_parametext_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:text="电箱电流" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -312,6 +350,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="#EFEFEF" />
 
                     <LinearLayout
@@ -386,12 +425,6 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/main_list_item_parametext_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:text="电箱状态" />
 
                 <TextView
                     android:id="@+id/tv_electric_box_state"
@@ -474,7 +507,7 @@
             android:layout_width="fill_parent"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
-            android:background="#ffffff" >
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -489,23 +522,22 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/img_seting_fragment_left" >
-            </ImageView>
+                android:src="@drawable/img_seting_fragment_left"></ImageView>
         </RelativeLayout>
-        
-          <Button
-        android:id="@+id/btn_calibrate_time_server"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp"
-        android:background="#01B087"
-        android:text="校         时"
-        android:textColor="#FEFEFE"
-        android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btn_calibrate_time_server"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
+            android:background="#01B087"
+            android:text="校         时"
+            android:textColor="#FEFEFE"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
@@ -514,7 +546,6 @@
         android:id="@+id/ll_spacing_start_time1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="#ffffff"
         android:orientation="vertical">
 
@@ -590,32 +621,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                     android:textSize="10sp"
-                    android:text="景观灯" />
+                    android:text="景观灯"
+                    android:textSize="10sp" />
 
                 <CheckBox
                     android:id="@+id/cb_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                     android:textSize="10sp"
                     android:layout_weight="1"
-                    android:text="景观灯" />
+                    android:text="景观灯"
+                    android:textSize="10sp" />
 
                 <CheckBox
                     android:id="@+id/cb_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                     android:textSize="10sp"
-                    android:text="景观灯" />
+                    android:text="景观灯"
+                    android:textSize="10sp" />
 
                 <CheckBox
                     android:id="@+id/cb_8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                     android:textSize="10sp"
-                    android:text="景观灯" />
+                    android:text="景观灯"
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <Button
@@ -627,4 +658,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
