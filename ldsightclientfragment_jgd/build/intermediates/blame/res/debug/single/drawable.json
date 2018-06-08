@@ -108,6 +108,10 @@
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\btn_test_pattern_stop_lights_background.xml"
     },
     {
+        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\brighten_main_listview_item_detail_border.xml",
+        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\brighten_main_listview_item_detail_border.xml"
+    },
+    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\brighten_main_listview_item_bg.9.png",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\brighten_main_listview_item_bg.9.png"
     },
