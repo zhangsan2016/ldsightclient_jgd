@@ -16,6 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ldsightclient_jgd.R;
@@ -42,6 +43,7 @@ public class BrightenMain extends Activity {
 	private long flagTime;
 	private Button btSetting;
 	private ProgressDialog mProgress;
+	private TextView tv_back;
 
 	private CheckBox cb1;
 	private CheckBox cb2;
@@ -203,6 +205,7 @@ public class BrightenMain extends Activity {
 
 	};
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -289,6 +292,13 @@ public class BrightenMain extends Activity {
 
 				settingPush();
 
+			}
+		});
+
+		tv_back.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				BrightenMain.this.finish();
 			}
 		});
 
@@ -445,6 +455,9 @@ public class BrightenMain extends Activity {
 		btTiming = (Button) this.findViewById(R.id.bt_timing);
 
 		btSetting = (Button) this.findViewById(R.id.bt_setting);
+
+		// 返回
+		tv_back = (TextView) this.findViewById(R.id.tv_back);
 
 		cb1 = (CheckBox) findViewById(R.id.cb_1);
 		cb2 = (CheckBox) findViewById(R.id.cb_2);

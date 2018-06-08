@@ -25,6 +25,8 @@
     <color name="blanchedalmond">#FFEBCD</color>
     <color name="blue">#0000FF</color>
     <color name="blueviolet">#8A2BE2</color>
+    <color name="brighten_main_btn_set_bg_normal_color">#4481A5</color>
+    <color name="brighten_main_btn_set_bg_pressed_color">#2990BC</color>
     <color name="brown">#A52A2A</color>
     <color name="burlywood">#DEB887</color>
     <color name="cadetblue">#5F9EA0</color>
@@ -213,15 +215,10 @@
     <string name="system_log">System Log</string>
     <string name="system_map">百度地图</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-
-        -->
+        
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        
     </style>
     <style name="CustomText">
         <item name="android:textSize">20sp</item>
