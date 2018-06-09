@@ -5,7 +5,7 @@
     android:background="#EBEAEB"
     android:orientation="vertical" >
 
-    
+
 
     <LinearLayout
         android:id="@+id/fragment_layout"
