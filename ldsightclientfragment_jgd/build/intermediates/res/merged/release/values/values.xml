@@ -25,6 +25,8 @@
     <color name="blanchedalmond">#FFEBCD</color>
     <color name="blue">#0000FF</color>
     <color name="blueviolet">#8A2BE2</color>
+    <color name="brighten_main_btn_set_bg_normal_color">#4481A5</color>
+    <color name="brighten_main_btn_set_bg_pressed_color">#2990BC</color>
     <color name="brown">#A52A2A</color>
     <color name="burlywood">#DEB887</color>
     <color name="cadetblue">#5F9EA0</color>
@@ -284,16 +286,17 @@
         <item name="android:textSize">28sp</item>
     </style>
     <style name="device_param_text">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">#54C6FF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
     <style name="main_list_item_param_text">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">#A0A0A0</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
     <style name="main_list_item_parametext_title">
+        <item name="android:gravity"> center</item>
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">#696969</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
     <style name="parameter_main_item_text_color">
         <item name="android:textColor">#C3C3C3</item>

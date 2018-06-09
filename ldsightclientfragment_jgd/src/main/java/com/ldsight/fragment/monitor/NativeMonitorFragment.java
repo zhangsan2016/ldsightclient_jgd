@@ -80,7 +80,10 @@ public class NativeMonitorFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.native_monitor_fragment,
                 container, false);
+        // 初始化view
         findView(rootView);
+
+        // 广播搜索摄像头设备信息 - 服务创建
         if (mServiceConnection == null) {
             mServiceConnection = new ServiceConnection() {
 
@@ -116,12 +119,14 @@ public class NativeMonitorFragment extends Fragment {
             };
         }
 
-
+         // 绑定服务
         NativeMonitorFragment.this.getActivity().bindService(new Intent(NativeMonitorFragment.this.getActivity().getApplicationContext(), CameraService.class),
                 mServiceConnection, Service.BIND_AUTO_CREATE);
 
+        // 创建handler
         mHandler = new MyHandle(this);
 
+        // 点击ListView列表弹出登陆框
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

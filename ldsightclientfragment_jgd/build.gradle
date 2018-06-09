@@ -20,6 +20,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
         }
     }
 
@@ -38,6 +42,4 @@ dependencies {
     compile files('libs/javacv.jar')
     compile files('libs/javacpp.jar')
     compile files('libs/maven-plugin-api-2.0.9.jar')
-
-
 }
