@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.ldsightclient_jgd.R;
 import com.ldsight.application.MyApplication;
 import com.ldsight.crc.CopyOfcheckCRC;
+import com.ldsight.util.LogUtil;
 import com.ldsight.util.StringUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
@@ -206,7 +207,7 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 						public void run() {
 							stopProgress();
 						}
-					}, 4000);
+					}, 2000);
 				}
 				// 关闭pusher
 				if (pusher != null) {
@@ -481,6 +482,8 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 					// 获取data
 					byte[] data = (byte[]) msg.obj;
 
+					LogUtil.e("obj == " + Arrays.toString(data));
+
 					switch (data[13]) {
 						case 114:
 
@@ -544,6 +547,9 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 							// 2016-08-13 16:12:27
 							tvDate.setText("20" + year + "-" + month + "-" + date + " "
 									+ hour + ":" + minute + ":" + second);
+
+//							Toast.makeText(SingleLightSettingAct.this,"20" + year + "-" + month + "-" + date + " "
+//									+ hour + ":" + minute + ":" + second,Toast.LENGTH_SHORT).show();
 
 							stopProgress();
 

@@ -66,6 +66,8 @@
                 android:layout_marginLeft="3dp"
                 android:drawableLeft="@drawable/refresh2"
                 android:text="刷新"
+                android:gravity="center"
+                android:drawablePadding="5dp"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
         </RelativeLayout>
@@ -106,7 +108,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
                 android:gravity="center"
-                android:text="2016-08-13 16:12:27"
+                android:text="2018-06-19 16:12:27"
                 android:textSize="25dp" />
         </LinearLayout>
 
