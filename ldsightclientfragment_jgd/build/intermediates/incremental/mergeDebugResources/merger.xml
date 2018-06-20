@@ -39,7 +39,7 @@
     </style></file><file path="C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\res\values\strings.xml" qualifiers=""><string name="ip">121.40.194.91</string><string name="system_map">百度地图</string><string name="app_name">ld_景观灯</string><string name="configuration_download">http://121.40.194.91:8080/excel.xls</string><string name="system_log">System Log</string></file><file path="C:\Users\ldgd\Desktop\xx\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\res\values\styles.xml" qualifiers=""><style name="main_list_item_parametext_title">
         <item name="android:gravity"> center</item>
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
     </style><style name="MyWidget.TabPageIndicator" parent="Widget">
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/vpi__tab_indicator</item>

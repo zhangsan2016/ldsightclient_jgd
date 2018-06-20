@@ -3,8 +3,6 @@ package tvonvif.finder;
 import android.content.Context;
 import android.util.Log;
 
-import com.ldsight.util.LogUtil;
-
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.DatagramPacket;
@@ -94,7 +92,7 @@ public class CameraFinder {
     private void processReceivedPacket(String packet) {
 
         //LogUtil.e("uuid = " +  getMid(packet, "Address>", "<"));
-        LogUtil.e("processReceivedPacket#packet = " + packet);
+      //  LogUtil.e("processReceivedPacket#packet = " + packet);
 
         String uuid = null;
         String url = null;
