@@ -2587,15 +2587,7 @@
                     "endOffset": 15990
                 },
                 "from": {
-                    "file": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 51,
-                        "startColumn": 4,
-                        "startOffset": 1997,
-                        "endLine": 54,
-                        "endColumn": 12,
-                        "endOffset": 2149
-                    }
+                    "file": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values\\styles.xml"
                 }
             },
             {
@@ -2642,9 +2634,64 @@
                     "startLine": 302,
                     "startColumn": 4,
                     "startOffset": 16442,
-                    "endLine": 304,
+                    "endLine": 305,
+                    "endColumn": 11,
+                    "endOffset": 16622
+                },
+                "from": {
+                    "file": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 306,
+                    "startColumn": 4,
+                    "startOffset": 16627,
+                    "endLine": 309,
                     "endColumn": 12,
-                    "endOffset": 16537
+                    "endOffset": 16790
+                },
+                "from": {
+                    "file": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 2450,
+                        "endLine": 69,
+                        "endColumn": 12,
+                        "endOffset": 2616
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 310,
+                    "startColumn": 4,
+                    "startOffset": 16795,
+                    "endLine": 314,
+                    "endColumn": 12,
+                    "endOffset": 17029
+                },
+                "from": {
+                    "file": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 74,
+                        "startColumn": 4,
+                        "startOffset": 2813,
+                        "endLine": 78,
+                        "endColumn": 12,
+                        "endOffset": 3051
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 315,
+                    "startColumn": 4,
+                    "startOffset": 17034,
+                    "endLine": 317,
+                    "endColumn": 12,
+                    "endOffset": 17129
                 },
                 "from": {
                     "file": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values\\styles.xml"
