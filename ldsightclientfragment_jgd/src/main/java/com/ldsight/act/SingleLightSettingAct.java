@@ -530,6 +530,13 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 
 							txtPsum.setText(totalActivePower + "");
 
+
+						/*	txtAmpere.setText(df.format((float)electricityA / 100) + "");
+							txtAmpereb.setText(df.format((float)electricityB / 100) + "");
+							txtAmperec.setText(df.format((float)electricityC / 100) + "");
+
+							txtPsum.setText(df.format((float)totalActivePower / 100) + "");*/
+
 							break;
 						case 116:
 
