@@ -12,12 +12,12 @@
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\catalog_lighting_btn_normal.9.png"
     },
     {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\cable_is_abnormal.xml",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\cable_is_abnormal.xml"
-    },
-    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\switch_selector2.xml",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\switch_selector2.xml"
+    },
+    {
+        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\cable_is_abnormal.xml",
+        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\cable_is_abnormal.xml"
     },
     {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\single_light_control_shape.xml",
@@ -96,12 +96,12 @@
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\device_top_item_shape.xml"
     },
     {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\test_pattern_list_item_id_shape.xml",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\test_pattern_list_item_id_shape.xml"
-    },
-    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\catalog_brighten_btn_blue_pressed.9.png",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\catalog_brighten_btn_blue_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\test_pattern_list_item_id_shape.xml",
+        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\test_pattern_list_item_id_shape.xml"
     },
     {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\single_light_setting_device_parameter_bg.9.png",

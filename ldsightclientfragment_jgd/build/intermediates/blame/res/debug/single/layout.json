@@ -204,12 +204,12 @@
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\layout\\test_pattern_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\layout\\alert_manage_main1.xml",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\layout\\alert_manage_main1.xml"
-    },
-    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\layout\\test_pattern_fragment1.xml",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\layout\\test_pattern_fragment1.xml"
+    },
+    {
+        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\layout\\alert_manage_main1.xml",
+        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\layout\\alert_manage_main1.xml"
     },
     {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\layout\\test_pattern_fragment.xml",

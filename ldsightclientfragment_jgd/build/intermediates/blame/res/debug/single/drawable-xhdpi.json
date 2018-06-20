@@ -4,12 +4,12 @@
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-xhdpi\\parameter_log1.png"
     },
     {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\triangle_left.png",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-xhdpi\\triangle_left.png"
-    },
-    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\single_light_control_background.png",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-xhdpi\\single_light_control_background.png"
+    },
+    {
+        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\triangle_left.png",
+        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-xhdpi\\triangle_left.png"
     },
     {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\parameter_main2.png",
@@ -32,12 +32,12 @@
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-xhdpi\\baidu_map_bg.png"
     },
     {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\parameter_main1.png",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-xhdpi\\parameter_main1.png"
-    },
-    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\single_light_control_back.png",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-xhdpi\\single_light_control_back.png"
+    },
+    {
+        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\parameter_main1.png",
+        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-xhdpi\\parameter_main1.png"
     },
     {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\bg_yellow.png",
