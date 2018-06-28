@@ -4,6 +4,7 @@
     android:installLocation="auto"
     android:versionCode="3"
     android:versionName="1.0" > <!-- 版本：景观灯、安置小区智能照明      功能：八通道 -->
+    <!-- 帐号：csazf -->
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
