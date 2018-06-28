@@ -86,8 +86,6 @@ public class BrightenMainListAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
-                System.out.println("BrightenDevice 详情被点击！");
-
                 Intent intent = new Intent(mContext,
                         BrightenMainListDialogItemAct.class);
                 Bundle mBundle = new Bundle();
