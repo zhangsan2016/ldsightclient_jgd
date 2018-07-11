@@ -98,7 +98,7 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="系统时间"
-                android:textSize="26dp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/tv_date"
@@ -576,6 +576,7 @@
                 android:textSize="20sp" />
 
             <ImageView
+                android:id="@+id/iv_control"
                 android:layout_width="22dp"
                 android:layout_height="32dp"
                 android:layout_alignParentRight="true"

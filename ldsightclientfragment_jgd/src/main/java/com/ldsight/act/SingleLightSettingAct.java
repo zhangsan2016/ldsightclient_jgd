@@ -1,9 +1,11 @@
 package com.ldsight.act;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -77,6 +80,10 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
     private byte[] deviceUuid;
     // 当前设备id
     private int deviceId;
+    /**
+     * ImageView全关全开控制
+     */
+    private ImageView iv_control;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,8 +128,10 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 
     }
 
+
     private void findViews() {
         top = (RelativeLayout) findViewById(R.id.top);
+        iv_control = (ImageView) this.findViewById(R.id.iv_control);
         llPrevDeviceMain = (LinearLayout) findViewById(R.id.ll_prev_device_main);
         rlDeviceMainRefresh = (RelativeLayout) findViewById(R.id.rl_device_main_refresh);
         tvDate = (TextView) findViewById(R.id.tv_date);
@@ -166,6 +175,8 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
         rlDeviceMainRefresh.setOnClickListener(this);
         btCalibrateTimeServer.setOnClickListener(this);
         llPrevDeviceMain.setOnClickListener(this);
+        iv_control.setOnClickListener(this);
+
     }
 
     private void refresh() {
@@ -256,8 +267,52 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
 
             // 返回
             this.finish();
+        } else if (v == iv_control) {
+
         }
 
+    }
+
+    /**
+     * 显示对话框--全开、全关
+     */
+    private void showDlertDialog() {
+
+        //    通过AlertDialog.Builder这个类来实例化我们的一个AlertDialog的对象
+        AlertDialog.Builder builder = new AlertDialog.Builder(SingleLightSettingAct.this);
+        //    设置Title的图标
+        // builder.setIcon(R.drawable.ic_launcher);
+        //    设置Title的内容
+        builder.setTitle("全控制");
+        //    设置Content来显示一个信息
+        builder.setMessage("开关指令");
+        //    设置一个PositiveButton
+        builder.setPositiveButton("全开", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                // 光强度bit类型转换十进制代表八个设置状态
+                StringBuffer sb = new StringBuffer();
+                sb.append(11111111);
+                singleLampSettingPush(sb);
+                //  Toast.makeText(BrightenMain.this, "positive: " + which, Toast.LENGTH_SHORT).show();
+            }
+        });
+        //    设置一个NegativeButton
+        builder.setNegativeButton("全关", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 光强度bit类型转换十进制代表八个设置状态
+                StringBuffer sb = new StringBuffer();
+                sb.append(00000000);
+                singleLampSettingPush(sb);
+
+                //  Toast.makeText(BrightenMain.this, "negative: " + which, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //    显示出该对话框
+        builder.show();
     }
 
     private void calibrateTimeServer() {
@@ -350,6 +405,56 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
                 sb.append(cb2.isChecked() ? 1 : 0);
                 sb.append(cb1.isChecked() ? 1 : 0);
                 byte luminance = StringUtil.bitToByte(sb.toString());
+
+                Pusher pusher = null;
+                // 获取当前应用的uuid
+                byte[] uuidApp = MyApplication.getInstance().getAppUuid();
+                try {
+                    byte[] data = new byte[11];
+                    data[0] = 65; // 指令（0X41）
+                    data[1] = (byte) deviceId;
+                    System.arraycopy(uuidApp, 0, data, 2, uuidApp.length); // 自身uuid
+                    data[10] = luminance;
+
+                    pusher = new Pusher(MyApplication.getIp(), 9966, 2000);
+
+                    // crc校验
+                    byte[] crc = CopyOfcheckCRC.crc(data);
+                    System.out.println("控制 data = " + Arrays.toString(crc));
+                    pusher.push0x20Message(deviceUuid, crc);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (pusher != null) {
+                        try {
+                            pusher.close();
+                        } catch (Exception e) {
+                        }
+                    }
+
+                    // 关闭加载提示框
+                    myHandler.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            stopProgress();
+                        }
+                    }, 4000);
+                }
+            }
+        }.start();
+
+    }
+
+    private void singleLampSettingPush(final StringBuffer start) {
+
+        new Thread() {
+            public void run() {
+                // 加载提示
+                showProgress();
+
+                byte luminance = StringUtil.bitToByte(start.toString());
 
                 Pusher pusher = null;
                 // 获取当前应用的uuid

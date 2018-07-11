@@ -65,11 +65,11 @@
 
     <!-- single_light_setting_activity 参数字体样式-->
     <style name="single_light_setting_param_text">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">#1A323E</item>
     </style>
       <style name="single_light_setting_device_param_text">
-       <item name="android:textSize">16sp</item>
+       <item name="android:textSize">12sp</item>
        <item name="android:textColor">@android:color/black</item>
    </style>
     <style name="single_light_setting_parametext_title">

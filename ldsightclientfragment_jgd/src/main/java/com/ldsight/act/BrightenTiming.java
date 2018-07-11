@@ -77,6 +77,16 @@ public class BrightenTiming extends Activity {
 
     // 当前uuid
     private byte[] uuid;
+    /**
+     * 是否关闭定时
+     */
+    private boolean isStopTiming;
+    /**
+     *  关闭定时的时间
+     */
+    private long stopTimingUpTime;
+
+
     private Handler myHandler = new Handler() {
         public void handleMessage(Message msg) {
 
@@ -107,22 +117,43 @@ public class BrightenTiming extends Activity {
                     finish();
                     break;
                 case 66:
-                    // 单灯定时返回
-                    if (data[15] == 0) {
-                        Toast.makeText(BrightenTiming.this, "单灯定时成功！ID = " + data[14], Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(BrightenTiming.this, "单灯定时失败！ID = " + data[14], Toast.LENGTH_SHORT).show();
+
+                    if (isStopTiming) {
+                        long currentTime = System.currentTimeMillis();
+                        if((currentTime - stopTimingUpTime) > 5000){
+                            stopTimingUpTime = currentTime;
+                       //     Toast.makeText(BrightenTiming.this, "单灯关闭定时成功！ ", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
+                        // 单灯定时返回
+                        if (data[15] == 0) {
+                            Toast.makeText(BrightenTiming.this, "单灯定时成功！ID = " + data[14], Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(BrightenTiming.this, "单灯定时失败！ID = " + data[14], Toast.LENGTH_SHORT).show();
+                        }
                     }
+
 
                     break;
                 case -62:
 
-                    // 全定时返回
-                    if (data[15] == 0) {
-                        Toast.makeText(BrightenTiming.this, "定时成功！ ", Toast.LENGTH_SHORT).show();
+                    // 首先判断是否是关闭定时指令
+                    if (isStopTiming) {
+                        long currentTime = System.currentTimeMillis();
+                        if((currentTime - stopTimingUpTime) > 5000){
+                            stopTimingUpTime = currentTime;
+                         //   Toast.makeText(BrightenTiming.this, "关闭定时成功！ ", Toast.LENGTH_SHORT).show();
+                        }
+
                     } else {
-                        Toast.makeText(BrightenTiming.this, "定时失败！", Toast.LENGTH_SHORT).show();
+                        // 全定时返回
+                        if (data[15] == 0) {
+                            Toast.makeText(BrightenTiming.this, "定时成功！ ", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(BrightenTiming.this, "定时失败！", Toast.LENGTH_SHORT).show();
+                        }
                     }
+
 
                     break;
 
@@ -285,12 +316,12 @@ public class BrightenTiming extends Activity {
             // 开启定时或关闭定时
             if (isChecked) {
                 timeData = new byte[18];
-                timeData[2] = 12;
-                timeData[5] = 12;
-                timeData[8] = 12;
-                timeData[11] = 12;
-                timeData[14] = 12;
-                timeData[17] = 12;
+                timeData[0] = 12;
+                timeData[3] = 12;
+                timeData[6] = 12;
+                timeData[9] = 12;
+                timeData[12] = 12;
+                timeData[15] = 12;
 
                 new Thread(new Runnable() {
                     @Override
@@ -298,6 +329,7 @@ public class BrightenTiming extends Activity {
                         for (int i = 0; i < 3; i++) {
                             try {
                                 Thread.sleep(2000); // 让当前线程休眠两秒钟
+                                isStopTiming = true;
                                 pusher(timeData);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
@@ -310,7 +342,8 @@ public class BrightenTiming extends Activity {
                 }).start();
 
             } else {
-                getTimingParameter();
+                Toast.makeText(BrightenTiming.this, "开启定时，请在下面设置定时时间。", Toast.LENGTH_LONG).show();
+                //  getTimingParameter();
             }
 
         }
@@ -731,7 +764,7 @@ public class BrightenTiming extends Activity {
          * Intent intent = new Intent(); intent.putExtra("parameter", data);
 		 * setResult(advocateComplementaryCode, intent);
 		 */
-
+        isStopTiming = false;
         // 推送定时到下位机
         pusher(timeData);
 

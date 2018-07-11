@@ -78,6 +78,7 @@ public class BrightenMain extends Activity {
      */
     protected byte[] pollData;
 
+
     private Handler updataHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -209,6 +210,7 @@ public class BrightenMain extends Activity {
     };
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -259,8 +261,7 @@ public class BrightenMain extends Activity {
 
                 // 跳转到单灯设置界面
 
-                Intent intent = new Intent(BrightenMain.this,
-                        SingleLightSettingAct.class);
+                Intent intent = new Intent(BrightenMain.this,SingleLightSettingAct.class);
                 intent.putExtra("uuid", azfUuid);
                 intent.putExtra("deviceId", brightenDevices.get(position)
                         .getDeviceId());
@@ -311,6 +312,7 @@ public class BrightenMain extends Activity {
                 showDlertDialog();
             }
         });
+
 
     }
 
@@ -573,6 +575,8 @@ public class BrightenMain extends Activity {
         cb6 = (CheckBox) findViewById(R.id.cb_6);
         cb7 = (CheckBox) findViewById(R.id.cb_7);
         cb8 = (CheckBox) findViewById(R.id.cb_8);
+
+
 
     }
 
