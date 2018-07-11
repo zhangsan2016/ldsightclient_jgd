@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="110dp"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="55dp" >
+            android:layout_height="55dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txt_device_main_start_time"
@@ -51,7 +51,7 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="55dp" >
+            android:layout_height="55dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txt_device_main_end_time"
@@ -83,19 +83,57 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#EBEAEB" />
+
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:text="关闭定时" />
+
+
+        <ToggleButton
+            android:id="@+id/tb_start_or_stop_switch"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/switch_selector2"
+            android:textOff=""
+            android:textOn=""
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#EBEAEB" />
+
     <LinearLayout
         android:id="@+id/ll_spacing_start_time1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#ffffff" >
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -107,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_spacing_start_time1"
@@ -126,7 +164,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -134,7 +172,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_1"
@@ -171,7 +209,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_5"
@@ -227,13 +265,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#ffffff" >
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -245,7 +283,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_spacing_start_time2"
@@ -260,10 +298,11 @@
                     android:src="@drawable/time_img_below" />
             </LinearLayout>
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -271,7 +310,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_9"
@@ -308,7 +347,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_13"
@@ -365,13 +404,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#ffffff" >
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -383,7 +422,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_spacing_start_time3"
@@ -398,10 +437,11 @@
                     android:src="@drawable/time_img_below" />
             </LinearLayout>
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -409,7 +449,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_17"
@@ -446,7 +486,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_21"
@@ -503,13 +543,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#ffffff" >
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -521,7 +561,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_spacing_start_time4"
@@ -540,7 +580,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -548,7 +588,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_25"
@@ -585,7 +625,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_29"
@@ -642,13 +682,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#ffffff" >
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -660,7 +700,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_spacing_start_time5"
@@ -679,7 +719,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -687,7 +727,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_33"
@@ -724,7 +764,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_37"
@@ -781,13 +821,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#ffffff" >
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -799,7 +839,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_spacing_start_time6"
@@ -814,10 +854,11 @@
                     android:src="@drawable/time_img_below" />
             </LinearLayout>
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -825,7 +866,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_41"
@@ -862,7 +903,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_45"
