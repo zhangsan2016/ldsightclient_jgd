@@ -1,4 +1,4 @@
-package com.ldsight.View;
+package com.ldsight.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
