@@ -268,7 +268,7 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
             // 返回
             this.finish();
         } else if (v == iv_control) {
-
+            showDlertDialog();
         }
 
     }

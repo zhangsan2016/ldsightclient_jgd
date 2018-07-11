@@ -40,6 +40,7 @@ import com.ldsight.act.WarningInformationAct;
 import com.ldsight.application.MyApplication;
 import com.ldsight.fragment.SettingFragment;
 import com.ldsight.fragment.TestPatternFragment;
+import com.ldsight.util.LogUtil;
 import com.ldsight.util.Util;
 
 import org.ddpush.im.v1.client.appuser.Message;
@@ -77,6 +78,7 @@ public class OnlineService extends Service {
 		public void onPushMessage(Message message) {
 			// 测试
 			System.out.println("message = "+ Arrays.toString(message.getData()));
+			LogUtil.e("message = "+ Arrays.toString(message.getData()));
 
 			if (message == null) {
 				return;

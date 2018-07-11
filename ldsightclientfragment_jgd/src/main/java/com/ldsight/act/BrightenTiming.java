@@ -27,6 +27,7 @@ import android.widget.ToggleButton;
 import com.example.ldsightclient_jgd.R;
 import com.ldsight.application.MyApplication;
 import com.ldsight.crc.CopyOfcheckCRC;
+import com.ldsight.util.LogUtil;
 import com.ldsight.util.StringUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
@@ -91,6 +92,8 @@ public class BrightenTiming extends Activity {
         public void handleMessage(Message msg) {
 
             byte[] data = (byte[]) msg.obj;
+            LogUtil.e("handler data = " + Arrays.toString(data));
+            LogUtil.e("handler what = " + msg.what);
 
             switch (msg.what) {
                 case -1:
@@ -122,7 +125,7 @@ public class BrightenTiming extends Activity {
                         long currentTime = System.currentTimeMillis();
                         if((currentTime - stopTimingUpTime) > 5000){
                             stopTimingUpTime = currentTime;
-                       //     Toast.makeText(BrightenTiming.this, "单灯关闭定时成功！ ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BrightenTiming.this, "单灯关闭定时成功！ ", Toast.LENGTH_SHORT).show();
                         }
                     }else {
                         // 单灯定时返回
@@ -142,7 +145,7 @@ public class BrightenTiming extends Activity {
                         long currentTime = System.currentTimeMillis();
                         if((currentTime - stopTimingUpTime) > 5000){
                             stopTimingUpTime = currentTime;
-                         //   Toast.makeText(BrightenTiming.this, "关闭定时成功！ ", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(BrightenTiming.this, "关闭定时成功！ ", Toast.LENGTH_SHORT).show();
                         }
 
                     } else {
