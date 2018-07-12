@@ -227,8 +227,12 @@ public class OnlineService extends Service {
 					intent.putExtra("data", message.getData());
 					sendBroadcast(intent);
 				}
-
-
+			}else if(message.getData()[13] == 65){
+				// 单灯全开全关
+                Intent intent = new Intent();
+                intent.setAction(SingleLightSettingAct.SINGLELIGHTSETTINGACT_RECEIVER);
+                intent.putExtra("data", message.getData());
+                sendBroadcast(intent);
 			}
 
 		}

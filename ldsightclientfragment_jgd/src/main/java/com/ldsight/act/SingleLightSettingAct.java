@@ -680,6 +680,15 @@ public class SingleLightSettingAct extends Activity implements OnClickListener {
                             }
 
                             break;
+                        case 65:
+                            stopProgress();
+                            if (data[15] == 0) {
+                                Toast.makeText(SingleLightSettingAct.this, "单灯全设置开成功！", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(SingleLightSettingAct.this, "单灯全设置失败！", Toast.LENGTH_SHORT).show();
+                            }
+
+                            break;
 
                     }
 

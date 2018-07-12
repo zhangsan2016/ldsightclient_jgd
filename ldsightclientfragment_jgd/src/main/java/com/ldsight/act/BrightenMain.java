@@ -27,6 +27,7 @@ import com.ldsight.application.MyApplication;
 import com.ldsight.crc.CopyOfcheckCRC;
 import com.ldsight.entity.BrightenDevice;
 import com.ldsight.entity.TimingStages;
+import com.ldsight.util.LogUtil;
 import com.ldsight.util.StringUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
@@ -178,7 +179,12 @@ public class BrightenMain extends Activity {
                         // 发送指令获取下一个设备信息(设备号加1)
                         // data = [5, 0, 78, 59, 98, -4, -110, -86, 92, 74, 0]
                         pollData[10] = (byte) pollCurrentLocation++;
-                        pusherCommand(pollData);
+
+                        // 先判轮询是否要开启
+                        if(pollFlag){
+                            pusherCommand(pollData);
+                        }
+
                         // 修改当前时间
                         flagTime = new Date().getTime();
                         // 更新listView
@@ -245,7 +251,7 @@ public class BrightenMain extends Activity {
     private void initBroadCast() {
 
         // 动态注册通知
-        IntentFilter filter = new IntentFilter(BrightenMain.DATA_REFRESH_FILTER);
+        IntentFilter filter = new IntentFilter(DATA_REFRESH_FILTER);
         registerReceiver(brightenMainReceiver, filter);
 
     }
@@ -476,6 +482,9 @@ public class BrightenMain extends Activity {
 
     }
 
+    /**
+     *  通过while循环路轮询获取数据
+     */
     private void getData() {
 
         new Thread() {
@@ -493,6 +502,7 @@ public class BrightenMain extends Activity {
 
                     pollFlag = true;
                     do {
+                        LogUtil.e("pollFlag = " + pollFlag);
                         // System.out.println("data = "+
                         // Arrays.toString(pollData));
                         Date currentTime = new Date();
@@ -500,10 +510,10 @@ public class BrightenMain extends Activity {
                             pusherCommand(pollData);
                             flagTime = currentTime.getTime();
                         }
+                        sleep(1000);
+                    } while (false);
 
-                    } while (pollFlag);
-
-                    System.out.println("轮询结束！");
+                  LogUtil.e("轮询结束！");
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -604,7 +614,7 @@ public class BrightenMain extends Activity {
     public void onDestroy() {
         // TODO Auto-generated method stub
         this.unregisterReceiver(brightenMainReceiver);
-
+        LogUtil.e("onDestroy pollFlag = " + pollFlag);
         if (pollFlag) {
             pollFlag = false;
         }

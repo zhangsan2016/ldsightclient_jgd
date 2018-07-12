@@ -658,7 +658,7 @@ public class DeviceTiming extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		// 促销接收者
+		// 关闭接收者
 		unregisterReceiver(MyReceiver);
 
 	}
