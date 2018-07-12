@@ -27,6 +27,16 @@ android {
         }
     }
 
+    /* 生成的apk name*/
+    android.applicationVariants.all { variant ->
+
+        variant.outputs.each { output ->
+
+            output.outputFile = new File(output.outputFile.parent, "LD_安置房" +  ".apk");
+        }
+
+    }
+
 }
 
 
