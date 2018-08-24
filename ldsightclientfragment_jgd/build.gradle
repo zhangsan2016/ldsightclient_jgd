@@ -43,7 +43,6 @@ android {
 dependencies {
     compile 'com.android.support:support-v4:20.+'
     compile files('libs/achartengine-1.1.0.jar')
-    compile files('libs/BaiduLBS_Android.jar')
     compile files('libs/commons-lang3-3.4.jar')
     compile files('libs/httpmime-4.1.2.jar')
     compile files('libs/IndoorscapeAlbumPlugin.jar')
@@ -52,4 +51,5 @@ dependencies {
     compile files('libs/javacv.jar')
     compile files('libs/javacpp.jar')
     compile files('libs/maven-plugin-api-2.0.9.jar')
+    provided files('libs/BaiduLBS_Android.jar')
 }

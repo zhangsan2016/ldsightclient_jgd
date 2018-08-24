@@ -36,6 +36,7 @@ import com.example.ldsightclient_jgd.R;
 import com.ldsight.entity.CheckUser;
 
 public class BaiDuMapFragment extends Fragment implements CloudListener {
+
 	private static final String LTAG = BaiDuMapFragment.class.getSimpleName();
 	private MapView mMapView;
 	private BaiduMap mBaiduMap;
