@@ -729,13 +729,11 @@ LogUtil.e("switchOrderNub ===" + switchOrderNub);
                                                     .equals("SZ1025")) {
                                                 continue;
                                             }
-                                        } else if (cku.getUserName().equals(
+                                        }else if (cku.getUserName().equals(
                                                 "csazf")) {
                                             if (!streetId.equals("SZ1061")
                                                     && !streetId
-                                                    .equals("SZ1062")
-                                                    && !streetId
-                                                    .equals("SZ1063")) {
+                                                    .equals("SZ1062")) {
                                                 continue;
                                             }
                                         } else if (cku.getUserName().equals(
@@ -818,13 +816,13 @@ LogUtil.e("switchOrderNub ===" + switchOrderNub);
                                                     .equals("SZ1051")
                                                     && !streetId
                                                     .equals("SZ1052")
-                                                    && !streetId.equals("SZ1053") && !streetId.equals("SZ1054")
+                                                    && !streetId.equals("SZ1053")&& !streetId.equals("SZ1054")
                                                     && !streetId.equals("SZ1056")
                                                     && !streetId.equals("SZ1057")
                                                     && !streetId.equals("SZ1058")) {
                                                 continue;
                                             }
-                                        } else {
+                                        }else{
                                             return;
                                         }
 

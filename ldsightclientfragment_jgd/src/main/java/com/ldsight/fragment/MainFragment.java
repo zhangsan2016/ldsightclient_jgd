@@ -205,9 +205,7 @@ public class MainFragment extends Fragment {
 												"csazf")) {
 											if (!streetId.equals("SZ1061")
 													&& !streetId
-													.equals("SZ1062")
-													&& !streetId
-													.equals("SZ1063")) {
+													.equals("SZ1062")) {
 												continue;
 											}
 										} else if (cku.getUserName().equals(
