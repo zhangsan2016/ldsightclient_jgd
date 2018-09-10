@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#00B38A" >
+        android:background="#00B38A">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,8 +77,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="3dp"
         android:layout_weight="8"
-        android:background="#FFFFFF" >
-    </ListView>
+        android:background="#FFFFFF"></ListView>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -109,7 +108,7 @@
             android:background="@drawable/switch_selector2"
             android:textOff=""
             android:textOn=""
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/bt_relay_switch"
@@ -155,12 +154,12 @@
         android:layout_marginBottom="2dp"
         android:layout_weight="2"
         android:background="#FFFFFF"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_weight="1" >
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -175,13 +174,13 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="7"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <SeekBar
                     android:id="@+id/se_test_pattem_fragment_light"
@@ -196,8 +195,7 @@
                     android:layout_height="wrap_content"
                     android:layout_above="@id/se_test_pattem_fragment_light"
                     android:layout_below="@id/se_test_pattem_fragment_light"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -238,12 +236,101 @@
         </RelativeLayout>
     </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_relay1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/checkBox3"
+                android:layout_below="@+id/checkBox3"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="继电器"
+                android:textSize="10sp" />
+
+            <CheckBox
+                android:id="@+id/cb_relay2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/checkBox3"
+                android:layout_below="@+id/checkBox3"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="继电器"
+                android:textSize="10sp" />
+
+            <CheckBox
+                android:id="@+id/cb_relay3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/checkBox3"
+                android:layout_below="@+id/checkBox3"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="继电器"
+                android:textSize="10sp" />
+
+
+            <CheckBox
+                android:id="@+id/cb_relay4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/checkBox3"
+                android:layout_below="@+id/checkBox3"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="继电器"
+                android:textSize="10sp" />
+
+            <CheckBox
+                android:id="@+id/cb_relay5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/checkBox3"
+                android:layout_below="@+id/checkBox3"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="继电器"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_relay_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/btn_test_pattern_stop_lights_background"
+            android:text="设       置       继       电      器"
+            android:textColor="#FEFEFE" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="#FFFFFF"
-        android:padding="5dp" >
+        android:padding="5dp"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/test_pattern_stop_lights"
