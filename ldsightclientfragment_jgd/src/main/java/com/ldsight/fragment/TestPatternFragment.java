@@ -48,7 +48,6 @@ import com.ldsight.adapter.TestPatternListAdapter;
 import com.ldsight.application.MyApplication;
 import com.ldsight.entity.CheckUser;
 import com.ldsight.entity.StreetAndDevice;
-import com.ldsight.util.LogUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
 import org.json.JSONArray;
@@ -73,6 +72,7 @@ public class TestPatternFragment extends Fragment {
 
     // 设置继电器
     private Button btRelaySetting;
+    private Button btRelayFullOpen,btRelayAllOff;
     private CheckBox cb_relay1, cb_relay2, cb_relay3, cb_relay4, cb_relay5;
 
     private Handler myHandler = new Handler() {
@@ -100,7 +100,6 @@ public class TestPatternFragment extends Fragment {
             }
         }
 
-        ;
     };
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -576,12 +575,29 @@ public class TestPatternFragment extends Fragment {
         });
 
 
+        // 设置继电器
         btRelaySetting.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                relaySetting();
+                relaySetting(getRelayOrderNub());
             }
         });
+
+        btRelayFullOpen.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                relaySetting(31);
+            }
+        });
+
+        btRelayFullOpen.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                relaySetting(0);
+            }
+        });
+
+
 
         // 接收更新广播
         IntentFilter filter = new IntentFilter(TestPatternFragment.TestPatternFragmentBroadcast);
@@ -593,8 +609,9 @@ public class TestPatternFragment extends Fragment {
 
     /**
      * 设置继电器
+     * 五个继电器对应用十进制前五位，0代表开，1代表关
      */
-    private void relaySetting() {
+    private void relaySetting(final int relayOrderNub) {
         showProgress();
         boolean[] tags = adapter.getTags();
         // 先判断选中路灯是否为null
@@ -623,12 +640,10 @@ public class TestPatternFragment extends Fragment {
                             byte[] appUuid = myApplication.getAppUuid();
                             System.arraycopy(appUuid, 0, data, 2, appUuid.length);
 
-                            int switchOrderNub = getRelayOrderNub();
                             // 0-开、-1关
                             data[0] = 29; // 继电器控制指令
                             data[1] = 0;  // 设备地址
-                            data[10] = (byte) switchOrderNub; // 开关指令
-LogUtil.e("switchOrderNub ===" + switchOrderNub);
+                            data[10] = (byte) relayOrderNub; // 开关指令
 
                             pusher = new Pusher(MyApplication.getIp(), 9966,
                                     5000);
@@ -675,6 +690,8 @@ LogUtil.e("switchOrderNub ===" + switchOrderNub);
     private void initView(View view) {
         // 继电器相关View
         btRelaySetting = (Button) view.findViewById(R.id.bt_relay_setting);
+        btRelayFullOpen = (Button) view.findViewById(R.id.bt_relay_full_open);
+        btRelayAllOff = (Button) view.findViewById(R.id.bt_relay_all_off);
         cb_relay1 = (CheckBox) view.findViewById(R.id.cb_relay1);
         cb_relay2 = (CheckBox) view.findViewById(R.id.cb_relay2);
         cb_relay3 = (CheckBox) view.findViewById(R.id.cb_relay3);

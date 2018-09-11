@@ -42,6 +42,7 @@
             android:textSize="25sp" />
 
         <com.ldsight.view.DrawableHorizontalButton
+            android:visibility="gone"
             android:id="@+id/monitoring"
             android:layout_width="match_parent"
             android:layout_height="0dp"
