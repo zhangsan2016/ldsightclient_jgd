@@ -269,6 +269,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 
                     <CheckBox
@@ -279,7 +281,7 @@
                         android:checked="true"
                         android:gravity="center"
                         android:text="1"
-                        android:textSize="10sp" />
+                        android:textSize="16sp" />
 
                     <CheckBox
                         android:id="@+id/cb_relay2"
@@ -289,7 +291,7 @@
                         android:checked="true"
                         android:gravity="center"
                         android:text="2"
-                        android:textSize="10sp" />
+                        android:textSize="16sp" />
 
                     <CheckBox
                         android:id="@+id/cb_relay3"
@@ -299,7 +301,7 @@
                         android:checked="true"
                         android:gravity="center"
                         android:text="3"
-                        android:textSize="10sp" />
+                        android:textSize="16sp" />
 
 
                     <CheckBox
@@ -310,7 +312,7 @@
                         android:checked="true"
                         android:gravity="center"
                         android:text="4"
-                        android:textSize="10sp" />
+                        android:textSize="16sp" />
 
 
                     <CheckBox
@@ -321,7 +323,7 @@
                         android:checked="true"
                         android:gravity="center"
                         android:text="5"
-                        android:textSize="10sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 

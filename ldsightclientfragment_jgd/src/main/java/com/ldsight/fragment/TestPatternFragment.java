@@ -608,8 +608,9 @@ public class TestPatternFragment extends Fragment {
 
 
     /**
-     * 设置继电器
+     *  设置继电器
      * 五个继电器对应用十进制前五位，0代表开，1代表关
+     * @param relayOrderNub 开关指令
      */
     private void relaySetting(final int relayOrderNub) {
         showProgress();
