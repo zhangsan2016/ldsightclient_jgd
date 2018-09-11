@@ -636,9 +636,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int bt_check=0x7f0b0129;
         public static final int bt_current_state=0x7f0b00c3;
         public static final int bt_minus=0x7f0b0125;
-        public static final int bt_relay_all_off=0x7f0b014e;
-        public static final int bt_relay_full_open=0x7f0b014d;
-        public static final int bt_relay_setting=0x7f0b014f;
+        public static final int bt_relay_all_off=0x7f0b014f;
+        public static final int bt_relay_full_open=0x7f0b014e;
+        public static final int bt_relay_setting=0x7f0b014d;
         public static final int bt_relay_switch=0x7f0b0143;
         public static final int bt_send=0x7f0b0120;
         public static final int bt_setting=0x7f0b0058;
