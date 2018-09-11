@@ -586,14 +586,14 @@ public class TestPatternFragment extends Fragment {
         btRelayFullOpen.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                relaySetting(31);
+                relaySetting(0);
             }
         });
 
-        btRelayFullOpen.setOnClickListener(new OnClickListener() {
+        btRelayAllOff.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                relaySetting(0);
+                relaySetting(31);
             }
         });
 
