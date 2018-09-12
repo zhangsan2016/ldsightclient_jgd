@@ -232,16 +232,6 @@ public class BrightenMain extends Activity {
 
         initBroadCast();
 
-		/*
-         * runOnUiThread(new Runnable() {
-		 *
-		 * @Override public void run() {
-		 *
-		 * Intent intent = new Intent(BrightenMain.this,
-		 * SingleLightDialogItemAct.class); startActivity(intent);
-		 *
-		 * } });
-		 */
 
     }
 
@@ -484,6 +474,7 @@ public class BrightenMain extends Activity {
 
     /**
      *  通过while循环路轮询获取数据
+     *  (以后优化可用把轮询判断放到Handler中)
      */
     private void getData() {
 
@@ -511,7 +502,7 @@ public class BrightenMain extends Activity {
                             flagTime = currentTime.getTime();
                         }
                         sleep(1000);
-                    } while (false);
+                    } while (pollFlag);
 
                   LogUtil.e("轮询结束！");
 
@@ -630,8 +621,6 @@ public class BrightenMain extends Activity {
         if (pollFlag) {
             pollFlag = false;
         }
-
-        super.onDestroy();
 
         super.onStop();
     }

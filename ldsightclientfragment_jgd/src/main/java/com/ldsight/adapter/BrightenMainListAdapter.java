@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.ldsightclient_jgd.R;
 import com.ldsight.act.BrightenMainListDialogItemAct;
 import com.ldsight.entity.BrightenDevice;
+import com.ldsight.util.LogUtil;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -59,6 +60,7 @@ public class BrightenMainListAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.brighten_main_item, null);
+            LogUtil.e("position % 2 = " + position);
             if (position % 2 == 0) {
                 convertView.setBackgroundResource(R.drawable.brighten_main_listview_item_bg);
             }
