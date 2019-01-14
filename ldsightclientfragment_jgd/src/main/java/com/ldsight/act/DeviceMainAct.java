@@ -69,7 +69,6 @@ public class DeviceMainAct extends Activity {
 
 	private int endHour;
 	private int endMinute;
-
 	private JsonObjectRequest jsonObjRequest;
 	private RequestQueue mVolleyQueue;
 

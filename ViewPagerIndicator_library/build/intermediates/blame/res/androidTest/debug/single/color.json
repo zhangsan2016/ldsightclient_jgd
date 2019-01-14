@@ -4,7 +4,15 @@
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
     },
     {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
+    },
+    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
     }
 ]

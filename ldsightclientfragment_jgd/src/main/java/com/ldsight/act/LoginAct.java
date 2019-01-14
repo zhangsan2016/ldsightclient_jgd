@@ -39,8 +39,8 @@ import com.ldsight.entity.CheckUser;
 import com.ldsight.service.OnlineService;
 import com.ldsight.service.UpdateService;
 import com.ldsight.util.CustomUtils;
+import com.ldsight.util.LogUtil;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginAct extends Activity {
@@ -327,9 +327,11 @@ public class LoginAct extends Activity {
 			newVersionCode = response.getInt("verCode");
 			newVersionName = response.getString("verName");
 			return true;
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			LogUtil.e("xxx = " + e.getMessage().toString());
 			e.printStackTrace();
+
 			return false;
 		}
 	}
