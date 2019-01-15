@@ -90,4 +90,8 @@ public class BrightenDevice implements Serializable {
 		this.status = status;
 	}
 
+
+
+
+
 }

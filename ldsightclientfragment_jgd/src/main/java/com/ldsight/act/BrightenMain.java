@@ -116,10 +116,12 @@ public class BrightenMain extends Activity {
                             return;
                         }
 
+                        LogUtil.e("data = " + Arrays.toString(data));
+
                         // 判断是否当前要获取的设备号
-                        if (data[14] != pollCurrentLocation) {
+                    /*    if (data[14] != pollCurrentLocation) {
                             return;
-                        }
+                        }*/
 
                         // 获取设备号
                         int deviceId = data[14];
@@ -174,7 +176,16 @@ public class BrightenMain extends Activity {
                         BrightenDevice brightenDevice = new BrightenDevice(
                                 deviceId, sequenceIdBuf.toString(),
                                 timingStagesList, luminance, status);
+
+                      for (BrightenDevice bd : brightenDevices){
+                          if(bd.getDeviceId() == brightenDevice.getDeviceId()){
+                              LogUtil.e("已经存在");
+                              return;
+                          }
+                      }
+
                         brightenDevices.add(brightenDevice);
+
 
                         // 发送指令获取下一个设备信息(设备号加1)
                         // data = [5, 0, 78, 59, 98, -4, -110, -86, 92, 74, 0]
@@ -485,9 +496,11 @@ public class BrightenMain extends Activity {
                     // 获取当前应用的uuid
                     byte[] uuid = MyApplication.getAppUuid();
 
+                   /* 读设备信息列表
+                    指令ID：0x0500*/
                     pollData = new byte[11];
                     pollData[0] = 5; // 指令
-                    pollData[1] = 0;
+                    pollData[1] = 0;  // 设备地址
 
                     System.arraycopy(uuid, 0, pollData, 2, uuid.length);
 
@@ -613,6 +626,8 @@ public class BrightenMain extends Activity {
         super.onDestroy();
 
     }
+
+
 
     @Override
     protected void onStop() {
