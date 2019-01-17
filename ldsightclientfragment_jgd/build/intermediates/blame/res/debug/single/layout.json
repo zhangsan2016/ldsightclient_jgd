@@ -60,12 +60,12 @@
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\layout\\native_monitor_login_layout.xml"
     },
     {
-        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\layout\\activity_single_light_control.xml",
-        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\layout\\activity_single_light_control.xml"
-    },
-    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\layout\\baidu_map_activity.xml",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\layout\\baidu_map_activity.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\layout\\activity_single_light_control.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\layout\\activity_single_light_control.xml"
     },
     {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\layout\\system_log_fragment.xml",

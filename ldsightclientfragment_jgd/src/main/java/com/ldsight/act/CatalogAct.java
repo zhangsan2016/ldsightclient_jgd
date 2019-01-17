@@ -24,7 +24,8 @@ public class CatalogAct extends Activity implements OnClickListener {
 
 		findViews();
 
-
+		// 关闭照明功能
+		illumination.setBackgroundColor(0xFF999999);
 
 
 	}
