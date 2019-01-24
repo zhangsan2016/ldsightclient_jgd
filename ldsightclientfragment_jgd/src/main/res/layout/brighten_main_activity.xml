@@ -132,9 +132,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <CheckBox
@@ -142,73 +141,88 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
                     android:text="景观灯"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
                 <CheckBox
                     android:id="@+id/cb_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
                     android:text="景观灯"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
                 <CheckBox
                     android:id="@+id/cb_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
                     android:text="景观灯"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
                 <CheckBox
                     android:id="@+id/cb_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
                     android:text="景观灯"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
                     android:id="@+id/cb_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="景观灯"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
                 <CheckBox
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
                     android:id="@+id/cb_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="景观灯"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
                 <CheckBox
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
                     android:id="@+id/cb_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="景观灯"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
                 <CheckBox
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
                     android:id="@+id/cb_8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="景观灯"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <com.ldsight.view.DrawableHorizontalButton
