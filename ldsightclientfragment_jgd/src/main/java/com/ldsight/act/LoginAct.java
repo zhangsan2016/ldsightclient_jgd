@@ -219,8 +219,12 @@ public class LoginAct extends Activity {
 								Intent online = new Intent(MyApplication.getInstance(), OnlineService.class);
 								startService(online);
 
-								Intent intent = new Intent(
+						/*		Intent intent = new Intent(
 										LoginAct.this, CatalogAct.class);
+								startActivity(intent);*/
+
+								Intent intent = new Intent(LoginAct.this, ParameterAct.class);
+								intent.putExtra(ParameterAct.FRAGMENT_FLAG, ParameterAct.MAIN);
 								startActivity(intent);
 
 

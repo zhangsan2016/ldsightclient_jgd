@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -41,8 +42,10 @@ public class AlertManageAct extends Activity {
 	AlertManageListAdapter adapter;
 	private ListView listview;
 	private final String TAG_REQUEST = "MY_TAG";
+    private RelativeLayout title;
 
-	@Override
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -50,16 +53,93 @@ public class AlertManageAct extends Activity {
 		streetAndDevices = new ArrayList<StreetAndDevice>();
 		mVolleyQueue = Volley.newRequestQueue(this);
 		listview = (ListView) findViewById(R.id.alert_manage_listview);
+
+
 		showProgress();
 		makeSampleHttpRequest();
 		clickListener();
+
+		// 自动显示隐藏title布局
+	//	switchTitle();
 
 
 
 
 	}
 
-	private void clickListener() {
+/*
+	private void switchTitle() {
+	*//*  View header = new View(this);
+		header.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,100));
+		listview.addView(header);*//*
+
+         title = (RelativeLayout) this.findViewById(R.id.rl_title);
+         listview.addView(title);
+	}
+
+
+   private float mFirstY;
+    private float mCurrenty;
+    private float mTouchSlop = 21;
+    private int direction;
+    private boolean mShow;
+    View.OnTouchListener myTouchListener = new View.OnTouchListener(){
+
+
+
+        @Override
+        public boolean onTouch(View view, MotionEvent event) {
+
+            switch (event.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                    mFirstY = event.getY();
+                    break;
+                case MotionEvent.ACTION_MOVE:
+
+                    mCurrenty = event.getY();
+                    if(mCurrenty - mFirstY > mTouchSlop){
+                        direction = 0;
+                    }else if(mFirstY - mCurrenty > mTouchSlop){
+                        direction = 1;
+                    }
+
+                    if(direction == 1){
+                        if(mShow){
+                              toolbarAnim(0);
+                            mShow = !mShow;
+                        }
+                    }else if(direction == 0){
+                        if(!mShow){
+                            toolbarAnim(1);
+                            mShow = !mShow;
+                        }
+                    }
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    break;
+            }
+
+            return false;
+        }
+    };
+    private ObjectAnimator mAnimator;
+    private void toolbarAnim(int flag) {
+
+        if(mAnimator != null && mAnimator.isRunning()){
+            mAnimator.cancel();
+        }
+
+        if(flag == 0){
+            mAnimator = ObjectAnimator.ofFloat(title,"translationY",title.getTranslationY(),0);
+        }else{
+            mAnimator = ObjectAnimator.ofFloat(title,"translationY",title.getTranslationY(),-title.getHeight());
+        }
+        mAnimator.start();
+    }*/
+
+
+    private void clickListener() {
 		LinearLayout back = (LinearLayout) this.findViewById(R.id.back);
 		back.setOnClickListener(new OnClickListener() {
 
