@@ -7,10 +7,10 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -18,30 +18,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.ClientError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ldsightclient_jgd.R;
+import com.google.gson.Gson;
 import com.ldsight.application.MyApplication;
 import com.ldsight.dao.MakeSampleHttpRequest;
-import com.ldsight.entity.CheckUser;
+import com.ldsight.entity.LoginInfo;
 import com.ldsight.service.OnlineService;
 import com.ldsight.service.UpdateService;
 import com.ldsight.util.CustomUtils;
+import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
 
 import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 
 public class LoginAct extends Activity {
 	private static final String LOGIN_RIGHT = "login_right"; // 登录成功
@@ -119,7 +119,7 @@ public class LoginAct extends Activity {
 					LoginAct.this.finish();
 					return;
 				}*/
-				showProgress();
+				// showProgress();
 				makeSampleHttpRequest();
 			}
 		});
@@ -168,14 +168,70 @@ public class LoginAct extends Activity {
 	}
 
 	private void makeSampleHttpRequest() {
-		String ip = getString(R.string.ip);
-		// http://192.168.1.132:8080/hibernate.struts2/longinaction?u.username=888&u.userpassword=888
-		// String url = "http://" + ip + ":8080/ldsight/clientAction";
-		//String url = "http://" + ip + ":8080/ldsight/clientAction";
 
-		String url = "http://" + "121.40.194.91" + ":8080/ldsight/clientAction";
+		//String url = "http://" + "121.40.194.91" + ":8080/ldsight/clientAction";
+		String url = "http://47.99.168.98:9001/API/CommonFn.asmx/Login";
 
-		Uri.Builder builder = Uri.parse(url).buildUpon();
+		RequestBody requestBody = new FormBody.Builder()
+				.add("strTemplate", "{\"ischeck\":$data.rows}")
+				.add("strName", username)
+				.add("strPwd", password)
+				.add("strVerify", "[admin]")
+				.build();
+		//   String url = "http://47.99.168.98:9001/api/CommonFn.asmx?op=Login";
+
+
+		HttpUtil.sendHttpRequest(url, requestBody, new Callback() {
+
+
+			@Override
+			public void onFailure(Call call, IOException e) {
+				LogUtil.e("xxx" + "失败" + e.toString());
+			}
+
+			@Override
+			public void onResponse(Call call, Response response) throws IOException {
+				String json = response.body().string();
+				Gson gson = new Gson();
+				LoginInfo loginInfo = gson.fromJson(json, LoginInfo.class);
+				if(loginInfo.isB()){
+					Log.e("xxx", "成功" + loginInfo.getData().get(0).getResponse());
+                    // 持久化
+					getSookie(loginInfo.getData().get(0).getResponse());
+					// 保存用户名和密码
+					SharedPreferences.Editor editor = preferences.edit();
+					editor.putString("username", username);
+					editor.putString("password", password);
+					editor.commit();
+
+
+					// 启动心跳包服务
+					Intent online = new Intent(MyApplication.getInstance(), OnlineService.class);
+					startService(online);
+
+					Intent intent = new Intent(LoginAct.this, ParameterAct.class);
+					intent.putExtra(ParameterAct.FRAGMENT_FLAG, ParameterAct.MAIN);
+					startActivity(intent);
+
+
+
+					LoginAct.this.finish();
+
+
+				}else{
+					Log.e("xxx", "失败" + json);
+				}
+
+			}
+		});
+
+
+
+
+
+
+
+	/*	Uri.Builder builder = Uri.parse(url).buildUpon();
 		builder.appendQueryParameter("username", username);
 		builder.appendQueryParameter("password", password);
 		builder.appendQueryParameter("uuid",uuidToString(MyApplication.getInstance().getAppUuid()));
@@ -209,19 +265,19 @@ public class LoginAct extends Activity {
 //												LoginAct.this, MainAct.class);
 //										startActivity(intent);
 
-									/*	Intent intent = new Intent(LoginAct.this, ParameterAct.class);
+									*//*	Intent intent = new Intent(LoginAct.this, ParameterAct.class);
 										intent.putExtra(ParameterAct.FRAGMENT_FLAG,
 												ParameterAct.MAIN);
-										startActivity(intent);*/
+										startActivity(intent);*//*
 
 
 								// 启动心跳包服务
 								Intent online = new Intent(MyApplication.getInstance(), OnlineService.class);
 								startService(online);
 
-						/*		Intent intent = new Intent(
+						*//*		Intent intent = new Intent(
 										LoginAct.this, CatalogAct.class);
-								startActivity(intent);*/
+								startActivity(intent);*//*
 
 								Intent intent = new Intent(LoginAct.this, ParameterAct.class);
 								intent.putExtra(ParameterAct.FRAGMENT_FLAG, ParameterAct.MAIN);
@@ -281,7 +337,40 @@ public class LoginAct extends Activity {
 				DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 		jsonObjRequest.setTag(TAG_REQUEST);
 		mVolleyQueue.add(jsonObjRequest);
-		// mVolleyQueue.start();
+		// mVolleyQueue.start();*/
+	}
+
+	/**
+	 *  获取sookie做持久化操作
+	 * @param url
+	 */
+	private void getSookie(String url) {
+
+
+
+		HttpUtil.sendGetSookieHttpRequest(url, new Callback() {
+
+			@Override
+			public void onFailure(Call call, IOException e) {
+				Log.e("xxx", "失败" + e.toString());
+			}
+
+			@Override
+			public void onResponse(Call call, Response response) throws IOException {
+				Log.e("xxx", "成功" + response.body().string());
+
+
+			 /* 	Log.e("xxx", "成功" + response.body().string());
+				Headers headers = response.headers();
+				Log.e("xxx", "headers      " + response.headers());
+				cookies = headers.values("Set-Cookie");
+              String session = cookies.get(0);
+                Log.e("xxx", "session" + session);
+                 sessionID = session.substring(0, session.indexOf(";"));
+                Log.e("xxx", "sessionID" + sessionID);*/
+
+			}
+		});
 	}
 
 
