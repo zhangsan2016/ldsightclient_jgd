@@ -13,6 +13,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,36 +22,35 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.ClientError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.ldsightclient_jgd.R;
+import com.google.gson.Gson;
 import com.ldsight.act.DeviceMainAct;
 import com.ldsight.adapter.MainListAdapter;
 import com.ldsight.dao.MakeSampleHttpRequest;
-import com.ldsight.entity.CheckUser;
+import com.ldsight.entity.ElectricTransducer;
+import com.ldsight.entity.LoginInfo;
+import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
 import com.ldsight.service.OnlineService;
 import com.ldsight.service.UpdateService;
 import com.ldsight.util.CustomUtils;
+import com.ldsight.util.HttpUtil;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MainFragment extends Fragment {
 	private Context mContext;
@@ -75,6 +75,8 @@ public class MainFragment extends Fragment {
 
 	private boolean updata = false;
 
+	private LoginInfo loginInfo;
+	private Object electricalBox;
 
 	@Override
 	@Nullable
@@ -85,15 +87,18 @@ public class MainFragment extends Fragment {
 		MainFragment.this.getActivity().getApplicationContext()
 				.registerReceiver(dataRefreshReceiver, filter);
 
+		// 获取传递过来的数据
+        loginInfo  = (LoginInfo) getArguments().getSerializable("loginInfo");
+
+
 		View rootView = inflater.inflate(R.layout.main_fragment, container,
 				false);
 		listView = (ListView) rootView.findViewById(R.id.main_list);
-		mVolleyQueue = Volley.newRequestQueue(this.getActivity()
-				.getApplicationContext());
+
 		streetAndDevices = new ArrayList<StreetAndDevice>();
 		if (!updata) {
-			showProgress();
-			makeSampleHttpRequest();
+			// showProgress();
+			makeSampleHttpRequest(loginInfo.getData().get(0).getID());
 		}
 
 		adapter = new MainListAdapter(MainFragment.this.getActivity(),
@@ -104,17 +109,7 @@ public class MainFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 									int position, long id) {
 
-				// Intent intent = new Intent(MainFragment.this.getActivity()
-				// .getApplicationContext(), DeviceMainAct.class);
-				// Bundle bundle = new Bundle();
-				// bundle.putString("streetId", streetAndDevices.get(position)
-				// .getStreetId());
-				// intent.putExtras(bundle);
-				// startActivity(intent);
 
-				// Intent intentck = new
-				// Intent(MainFragment.this.getActivity().getApplicationContext(),
-				// CheckoutActivity.class);
 				Intent intent = new Intent(MainFragment.this.getActivity()
 						.getApplicationContext(), DeviceMainAct.class);
 				Bundle bundle = new Bundle();
@@ -127,367 +122,146 @@ public class MainFragment extends Fragment {
 			}
 
 		});
-		// 测试
-		/*
-		 * MakeSampleHttpRequest ms = new MakeSampleHttpRequest(
-		 * MainFragment.this.getActivity()); ms.makeSampleHttpRequest();
-		 */
 
 		// 启动心跳包服务
 		Intent intent = new Intent(MainFragment.this.getActivity()
 				.getApplicationContext(), OnlineService.class);
 		MainFragment.this.getActivity().startService(intent);
 
-		/*
-		 * // 根据登录的次数判断是否检测更新 SharedPreferences preferences =
-		 * mContext.getApplicationContext().getSharedPreferences("client_state",
-		 * 0); int clientCount = preferences.getInt("client_count", 0);
-		 * System.out.println("client_count =" + clientCount); if(clientCount %
-		 * 2 != 0){ // 检测版本更新 new checkNewestVersionAsyncTask().execute();
-		 * clientCount++; SharedPreferences.Editor editor = preferences.edit();
-		 * editor.putInt("client_count", clientCount); editor.commit(); }
-		 */
 
 		return rootView;
 
 	}
 
-	private void makeSampleHttpRequest() {
+    /**
+     *  获取项目信息
+     * @param id
+     */
+	private void makeSampleHttpRequest(final String id) {
 
-		String ip = getString(R.string.ip);
-		String url = "http://" + "121.40.194.91" + ":8080/ldsight/deviceAction";
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				RequestBody requestBody = new FormBody.Builder()
+						.add("strTemplate", "{\"ischeck\":$data.rows}")
+						.add("ID", id)
+						.build();
+				String url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyPrject";
+				// url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyPrject";
 
-		jsonObjRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-				new Response.Listener<JSONObject>() {
+				HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+
 					@Override
-					public void onResponse(JSONObject response) {
-						try {
-							if (response.has("streetAndDevices")) {
-								try {
-									JSONArray jsonArr = response
-											.getJSONArray("streetAndDevices");
-									streetAndDevices.clear();
+					public void onFailure(Call call, IOException e) {
+						Log.e("xxx", "失败" + e.toString());
+					}
 
-									for (int i = 0; i < jsonArr.length(); i++) {
+					@Override
+					public void onResponse(Call call, Response response) throws IOException {
+						String json = response.body().string();
+						Log.e("xxx", "成功获取电箱设备" + json);
+						Headers headers = response.headers();
+						Log.e("xxx", "headers      " + response.headers());
+						Gson gson = new Gson();
+						ProjectItem projectItem = gson.fromJson(json, ProjectItem.class);
 
-										JSONObject temp = jsonArr
-												.getJSONObject(i);
-
-										if (temp.isNull("deviceParam")) {
-											continue;
-										}
-
-										JSONObject deviceParam = temp
-												.getJSONObject("deviceParam");
-										JSONObject street = temp
-												.getJSONObject("street");
-
-										// 根据用户显示不同的数据
-										CheckUser cku = CheckUser.getInstance();
-										String streetId = street
-												.getString("streetId");
-										if (cku.getUserName().equals("zky")) {
-											if (!streetId.equals("SZ1018")
-													&& !streetId
-													.equals("SZ1019")) {
-												continue;
-											}
-										} else if (cku.getUserName().equals(
-												"mys")) {
-											if (!streetId.equals("SZ1023")
-													&& !streetId
-													.equals("SZ1024")
-													&& !streetId
-													.equals("SZ1025")) {
-												continue;
-											}
-										}else if (cku.getUserName().equals(
-												"csazf")) {
-											if (!streetId.equals("SZ1061")
-													&& !streetId
-													.equals("SZ1062")) {
-												continue;
-											}
-										} else if (cku.getUserName().equals(
-												"ysdx")) {
-											if (!streetId.equals("SZ1012")
-													&& !streetId
-													.equals("SZ1013")
-													&& !streetId
-													.equals("SZ1014")
-													&& !streetId
-													.equals("SZ1015")
-													&& !streetId
-													.equals("SZ1016")
-													&& !streetId
-													.equals("SZ1017")) {
-												continue;
-											}
-										} else if (cku.getUserName().equals(
-												"zky2")) {
-											if (!streetId.equals("SZ1018")) {
-												continue;
-											}
-										} else if (cku.getUserName().equals(
-												"zst")) {
-											if (!streetId.equals("SZ1019")) {
-												continue;
-											}
-										} else if (cku.getUserName().equals(
-												"admin")) {
-											if (!streetId.equals("SZ1001")
-													&& !streetId
-													.equals("SZ1002")) {
-												continue;
-											}
-										} else if (cku.getUserName().equals(
-												"ldgd")) {
-											if (!streetId.equals("SZ1010")
-													&& !streetId
-													.equals("SZ1003")) {
-												continue;
-											}
-										} else if (cku.getUserName().equals(
-												"ynyl")) {
-											if (!streetId.equals("SZ1032")
-													&& !streetId
-													.equals("SZ1033")
-													&& !streetId
-													.equals("SZ1034")
-													&& !streetId
-													.equals("SZ1035")) {
-												continue;
-											}
-										} else if (cku.getUserName().equals(
-												"sxtc")) {
-											if (!streetId.equals("SZ1036")
-													&& !streetId
-													.equals("SZ1037")
-													&& !streetId
-													.equals("SZ1038")) {
-												continue;
-											}
-										} else if (cku.getUserName().equals(
-												"zj312")) {
-											if (!streetId.equals("SZ1043")
-													&& !streetId
-													.equals("SZ1044")
-													&& !streetId
-													.equals("SZ1045")
-													&& !streetId
-													.equals("SZ1046")
-													&& !streetId
-													.equals("SZ1047")
-													&& !streetId
-													.equals("SZ1048")
-													&& !streetId
-													.equals("SZ1049")
-													&& !streetId
-													.equals("SZ1050")
-													&& !streetId
-													.equals("SZ1051")
-													&& !streetId
-													.equals("SZ1052")
-													&& !streetId.equals("SZ1053")&& !streetId.equals("SZ1054")
-													&& !streetId.equals("SZ1056")
-													&& !streetId.equals("SZ1057")
-													&& !streetId.equals("SZ1058")) {
-												continue;
-											}
-										}else{
-											return;
-										}
-
-
-
-
-										StreetAndDevice streetAndDevice = new StreetAndDevice();
-
-										// 判断报警是否为空
-										if (!temp.isNull("alarms")) {
-											JSONObject alarms = temp
-													.getJSONObject("alarms");
-											streetAndDevice.setAlarmType(alarms
-													.getInt("alarm_type"));
-											streetAndDevice.setAlarmDeviceId(alarms
-													.getString("device_id"));
-										}
-
-										streetAndDevice.setCityId(street
-												.getString("cityId"));
-										streetAndDevice.setEndTime(street
-												.getString("endTime"));
-										streetAndDevice.setStartTime(street
-												.getString("startTime"));
-										streetAndDevice.setEnergy100(street
-												.getString("energy100"));
-										streetAndDevice.setEnergy75(street
-												.getString("energy75"));
-										streetAndDevice.setEnergy50(street
-												.getString("energy50"));
-										streetAndDevice.setEnergy25(street
-												.getString("energy25"));
-										streetAndDevice.setDeviceId(street
-												.getString("deviceId"));
-
-										streetAndDevice.setDeviceParamId(deviceParam
-												.getInt("deviceParamId"));
-										streetAndDevice
-												.setMb_a_Ampere(deviceParam
-														.getInt("mb_a_Ampere"));
-										streetAndDevice
-												.setMb_a_volt(deviceParam
-														.getInt("mb_a_volt"));
-										streetAndDevice.setMb_addr(deviceParam
-												.getInt("mb_addr"));
-										streetAndDevice
-												.setMb_b_Ampere(deviceParam
-														.getInt("mb_b_Ampere"));
-										streetAndDevice
-												.setMb_b_volt(deviceParam
-														.getInt("mb_b_volt"));
-										streetAndDevice
-												.setMb_c_Ampere(deviceParam
-														.getInt("mb_c_Ampere"));
-										streetAndDevice
-												.setMb_c_volt(deviceParam
-														.getInt("mb_c_volt"));
-										streetAndDevice.setMb_func(deviceParam
-												.getInt("mb_func"));
-										streetAndDevice.setMb_hz(deviceParam
-												.getInt("mb_hz"));
-										streetAndDevice.setMb_ned(deviceParam
-												.getInt("mb_ned"));
-										streetAndDevice.setMb_pa(deviceParam
-												.getInt("mb_pa"));
-										streetAndDevice.setMb_pb(deviceParam
-												.getInt("mb_pb"));
-										streetAndDevice.setMb_pc(deviceParam
-												.getInt("mb_pc"));
-										streetAndDevice.setMb_pfav(deviceParam
-												.getInt("mb_pfav"));
-										streetAndDevice.setMb_psum(deviceParam
-												.getInt("mb_psum"));
-										streetAndDevice.setMb_qa(deviceParam
-												.getInt("mb_qa"));
-										streetAndDevice.setMb_qb(deviceParam
-												.getInt("mb_qb"));
-										streetAndDevice.setMb_qc(deviceParam
-												.getInt("mb_qc"));
-										streetAndDevice.setMb_qsum(deviceParam
-												.getInt("mb_qsum"));
-										streetAndDevice.setMb_size(deviceParam
-												.getInt("mb_size"));
-										streetAndDevice.setMb_ssum(deviceParam
-												.getInt("mb_ssum"));
-										streetAndDevice.setMb_time(deviceParam
-												.getString("mb_time"));
-
-										streetAndDevice.setMb_yed(deviceParam
-												.getInt("mb_yed"));
-										streetAndDevice.setStreetId(street
-												.getString("streetId"));
-										streetAndDevice.setStreetName(street
-												.getString("streetName"));
-										streetAndDevice.setUuid(street
-												.getString("uuid"));
-
-										/*
-										 * // 根据用户显示不同的数据 CheckUser cku =
-										 * CheckUser.getInstance(); if
-										 * (cku.getUserName().equals("zky")) {
-										 * if (!streetAndDevice.getStreetId()
-										 * .equals("SZ1018") && !streetAndDevice
-										 * .getStreetId() .equals("SZ1019")) {
-										 * continue; } } else if
-										 * (cku.getUserName().equals( "mys")) {
-										 * if (!streetAndDevice.getStreetId()
-										 * .equals("SZ1023") && !streetAndDevice
-										 * .getStreetId() .equals("SZ1024") &&
-										 * !streetAndDevice .getStreetId()
-										 * .equals("SZ1025")) { continue; } }
-										 * else if (cku.getUserName().equals(
-										 * "ysdx")) { if
-										 * (!streetAndDevice.getStreetId()
-										 * .equals("SZ1012") && !streetAndDevice
-										 * .getStreetId() .equals("SZ1013") &&
-										 * !streetAndDevice .getStreetId()
-										 * .equals("SZ1014") && !streetAndDevice
-										 * .getStreetId() .equals("SZ1015") &&
-										 * !streetAndDevice .getStreetId()
-										 * .equals("SZ1016") && !streetAndDevice
-										 * .getStreetId() .equals("SZ1017")) {
-										 * continue; } } else if
-										 * (cku.getUserName().equals( "zky2")) {
-										 * if (!streetAndDevice.getStreetId()
-										 * .equals("SZ1018")) { continue; } }
-										 * else if (cku.getUserName().equals(
-										 * "zst")) { if
-										 * (!streetAndDevice.getStreetId()
-										 * .equals("SZ1019")) { continue; } }
-										 * else if (cku.getUserName().equals(
-										 * "admin")) { if
-										 * (!streetAndDevice.getStreetId()
-										 * .equals("SZ1001") && !streetAndDevice
-										 * .getStreetId() .equals("SZ1002")) {
-										 * continue; } } else if
-										 * (cku.getUserName().equals( "ldgd")) {
-										 * if
-										 * (!streetAndDevice.getStreetId().equals
-										 * ( "SZ1010")&&
-										 * !streetAndDevice.getStreetId
-										 * ().equals( "SZ1003")){ continue; } }
-										 */
-
-										streetAndDevices.add(streetAndDevice);
-
-									}
-
-									adapter.notifyDataSetChanged();
-								} catch (Exception e) {
-									e.printStackTrace();
-								}
-							}
-						} catch (Exception e) {
-							e.printStackTrace();
-							showToast("JSON parse error");
+						for (int i = 0; i < projectItem.getData().size(); i++) {
+							getElectricTransducer(projectItem.getData().get(i).getId());
 						}
-						stopProgress();
+
 
 					}
-				}, new Response.ErrorListener() {
-
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				if (error instanceof NetworkError) {
-				} else if (error instanceof ClientError) {
-				} else if (error instanceof ServerError) {
-				} else if (error instanceof AuthFailureError) {
-				} else if (error instanceof ParseError) {
-				} else if (error instanceof NoConnectionError) {
-				} else if (error instanceof TimeoutError) {
-				}
-
-				stopProgress();
-				showToast(error.getMessage());
+				},requestBody);
 			}
-		});
+		}).start();
 
-		// Set a retry policy in case of SocketTimeout & ConnectionTimeout
-		// Exceptions. Volley does retry for you if you have specified the
-		// policy.
-		jsonObjRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
-				DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-				DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-		jsonObjRequest.setTag(TAG_REQUEST);
-		mVolleyQueue.add(jsonObjRequest);
-		// mVolleyQueue.start();
 	}
+
+
+	/**
+	 *  获取变电器
+	 * @param id 项目id
+	 */
+	public void getElectricTransducer(final String id) {
+	   new Thread(new Runnable() {
+		   @Override
+		   public void run() {
+			   RequestBody requestBody = new FormBody.Builder()
+					   .add("strTemplate", "{\"ischeck\":$data.rows}")
+					   .add("ID", id)
+					   .build();
+			   String url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyOne";
+
+			   HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+
+				   @Override
+				   public void onFailure(Call call, IOException e) {
+					   Log.e("xxx", "失败" + e.toString());
+				   }
+
+				   @Override
+				   public void onResponse(Call call, Response response) throws IOException {
+					   String json = response.body().string();
+					   Log.e("xxx", "成功获取变电器设备" + json);
+					   Gson gson = new Gson();
+					   ElectricTransducer electricTransducer = gson.fromJson(json, ElectricTransducer.class);
+
+					   for (int i = 0; i <  electricTransducer.getData().size(); i++) {
+						   	getElectricalBox(electricTransducer.getData().get(i).getId());
+					   }
+
+				   }
+			   },requestBody);
+		   }
+	   }).start();
+	}
+
+	/**
+	 *  获取电箱
+	 * @param id  变电器id
+	 */
+	public void getElectricalBox(final String id) {
+
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				RequestBody requestBody = new FormBody.Builder()
+						.add("strTemplate", "{\"ischeck\":$data.rows}")
+						.add("ID", id)
+						.build();
+				String url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyTwo";
+
+				HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+
+					@Override
+					public void onFailure(Call call, IOException e) {
+						Log.e("xxx", "失败" + e.toString());
+					}
+
+					@Override
+					public void onResponse(Call call, Response response) throws IOException {
+						String json = response.body().string();
+						Log.e("xxx", "成功获取电箱设备" + json);
+						Gson gson = new Gson();
+						ElectricTransducer electricTransducer = gson.fromJson(json, ElectricTransducer.class);
+
+				/*		for (int i = 0; i <  electricTransducer.getData().size(); i++) {
+						}*/
+
+					}
+				},requestBody);
+			}
+		}).start();
+
+	}
+
+
+
 
 	private BroadcastReceiver dataRefreshReceiver = new BroadcastReceiver() {
 		public void onReceive(Context context, Intent intent) {
 			// showProgress();
-			makeSampleHttpRequest();
+		//	makeSampleHttpRequest();
 		}
 	};
 
@@ -517,6 +291,13 @@ public class MainFragment extends Fragment {
 	private void showToast(String msg) {
 		Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 	}
+
+
+	public void setElectricalBox(Object electricalBox) {
+		this.electricalBox = electricalBox;
+	}
+
+
 
 	class checkNewestVersionAsyncTask extends AsyncTask<Void, Void, Boolean> {
 		// 后台执行，比较耗时的操作都放在这个位置

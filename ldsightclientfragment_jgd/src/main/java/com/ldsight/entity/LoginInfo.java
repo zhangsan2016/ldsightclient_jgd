@@ -1,5 +1,6 @@
 package com.ldsight.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * 说明：
  */
 
-public class LoginInfo {
+public class LoginInfo implements Serializable {
 
 
     /**
@@ -45,7 +46,7 @@ public class LoginInfo {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * ID : 1
          * NAME : admin

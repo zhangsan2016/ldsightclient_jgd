@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import okhttp3.Callback;
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
@@ -186,8 +185,6 @@ public class HttpUtil {
         }).start();
     }
 
-    public static void sendGetSookieHttpRequest(String url, Callback callback, RequestBody requestBody) {
-    }
 
 
     /**

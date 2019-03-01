@@ -169,61 +169,53 @@ public class LoginAct extends Activity {
 
 	private void makeSampleHttpRequest() {
 
-		//String url = "http://" + "121.40.194.91" + ":8080/ldsight/clientAction";
-		String url = "http://47.99.168.98:9001/API/CommonFn.asmx/Login";
-
-		RequestBody requestBody = new FormBody.Builder()
-				.add("strTemplate", "{\"ischeck\":$data.rows}")
-				.add("strName", username)
-				.add("strPwd", password)
-				.add("strVerify", "[admin]")
-				.build();
-		//   String url = "http://47.99.168.98:9001/api/CommonFn.asmx?op=Login";
-
-
-		HttpUtil.sendHttpRequest(url, requestBody, new Callback() {
-
-
+		new Thread(new Runnable() {
 			@Override
-			public void onFailure(Call call, IOException e) {
-				LogUtil.e("xxx" + "失败" + e.toString());
-			}
+			public void run() {
 
-			@Override
-			public void onResponse(Call call, Response response) throws IOException {
-				String json = response.body().string();
-				Gson gson = new Gson();
-				LoginInfo loginInfo = gson.fromJson(json, LoginInfo.class);
-				if(loginInfo.isB()){
-					Log.e("xxx", "成功" + loginInfo.getData().get(0).getResponse());
-                    // 持久化
-					getSookie(loginInfo.getData().get(0).getResponse());
-					// 保存用户名和密码
-					SharedPreferences.Editor editor = preferences.edit();
-					editor.putString("username", username);
-					editor.putString("password", password);
-					editor.commit();
+				//String url = "http://" + "121.40.194.91" + ":8080/ldsight/clientAction";
+				String url = "http://47.99.168.98:9001/API/CommonFn.asmx/Login";
+
+				RequestBody requestBody = new FormBody.Builder()
+						.add("strTemplate", "{\"ischeck\":$data.rows}")
+						.add("strName", username)
+						.add("strPwd", password)
+						.add("strVerify", "[admin]")
+						.build();
+				//   String url = "http://47.99.168.98:9001/api/CommonFn.asmx?op=Login";
 
 
-					// 启动心跳包服务
-					Intent online = new Intent(MyApplication.getInstance(), OnlineService.class);
-					startService(online);
-
-					Intent intent = new Intent(LoginAct.this, ParameterAct.class);
-					intent.putExtra(ParameterAct.FRAGMENT_FLAG, ParameterAct.MAIN);
-					startActivity(intent);
+				HttpUtil.sendHttpRequest(url, requestBody, new Callback() {
 
 
+					@Override
+					public void onFailure(Call call, IOException e) {
+						LogUtil.e("xxx" + "失败" + e.toString());
+					}
 
-					LoginAct.this.finish();
+					@Override
+					public void onResponse(Call call, Response response) throws IOException {
+						String json = response.body().string();
+						Gson gson = new Gson();
+						LoginInfo loginInfo = gson.fromJson(json, LoginInfo.class);
+						if(loginInfo.isB()){
 
+							Log.e("xxx", "成功" + loginInfo.getData().get(0).getResponse());
+							Log.e("xxx", "成功" + json);
+							// 持久化
+							String url = loginInfo.getData().get(0).getResponse();
+							getSookie(url,loginInfo);
 
-				}else{
-					Log.e("xxx", "失败" + json);
-				}
+						}else{
+							Log.e("xxx", "失败" + json);
+						}
+
+					}
+				});
+
 
 			}
-		});
+		}).start();
 
 
 
@@ -343,8 +335,9 @@ public class LoginAct extends Activity {
 	/**
 	 *  获取sookie做持久化操作
 	 * @param url
+	 * @param loginInfo
 	 */
-	private void getSookie(String url) {
+	private void getSookie(String url, final LoginInfo loginInfo) {
 
 
 
@@ -360,14 +353,26 @@ public class LoginAct extends Activity {
 				Log.e("xxx", "成功" + response.body().string());
 
 
-			 /* 	Log.e("xxx", "成功" + response.body().string());
-				Headers headers = response.headers();
-				Log.e("xxx", "headers      " + response.headers());
-				cookies = headers.values("Set-Cookie");
-              String session = cookies.get(0);
-                Log.e("xxx", "session" + session);
-                 sessionID = session.substring(0, session.indexOf(";"));
-                Log.e("xxx", "sessionID" + sessionID);*/
+				// 保存用户名和密码
+				SharedPreferences.Editor editor = preferences.edit();
+				editor.putString("username", username);
+				editor.putString("password", password);
+				editor.commit();
+
+				// 启动心跳包服务
+				Intent online = new Intent(MyApplication.getInstance(), OnlineService.class);
+				startService(online);
+
+				Intent intent = new Intent(LoginAct.this, ParameterAct.class);
+				Bundle bundle = new Bundle();
+				bundle.putInt(ParameterAct.FRAGMENT_FLAG, ParameterAct.MAIN);
+				bundle.putSerializable("loginInfo", loginInfo);
+				intent.putExtras(bundle);
+				startActivity(intent);
+
+
+
+				LoginAct.this.finish();
 
 			}
 		});

@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.ldsightclient_jgd.R;
+import com.ldsight.entity.LoginInfo;
 import com.ldsight.fragment.BaiDuMapFragment;
 import com.ldsight.fragment.MainFragment;
 import com.ldsight.fragment.SettingFragment;
@@ -40,7 +41,11 @@ public class ParameterAct extends FragmentActivity {
 		this.setContentView(R.layout.parameter_main);
 		// 初始化视图
 		initView();
+
+
+		// 获取传递过来的参数
 		int fragmentFlag = getIntent().getIntExtra(FRAGMENT_FLAG, SYSTEM_LOG);
+		LoginInfo loginInfo = (LoginInfo) getIntent().getSerializableExtra("loginInfo");
 
 		if (fragmentFlag == SYSTEM_LOG) {
 			// 在程序中加入Fragment
@@ -86,6 +91,10 @@ public class ParameterAct extends FragmentActivity {
 			if (mainFragment == null) {
 				mainFragment = new MainFragment();
 			}
+			// 传递登录对象到fragment
+			Bundle args = new Bundle();
+			args.putSerializable("loginInfo", loginInfo);
+			mainFragment.setArguments(args);
 
 			fragmentTransaction.add(R.id.fragment_layout, mainFragment);
 			fragmentTransaction.commit();
