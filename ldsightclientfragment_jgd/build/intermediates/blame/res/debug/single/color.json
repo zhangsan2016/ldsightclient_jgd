@@ -8,12 +8,12 @@
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\bundles\\default\\res\\color\\vpi__dark_theme.xml"
     },
     {
-        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
-        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\color\\abc_primary_text_material_dark.xml"
-    },
-    {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
         "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\color\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
