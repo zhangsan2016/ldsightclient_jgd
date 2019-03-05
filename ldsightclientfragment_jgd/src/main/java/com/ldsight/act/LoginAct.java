@@ -72,6 +72,8 @@ public class LoginAct extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		this.setContentView(R.layout.login);
 
+
+
 		preferences = getSharedPreferences(CLIENT_STATE, 0);
 		username = preferences.getString("username", "");
 		password = preferences.getString("password", "");

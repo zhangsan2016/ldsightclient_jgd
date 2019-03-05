@@ -143,6 +143,8 @@ public class DeviceMainAct extends Activity {
 	private byte[] mainSixSectionDimmerIntensity;
 	private byte[] assistSixSectionDimmerIntensity;
 
+	private   HttpUtil httpUtil;
+
 
 
 	private ElectricityBox.ElectricityBoxList electricityBox;

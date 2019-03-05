@@ -80,6 +80,7 @@ public class MainFragment extends Fragment {
     private LoginInfo loginInfo;
 
 
+
     /**
      *  电箱列表
      */
@@ -98,6 +99,9 @@ public class MainFragment extends Fragment {
 
         // 获取传递过来的数据
         loginInfo = (LoginInfo) getArguments().getSerializable("loginInfo");
+
+        // 初始化协议
+        HttpUtil httpUtil = new HttpUtil();
 
 
         View rootView = inflater.inflate(R.layout.main_fragment, container,
