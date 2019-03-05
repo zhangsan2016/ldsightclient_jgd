@@ -19,8 +19,6 @@ import okhttp3.FormBody;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import static com.ldsight.util.HttpConfiguration.url;
-
 public class ZkyOnlineService extends Service {
     /**
      * 心跳间隔
@@ -35,36 +33,58 @@ public class ZkyOnlineService extends Service {
         // 发送心跳
         startHeartbeat();
 
-        // 拉取数据
-        pullData();
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                // 拉取数据
+                pullData();
+
+                while (true){
+                    try {
+                        Thread.sleep(6000);
+                        pullData();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }.start();
+
 
         return super.onStartCommand(intent, flags, startId);
     }
 
     private void pullData() {
-        RequestBody requestBody = new FormBody.Builder()
-                .add("uuidFrom", HttpConfiguration._Clientuuid)
-                .build();
+       new Thread(new Runnable() {
+           @Override
+           public void run() {
+               RequestBody requestBody = new FormBody.Builder()
+                       .add("uuidFrom", HttpConfiguration._Clientuuid)
+                       .build();
 
-        HttpUtil.sendHttpRequest(url, new Callback() {
+               HttpUtil.sendHttpRequest(HttpConfiguration.urlPoll, new Callback() {
 
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("pullData", "pullData" + e.toString());
-            }
+                   @Override
+                   public void onFailure(Call call, IOException e) {
+                       Log.e("pullData", "pullData....Exception = " + e.toString());
+                   }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String json = response.body().string();
+                   @Override
+                   public void onResponse(Call call, Response response) throws IOException {
+                       String json = response.body().string();
 
-                // 保存心跳返回数据
-                Gson gson = new Gson();
-                Log.e("pullData", "pullData 成 功" + json);
+                       // 保存心跳返回数据
+                       Gson gson = new Gson();
+                       Log.e("pullData", "pullData 成 功" + json);
 
-            }
+                   }
 
 
-        }, requestBody);
+               }, requestBody);
+           }
+       }).start();
     }
 
     private void startHeartbeat() {
@@ -119,7 +139,7 @@ public class ZkyOnlineService extends Service {
                 .add("data", "")
                 .build();
 
-        HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+        HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {

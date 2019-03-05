@@ -133,7 +133,9 @@ public class HttpUtil {
             @Override
             public void run() {
                 OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder().url(address).post(requestBody).build();
+
+                Request request = new Request.Builder()
+                        .url(address).post(requestBody).build();
                 client.newCall(request).enqueue(callback);
 
             }
