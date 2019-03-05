@@ -121,7 +121,7 @@ public class LoginAct extends Activity {
 					LoginAct.this.finish();
 					return;
 				}*/
-				// showProgress();
+				 showProgress();
 				makeSampleHttpRequest();
 			}
 		});
@@ -193,6 +193,7 @@ public class LoginAct extends Activity {
 					@Override
 					public void onFailure(Call call, IOException e) {
 						LogUtil.e("xxx" + "失败" + e.toString());
+						stopProgress();
 					}
 
 					@Override
@@ -203,14 +204,21 @@ public class LoginAct extends Activity {
 						if(loginInfo.isB()){
 
 							Log.e("xxx", "成功" + loginInfo.getData().get(0).getResponse());
-							Log.e("xxx", "成功" + json);
 							// 持久化
 							String url = loginInfo.getData().get(0).getResponse();
 							getSookie(url,loginInfo);
 
 						}else{
-							Log.e("xxx", "失败" + json);
+						Log.e("xxx", "失败" + json);
+							LoginAct.this.runOnUiThread(new Runnable() {
+								@Override
+								public void run() {
+									showToast("账号或者用户名错误！");
+								}
+							});
+
 						}
+						stopProgress();
 
 					}
 				}, requestBody);

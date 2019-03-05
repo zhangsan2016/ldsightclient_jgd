@@ -43,7 +43,7 @@ public class ZkyOnlineService extends Service {
 
     private void pullData() {
         RequestBody requestBody = new FormBody.Builder()
-                .add("type", HttpConfiguration.NET)
+                .add("uuidFrom", HttpConfiguration._Clientuuid)
                 .build();
 
         HttpUtil.sendHttpRequest(url, new Callback() {
