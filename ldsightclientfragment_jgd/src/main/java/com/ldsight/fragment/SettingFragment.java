@@ -1,18 +1,9 @@
 package com.ldsight.fragment;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.ddpush.im.v1.client.appserver.Pusher;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -20,42 +11,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.ClientError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ldsightclient_jgd.R;
 import com.ldsight.act.AddDeviceAct;
 import com.ldsight.act.AddUserAct;
 import com.ldsight.act.AlertManageAct;
-import com.ldsight.act.DeviceParamAct;
-import com.ldsight.act.ParameterAct;
 import com.ldsight.act.SingleLightControlAct;
-import com.ldsight.act.UserInformationAct;
 import com.ldsight.adapter.TestPatternListAdapter;
 import com.ldsight.application.MyApplication;
 import com.ldsight.entity.CheckUser;
 import com.ldsight.entity.StreetAndDevice;
 import com.ldsight.util.DownloadFilesTask;
+
+import org.ddpush.im.v1.client.appserver.Pusher;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SettingFragment extends Fragment {
 	public static final String SYSTEM_CONSTANT = "system_constant";
@@ -99,11 +79,11 @@ public class SettingFragment extends Fragment {
 			if (info == 1) {
 				Toast.makeText(
 						SettingFragment.this.getActivity()
-								.getApplicationContext(), "下载更新异常", 0).show();
+								.getApplicationContext(), "下载更新异常", Toast.LENGTH_SHORT).show();
 			} else if (info == 2) {
 				Toast.makeText(
 						SettingFragment.this.getActivity()
-								.getApplicationContext(), "下载成功！", 0).show();
+								.getApplicationContext(), "下载成功！", Toast.LENGTH_SHORT).show();
 			}
 		}
 	};
@@ -126,7 +106,7 @@ public class SettingFragment extends Fragment {
 		mVolleyQueue = Volley.newRequestQueue(this.getActivity()
 				.getApplicationContext());
 		showProgress();
-		makeSampleHttpRequest();
+	//	makeSampleHttpRequest();
 
 		RelativeLayout addDeviceBtn = (RelativeLayout) rootView
 				.findViewById(R.id.ll_add_device);
@@ -383,7 +363,7 @@ public class SettingFragment extends Fragment {
 		Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
 	}
 
-	private void makeSampleHttpRequest() {
+/*	private void makeSampleHttpRequest() {
 		String ip = getString(R.string.ip);
 		String url = "http://" + ip + ":8080/ldsight/deviceAction";
 
@@ -519,7 +499,7 @@ public class SettingFragment extends Fragment {
 
 		stopProgress();
 
-	}
+	}*/
 
 	private void showProgress() {
 		mProgress = ProgressDialog.show(SettingFragment.this.getActivity(), "",

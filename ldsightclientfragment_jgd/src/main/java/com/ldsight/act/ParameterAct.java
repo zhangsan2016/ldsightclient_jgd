@@ -65,7 +65,9 @@ public class ParameterAct extends FragmentActivity {
 			if (testPatternFragment == null) {
 				testPatternFragment = new TestPatternFragment();
 			}
-
+			// 传递登录对象到fragment
+			Bundle args = new Bundle();
+			args.putSerializable("loginInfo", loginInfo);
 			fragmentTransaction.add(R.id.fragment_layout, testPatternFragment);
 			fragmentTransaction.commit();
 		} else if (fragmentFlag == SETTING) {

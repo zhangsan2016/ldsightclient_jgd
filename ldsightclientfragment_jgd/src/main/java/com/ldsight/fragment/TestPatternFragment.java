@@ -29,32 +29,33 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.ClientError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ldsightclient_jgd.R;
+import com.google.gson.Gson;
 import com.ldsight.adapter.TestPatternListAdapter;
 import com.ldsight.application.MyApplication;
-import com.ldsight.entity.CheckUser;
+import com.ldsight.entity.ElectricTransducer;
+import com.ldsight.entity.ElectricityBox;
+import com.ldsight.entity.LoginInfo;
+import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
+import com.ldsight.util.HttpUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class TestPatternFragment extends Fragment {
     public static String TestPatternFragmentBroadcast = "TestPatternFragmentBroadcast"; // 广播接收者
@@ -62,7 +63,7 @@ public class TestPatternFragment extends Fragment {
     private RequestQueue mVolleyQueue;
     private final String TAG_REQUEST = "MY_TAG";
     private ArrayList<StreetAndDevice> streetAndDevices;
-    TestPatternListAdapter adapter;
+    private TestPatternListAdapter adapter;
     private ProgressDialog mProgress;
     private ListView listView;
     private Button stop_lights; // 关灯
@@ -74,6 +75,12 @@ public class TestPatternFragment extends Fragment {
     private Button btRelaySetting;
     private Button btRelayFullOpen,btRelayAllOff;
     private CheckBox cb_relay1, cb_relay2, cb_relay3, cb_relay4, cb_relay5;
+    private LoginInfo loginInfo;
+
+    /**
+     *  电箱列表
+     */
+    private List<ElectricityBox.ElectricityBoxList> electricityBoxList  = new ArrayList<ElectricityBox.ElectricityBoxList>();
 
     private Handler myHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -102,19 +109,30 @@ public class TestPatternFragment extends Fragment {
 
     };
 
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.test_pattern_fragment,
                 container, false);
+
         listView = (ListView) rootView.findViewById(R.id.test_pattern_list);
         streetAndDevices = new ArrayList<StreetAndDevice>();
         mVolleyQueue = Volley.newRequestQueue(this.getActivity()
                 .getApplicationContext());
 
-        showProgress();
+        // 获取传递过来的数据
+        loginInfo = (LoginInfo)  getActivity().getIntent().getSerializableExtra("loginInfo");
+
+      //  showProgress();
         // 初始化View
         initView(rootView);
-        makeSampleHttpRequest();
+
+
+        // 联网获取信息
+        makeSampleHttpRequest(loginInfo.getData().get(0).getID());
+
+
         listView.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
@@ -702,274 +720,132 @@ public class TestPatternFragment extends Fragment {
     }
 
 
-    private void makeSampleHttpRequest() {
-        String ip = getString(R.string.ip);
-        String url = "http://" + ip + ":8080/ldsight/deviceAction";
-
-        jsonObjRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            if (response.has("streetAndDevices")) {
-                                try {
-                                    JSONArray jsonArr = response
-                                            .getJSONArray("streetAndDevices");
-                                    streetAndDevices.clear();
-
-                                    for (int i = 0; i < jsonArr.length(); i++) {
-                                        JSONObject temp = jsonArr
-                                                .getJSONObject(i);
-                                        if (temp.isNull("deviceParam")) {
-                                            continue;
-                                        }
-                                        JSONObject deviceParam = temp
-                                                .getJSONObject("deviceParam");
-                                        JSONObject street = temp
-                                                .getJSONObject("street");
-
-                                        // 根据用户显示不同的数据
-                                        CheckUser cku = CheckUser.getInstance();
-                                        String streetId = street
-                                                .getString("streetId");
-                                        if (cku.getUserName().equals("zky")) {
-                                            if (!streetId.equals("SZ1018")
-                                                    && !streetId
-                                                    .equals("SZ1019")) {
-                                                continue;
-                                            }
-                                        } else if (cku.getUserName().equals(
-                                                "mys")) {
-                                            if (!streetId.equals("SZ1023")
-                                                    && !streetId
-                                                    .equals("SZ1024")
-                                                    && !streetId
-                                                    .equals("SZ1025")) {
-                                                continue;
-                                            }
-                                        }else if (cku.getUserName().equals(
-                                                "csazf")) {
-                                            if (!streetId.equals("SZ1061")
-                                                    && !streetId
-                                                    .equals("SZ1062")) {
-                                                continue;
-                                            }
-                                        } else if (cku.getUserName().equals(
-                                                "ysdx")) {
-                                            if (!streetId.equals("SZ1012")
-                                                    && !streetId
-                                                    .equals("SZ1013")
-                                                    && !streetId
-                                                    .equals("SZ1014")
-                                                    && !streetId
-                                                    .equals("SZ1015")
-                                                    && !streetId
-                                                    .equals("SZ1016")
-                                                    && !streetId
-                                                    .equals("SZ1017")) {
-                                                continue;
-                                            }
-                                        } else if (cku.getUserName().equals(
-                                                "zky2")) {
-                                            if (!streetId.equals("SZ1018")) {
-                                                continue;
-                                            }
-                                        } else if (cku.getUserName().equals(
-                                                "zst")) {
-                                            if (!streetId.equals("SZ1019")) {
-                                                continue;
-                                            }
-                                        } else if (cku.getUserName().equals(
-                                                "admin")) {
-                                            if (!streetId.equals("SZ1001")
-                                                    && !streetId
-                                                    .equals("SZ1002")) {
-                                                continue;
-                                            }
-                                        } else if (cku.getUserName().equals(
-                                                "ldgd")) {
-                                            if (!streetId.equals("SZ1010")
-                                                    && !streetId
-                                                    .equals("SZ1003")) {
-                                                continue;
-                                            }
-                                        } else if (cku.getUserName().equals(
-                                                "ynyl")) {
-                                            if (!streetId.equals("SZ1032")
-                                                    && !streetId
-                                                    .equals("SZ1033")
-                                                    && !streetId
-                                                    .equals("SZ1034")
-                                                    && !streetId
-                                                    .equals("SZ1035")) {
-                                                continue;
-                                            }
-                                        } else if (cku.getUserName().equals(
-                                                "sxtc")) {
-                                            if (!streetId.equals("SZ1036")
-                                                    && !streetId
-                                                    .equals("SZ1037")
-                                                    && !streetId
-                                                    .equals("SZ1038")) {
-                                                continue;
-                                            }
-                                        } else if (cku.getUserName().equals(
-                                                "zj312")) {
-                                            if (!streetId.equals("SZ1043")
-                                                    && !streetId
-                                                    .equals("SZ1044")
-                                                    && !streetId
-                                                    .equals("SZ1045")
-                                                    && !streetId
-                                                    .equals("SZ1046")
-                                                    && !streetId
-                                                    .equals("SZ1047")
-                                                    && !streetId
-                                                    .equals("SZ1048")
-                                                    && !streetId
-                                                    .equals("SZ1049")
-                                                    && !streetId
-                                                    .equals("SZ1050")
-                                                    && !streetId
-                                                    .equals("SZ1051")
-                                                    && !streetId
-                                                    .equals("SZ1052")
-                                                    && !streetId.equals("SZ1053")&& !streetId.equals("SZ1054")
-                                                    && !streetId.equals("SZ1056")
-                                                    && !streetId.equals("SZ1057")
-                                                    && !streetId.equals("SZ1058")) {
-                                                continue;
-                                            }
-                                        }else{
-                                            return;
-                                        }
-
-                                        StreetAndDevice streetAndDevice = new StreetAndDevice();
-                                        streetAndDevice.setCityId(street
-                                                .getString("cityId"));
-                                        streetAndDevice.setEndTime(street
-                                                .getString("endTime"));
-                                        streetAndDevice.setStartTime(street
-                                                .getString("startTime"));
-                                        streetAndDevice.setDeviceId(street
-                                                .getString("deviceId"));
-                                        streetAndDevice.setDeviceParamId(deviceParam
-                                                .getInt("deviceParamId"));
-                                        streetAndDevice
-                                                .setMb_a_Ampere(deviceParam
-                                                        .getInt("mb_a_Ampere"));
-                                        streetAndDevice
-                                                .setMb_a_volt(deviceParam
-                                                        .getInt("mb_a_volt"));
-                                        streetAndDevice.setMb_addr(deviceParam
-                                                .getInt("mb_addr"));
-                                        streetAndDevice
-                                                .setMb_b_Ampere(deviceParam
-                                                        .getInt("mb_b_Ampere"));
-                                        streetAndDevice
-                                                .setMb_b_volt(deviceParam
-                                                        .getInt("mb_b_volt"));
-                                        streetAndDevice
-                                                .setMb_c_Ampere(deviceParam
-                                                        .getInt("mb_c_Ampere"));
-                                        streetAndDevice
-                                                .setMb_c_volt(deviceParam
-                                                        .getInt("mb_c_volt"));
-                                        streetAndDevice.setMb_func(deviceParam
-                                                .getInt("mb_func"));
-                                        streetAndDevice.setMb_hz(deviceParam
-                                                .getInt("mb_hz"));
-                                        streetAndDevice.setMb_ned(deviceParam
-                                                .getInt("mb_ned"));
-                                        streetAndDevice.setMb_pa(deviceParam
-                                                .getInt("mb_pa"));
-                                        streetAndDevice.setMb_pb(deviceParam
-                                                .getInt("mb_pb"));
-                                        streetAndDevice.setMb_pc(deviceParam
-                                                .getInt("mb_pc"));
-                                        streetAndDevice.setMb_pfav(deviceParam
-                                                .getInt("mb_pfav"));
-                                        streetAndDevice.setMb_psum(deviceParam
-                                                .getInt("mb_psum"));
-                                        streetAndDevice.setMb_qa(deviceParam
-                                                .getInt("mb_qa"));
-                                        streetAndDevice.setMb_qb(deviceParam
-                                                .getInt("mb_qb"));
-                                        streetAndDevice.setMb_qc(deviceParam
-                                                .getInt("mb_qc"));
-                                        streetAndDevice.setMb_qsum(deviceParam
-                                                .getInt("mb_qsum"));
-                                        streetAndDevice.setMb_size(deviceParam
-                                                .getInt("mb_size"));
-                                        streetAndDevice.setMb_ssum(deviceParam
-                                                .getInt("mb_ssum"));
-                                        streetAndDevice.setMb_time(deviceParam
-                                                .getString("mb_time"));
-                                        streetAndDevice.setMb_yed(deviceParam
-                                                .getInt("mb_yed"));
-                                        streetAndDevice.setStreetId(street
-                                                .getString("streetId"));
-                                        streetAndDevice.setStreetName(street
-                                                .getString("streetName"));
-                                        streetAndDevice.setUuid(street
-                                                .getString("uuid"));
-
-
-                                        streetAndDevices.add(streetAndDevice);
-
-                                    }
-                                    try {
-                                        adapter = new TestPatternListAdapter(
-                                                TestPatternFragment.this
-                                                        .getActivity(),
-                                                streetAndDevices);
-                                        adapter.notifyDataSetChanged();
-                                        listView.setAdapter(adapter);
-                                    } catch (Exception e) {
-                                        System.out.println("tes空指针异常"
-                                                + e.getMessage().toString());
-
-                                    }
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                    showToast("error:" + e.getMessage().toString());
-                                    System.out.println("xxerror:" + e.getMessage().toString());
-                                }
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            // showToast("JSON parse error");
-                        }
-                        stopProgress();
-                    }
-                }, new Response.ErrorListener() {
-
+    private void makeSampleHttpRequest(final String id) {
+        new Thread(new Runnable() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                if (error instanceof NetworkError) {
-                } else if (error instanceof ClientError) {
-                } else if (error instanceof ServerError) {
-                } else if (error instanceof AuthFailureError) {
-                } else if (error instanceof ParseError) {
-                } else if (error instanceof NoConnectionError) {
-                } else if (error instanceof TimeoutError) {
-                }
+            public void run() {
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("strTemplate", "{\"ischeck\":$data.rows}")
+                        .add("ID", id)
+                        .build();
+                String url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyPrject";
+                // url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyPrject";
 
-                stopProgress();
-                //		showToast("error :" + error.getMessage());
+                HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("xxx", "失败" + e.toString());
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String json = response.body().string();
+                        Log.e("xxx", "成功获取项目信息" + json);
+                        Headers headers = response.headers();
+                        Log.e("xxx", "headers      " + response.headers());
+                        Gson gson = new Gson();
+                        ProjectItem projectItem = gson.fromJson(json, ProjectItem.class);
+
+                        for (int i = 0; i < projectItem.getData().size(); i++) {
+                            getElectricTransducer(projectItem.getData().get(i).getId());
+                        }
+                    }
+                }, requestBody);
             }
-        });
+        }).start();
+    }
 
-        // Set a retry policy in case of SocketTimeout & ConnectionTimeout
-        // Exceptions. Volley does retry for you if you have specified the
-        // policy.
-        jsonObjRequest.setRetryPolicy(new DefaultRetryPolicy(50000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        jsonObjRequest.setTag(TAG_REQUEST);
-        mVolleyQueue.add(jsonObjRequest);
-        //	mVolleyQueue.start();
+    /**
+     * 获取变电器
+     *
+     * @param id 项目id
+     */
+    public void getElectricTransducer(final String id) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("strTemplate", "{\"ischeck\":$data.rows}")
+                        .add("ID", id)
+                        .build();
+                String url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyOne";
+
+                HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("xxx", "失败" + e.toString());
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String json = response.body().string();
+                        Log.e("xxx", "成功获取变电器设备" + json);
+                        Gson gson = new Gson();
+                        ElectricTransducer electricTransducer = gson.fromJson(json, ElectricTransducer.class);
+
+                        for (int i = 0; i < electricTransducer.getData().size(); i++) {
+                            getElectricalBox(electricTransducer.getData().get(i).getId());
+                        }
+
+                    }
+                }, requestBody);
+            }
+        }).start();
+    }
+
+    /**
+     * 获取电箱
+     *
+     * @param id 变电器id
+     */
+    public void getElectricalBox(final String id) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("strTemplate", "{\"ischeck\":$data.rows}")
+                        .add("ID", id)
+                        .build();
+                String url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyTwo";
+
+                HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("xxx", "失败" + e.toString());
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String json = response.body().string();
+                        Log.e("xxx", "成功获取电箱设备" + json);
+                        Gson gson = new Gson();
+                        ElectricityBox electricityBox = gson.fromJson(json, ElectricityBox.class);
+
+                    /*    for (int i = 0; i < electricityBox.getData().size(); i++) {
+                            getElectricityState(electricityBox.getData().get(i).getUuid());
+                        }*/
+                        // 更新 listview
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                               //adapter.notifyDataSetChanged();
+                                adapter = new TestPatternListAdapter(TestPatternFragment.this.getActivity(),electricityBoxList);
+                                listView.setAdapter(adapter);
+                            }
+                        });
+
+                        // 保存在 List中
+                        electricityBoxList.addAll(electricityBox.getData());
+
+                    }
+                }, requestBody);
+            }
+        }).start();
+
     }
 
     private void showProgress() {
