@@ -103,6 +103,7 @@
 
         <service android:name="com.ldsight.service.OnlineService" />
         <service android:name="com.ldsight.service.UpdateService" />
+        <service android:name="com.ldsight.service.ZkyOnlineService" />
         <service android:name="tvonvif.finder.CameraService" />
 
         <receiver android:name="com.ldsight.service.UpdateService$onclickCancelListener" >

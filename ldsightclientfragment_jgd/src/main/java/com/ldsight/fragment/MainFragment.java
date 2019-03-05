@@ -26,15 +26,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 import com.ldsight.act.DeviceMainAct;
 import com.ldsight.adapter.MainListAdapter;
 import com.ldsight.dao.MakeSampleHttpRequest;
 import com.ldsight.entity.ElectricTransducer;
-import com.ldsight.entity.ElectricityDeviceStatus;
+import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.LoginInfo;
 import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
@@ -42,9 +38,7 @@ import com.ldsight.service.OnlineService;
 import com.ldsight.service.UpdateService;
 import com.ldsight.util.CustomUtils;
 import com.ldsight.util.HttpUtil;
-import com.ldsight.util.LogUtil;
 
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -84,7 +78,14 @@ public class MainFragment extends Fragment {
     private boolean updata = false;
 
     private LoginInfo loginInfo;
-    private Object electricalBox;
+
+
+    /**
+     *  电箱列表
+     */
+    private List<ElectricityBox.ElectricityBoxList> electricityBoxList  = new ArrayList<ElectricityBox.ElectricityBoxList>();
+
+
 
     @Override
     @Nullable
@@ -110,7 +111,7 @@ public class MainFragment extends Fragment {
         }
 
         adapter = new MainListAdapter(MainFragment.this.getActivity(),
-                streetAndDevices, cableIsAbnormal);
+                electricityBoxList, cableIsAbnormal);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnItemClickListener() {
@@ -121,8 +122,9 @@ public class MainFragment extends Fragment {
                 Intent intent = new Intent(MainFragment.this.getActivity()
                         .getApplicationContext(), DeviceMainAct.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("streetId", streetAndDevices.get(position)
-                        .getStreetId());
+               /* bundle.putString("streetId", streetAndDevices.get(position)
+                        .getStreetId());*/
+                bundle.putSerializable("electricityBox",electricityBoxList.get(position));
                 intent.putExtras(bundle);
                 // startActivity(intent);
                 startActivityForResult(intent, 1);
@@ -135,6 +137,7 @@ public class MainFragment extends Fragment {
         Intent intent = new Intent(MainFragment.this.getActivity()
                 .getApplicationContext(), OnlineService.class);
         MainFragment.this.getActivity().startService(intent);
+
 
 
         return rootView;
@@ -168,7 +171,7 @@ public class MainFragment extends Fragment {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String json = response.body().string();
-                        Log.e("xxx", "成功获取电箱设备" + json);
+                        Log.e("xxx", "成功获取项目信息" + json);
                         Headers headers = response.headers();
                         Log.e("xxx", "headers      " + response.headers());
                         Gson gson = new Gson();
@@ -252,93 +255,30 @@ public class MainFragment extends Fragment {
                         String json = response.body().string();
                         Log.e("xxx", "成功获取电箱设备" + json);
                         Gson gson = new Gson();
-                        ElectricTransducer electricTransducer = gson.fromJson(json, ElectricTransducer.class);
+                        ElectricityBox electricityBox = gson.fromJson(json, ElectricityBox.class);
 
-                        for (int i = 0; i < electricTransducer.getData().size(); i++) {
-                            getElectricityState(electricTransducer.getData().get(i).getUuid());
-                        }
-
-                    }
-                }, requestBody);
-            }
-        }).start();
-
-    }
-
-    /**
-     * 根据 uuid 获取电箱状态
-     * @param uuid  电箱uuid
-     */
-    private void getElectricityState(final String uuid) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                String str = "select * from $TABLE where  TYPE=1 and uuid= '" + uuid + "'";
-                String url = "http://47.99.168.98:9003/API/IOTDataFill.asmx/Fill";
-
-                RequestBody requestBody = new FormBody.Builder()
-                        .add("strTemplate","\\{\"ElectricityBoxStatus\":$data.rows}")
-                        .add("iTable", "1")
-                        .add("iRelateID", "1")
-                        .add("strSql", str)
-                        .add("strNameObject", "data")
-                        .build();
-
-                HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
-
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Log.e("xxx", "失败" + e.toString());
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        String json = response.body().string();
-                      //  Log.e("xxx", "成功获取电箱设备状态" + json);
-                    /*    Gson gson = new Gson();
-                        ElectricTransducer electricTransducer = gson.fromJson(json, ElectricTransducer.class);
-
-                        for (int i = 0; i < electricTransducer.getData().size(); i++) {
-                            getElectricityState(electricTransducer.getData().get(i).getUuid());
+                    /*    for (int i = 0; i < electricityBox.getData().size(); i++) {
+                            getElectricityState(electricityBox.getData().get(i).getUuid());
                         }*/
-                        parseJson(json);
+                        // 更新 listview
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
+
+                        // 保存在 List中
+                        electricityBoxList.addAll(electricityBox.getData());
 
                     }
                 }, requestBody);
             }
         }).start();
+
     }
 
-    /**
-     *  解析json
-     * @param result
-     * @return
-     */
-    private List<ElectricityDeviceStatus> parseJson(
-            String result) {
 
-        Gson gson = new Gson();
-
-        StringBuffer stringBuffer = new StringBuffer(result);
-        String str = stringBuffer.substring(stringBuffer.indexOf("ElectricityBoxStatus") - 3,stringBuffer.length()-2);
-        // 去掉转义符
-        String unescapeStr =   StringEscapeUtils.unescapeJava(str);
-
-
-        JsonParser parser = new JsonParser();
-        JsonObject jsonObject = parser.parse(unescapeStr).getAsJsonObject();
-        JsonArray jaStatus = jsonObject.getAsJsonArray("ElectricityBoxStatus");
-
-
-        List<ElectricityDeviceStatus> beanOnes = gson.fromJson(jaStatus.toString(),
-                new TypeToken<List<ElectricityDeviceStatus>>() {}.getType());
-
-        LogUtil.e("beanOnes " +  beanOnes.get(0).getUUID());
-
-
-        return beanOnes;
-    }
 
 
     private BroadcastReceiver dataRefreshReceiver = new BroadcastReceiver() {
@@ -376,9 +316,6 @@ public class MainFragment extends Fragment {
     }
 
 
-    public void setElectricalBox(Object electricalBox) {
-        this.electricalBox = electricalBox;
-    }
 
 
     class checkNewestVersionAsyncTask extends AsyncTask<Void, Void, Boolean> {

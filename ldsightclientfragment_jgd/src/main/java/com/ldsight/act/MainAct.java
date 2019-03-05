@@ -127,7 +127,7 @@ public class MainAct extends Activity {
 		// 刷新各个路灯参数信息(下位机会上传新数据到数据库)
 		refresh();
 
-		adapter = new MainListAdapter(this, streetAndDevices, cableIsAbnormal);
+		//adapter = new MainListAdapter(this, streetAndDevices, cableIsAbnormal);
 
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {

@@ -26,8 +26,8 @@ import com.google.gson.Gson;
 import com.ldsight.application.MyApplication;
 import com.ldsight.dao.MakeSampleHttpRequest;
 import com.ldsight.entity.LoginInfo;
-import com.ldsight.service.OnlineService;
 import com.ldsight.service.UpdateService;
+import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.CustomUtils;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
@@ -360,7 +360,7 @@ public class LoginAct extends Activity {
 				editor.commit();
 
 				// 启动心跳包服务
-				Intent online = new Intent(MyApplication.getInstance(), OnlineService.class);
+				Intent online = new Intent(MyApplication.getInstance(), ZkyOnlineService.class);
 				startService(online);
 
 				Intent intent = new Intent(LoginAct.this, ParameterAct.class);

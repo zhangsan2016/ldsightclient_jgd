@@ -221,4 +221,27 @@ public class StringUtil {
 		return value;
 	}
 
+
+
+	public static String stringToHexString(String str,String mybKey){
+		int c = 0;
+		int loginKey = Integer.valueOf(mybKey);
+		String data = null;
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < str.length(); i++) {
+			c=str.charAt(i);
+			c ^= loginKey;
+			data=Integer.toHexString(c);
+			String tmp = "";
+			if(data.length()==1){
+				data="0"+data;
+			}
+			tmp +=data;
+			sb.append(tmp);
+		}
+		String datas = sb.toString();
+		return datas;
+	}
+
+
 }

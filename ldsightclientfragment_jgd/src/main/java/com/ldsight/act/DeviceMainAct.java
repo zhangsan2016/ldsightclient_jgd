@@ -4,15 +4,11 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -40,18 +36,34 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ldsightclient_jgd.R;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import com.ldsight.application.MyApplication;
 import com.ldsight.component.DeviceTable;
+import com.ldsight.entity.ElectricityBox;
+import com.ldsight.entity.ElectricityDeviceStatus;
 import com.ldsight.entity.StreetAndDevice;
-import com.ldsight.fragment.MainFragment;
+import com.ldsight.util.HttpUtil;
+import com.ldsight.util.LogUtil;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.ddpush.im.v1.client.appserver.Pusher;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.RequestBody;
 
 public class DeviceMainAct extends Activity {
 	public static String DeviceMainFilter = "devicemainfilter";
@@ -117,13 +129,7 @@ public class DeviceMainAct extends Activity {
 	private TextView tv_spacing_start_time1, tv_spacing_start_time2,
 			tv_spacing_start_time3, tv_spacing_start_time4,
 			tv_spacing_start_time5, tv_spacing_start_time6;
-	/*
-	 * private LinearLayout
-	 * ll_spacing_start_time1,ll_spacing_start_time2,ll_spacing_start_time3
-	 * ,ll_spacing_start_time4,ll_spacing_start_time5,ll_spacing_start_time6; //
-	 * 进度条 private SeekBar sb_brightness1, sb_brightness2, sb_brightness3,
-	 * sb_brightness4, sb_brightness5, sb_brightness6;
-	 */
+
 
 	// 光照使能、报警灯开关
 	private ToggleButton lightMake, alarmLampSwitch;
@@ -137,510 +143,123 @@ public class DeviceMainAct extends Activity {
 	private byte[] mainSixSectionDimmerIntensity;
 	private byte[] assistSixSectionDimmerIntensity;
 
-	// 更新湿度温度光强度
-	Handler parameHandler = new Handler() {
-		public void handleMessage(Message msg) {
-			byte[] data = (byte[]) msg.obj;
-			switch (msg.what) {
-				case 4:
-					System.out.println("更新湿度温度光强度和电箱参数信息 = " + Arrays.toString(data));
-					double number1 = (data[14] << 8) + (double) (data[15] & 0xFF);
-					//double number2 = (data[16] << 8) + (double) (data[17] & 0xFF);
-					double number3 = (data[18] << 8) + (double) (data[19] & 0xFF);
-
-				/*double number3 = (data[18] << 8) + (double) (data[19] & 0xFF);
-				double number3 = (data[18] << 8) + (double) (data[19] & 0xFF);*/
 
 
-					guangQiangDu.setText(number1 + " lux");
-					//	wenDu.setText(number2 / 100 + "  %");
-					shiDu.setText(number3 + "  ℃");
-					break;
-
-				case 5:
-					//System.out.println("datalength = " + data.length);
-					if(data.length == 61){
-						// 获取系统当前时间 (年月日时分秒)
-						String systemTime = "20" + data[14] + "-" + data[15] + "-"
-								+ data[17] + " " + data[18] + ":" + data[19] + ":"
-								+ data[20];
-						System.out.println("xx 年月日时分秒" + systemTime);
-						// 主灯亮度
-						int mainLuminance = data[21];
-						System.out.println("xx 主亮度" + mainLuminance);
-						// 主灯六段调光
-						mainSixSectionDimmerIntensity = new byte[] { data[22],
-								data[23], data[24], data[25], data[26], data[27],
-								data[28], data[29], data[30], data[31], data[32],
-								data[33], data[34], data[35], data[36], data[37],
-								data[38], data[39]};
-						System.out.println("xxx 主灯六段调光 = " + Arrays.toString(mainSixSectionDimmerIntensity));
-						// 辅灯亮度
-						int assistLuminance = data[40];
-						System.out.println("xx 辅亮度" + assistLuminance);
-						// 辅灯六段调光
-						assistSixSectionDimmerIntensity = new byte[] { data[41],
-								data[42], data[43], data[44], data[45], data[46],
-								data[47], data[48], data[49], data[50], data[51],
-								data[52], data[53], data[54], data[55], data[56],
-								data[57], data[58]};
-						System.out.println("xxx 辅灯六段调光 = " + Arrays.toString(assistSixSectionDimmerIntensity));
-
-
-						// 初始化界面
-						stateDate.setText(systemTime);
-						stateBrightness.setText(mainLuminance + "% / " + assistLuminance +"%");
-
-					}
-
-					break;
-
-			}
-			;
-		};
-	};
-
-	Handler handler = new Handler() {
-		public void handleMessage(Message msg) {
-			if (msg.what == 1) {
-				showProgress();
-				new Thread() {
-					public void run() {
-						try {
-							Thread.sleep(2000);
-							stopProgress();
-							makeStreetAndDeviceHttpRequest(streetId);
-
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					};
-				}.start();
-			} else if (msg.what == 2) {
-				tag = false;
-				stopProgress();
-				System.out.println("关闭progress");
-				if (currentCon == 1) {
-					System.out.println("信息入库");
-					showProgress();
-					makeLightSwitchHttpRequest();
-					stopProgress();
-				} else if (currentCon == 2) {
-					try {
-						showProgress();
-						makeSaveStreetHttpRequest();
-						stopProgress();
-					} catch (UnsupportedEncodingException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			} else if (msg.what == 3) {
-				showProgress();
-			} else {
-				showToast(msg.obj.toString());
-			}
-		};
-	};
-	private boolean update = false;
-
+	private ElectricityBox.ElectricityBoxList electricityBox;
+	private LinearLayout ll_prev_device_main;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.device_main);
 		mVolleyQueue = Volley.newRequestQueue(this);
+
+		// 获取传递过来的参数
 		Bundle bundle = getIntent().getExtras();
 		streetId = bundle.getString("streetId");
+		electricityBox = (ElectricityBox.ElectricityBoxList) bundle.getSerializable("electricityBox");
 
-		// 第一次更新数据
-		if (!update) {
-			update = true;
-			showProgress();
-			// 获取当前定时时间
-			getTimingTime();
-		}
+		// 获取当前电箱状态
+		getElectricityState(electricityBox.getUuid());
+
 		// 初始化视图
 		initView();
+
 		// 设置点击界面
 		initSetOnClick();
 
-		// 获取街道电表信息
-		makeStreetAndDeviceHttpRequest(streetId);
+	//	Toast.makeText(this,"name = " + electricityBox.getText()+"uuid = " + electricityBox.getUuid(),Toast.LENGTH_SHORT).show();
 
-		// 动态注册通知
-		IntentFilter filter = new IntentFilter(DeviceMainAct.DeviceMainFilter);
-		registerReceiver(deviceMainReceiver, filter);
-		IntentFilter cableParameterFilter = new IntentFilter(
-				DeviceMainAct.UpdateCableParameterFilter);
-		registerReceiver(cableParameterReceiver, cableParameterFilter);
-		// 湿度温度接收器
-		IntentFilter filter3 = new IntentFilter(
-				DeviceMainAct.DeviceTemperatureFilter);
-		registerReceiver(DeviceTemperatureReceiver, filter3);
-		// 设备状态接收器
-		IntentFilter filter4 = new IntentFilter(DeviceMainAct.DeviceStateFilter);
-		registerReceiver(DeviceTemperatureReceiver, filter4);
 
-		LinearLayout prevButton = (LinearLayout) findViewById(R.id.ll_prev_device_main);
-		prevButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				DeviceMainAct.this.finish();
-			}
-		});
-		/*
-		 * Button okButton = (Button) findViewById(R.id.btn_ok_device_main);
-		 * okButton.setOnClickListener(new OnClickListener() { public void
-		 * onClick(View v) { showProgress(); // 开始时间 strStartTime =
-		 * txtStartTime.getText().toString().trim(); strEndTime =
-		 * txtEndTime.getText().toString().trim(); new Thread() { public void
-		 * run() { Pusher pusher = null; byte[] data = new byte[20]; data[0] =
-		 * -62; data[1] = 0;
-		 *
-		 * data[2] = (byte) Integer .parseInt(tv_spacing_start_time1.getText()
-		 * .toString().split(":")[0].trim()); data[3] = (byte) Integer
-		 * .parseInt(tv_spacing_start_time1.getText()
-		 * .toString().split(":")[1].trim()); data[4] = (byte)
-		 * sb_brightness1.getProgress();
-		 *
-		 * data[5] = (byte) Integer .parseInt(tv_spacing_start_time2.getText()
-		 * .toString().split(":")[0].trim()); data[6] = (byte) Integer
-		 * .parseInt(tv_spacing_start_time2.getText()
-		 * .toString().split(":")[1].trim()); data[7] = (byte)
-		 * sb_brightness2.getProgress();
-		 *
-		 * data[8] = (byte) Integer .parseInt(tv_spacing_start_time3.getText()
-		 * .toString().split(":")[0].trim()); data[9] = (byte) Integer
-		 * .parseInt(tv_spacing_start_time3.getText()
-		 * .toString().split(":")[1].trim()); data[10] = (byte)
-		 * sb_brightness3.getProgress();
-		 *
-		 * data[11] = (byte) Integer .parseInt(tv_spacing_start_time4.getText()
-		 * .toString().split(":")[0].trim()); data[12] = (byte) Integer
-		 * .parseInt(tv_spacing_start_time4.getText()
-		 * .toString().split(":")[1].trim()); data[13] = (byte)
-		 * sb_brightness4.getProgress();
-		 *
-		 * data[14] = (byte) Integer .parseInt(tv_spacing_start_time5.getText()
-		 * .toString().split(":")[0].trim()); data[15] = (byte) Integer
-		 * .parseInt(tv_spacing_start_time5.getText()
-		 * .toString().split(":")[1].trim()); data[16] = (byte)
-		 * sb_brightness5.getProgress();
-		 *
-		 * data[17] = (byte) Integer .parseInt(tv_spacing_start_time6.getText()
-		 * .toString().split(":")[0].trim()); data[18] = (byte) Integer
-		 * .parseInt(tv_spacing_start_time6.getText()
-		 * .toString().split(":")[1].trim()); data[19] = (byte)
-		 * sb_brightness6.getProgress();
-		 *
-		 * // 测试 System.out.println("data = " + Arrays.toString(data)); try {
-		 * pusher = new Pusher("121.40.194.91", 9966, 5000);
-		 * pusher.push0x20Message( streetAndDevice.getByteUuid(), data);
-		 *
-		 *
-		 * Message message = handler.obtainMessage(); message.what = 3;
-		 * handler.sendMessage(message);
-		 *
-		 *
-		 * } catch (Exception e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } finally { if (pusher != null) { try {
-		 * pusher.close(); sleep(2000); stopProgress(); } catch (Exception e) {
-		 * } } } }; }.start(); }
-		 *
-		 * private void sendTiming() { // 开始时间 strStartTime =
-		 * txtStartTime.getText().toString().trim(); strEndTime =
-		 * txtEndTime.getText().toString().trim(); new Thread() { public void
-		 * run() { Pusher pusher = null; try { boolean result;
-		 *
-		 * byte[] dataCheck = new byte[19]; dataCheck[0] = 66; dataCheck[1] =
-		 * (byte) Integer.parseInt(strStartTime .split(":")[0]); dataCheck[2] =
-		 * (byte) Integer.parseInt(strStartTime .split(":")[1]); dataCheck[3] =
-		 * (byte) 100; dataCheck[4] = (byte) checkMax24(Integer
-		 * .parseInt(strStartTime.split(":")[0] + energy100Hour)); dataCheck[5]
-		 * = (byte) (Integer .parseInt(strStartTime.split(":")[1] +
-		 * energy100Minute)); dataCheck[6] = (byte) 75; dataCheck[7] = (byte)
-		 * checkMax24(Integer .parseInt(strStartTime.split(":")[0] +
-		 * energy100Hour + energy75Hour)); dataCheck[8] = (byte) (Integer
-		 * .parseInt(strStartTime.split(":")[1] + energy100Minute +
-		 * energy75Minute)); dataCheck[9] = (byte) 50; dataCheck[10] = (byte)
-		 * checkMax24(Integer .parseInt(strStartTime.split(":")[0] +
-		 * energy100Hour + energy75Hour + energy50Hour)); dataCheck[11] = (byte)
-		 * (Integer .parseInt(strStartTime.split(":")[0] + energy100Minute +
-		 * energy75Minute + energy50Minute)); dataCheck[12] = (byte) 25;
-		 * dataCheck[13] = (byte) checkMax24(Integer
-		 * .parseInt(strStartTime.split(":")[0] + energy100Hour + energy75Hour +
-		 * energy50Hour)); dataCheck[14] = (byte) (Integer
-		 * .parseInt(strStartTime.split(":")[0] + energy100Minute +
-		 * energy75Minute + energy50Minute)); dataCheck[15] = (byte) 25;
-		 * dataCheck[16] = (byte) (byte) checkMax24(Integer
-		 * .parseInt(strStartTime.split(":")[0] + energy100Hour + energy75Hour +
-		 * energy50Hour)); dataCheck[17] = (byte) (Integer
-		 * .parseInt(strStartTime.split(":")[0] + energy100Minute +
-		 * energy75Minute + energy50Minute)); dataCheck[18] = (byte) 25;
-		 *
-		 * byte[] data = new byte[19]; data[0] = 66; data[1] = (byte) 8; data[2]
-		 * = (byte) 30; data[3] = (byte) 100; data[4] = (byte) 18; data[5] =
-		 * (byte) 00; data[6] = (byte) 100; data[7] = (byte) 18; data[8] =
-		 * (byte) 00; data[9] = (byte) 100; data[10] = (byte) 18; data[11] =
-		 * (byte) 00; data[12] = (byte) 100; data[13] = (byte) 18; data[14] =
-		 * (byte) 00; data[15] = (byte) 100; data[16] = (byte) 18; data[17] =
-		 * (byte) 00; data[18] = (byte) 100;
-		 *
-		 * // 获取开始的小时 + 分钟 = 分钟数 int allStartTime = startHour * 60 +
-		 * startMinute; int allEndTime = endHour * 60 + endMinute;
-		 *
-		 * int allChangeTime = (energy100Hour + energy25Hour + energy50Hour +
-		 * energy75Hour) 60 + (energy100Minute + energy25Minute + energy50Minute
-		 * + energy75Minute); // 把所有的转化成分钟做比较，如果开始的分钟大于结束的分钟就把昨天的时间 + 今天的时间 = //
-		 * 开始结束时间间距分钟数，需要匹配分钟数才能往下执否则报错 // 第二种情况是开始时间大于结束时间 ， //
-		 * 把结束时间减去开始时间就可以得到间距的时间，然后判断时间是否匹配 // 第三中状况是出现参数异常 if (allStartTime >
-		 * allEndTime) { if (1440 - allStartTime + allEndTime != allChangeTime)
-		 * { Message message = handler.obtainMessage(); message.obj = "总时间不匹配";
-		 * handler.sendMessage(message); return; } } else if (allStartTime <
-		 * allEndTime) { if (allEndTime - allStartTime != allChangeTime) {
-		 * Message message = handler.obtainMessage(); message.obj = "总时间不匹配";
-		 * handler.sendMessage(message); return; } } else { Message message =
-		 * handler.obtainMessage(); message.obj = "总时间不匹配";
-		 * handler.sendMessage(message); return; } pusher = new
-		 * Pusher("121.40.194.91", 9966, 5000); tag = true; currentCon = 2;
-		 * Message message = handler.obtainMessage(); message.what = 3;
-		 * handler.sendMessage(message);
-		 * streetAndDevice.setEnergy100(energy100Hour + ":" + energy100Minute);
-		 * streetAndDevice.setEnergy75(energy75Hour + ":" + energy75Minute);
-		 * streetAndDevice.setEnergy50(energy50Hour + ":" + energy50Minute);
-		 * streetAndDevice.setEnergy25(energy25Hour + ":" + energy25Minute);
-		 * while (tag == true) { result = pusher.push0x20Message(
-		 * streetAndDevice.getByteUuid(), data); Thread.sleep(1000); } result =
-		 * pusher.push0x20Message( streetAndDevice.getByteUuid(), new byte[] { 0
-		 * }); } catch (Exception e) { e.printStackTrace(); } finally { if
-		 * (pusher != null) { try { pusher.close(); } catch (Exception e) { } }
-		 * } // showToast("发送成功"); } }.start(); } });
-		 */
-
-		LinearLayout refreshButton = (LinearLayout) findViewById(R.id.ll_device_main_refresh);
-		refreshButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				new Thread() {
-					public void run() {
-						Pusher pusher = null;
-						try {
-							// 获取当前应用的uuid
-							MyApplication myApplication = MyApplication
-									.getInstance();
-							byte[] uuid = myApplication.getAppUuid();
-
-							// 刷新指令
-							byte[] data = new byte[] { 14, 55, 55 };
-
-							// 更新湿度温度信息
-							byte[] data2 = new byte[10];
-							data2[0] = 30;
-							data2[1] = 0;
-							System.arraycopy(uuid, 0, data2, 2, uuid.length);
-							pusher = new Pusher(MyApplication.getIp(), 9966, 10000);
-							pusher.push0x20Message(
-									streetAndDevice.getByteUuid(), data2);
-
-							// 间隔n秒发送刷新指令
-							sleep(500);
-							pusher.push0x20Message(
-									streetAndDevice.getByteUuid(), data);
-
-							// 获取当前定时时间
-							sleep(500);
-							getTimingTime();
-
-							pusher.push0x20Message(
-									streetAndDevice.getByteUuid(),
-									new byte[] { 0 });
-						} catch (Exception e) {
-							e.printStackTrace();
-						} finally {
-							if (pusher != null) {
-								try {
-									pusher.close();
-								} catch (Exception e) {
-								}
-							}
-						}
-						// showToast("发送成功");
-
-					}
-				}.start();
-				Message message = handler.obtainMessage();
-				message.what = 1;
-				handler.sendMessage(message);
-			}
-		});
-		// toggleButton = (ToggleButton)
-		// findViewById(R.id.btn_device_main_up_or_down);
 
 
 	}
 
-	private void getTimingTime() {
-		new Thread() {
+
+	/**
+	 * 根据 uuid 获取电箱状态
+	 * @param uuid  电箱uuid
+	 */
+	private void getElectricityState(final String uuid) {
+
+		Toast.makeText(this,"name = " + electricityBox.getText()+"uuid = " + uuid,Toast.LENGTH_SHORT).show();
+		new Thread(new Runnable() {
+			@Override
 			public void run() {
-				Pusher pusher = null;
 
-				try {
-					while (true) {
-						if (streetAndDevice.getByteUuid() != null) {
-							byte[] data = new byte[10];
-							data[0] = 48;
-							data[1] = 0;
-							// 获取当前应用的uuid
-							byte[] uuid = MyApplication.getInstance()
-									.getAppUuid();
-							System.arraycopy(uuid, 0, data, 2, uuid.length);
-							pusher = new Pusher(MyApplication.getIp(), 9966, 10000);
-							pusher.push0x20Message(
-									streetAndDevice.getByteUuid(), data);
-							// System.out.println("uuid = " +
-							// Arrays.toString(uuid));
-//							 System.out.println("data = " +
-//							 Arrays.toString(data));
-							break;
-						}
+				String str = "select * from $TABLE where  TYPE=1 and uuid= '" + uuid + "'";
+				String url = "http://47.99.168.98:9003/API/IOTDataFill.asmx/Fill";
+
+				RequestBody requestBody = new FormBody.Builder()
+						.add("strTemplate","\\{\"ElectricityBoxStatus\":$data.rows}")
+						.add("iTable", "1")
+						.add("iRelateID", "1")
+						.add("strSql", str)
+						.add("strNameObject", "data")
+						.build();
+
+				HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+
+					@Override
+					public void onFailure(Call call, IOException e) {
+						Log.e("xxx", "失败" + e.toString());
 					}
 
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					if (pusher != null) {
-						try {
-							pusher.close();
-							sleep(2000);
-							stopProgress();
-						} catch (Exception e) {
-						}
+					@Override
+					public void onResponse(Call call, okhttp3.Response response) throws IOException {
+						String json = response.body().string();
+
+						Log.e("xxx", "成功获取电箱设备状态" + json);
+                    /*    Gson gson = new Gson();
+                        ElectricTransducer electricTransducer = gson.fromJson(json, ElectricTransducer.class);
+
+                        for (int i = 0; i < electricTransducer.getData().size(); i++) {
+                            getElectricityState(electricTransducer.getData().get(i).getUuid());
+                        }*/
+						List<ElectricityDeviceStatus> electricityDeviceStatuses = parseJson(json);
+
 					}
-				}
-				// showToast("发送成功");
+
+
+				}, requestBody);
 			}
-		}.start();
-
+		}).start();
 	}
 
-	private void setSeekBar() {
-		/*
-		 * // 初始化 sb_brightness1.setProgress(50);
-		 * sb_brightness2.setProgress(25); sb_brightness3.setProgress(50);
-		 * sb_brightness4.setProgress(75); sb_brightness5.setProgress(100);
-		 * sb_brightness6.setProgress(0);
-		 *
-		 * sb_brightness6.setEnabled(false);
-		 */
-		// 设置开始时间对应开始时间
-		// tv_spacing_start_time1.setText(txtStartTime.getText().toString());
-		// tv_spacing_start_time6.setText(txtEndTime.getText().toString());
 
+	/**
+	 *  解析json
+	 * @param result
+	 * @return
+	 */
+	private List<ElectricityDeviceStatus> parseJson(
+			String result) {
+
+		Gson gson = new Gson();
+
+		StringBuffer stringBuffer = new StringBuffer(result);
+		String str = stringBuffer.substring(stringBuffer.indexOf("ElectricityBoxStatus") - 3,stringBuffer.length()-2);
+		// 去掉转义符
+		String unescapeStr =   StringEscapeUtils.unescapeJava(str);
+
+
+		JsonParser parser = new JsonParser();
+		JsonObject jsonObject = parser.parse(unescapeStr).getAsJsonObject();
+		JsonArray jaStatus = jsonObject.getAsJsonArray("ElectricityBoxStatus");
+
+		LogUtil.e("unescapeStr " + unescapeStr);
+    	List<ElectricityDeviceStatus> beanOnes = gson.fromJson(jaStatus.toString(),
+				new TypeToken<List<ElectricityDeviceStatus>>() {}.getType());
+
+		return beanOnes;
 	}
+
+
+
 
 	private void initSetOnClick() {
 		rly_primary_timing.setOnClickListener(new MyOnclickCancelListener());
 		rly_subsidiary_timing.setOnClickListener(new MyOnclickCancelListener());
-		/*
-		 * // 进度条滑动事件监听
-		 *  sb_brightness1 .setOnSeekBarChangeListener(new
-		 * OnSeekBarChangeListener() {
-		 *
-		 * @Override public void onStopTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onStartTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onProgressChanged(SeekBar seekBar, int
-		 * progress, boolean fromUser) { tv_progress1.setText(progress + "%"); }
-		 * });
-		 *
-		 * sb_brightness2 .setOnSeekBarChangeListener(new
-		 * OnSeekBarChangeListener() {
-		 *
-		 * @Override public void onStopTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onStartTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onProgressChanged(SeekBar seekBar, int
-		 * progress, boolean fromUser) { tv_progress2.setText(progress + "%"); }
-		 * });
-		 *
-		 * sb_brightness3 .setOnSeekBarChangeListener(new
-		 * OnSeekBarChangeListener() {
-		 *
-		 * @Override public void onStopTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onStartTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onProgressChanged(SeekBar seekBar, int
-		 * progress, boolean fromUser) { tv_progress3.setText(progress + "%"); }
-		 * }); sb_brightness4 .setOnSeekBarChangeListener(new
-		 * OnSeekBarChangeListener() {
-		 *
-		 * @Override public void onStopTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onStartTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onProgressChanged(SeekBar seekBar, int
-		 * progress, boolean fromUser) { tv_progress4.setText(progress + "%"); }
-		 * }); sb_brightness5 .setOnSeekBarChangeListener(new
-		 * OnSeekBarChangeListener() {
-		 *
-		 * @Override public void onStopTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onStartTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onProgressChanged(SeekBar seekBar, int
-		 * progress, boolean fromUser) { tv_progress5.setText(progress + "%"); }
-		 * }); sb_brightness6 .setOnSeekBarChangeListener(new
-		 * OnSeekBarChangeListener() {
-		 *
-		 * @Override public void onStopTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onStartTrackingTouch(SeekBar seekBar) {
-		 *
-		 * }
-		 *
-		 * @Override public void onProgressChanged(SeekBar seekBar, int
-		 * progress, boolean fromUser) { tv_progress6.setText(progress + "%"); }
-		 * }); // 六个阶段的时间设置 // tv_spacing_start_time1.setOnClickListener(new
-		 * timeListener()); // tv_spacing_start_time2.setOnClickListener(new
-		 * timeListener()); // tv_spacing_start_time3.setOnClickListener(new
-		 * timeListener()); // tv_spacing_start_time4.setOnClickListener(new
-		 * timeListener()); // tv_spacing_start_time5.setOnClickListener(new
-		 * timeListener()); // tv_spacing_start_time6.setOnClickListener(new
-		 * timeListener());
-		 *
-		 * // 六个阶段的时间设置LinearLayout
-		 * ll_spacing_start_time1.setOnClickListener(new timeListener());
-		 * ll_spacing_start_time2.setOnClickListener(new timeListener());
-		 * ll_spacing_start_time3.setOnClickListener(new timeListener());
-		 * ll_spacing_start_time4.setOnClickListener(new timeListener());
-		 * ll_spacing_start_time5.setOnClickListener(new timeListener());
-		 * ll_spacing_start_time6.setOnClickListener(new timeListener());
-		 */
 
 		// 校时,光照使能
 		calibrationTime.setOnClickListener(new OnClickListener() {
@@ -702,9 +321,9 @@ public class DeviceMainAct extends Activity {
 							}
 						}
 
-						Message message = handler.obtainMessage();
+					/*	Message message = handler.obtainMessage();
 						message.obj = "校时成功！";
-						handler.sendMessage(message);
+						handler.sendMessage(message);*/
 					}
 				}.start();
 
@@ -891,6 +510,14 @@ public class DeviceMainAct extends Activity {
 					}
 				});
 
+		// 返回back
+		ll_prev_device_main.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				DeviceMainAct.this.finish();
+			}
+		});
+
 	}
 
 	private void initView() {
@@ -945,27 +572,7 @@ public class DeviceMainAct extends Activity {
 				.findViewById(R.id.tv_spacing_start_time5);
 		tv_spacing_start_time6 = (TextView) this
 				.findViewById(R.id.tv_spacing_start_time6);
-		/*
-		 * // 六个阶段的时间LinearLayout ll_spacing_start_time1 = (LinearLayout)
-		 * this.findViewById(R.id.ll_spacing_start_time1);
-		 * ll_spacing_start_time2 = (LinearLayout)
-		 * this.findViewById(R.id.ll_spacing_start_time2);
-		 * ll_spacing_start_time3 = (LinearLayout)
-		 * this.findViewById(R.id.ll_spacing_start_time3);
-		 * ll_spacing_start_time4 = (LinearLayout)
-		 * this.findViewById(R.id.ll_spacing_start_time4);
-		 * ll_spacing_start_time5 = (LinearLayout)
-		 * this.findViewById(R.id.ll_spacing_start_time5);
-		 * ll_spacing_start_time6 = (LinearLayout)
-		 * this.findViewById(R.id.ll_spacing_start_time6);
-		 *
-		 * sb_brightness1 = (SeekBar) this.findViewById(R.id.sb_brightness1);
-		 * sb_brightness2 = (SeekBar) this.findViewById(R.id.sb_brightness2);
-		 * sb_brightness3 = (SeekBar) this.findViewById(R.id.sb_brightness3);
-		 * sb_brightness4 = (SeekBar) this.findViewById(R.id.sb_brightness4);
-		 * sb_brightness5 = (SeekBar) this.findViewById(R.id.sb_brightness5);
-		 * sb_brightness6 = (SeekBar) this.findViewById(R.id.sb_brightness6);
-		 */
+
 
 		// 光照使能和校时
 		lightMake = (ToggleButton) this.findViewById(R.id.tb_Light_make);
@@ -979,6 +586,9 @@ public class DeviceMainAct extends Activity {
 				.findViewById(R.id.rly_primary_timing);
 		rly_subsidiary_timing = (RelativeLayout) this
 				.findViewById(R.id.rly_subsidiary_timing);
+
+		// 返回
+		ll_prev_device_main = (LinearLayout) this.findViewById(R.id.ll_prev_device_main);
 	}
 
 	private void showProgress() {
@@ -1395,8 +1005,8 @@ public class DeviceMainAct extends Activity {
 
 							// 设置节能状态
 							setEnergySavingState();
-							// 初始化进度条
-							setSeekBar();
+						/*	// 初始化进度条
+							setSeekBar();*/
 
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -1577,19 +1187,7 @@ public class DeviceMainAct extends Activity {
 		Toast.makeText(DeviceMainAct.this, msg, Toast.LENGTH_SHORT).show();
 	}
 
-	private BroadcastReceiver deviceMainReceiver = new BroadcastReceiver() {
-		public void onReceive(Context context, Intent intent) {
-			Message message = handler.obtainMessage();
-			message.what = 2;
-			handler.sendMessage(message);
-		}
-	};
-	// 创建广播接收器
-	private BroadcastReceiver cableParameterReceiver = new BroadcastReceiver() {
-		public void onReceive(Context context, Intent intent) {
-			// TODO
-		}
-	};
+
 
 	/**
 	 * 设置节能状态
@@ -1866,45 +1464,18 @@ public class DeviceMainAct extends Activity {
 		return src;
 	}
 
-	private BroadcastReceiver DeviceTemperatureReceiver = new BroadcastReceiver() {
-		public void onReceive(Context context, Intent intent) {
 
-
-
-			/*
-			 * byte[] data = intent.getByteArrayExtra("data");
-			 * System.out.println("Arrays =" + Arrays.toString(data)); Message
-			 * msg = parameHandler.obtainMessage(); msg.what = 4; msg.obj =
-			 * data; parameHandler.sendMessage(msg);
-			 *
-			 */
-			if (intent.getAction().equals(DeviceTemperatureFilter)) {
-				byte[] data = intent.getByteArrayExtra("data");
-				Message msg = parameHandler.obtainMessage();
-				msg.what = 4;
-				msg.obj = data;
-				parameHandler.sendMessage(msg);
-			} else if (intent.getAction().equals(DeviceStateFilter)) {
-				byte[] data = intent.getByteArrayExtra("data");
-				Message msg = parameHandler.obtainMessage();
-				msg.what = 5;
-				msg.obj = data;
-				parameHandler.sendMessage(msg);
-			}
-
-		}
-	};
 
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		Intent intent = new Intent();
+	/*	Intent intent = new Intent();
 		intent.setAction(MainFragment.DataRefresh);
 		sendBroadcast(intent);
 		unregisterReceiver(deviceMainReceiver);
 		unregisterReceiver(cableParameterReceiver);
-		unregisterReceiver(DeviceTemperatureReceiver);
+		unregisterReceiver(DeviceTemperatureReceiver);*/
 	}
 
 	private class MyOnclickCancelListener implements OnClickListener {

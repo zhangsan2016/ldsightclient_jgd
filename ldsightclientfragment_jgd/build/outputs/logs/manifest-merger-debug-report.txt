@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:1:1-117:12
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:1:1-118:12
 	package
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:2:5-44
 		INJECTED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
@@ -30,7 +30,7 @@ MERGED from [com.android.support:support-v4:20.0.0] C:\Users\ldgd\.android\build
 		INJECTED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
 		INJECTED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml
 application
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:13:5-97:19
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:13:5-98:19
 MERGED from [com.android.support:support-v4:20.0.0] C:\Users\ldgd\.android\build-cache\65dd0f3b75e932a53ebfe5974baf02b9a00f7c28\output\AndroidManifest.xml:17:5-19
 	android:label
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:17:9-41
@@ -200,79 +200,83 @@ service#com.ldsight.service.UpdateService
 ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:89:9-77
 	android:name
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:89:18-66
+service#com.ldsight.service.ZkyOnlineService
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:90:9-80
+	android:name
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:90:18-69
 service#tvonvif.finder.CameraService
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:90:9-72
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:91:9-72
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:90:18-61
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:91:18-61
 receiver#com.ldsight.service.UpdateService$onclickCancelListener
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:92:9-96:20
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:93:9-97:20
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:92:19-89
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:93:19-89
 intent-filter#action_cancel_download_apk
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:93:13-95:29
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:94:13-96:29
 	android:priority
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:93:28-50
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:94:28-50
 action#action_cancel_download_apk
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:94:17-76
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:95:17-76
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:94:25-66
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:95:25-66
 uses-permission#android.permission.GET_ACCOUNTS
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:99:5-71
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:100:5-71
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:99:22-68
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:100:22-68
 uses-permission#android.permission.USE_CREDENTIALS
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:100:5-74
-	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:100:22-71
-uses-permission#android.permission.MANAGE_ACCOUNTS
 ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:101:5-74
 	android:name
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:101:22-71
+uses-permission#android.permission.MANAGE_ACCOUNTS
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:102:5-74
+	android:name
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:102:22-71
 uses-permission#android.permission.AUTHENTICATE_ACCOUNTS
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:102:5-80
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:103:5-80
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:102:22-77
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:103:22-77
 uses-permission#android.permission.INTERNET
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:103:5-67
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:104:5-67
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:103:22-64
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:104:22-64
 uses-permission#com.android.launcher.permission.READ_SETTINGS
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:104:5-85
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:105:5-85
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:104:22-82
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:105:22-82
 uses-permission#android.permission.CHANGE_WIFI_STATE
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:105:5-76
-	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:105:22-73
-uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:106:5-76
 	android:name
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:106:22-73
-uses-permission#android.permission.READ_PHONE_STATE
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:107:5-75
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:107:5-76
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:107:22-72
-uses-permission#android.permission.BROADCAST_STICKY
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:107:22-73
+uses-permission#android.permission.READ_PHONE_STATE
 ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:108:5-75
 	android:name
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:108:22-72
+uses-permission#android.permission.BROADCAST_STICKY
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:109:5-75
+	android:name
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:109:22-72
 uses-permission#android.permission.WRITE_SETTINGS
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:109:5-73
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:110:5-73
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:109:22-70
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:110:22-70
 uses-permission#android.permission.CAMERA
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:110:5-65
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:111:5-65
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:110:22-62
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:111:22-62
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:111:5-79
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:112:5-79
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:111:22-76
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:112:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:113:5-81
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:114:5-81
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:113:22-78
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:114:22-78
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:114:5-84
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:115:5-84
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:114:22-81
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_jgd\src\main\AndroidManifest.xml:115:22-81

@@ -1,70 +1,43 @@
 package com.ldsight.adapter;
 
-import java.net.ContentHandler;
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import com.android.volley.toolbox.ImageLoader;
-import com.example.ldsightclient_jgd.R;
-import com.ldsight.act.AlarmRecordAct;
-import com.ldsight.entity.StreetAndDevice;
-
-import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.ClipData.Item;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.text.TextPaint;
-import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.ldsightclient_jgd.R;
+import com.ldsight.entity.ElectricityBox;
+
+import java.util.List;
 
 public class MainListAdapter extends BaseAdapter {
+	private final List<ElectricityBox.ElectricityBoxList> electricityBoxList;
 	private Context context;
 	private LayoutInflater mInflater;
-	private ArrayList<StreetAndDevice> streetAndDevices;
 	private int hour;
 	private int minute;
 
 	public MainListAdapter(Context context,
-						   ArrayList<StreetAndDevice> streetAndDevices,
+						   List<ElectricityBox.ElectricityBoxList> electricityBoxList,
 						   List<String> cableIsAbnormal) {
 		this.context = context;
-		this.streetAndDevices = streetAndDevices;
+		this.electricityBoxList = electricityBoxList;
 		mInflater = LayoutInflater.from(context);
 
 	}
 
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return streetAndDevices.size();
+		return electricityBoxList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return null;
+		return electricityBoxList.get(position);
 	}
 
 	@Override
@@ -75,11 +48,11 @@ public class MainListAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// 如果数据不是十分钟之内的设置为不显示
+	/*	// 如果数据不是十分钟之内的设置为不显示
 		boolean tenTime = true;  // 标识有无十分种以内的新数据
 		MyData myData1 = new MyData();
 		MyData myData2 = new MyData();
-		String myData = streetAndDevices.get(position).getMb_time();
+		String myData = electricityBoxList.get(position).getMb_time();
 		// String myData = "Mon Jan 18 22:44:23 CST 2016";
 		SimpleDateFormat sdf1 = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.ENGLISH);
 		try {
@@ -116,7 +89,7 @@ public class MainListAdapter extends BaseAdapter {
 
 
 			tenTime = false;
-		}
+		}*/
 
 
 
@@ -147,15 +120,10 @@ public class MainListAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		if(tenTime){
-			holder.lifeCycle.setText(""
-					+ streetAndDevices.get(position).getStartTime() + ":"
-					+ streetAndDevices.get(position).getEndTime());
-			holder.streetName.setText(streetAndDevices.get(position)
-					.getStreetName());
+			holder.streetName.setText(electricityBoxList.get(position).getText());
 
-			DecimalFormat df = new DecimalFormat("######0.0 ");
-			holder.ampere.setText(""
+			/*	DecimalFormat df = new DecimalFormat("######0.0 ");
+		        holder.ampere.setText(""
 					+ df.format(((long) streetAndDevices.get(position)
 					.getMb_a_Ampere()) / 1000) + "A");
 
@@ -174,9 +142,9 @@ public class MainListAdapter extends BaseAdapter {
 					.getMb_c_volt()) / 100) + "V");
 
 			// 根据当前时间判断节能状态
-		/*	Calendar ca = Calendar.getInstance();
+		*//*	Calendar ca = Calendar.getInstance();
 			hour = ca.get(Calendar.HOUR_OF_DAY);
-			minute = ca.get(Calendar.MINUTE);*/
+			minute = ca.get(Calendar.MINUTE);*//*
 
 			// ca.setTime(new java.util.Date());
 			// int hour = ca.HOUR_OF_DAY;
@@ -240,13 +208,7 @@ public class MainListAdapter extends BaseAdapter {
 				holder.energy.setText("0%");
 			}
 
-		}else{
-			holder.lifeCycle.setText(""
-					+ streetAndDevices.get(position).getStartTime() + ":"
-					+ streetAndDevices.get(position).getEndTime());
-			holder.streetName.setText(streetAndDevices.get(position)
-					.getStreetName());
-		}
+
 		// 获取报警类型
 		int alarmType = streetAndDevices.get(position).getAlarmType();
 		if(alarmType == 1){
@@ -274,7 +236,7 @@ public class MainListAdapter extends BaseAdapter {
 				context.startActivity(intent);
 
 			}
-		});
+		});*/
 
 		return convertView;
 	}
