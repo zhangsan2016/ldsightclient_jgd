@@ -98,7 +98,7 @@ public class MainFragment extends Fragment {
                 .registerReceiver(dataRefreshReceiver, filter);
 
         // 获取传递过来的数据
-        loginInfo = (LoginInfo) getArguments().getSerializable("loginInfo");
+        loginInfo = (LoginInfo)  getActivity().getIntent().getSerializableExtra("loginInfo");
 
         // 初始化协议
         HttpUtil httpUtil = new HttpUtil();

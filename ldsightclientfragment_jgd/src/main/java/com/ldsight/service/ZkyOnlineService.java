@@ -46,7 +46,7 @@ public class ZkyOnlineService extends Service {
                 .add("type", HttpConfiguration.NET)
                 .build();
 
-        HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+        HttpUtil.sendHttpRequest(url, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {

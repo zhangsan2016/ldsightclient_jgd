@@ -187,7 +187,7 @@ public class LoginAct extends Activity {
 				//   String url = "http://47.99.168.98:9001/api/CommonFn.asmx?op=Login";
 
 
-				HttpUtil.sendHttpRequest(url, requestBody, new Callback() {
+				HttpUtil.sendHttpRequest(url, new Callback() {
 
 
 					@Override
@@ -213,7 +213,7 @@ public class LoginAct extends Activity {
 						}
 
 					}
-				});
+				}, requestBody);
 
 
 			}

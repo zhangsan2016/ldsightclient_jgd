@@ -1,8 +1,6 @@
 package com.ldsight.util;
 
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -43,9 +41,9 @@ public class HttpUtil {
                 public List<Cookie> loadForRequest(HttpUrl httpUrl) {
                     List<Cookie> cookies = cookieStore.get(httpUrl.host());
 
-                    if(cookies==null){
+                   /* if(cookies==null){
                         Log.e("xxxx", "没加载到cookie");
-                    }
+                    }*/
                     return cookies != null ? cookies : new ArrayList<Cookie>();
                 }
             })
@@ -123,6 +121,26 @@ public class HttpUtil {
     }
 
     /**
+     * OkHttp 方式访问网络
+     *
+     * @param address     访问地址
+     * @param requestBody 请求的参数
+     * @param callback    回调监听器
+     */
+    public static void sendHttpRequest(final String address, final okhttp3.Callback callback, final RequestBody requestBody) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder().url(address).post(requestBody).build();
+                client.newCall(request).enqueue(callback);
+
+            }
+        }).start();
+    }
+
+    /**
      * OkHttp 方式携带sookie以post方式访问网络
      *
      * @param address  访问地址
@@ -166,28 +184,6 @@ public class HttpUtil {
 
 
     /**
-     * OkHttp 方式访问网络
-     *
-     * @param address     访问地址
-     * @param requestBody 请求的参数
-     * @param callback    回调监听器
-     */
-    public static void sendHttpRequest(final String address, final RequestBody requestBody, final okhttp3.Callback callback) {
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder().url(address).post(requestBody).build();
-                client.newCall(request).enqueue(callback);
-
-            }
-        }).start();
-    }
-
-
-
-    /**
      * 回调函数
      */
     public interface HttpCallbackListener {
@@ -216,6 +212,7 @@ public class HttpUtil {
         //Http请求结束，Response中有Cookie时候回调
         @Override
         public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+
             //内存中缓存Cookie
             cache.addAll(cookies);
         }
