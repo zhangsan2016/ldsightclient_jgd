@@ -2,7 +2,9 @@ package com.ldsight.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -26,6 +28,50 @@ public class ZkyOnlineService extends Service {
     public int heartbeatInterval = 50;
     public long lastSent = 0;
     public boolean stoped = false;
+    public final int HEARTBEAT = 10;
+    public static HeartbeatStatis heartbeatStatis;
+
+    private Handler handler = new Handler() {
+
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            switch (msg.what) {
+                case HEARTBEAT:  // 心跳数据
+
+                    String json = (String) msg.obj;
+
+                    // 保存心跳返回数据
+                    Gson gson = new Gson();
+                    HeartbeatStatis  statis = gson.fromJson(json, HeartbeatStatis.class);
+
+                    if(statis != null && statis.getData() != null){
+                        // 判断数据状态
+                        if (statis.isB()) {
+                            // 等于0表示返回成功
+                            if(statis.getData().getISessionKey() !=  0){
+                                try {
+                                    heartbeatStatis = (HeartbeatStatis) statis.clone();
+                                } catch (CloneNotSupportedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            Log.e("startHeartbeat", "heartbeatStatis = " + heartbeatStatis.toString());
+                        } else {
+                            LogUtil.e("startHeartbeat" + "心跳异常 ,请稍等60秒..." + "\n");
+                            // 重新发送心跳包
+                            //  heartbeatStatis = new HeartbeatStatis();
+                            // sendHttpHeartbeat();
+                        }
+                    }
+
+                    break;
+            }
+        }
+    };
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -33,15 +79,15 @@ public class ZkyOnlineService extends Service {
         // 发送心跳
         startHeartbeat();
 
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 super.run();
-                // 拉取数据
-                pullData();
 
-                while (true){
+                // 拉取数据
+                while (stoped == false) {
                     try {
+                        pullData();
                         Thread.sleep(6000);
                         pullData();
                     } catch (InterruptedException e) {
@@ -57,34 +103,35 @@ public class ZkyOnlineService extends Service {
     }
 
     private void pullData() {
-       new Thread(new Runnable() {
-           @Override
-           public void run() {
-               RequestBody requestBody = new FormBody.Builder()
-                       .add("uuidFrom", HttpConfiguration._Clientuuid)
-                       .build();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("uuidFrom", HttpConfiguration._Clientuuid)
+                        .build();
 
-               HttpUtil.sendHttpRequest(HttpConfiguration.urlPoll, new Callback() {
+                HttpUtil.sendHttpRequest(HttpConfiguration.urlPoll, new Callback() {
 
-                   @Override
-                   public void onFailure(Call call, IOException e) {
-                       Log.e("pullData", "pullData....Exception = " + e.toString());
-                   }
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("pullData", "pullData....Exception = " + e.toString());
+                    }
 
-                   @Override
-                   public void onResponse(Call call, Response response) throws IOException {
-                       String json = response.body().string();
-
-                       // 保存心跳返回数据
-                       Gson gson = new Gson();
-                       Log.e("pullData", "pullData 成 功" + json);
-
-                   }
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String json = response.body().string();
 
 
-               }, requestBody);
-           }
-       }).start();
+                        // 保存心跳返回数据
+                        Gson gson = new Gson();
+                        Log.e("pullData", "pullData 成 功" + json);
+
+                    }
+
+
+                }, requestBody);
+            }
+        }).start();
     }
 
     private void startHeartbeat() {
@@ -95,7 +142,7 @@ public class ZkyOnlineService extends Service {
             @Override
             public void run() {
 
-                while (true) {
+                while (stoped == false) {
                     try {
 
                         // 发送心跳包
@@ -118,49 +165,64 @@ public class ZkyOnlineService extends Service {
     private void heartbeat() {
 
         if (System.currentTimeMillis() - lastSent < heartbeatInterval * 1000) {
+            //   LogUtil.e(" heartbeatInterval * 1000 = " +  heartbeatInterval * 1000);
             return;
         }
 
-        // 发送http协议
-        sendHttp();
 
         lastSent = System.currentTimeMillis();
+
+        // 发送http协议
+        sendHttpHeartbeat();
+
+
     }
 
-    private void sendHttp() {
+    private synchronized void sendHttpHeartbeat() {
 
-        RequestBody requestBody = new FormBody.Builder()
-                .add("version", "225")
-                .add("type", HttpConfiguration.NET)
-                .add("key", "0")
-                .add("uuidFrom", HttpConfiguration._Clientuuid)
-                .add("uuidTo", "")
-                .add("crc", "")
-                .add("data", "")
-                .build();
-
-        HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
-
+        new Thread(new Runnable() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("startHeartbeat", "startHeartbeat失败" + e.toString());
+            public void run() {
+                int key = 0;
+
+                if (heartbeatStatis != null && heartbeatStatis.getData() != null) {
+                    key = heartbeatStatis.getData().getISessionKey();
+                }
+
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("version", "225")
+                        .add("type", HttpConfiguration.NET)
+                        .add("key", String.valueOf(key))
+                        .add("uuidFrom", HttpConfiguration._Clientuuid)
+                        .add("uuidTo", "")
+                        .add("crc", "")
+                        .add("data", "")
+                        .build();
+
+                LogUtil.e(" String.valueOf(key) = " + String.valueOf(key));
+
+                HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("startHeartbeat", "startHeartbeat失败" + e.toString());
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String json = response.body().string();
+
+                        Log.e("startHeartbeat", "startHeartbeat成功" + json);
+
+                        Message msg = handler.obtainMessage();
+                        msg.what = HEARTBEAT;
+                        msg.obj = json;
+                        handler.sendMessage(msg);
+                    }
+                }, requestBody);
             }
+        }).start();
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String json = response.body().string();
-
-                // 保存心跳返回数据
-                Gson gson = new Gson();
-                HeartbeatStatis heartbeatStatis = gson.fromJson(json, HeartbeatStatis.class);
-                Log.e("startHeartbeat", "startHeartbeat成功" + json);
-
-                Log.e("startHeartbeat", "heartbeatStatis = " + heartbeatStatis.toString());
-
-            }
-
-
-        }, requestBody);
     }
 
 

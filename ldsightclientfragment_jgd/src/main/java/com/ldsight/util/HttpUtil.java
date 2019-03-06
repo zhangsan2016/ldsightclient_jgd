@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
@@ -112,7 +113,9 @@ public class HttpUtil {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OkHttpClient client =  new OkHttpClient();
+                OkHttpClient client =  new OkHttpClient.Builder()
+                        .connectTimeout(10, TimeUnit.SECONDS)//设置连接超时时间
+                        .readTimeout(20, TimeUnit.SECONDS).build();//设置读取超时时间
                 Request request = new Request.Builder().url(address).build();
                 client.newCall(request).enqueue(callback);
 

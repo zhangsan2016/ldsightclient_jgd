@@ -6,41 +6,118 @@ package com.ldsight.entity;
  * 说明：
  */
 
-public class HeartbeatStatis {
-
+public class HeartbeatStatis implements Cloneable {
 
     /**
-     * bKey : 185
-     * iSessionKey : 9529924
+     * b : true
+     * msg : null
+     * data : {"bKey":205,"iSessionKey":3475481}
      */
 
-    private int bKey;
-    private int iSessionKey;
+    private boolean b;
+    private String msg;
+    private DataBean data;
 
-    public int getBKey() {
-        return bKey;
+    public boolean isB() {
+        return b;
     }
 
-    public void setBKey(int bKey) {
-        this.bKey = bKey;
+    public void setB(boolean b) {
+        this.b = b;
     }
 
-    public int getISessionKey() {
-        return iSessionKey;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setISessionKey(int iSessionKey) {
-        this.iSessionKey = iSessionKey;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
+
+    public DataBean getData() {
+        if (null == data) {
+            return data = new DataBean();
+        }
+        return data;
+    }
+
+    public void setData(DataBean data) {
+        this.data = data;
+    }
+
+    public Object clone() throws CloneNotSupportedException {
+
+        HeartbeatStatis heartbeatStatis = null;
+        try {
+            heartbeatStatis = (HeartbeatStatis) super.clone();
+            heartbeatStatis.data = (DataBean) data.clone();//属性a的克隆，实现A类的深度克隆
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return heartbeatStatis;
+    }
+
+
+
+    public static class DataBean  implements Cloneable {
+
+        /**
+         * bKey : 205
+         * iSessionKey : 3475481
+         */
+
+        private int bKey;
+        private int iSessionKey;
+
+        public int getBKey() {
+            return bKey;
+        }
+
+        public void setBKey(int bKey) {
+            this.bKey = bKey;
+        }
+
+        public int getISessionKey() {
+            return iSessionKey;
+        }
+
+        public void setISessionKey(int iSessionKey) {
+            this.iSessionKey = iSessionKey;
+        }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "bKey=" + bKey +
+                    ", iSessionKey=" + iSessionKey +
+                    '}';
+        }
+
+        public  Object clone() throws CloneNotSupportedException {
+            DataBean dataBean = null;
+            try {
+                dataBean = (DataBean) super.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+            return dataBean;
+        }
+    }
+
 
 
     @Override
     public String toString() {
         return "HeartbeatStatis{" +
-                "bKey=" + bKey +
-                ", iSessionKey=" + iSessionKey +
+                "b=" + b +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
                 '}';
     }
+
+
+
+
 }
 
 
