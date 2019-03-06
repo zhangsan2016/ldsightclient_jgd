@@ -181,8 +181,17 @@ public class MainFragment extends Fragment {
                         Gson gson = new Gson();
                         ProjectItem projectItem = gson.fromJson(json, ProjectItem.class);
 
-                        for (int i = 0; i < projectItem.getData().size(); i++) {
-                            getElectricTransducer(projectItem.getData().get(i).getId());
+                        if(projectItem.isB()){
+                            for (int i = 0; i < projectItem.getData().size(); i++) {
+                                getElectricTransducer(projectItem.getData().get(i).getId());
+                            }
+                        }else {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    showToast("获取项目失败！");
+                                }
+                            });
                         }
                     }
                 }, requestBody);

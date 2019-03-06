@@ -160,7 +160,7 @@ public class check {
             }
         }.start();*/
 
-        HeartbeatStatis heartbeatStatis = new HeartbeatStatis();
+     /*   HeartbeatStatis heartbeatStatis = new HeartbeatStatis();
         heartbeatStatis.getData().setBKey(5566);
         heartbeatStatis.getData().setISessionKey(3368888);
         HeartbeatStatis clo = null;
@@ -172,7 +172,11 @@ public class check {
         }
 
         heartbeatStatis.getData().setBKey(7755);
-        System.out.println("clo = " + clo.getData().getBKey());
+        System.out.println("clo = " + clo.getData().getBKey());*/
+
+
+
+
 
     }
 }

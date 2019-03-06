@@ -23,6 +23,7 @@
             android:textSize="22sp" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/txt_life_cycle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,7 +71,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="3dp"
                     android:gravity="center"
-                    android:text="160 lux"
+                    android:text="0 lux"
                     android:textColor="#34BEFF"
                     android:textSize="20dp" />
 

@@ -89,7 +89,7 @@ public class ZkyOnlineService extends Service {
                     try {
                         pullData();
                         Thread.sleep(6000);
-                        pullData();
+                      //  pullData();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -102,7 +102,7 @@ public class ZkyOnlineService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    private void pullData() {
+    private synchronized void pullData() {
         new Thread(new Runnable() {
             @Override
             public void run() {
