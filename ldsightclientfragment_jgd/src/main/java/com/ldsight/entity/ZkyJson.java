@@ -12,6 +12,8 @@ public class ZkyJson  {
     private String Confirm;
     // 亮度值
     private String Dimming;
+    // 时间
+    private String Time;
     // 主灯调光时间
     private String Fir_tt_Fir,Sec_tt_Fir,Thir_tt_Fir,Four_tt_Fir,Fif_tt_Fir,Six_tt_Fir;
     // 主灯调光亮度
@@ -25,8 +27,13 @@ public class ZkyJson  {
 
 
 
+    public String getTime() {
+        return Time;
+    }
 
-
+    public void setTime(String time) {
+        Time = time;
+    }
     public String getFir_tt_Fir() {
         return Fir_tt_Fir;
     }

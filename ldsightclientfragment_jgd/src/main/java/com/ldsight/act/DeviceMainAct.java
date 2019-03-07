@@ -1,7 +1,5 @@
 package com.ldsight.act;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Intent;
@@ -9,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.android.volley.AuthFailureError;
@@ -44,14 +40,16 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.ldsight.application.MyApplication;
+import com.ldsight.base.BaseActivity;
 import com.ldsight.component.DeviceTable;
 import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.ElectricityDeviceStatus;
 import com.ldsight.entity.StreetAndDevice;
+import com.ldsight.entity.ZkyJson;
 import com.ldsight.service.ZkyOnlineService;
-import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
+import com.ldsight.util.StringUtil;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.ddpush.im.v1.client.appserver.Pusher;
@@ -60,8 +58,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.Call;
@@ -72,7 +72,7 @@ import okhttp3.RequestBody;
 import static com.example.ldsightclient_jgd.R.id.txt_life_cycle;
 import static com.example.ldsightclient_jgd.R.id.txt_volt;
 
-public class DeviceMainAct extends Activity {
+public class DeviceMainAct extends BaseActivity {
     public static String DeviceMainFilter = "devicemainfilter";
     public static String UpdateCableParameterFilter = "updateCableParameter"; // 广播接收者
     public static String DeviceTemperatureFilter = "DeviceTemperatureFilter"; // 湿度温度照明度接受
@@ -107,7 +107,7 @@ public class DeviceMainAct extends Activity {
     int energy25Minute;
 
     boolean tag;
-    private ProgressDialog mProgress;
+
     // 当前操作，1代表开关，2代表亮度调节
     private int currentCon = 1;
     // 全局的StreetAndDevice变量
@@ -173,7 +173,7 @@ public class DeviceMainAct extends Activity {
                 case UPDATE_VIEW:
                     if (electricityDeviceStatuses != null) {
                         // 获取所有当前参数
-                        ElectricityDeviceStatus electricityDeviceStatuse =  electricityDeviceStatuses.get(0);
+                        ElectricityDeviceStatus electricityDeviceStatuse = electricityDeviceStatuses.get(0);
                         // 设置光照度
                         guangQiangDu.setText(electricityDeviceStatuse.getIllu() + "");
                         // 设置湿度
@@ -237,7 +237,7 @@ public class DeviceMainAct extends Activity {
      */
     private void getElectricityState(final String uuid) {
 
-     //   Toast.makeText(this, "name = " + electricityBox.getText() + "uuid = " + uuid, Toast.LENGTH_SHORT).show();
+        //   Toast.makeText(this, "name = " + electricityBox.getText() + "uuid = " + uuid, Toast.LENGTH_SHORT).show();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -258,6 +258,7 @@ public class DeviceMainAct extends Activity {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         Log.e("xxx", "失败" + e.toString());
+                        stopProgress();
                     }
 
                     @Override
@@ -274,6 +275,7 @@ public class DeviceMainAct extends Activity {
                         electricityDeviceStatuses = parseJson(json);
                         // 更新界面
                         handler.sendEmptyMessage(UPDATE_VIEW);
+                        stopProgress();
 
                     }
 
@@ -323,10 +325,9 @@ public class DeviceMainAct extends Activity {
 
             @Override
             public void onClick(View v) {
-
                 // 校时
+                showProgress();
                 setCurrentTime(electricityBox.getUuid());
-
             }
         });
 
@@ -347,7 +348,7 @@ public class DeviceMainAct extends Activity {
                                 // byte[] data2 = new byte[] {0x81,55,55};
                                 System.out.println(Arrays.toString(data));
                                 pusher = new Pusher(MyApplication.getIp(), 9966, 10000);
-								/*
+                                /*
 								 * pusher.push0x20Message(
 								 * streetAndDevice.getByteUuid(), data);
 								 */
@@ -524,32 +525,39 @@ public class DeviceMainAct extends Activity {
             @Override
             public void onClick(View view) {
                 // 获取当前电箱状态
+                showProgress();
                 getElectricityState(electricityBox.getUuid());
             }
         });
 
     }
 
-    private void setCurrentTime( String uuidTo) {
-        // 校时
+    /**
+     * 校时
+     *
+     * @param uuidTo
+     */
+    private void setCurrentTime(String uuidTo) {
+
         showProgress();
 
-        Time t = new Time(); // or Time t=new Time("GMT+8");
-        t.setToNow(); // 取得系统时间。
-        int year = t.year;
-        int month = t.month;
-        int date = t.monthDay;
-        int hour = t.hour; // 0-23
-        int minute = t.minute;
-        int second = t.second;
-        int week = t.weekDay;
-        System.out.println(year + "年" + (month + 1) + "月"
-                + date + "日" + "星期" + (week + 1) + hour + "时" + minute + "分"
-                + second + "秒");
+        // 创建json指令
+        Gson gson = new Gson();
+        ZkyJson zkyJson = new ZkyJson();
+        zkyJson.setConfirm("2");
 
+        // 获取当前日期 ，按照日期格式 19:03:04:03:21:19:01
+        SimpleDateFormat sdf = new SimpleDateFormat("yy:MM:dd:hh:mm:ss");
+        String date = sdf.format(new Date()) + ":" + getWeek(new Date());
+        zkyJson.setTime(date);
+        // {"Confirm":"2","Time":"19:03:07:02:39:57:4"}
+        String jsonStr = gson.toJson(zkyJson) + "#";
+        LogUtil.e("jsonStr = " + jsonStr);
 
+        jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
+        LogUtil.e("jsonStr = " + jsonStr);
 
-        String url = "http://47.99.168.98:9003/API/IOTDataFill.asmx/Fill";
+      /*  String url = "http://47.99.168.98:9003/API/IOTDataFill.asmx/Fill";
         LogUtil.e("uuidTo = " + uuidTo);
         RequestBody requestBody = new FormBody.Builder()
                 .add("version", "225")
@@ -566,6 +574,7 @@ public class DeviceMainAct extends Activity {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("xxx", "失败" + e.toString());
+                stopProgress();
             }
 
             @Override
@@ -577,11 +586,12 @@ public class DeviceMainAct extends Activity {
                 electricityDeviceStatuses = parseJson(json);
                 // 更新界面
                 handler.sendEmptyMessage(UPDATE_VIEW);
+                stopProgress();
 
             }
 
 
-        }, requestBody);
+        }, requestBody);*/
     }
 
     private void initView() {
@@ -654,20 +664,9 @@ public class DeviceMainAct extends Activity {
         // 返回
         ll_prev_device_main = (LinearLayout) this.findViewById(R.id.ll_prev_device_main);
         // 刷新
-        ll_device_main_refresh  = (LinearLayout) this.findViewById(R.id.ll_device_main_refresh);
+        ll_device_main_refresh = (LinearLayout) this.findViewById(R.id.ll_device_main_refresh);
     }
 
-    private void showProgress() {
-        mProgress = ProgressDialog.show(this, "", "Loading...", true, false);
-    }
-
-    private void stopProgress() {
-        if (mProgress != null) {
-            mProgress.dismiss();
-        }
-
-        // mProgress.cancel();
-    }
 
     public void makeStreetAndDeviceHttpRequest(String streetId) {
         if (streetId.equals("") || streetId == null) {
@@ -1257,10 +1256,6 @@ public class DeviceMainAct extends Activity {
         // mVolleyQueue.start();
     }
 
-    private void showToast(String msg) {
-        Toast.makeText(DeviceMainAct.this, msg, Toast.LENGTH_SHORT).show();
-    }
-
 
     /**
      * 设置节能状态
@@ -1592,6 +1587,28 @@ public class DeviceMainAct extends Activity {
 
 
         }
+    }
+
+    public static String getWeek(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        String week = sdf.format(date);
+        String flag = "";
+        if (week.equals("星期一")) {
+            flag = "01";
+        } else if (week.equals("星期二")) {
+            flag = "02";
+        } else if (week.equals("星期三")) {
+            flag = "03";
+        } else if (week.equals("星期四")) {
+            flag = "04";
+        } else if (week.equals("星期五")) {
+            flag = "05";
+        } else if (week.equals("星期六")) {
+            flag = "06";
+        } else if (week.equals("星期七")) {
+            flag = "07";
+        }
+        return flag;
     }
 
 

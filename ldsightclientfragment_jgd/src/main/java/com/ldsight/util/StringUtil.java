@@ -243,5 +243,26 @@ public class StringUtil {
 		return datas;
 	}
 
+	public static String stringToHexString(String str,int bKey){
+		int c = 0;
+		int loginKey = bKey;
+		String data = null;
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < str.length(); i++) {
+			c=str.charAt(i);
+			c ^= loginKey;
+			data=Integer.toHexString(c);
+			String tmp = "";
+			if(data.length()==1){
+				data="0"+data;
+			}
+			tmp +=data;
+			sb.append(tmp);
+		}
+		String datas = sb.toString();
+		return datas;
+	}
+
+
 
 }
