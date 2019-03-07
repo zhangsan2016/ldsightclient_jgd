@@ -47,6 +47,7 @@ import com.ldsight.entity.ElectricityDeviceStatus;
 import com.ldsight.entity.StreetAndDevice;
 import com.ldsight.entity.ZkyJson;
 import com.ldsight.service.ZkyOnlineService;
+import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
 import com.ldsight.util.StringUtil;
@@ -326,7 +327,6 @@ public class DeviceMainAct extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // 校时
-                showProgress();
                 setCurrentTime(electricityBox.getUuid());
             }
         });
@@ -547,33 +547,44 @@ public class DeviceMainAct extends BaseActivity {
         zkyJson.setConfirm("2");
 
         // 获取当前日期 ，按照日期格式 19:03:04:03:21:19:01
-        SimpleDateFormat sdf = new SimpleDateFormat("yy:MM:dd:hh:mm:ss");
-        String date = sdf.format(new Date()) + ":" + getWeek(new Date());
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yy-MM-dd-");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("-hh-mm-ss");
+        Calendar cal = Calendar.getInstance();
+        int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        cal.setTime(new Date());
+        String date = sdf1.format(new Date()) + week_index + sdf2.format(new Date());
         zkyJson.setTime(date);
-        // {"Confirm":"2","Time":"19:03:07:02:39:57:4"}
-        String jsonStr = gson.toJson(zkyJson) + "#";
-        LogUtil.e("jsonStr = " + jsonStr);
 
+
+        // {"Confirm":"2","Time":"19:03:07:02:39:57:4"}#
+        String jsonStr = gson.toJson(zkyJson) + "#";
+        LogUtil.e("校时 jsonStr = " + jsonStr);
+
+        if(ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null){
+            showToast("服务器无法连接，请稍后再试！");
+            stopProgress();
+           return;
+        }
         jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
         LogUtil.e("jsonStr = " + jsonStr);
 
-      /*  String url = "http://47.99.168.98:9003/API/IOTDataFill.asmx/Fill";
         LogUtil.e("uuidTo = " + uuidTo);
+        int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
         RequestBody requestBody = new FormBody.Builder()
                 .add("version", "225")
-                .add("type", HttpConfiguration.NET)
+                .add("type",  type + "")
                 .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
                 .add("uuidFrom", HttpConfiguration._Clientuuid)
-                .add("uuidTo", "")
+                .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
                 .add("crc", "")
-                .add("data", "")
+                .add("data", jsonStr)
                 .build();
 
-        HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+        HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.e("xxx", "失败" + e.toString());
+                Log.e("xxx", "校时失败" + e.toString());
                 stopProgress();
             }
 
@@ -581,17 +592,14 @@ public class DeviceMainAct extends BaseActivity {
             public void onResponse(Call call, okhttp3.Response response) throws IOException {
                 String json = response.body().string();
 
-                Log.e("xxx", "成功获取电箱设备状态" + json);
+                Log.e("xxx", "校时返回  " + json);
 
-                electricityDeviceStatuses = parseJson(json);
-                // 更新界面
-                handler.sendEmptyMessage(UPDATE_VIEW);
                 stopProgress();
 
             }
 
 
-        }, requestBody);*/
+        }, requestBody);
     }
 
     private void initView() {

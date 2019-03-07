@@ -35,9 +35,9 @@ public class HeartbeatStatis implements Cloneable {
     }
 
     public DataBean getData() {
-        if (null == data) {
+       /* if (null == data) {
             return data = new DataBean();
-        }
+        }*/
         return data;
     }
 

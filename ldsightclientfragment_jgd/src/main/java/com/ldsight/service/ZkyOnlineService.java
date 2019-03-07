@@ -191,7 +191,7 @@ public class ZkyOnlineService extends Service {
 
                 RequestBody requestBody = new FormBody.Builder()
                         .add("version", "225")
-                        .add("type", HttpConfiguration.NET)
+                        .add("type", HttpConfiguration.NET + "")
                         .add("key", String.valueOf(key))
                         .add("uuidFrom", HttpConfiguration._Clientuuid)
                         .add("uuidTo", "")

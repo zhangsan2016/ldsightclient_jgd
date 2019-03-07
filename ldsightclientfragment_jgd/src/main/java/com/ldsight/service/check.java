@@ -2,7 +2,6 @@ package com.ldsight.service;
 
 import com.google.gson.Gson;
 import com.ldsight.entity.HeartbeatStatis;
-import com.ldsight.entity.ZkyJson;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 
@@ -109,7 +108,7 @@ public class check {
 
         RequestBody requestBody = new FormBody.Builder()
                 .add("version", "225")
-                .add("type", HttpConfiguration.NET)
+                .add("type", HttpConfiguration.NET + "")
                 .add("key", "0")
                 .add("uuidFrom", HttpConfiguration._Clientuuid)
                 .add("uuidTo", "")
@@ -175,12 +174,40 @@ public class check {
         heartbeatStatis.getData().setBKey(7755);
         System.out.println("clo = " + clo.getData().getBKey());*/
 
+/*
      ZkyJson zkyJson = new ZkyJson();
         zkyJson.setConfirm("669");
 
         Gson gson = new Gson();
         String objectStr =  gson.toJson(zkyJson);
         System.out.println(objectStr);
+*/
+
+/*
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        System.out.println("week_index = " + week_index);
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd E HH:mm:ss");
+      //   SimpleDateFormat sdf = new SimpleDateFormat("yy:MM:dd:hh:mm:ss e");
+        System.out.println(sdf.format(new java.util.Date()));*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+        System.out.println(1 << 4 | 6);
+
 
 
     }
