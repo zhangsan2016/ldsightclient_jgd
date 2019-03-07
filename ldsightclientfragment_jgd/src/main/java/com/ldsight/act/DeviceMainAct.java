@@ -547,8 +547,9 @@ public class DeviceMainAct extends Activity {
                 + date + "日" + "星期" + (week + 1) + hour + "时" + minute + "分"
                 + second + "秒");
 
-        String url = "http://47.99.168.98:9003/API/IOTDataFill.asmx/Fill";
 
+
+        String url = "http://47.99.168.98:9003/API/IOTDataFill.asmx/Fill";
         LogUtil.e("uuidTo = " + uuidTo);
         RequestBody requestBody = new FormBody.Builder()
                 .add("version", "225")

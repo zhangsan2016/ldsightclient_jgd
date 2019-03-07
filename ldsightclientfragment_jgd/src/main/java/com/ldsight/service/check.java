@@ -2,6 +2,7 @@ package com.ldsight.service;
 
 import com.google.gson.Gson;
 import com.ldsight.entity.HeartbeatStatis;
+import com.ldsight.entity.ZkyJson;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 
@@ -174,9 +175,15 @@ public class check {
         heartbeatStatis.getData().setBKey(7755);
         System.out.println("clo = " + clo.getData().getBKey());*/
 
+     ZkyJson zkyJson = new ZkyJson();
+        zkyJson.setConfirm("669");
 
-
+        Gson gson = new Gson();
+        String objectStr =  gson.toJson(zkyJson);
+        System.out.println(objectStr);
 
 
     }
+
+
 }
