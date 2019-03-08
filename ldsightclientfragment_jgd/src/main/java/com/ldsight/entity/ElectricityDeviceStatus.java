@@ -1,12 +1,14 @@
 package com.ldsight.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by ldgd on 2019/1/10.
  * 功能：电箱状态信息
  * 说明：
  */
 
-public class ElectricityDeviceStatus {
+public class ElectricityDeviceStatus implements Serializable{
 
 
     /**

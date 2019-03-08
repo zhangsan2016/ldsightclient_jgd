@@ -74,6 +74,10 @@ import static com.example.ldsightclient_jgd.R.id.txt_life_cycle;
 import static com.example.ldsightclient_jgd.R.id.txt_volt;
 
 public class DeviceMainAct extends BaseActivity {
+    // 主灯
+    public static final int PRINCIPAL = 1;
+    // 辅灯
+    public static final int SUBSIDIARY = 2;
     public static String DeviceMainFilter = "devicemainfilter";
     public static String UpdateCableParameterFilter = "updateCableParameter"; // 广播接收者
     public static String DeviceTemperatureFilter = "DeviceTemperatureFilter"; // 湿度温度照明度接受
@@ -1564,16 +1568,18 @@ public class DeviceMainAct extends BaseActivity {
             switch (v.getId()) {
                 case R.id.rly_primary_timing:
                     intent = new Intent(DeviceMainAct.this, DeviceTiming.class);
-                    intent.putExtra("primary_timing", 1);
-                    intent.putExtra("timing_time", mainSixSectionDimmerIntensity);
-                    intent.putExtra("uuid", streetAndDevice.getByteUuid());
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("primary_timing", PRINCIPAL);
+                    bundle.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
+                    intent.putExtras(bundle);
                     DeviceMainAct.this.startActivityForResult(intent, 0);
                     break;
                 case R.id.rly_subsidiary_timing:
                     intent = new Intent(DeviceMainAct.this, DeviceTiming.class);
-                    intent.putExtra("primary_timing", 2);
-                    intent.putExtra("timing_time", assistSixSectionDimmerIntensity);
-                    intent.putExtra("uuid", streetAndDevice.getByteUuid());
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putInt("primary_timing", SUBSIDIARY);
+                    bundle2.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
+                    intent.putExtras(bundle2);
                     DeviceMainAct.this.startActivityForResult(intent, 0);
                     break;
             }
@@ -1597,27 +1603,7 @@ public class DeviceMainAct extends BaseActivity {
         }
     }
 
-    public static String getWeek(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-        String week = sdf.format(date);
-        String flag = "";
-        if (week.equals("星期一")) {
-            flag = "01";
-        } else if (week.equals("星期二")) {
-            flag = "02";
-        } else if (week.equals("星期三")) {
-            flag = "03";
-        } else if (week.equals("星期四")) {
-            flag = "04";
-        } else if (week.equals("星期五")) {
-            flag = "05";
-        } else if (week.equals("星期六")) {
-            flag = "06";
-        } else if (week.equals("星期七")) {
-            flag = "07";
-        }
-        return flag;
-    }
+
 
 
 }
