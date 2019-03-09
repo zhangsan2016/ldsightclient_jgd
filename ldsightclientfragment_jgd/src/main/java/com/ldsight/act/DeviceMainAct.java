@@ -569,7 +569,7 @@ public class DeviceMainAct extends BaseActivity {
             stopProgress();
            return;
         }
-        jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
+        jsonStr  = StringUtil.stringToHexString("{\"Confirm\":4,\"Dimming\":0}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
         LogUtil.e("jsonStr = " + jsonStr);
 
         LogUtil.e("uuidTo = " + uuidTo);
@@ -595,9 +595,7 @@ public class DeviceMainAct extends BaseActivity {
             @Override
             public void onResponse(Call call, okhttp3.Response response) throws IOException {
                 String json = response.body().string();
-
                 Log.e("xxx", "校时返回  " + json);
-
                 stopProgress();
 
             }

@@ -105,7 +105,7 @@ public class SettingFragment extends Fragment {
 		streetAndDevices = new ArrayList<StreetAndDevice>();
 		mVolleyQueue = Volley.newRequestQueue(this.getActivity()
 				.getApplicationContext());
-		showProgress();
+	//	showProgress();
 	//	makeSampleHttpRequest();
 
 		RelativeLayout addDeviceBtn = (RelativeLayout) rootView

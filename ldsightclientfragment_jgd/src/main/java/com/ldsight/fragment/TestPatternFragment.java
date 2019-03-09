@@ -10,7 +10,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +35,7 @@ import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
 import com.ldsight.adapter.TestPatternListAdapter;
 import com.ldsight.application.MyApplication;
+import com.ldsight.base.BaseFragment;
 import com.ldsight.entity.ElectricTransducer;
 import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.LoginInfo;
@@ -57,7 +57,7 @@ import okhttp3.Headers;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class TestPatternFragment extends Fragment {
+public class TestPatternFragment  extends BaseFragment {
     public static String TestPatternFragmentBroadcast = "TestPatternFragmentBroadcast"; // 广播接收者
     private JsonObjectRequest jsonObjRequest;
     private RequestQueue mVolleyQueue;
@@ -76,6 +76,11 @@ public class TestPatternFragment extends Fragment {
     private Button btRelayFullOpen,btRelayAllOff;
     private CheckBox cb_relay1, cb_relay2, cb_relay3, cb_relay4, cb_relay5;
     private LoginInfo loginInfo;
+
+
+    public TestPatternFragment(Context context) {
+        super(context);
+    }
 
     /**
      *  电箱列表
@@ -108,6 +113,8 @@ public class TestPatternFragment extends Fragment {
         }
 
     };
+
+
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -720,7 +727,7 @@ public class TestPatternFragment extends Fragment {
     }
 
 
-    private void makeSampleHttpRequest(final String id) {
+    private synchronized void makeSampleHttpRequest(final String id) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -747,8 +754,13 @@ public class TestPatternFragment extends Fragment {
                         Gson gson = new Gson();
                         ProjectItem projectItem = gson.fromJson(json, ProjectItem.class);
 
-                        for (int i = 0; i < projectItem.getData().size(); i++) {
-                            getElectricTransducer(projectItem.getData().get(i).getId());
+
+                        if(projectItem != null){
+                            for (int i = 0; i < projectItem.getData().size(); i++) {
+                                getElectricTransducer(projectItem.getData().get(i).getId());
+                            }
+                        }else{
+                            showToast("连接服务器失败！");
                         }
                     }
                 }, requestBody);
@@ -848,7 +860,7 @@ public class TestPatternFragment extends Fragment {
 
     }
 
-    private void showProgress() {
+    /*private void showProgress() {
         mProgress = ProgressDialog.show(TestPatternFragment.this.getActivity(),
                 "", "Loading...");
     }
@@ -864,7 +876,7 @@ public class TestPatternFragment extends Fragment {
                     Toast.LENGTH_LONG).show();
         }
 
-    }
+    }*/
 
     private BroadcastReceiver dataRefreshReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {

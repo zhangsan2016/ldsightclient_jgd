@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,12 +23,24 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.ldsightclient_jgd.R;
+import com.google.gson.Gson;
 import com.ldsight.application.MyApplication;
 import com.ldsight.entity.ElectricityDeviceStatus;
+import com.ldsight.entity.ZkyJson;
+import com.ldsight.service.ZkyOnlineService;
+import com.ldsight.util.HttpConfiguration;
+import com.ldsight.util.HttpUtil;
+import com.ldsight.util.StringUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
 
+import java.io.IOException;
 import java.util.Arrays;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.RequestBody;
 
 import static com.example.ldsightclient_jgd.R.id.txt_device_main_start_time;
 
@@ -58,7 +71,7 @@ public class DeviceTiming extends Activity {
     private SeekBar sb_brightness1, sb_brightness2, sb_brightness3,
             sb_brightness4, sb_brightness5, sb_brightness6;
 
-    // 标识
+    // 主辅灯标识
     private int advocateComplementaryCode;
     private ProgressDialog mProgress;
     // 定时数据返回标识
@@ -672,8 +685,70 @@ public class DeviceTiming extends Activity {
         int progress5 = sb_brightness5.getProgress();
         int progress6 = sb_brightness6.getProgress();
 
-        // 封装到data数组
 
+
+        // 创建json指令
+        Gson gson = new Gson();
+        ZkyJson zkyJson = new ZkyJson();
+        // 判断主辅灯
+        if(advocateComplementaryCode == DeviceMainAct.PRINCIPAL){
+
+            zkyJson.setConfirm("3");
+
+            zkyJson.setFir_tt_Fir("18:01");
+            zkyJson.setFir_tp_Fir(progress1+"");
+            zkyJson.setSec_tt_Fir("19:01");
+            zkyJson.setFir_tp_Fir(progress2+"");
+            zkyJson.setThir_tt_Fir("20:01");
+            zkyJson.setThir_tp_Fir(progress3+"");
+            zkyJson.setFour_tt_Fir("21:01");
+            zkyJson.setFour_tp_Fir(progress4 + "");
+            zkyJson.setFif_tt_Fir("22:01");
+            zkyJson.setFir_tp_Fir(progress5 + "");
+            zkyJson.setSix_tt_Fir("23:01");
+            zkyJson.setSix_tp_Fir(progress6+"");
+
+
+        }else if(advocateComplementaryCode == DeviceMainAct.SUBSIDIARY){
+
+        }
+        String jsonStr = gson.toJson(zkyJson) + "#";
+        jsonStr  = StringUtil.stringToHexString("\t{\"Confirm\":3,\"Fir_tt_Fir\":\"16:00\",\"Fir_tp_Fir\" :72,\"Sec_tt_Fir\":\"16:01\",\"Sec_tp_Fir\":0,\"Thir_tt_Fir\":\"16:02\",\"Thir_tp_Fir\" :73,\"Four_tt_Fir\":\"16:03\",\"Four_tp_Fir\":0,\"Fif_tt_Fir\":\"16:04\",\"Fif_tp_Fir\":73 ,\"Six_tt_Fir\":\"16:05\",\"Six_tp_Fir\":0}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
+        int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
+        RequestBody requestBody = new FormBody.Builder()
+                .add("version", "225")
+                .add("type",  type + "")
+                .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
+                .add("uuidFrom", HttpConfiguration._Clientuuid)
+                .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
+                .add("crc", "")
+                .add("data", jsonStr)
+                .build();
+
+        HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("xxx", "定时失败！" + e.toString());
+                stopProgress();
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                String json = response.body().string();
+
+                Log.e("xxx", "定时成功  " + json);
+
+                stopProgress();
+
+            }
+
+
+        }, requestBody);
+
+
+
+        // 封装到data数组
         timeData[0] = (byte) Integer.parseInt(timingTime1[0].trim());
         timeData[1] = (byte) Integer.parseInt(timingTime1[1].trim());
         timeData[2] = (byte) progress1;

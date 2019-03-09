@@ -63,7 +63,7 @@ public class ParameterAct extends FragmentActivity {
 			FragmentTransaction fragmentTransaction = fragmentManager
 					.beginTransaction();
 			if (testPatternFragment == null) {
-				testPatternFragment = new TestPatternFragment();
+				testPatternFragment = new TestPatternFragment(this);
 			}
 			// 传递登录对象到fragment
 			Bundle args = new Bundle();
@@ -137,7 +137,10 @@ public class ParameterAct extends FragmentActivity {
 				resetImageAndText();
 				mThreeImage.setImageResource(R.drawable.parameter_test1);
 				mThreeText.setTextColor(Color.parseColor("#00B28A"));
-				TestPatternFragment testPatternFragment = new TestPatternFragment();
+				if(testPatternFragment == null){
+					 testPatternFragment = new TestPatternFragment(ParameterAct.this);
+				}
+			//	TestPatternFragment testPatternFragment = new TestPatternFragment(ParameterAct.this);
 				getSupportFragmentManager().beginTransaction()
 						.replace(R.id.fragment_layout, testPatternFragment)
 						.commit();
