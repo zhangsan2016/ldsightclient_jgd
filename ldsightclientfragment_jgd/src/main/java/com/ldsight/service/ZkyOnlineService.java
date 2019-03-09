@@ -124,7 +124,7 @@ public class ZkyOnlineService extends Service {
 
                         // 保存心跳返回数据
                         Gson gson = new Gson();
-                        Log.e("pullData", "pullData 成 功" + json);
+                      //  Log.e("pullData", "pullData 成 功" + json);
 
                     }
 

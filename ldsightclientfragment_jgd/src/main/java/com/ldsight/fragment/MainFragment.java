@@ -273,16 +273,21 @@ public class MainFragment extends Fragment {
                     /*    for (int i = 0; i < electricityBox.getData().size(); i++) {
                             getElectricityState(electricityBox.getData().get(i).getUuid());
                         }*/
+
+                        // 保存在 List中
+                        electricityBoxList.addAll(electricityBox.getData());
+
                         // 更新 listview
-                        getActivity().runOnUiThread(new Runnable() {
+                        Activity activity =(Activity)mContext;
+                        activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                             //   listView.requestLayout();
                                 adapter.notifyDataSetChanged();
                             }
                         });
 
-                        // 保存在 List中
-                        electricityBoxList.addAll(electricityBox.getData());
+
 
                     }
                 }, requestBody);

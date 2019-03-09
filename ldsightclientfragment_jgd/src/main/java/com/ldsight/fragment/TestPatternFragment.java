@@ -858,8 +858,9 @@ public class TestPatternFragment  extends BaseFragment {
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                adapter.notifyDataSetChanged();
                                 adapter.changeTags();
+                                listView.requestLayout();
+                                adapter.notifyDataSetChanged();
                             }
                         });
 
@@ -916,8 +917,11 @@ public class TestPatternFragment  extends BaseFragment {
                 zkyJson.setConfirm("4");
                 zkyJson.setDimming(brightness+"");
                 String jsonStr = gson.toJson(zkyJson) + "#";
-             //   jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
-                jsonStr  = StringUtil.stringToHexString("{\"Confirm\":4,\"Dimming\":100}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
+
+                LogUtil.e("xxx jsonStr = " + jsonStr);
+
+              //  jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
+               jsonStr  = StringUtil.stringToHexString("{\"Confirm\":4,\"Dimming\":0}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
                 int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
                 RequestBody requestBody = new FormBody.Builder()
                         .add("version", "225")

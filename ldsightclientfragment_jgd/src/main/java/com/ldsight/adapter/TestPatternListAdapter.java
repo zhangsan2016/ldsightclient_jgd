@@ -74,6 +74,7 @@ public class TestPatternListAdapter extends BaseAdapter {
         this.tags = tags;
     }
     public void changeTags(){
+        LogUtil.e("electricityBoxList.size() = " + electricityBoxList.size());
         this.tags = new boolean[electricityBoxList.size()];
     }
 
@@ -84,7 +85,6 @@ public class TestPatternListAdapter extends BaseAdapter {
         //	this.streetAndDevices = streetAndDevices;
         this.electricityBoxList = electricityBoxList;
         mInflater = LayoutInflater.from(context);
-        LogUtil.e("electricityBoxList.size() = " + electricityBoxList.size());
       //  tags = new boolean[electricityBoxList.size()];
     }
 
