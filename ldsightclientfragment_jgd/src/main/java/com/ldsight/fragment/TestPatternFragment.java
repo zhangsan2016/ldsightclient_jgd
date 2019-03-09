@@ -42,7 +42,7 @@ import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.LoginInfo;
 import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
-import com.ldsight.entity.ZkyJson;
+import com.ldsight.entity.zkyjson.DimmingJson;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
@@ -913,15 +913,20 @@ public class TestPatternFragment  extends BaseFragment {
 
                 // 创建json指令
                 Gson gson = new Gson();
-                ZkyJson zkyJson = new ZkyJson();
-                zkyJson.setConfirm("4");
-                zkyJson.setDimming(brightness+"");
-                String jsonStr = gson.toJson(zkyJson) + "#";
+                DimmingJson dimmingJson = new DimmingJson();
+                dimmingJson.setConfirm(4);
+                dimmingJson.setDimming(brightness);
+                String jsonStr = gson.toJson(dimmingJson) + "#";
 
                 LogUtil.e("xxx jsonStr = " + jsonStr);
 
-              //  jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
-               jsonStr  = StringUtil.stringToHexString("{\"Confirm\":4,\"Dimming\":0}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
+                if(ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null){
+                    showToast("服务器无法连接，请稍后再试！");
+                    stopProgress();
+                    return;
+                }
+
+                jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
                 int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
                 RequestBody requestBody = new FormBody.Builder()
                         .add("version", "225")

@@ -26,7 +26,7 @@ import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
 import com.ldsight.application.MyApplication;
 import com.ldsight.entity.ElectricityDeviceStatus;
-import com.ldsight.entity.ZkyJson;
+import com.ldsight.entity.zkyjson.ZkyJson;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;

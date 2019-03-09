@@ -1,9 +1,9 @@
-package com.ldsight.entity;
+package com.ldsight.entity.zkyjson;
 
 /**
  * Created by ldgd on 2019/3/6.
  * 功能：
- * 说明：
+ * 说明：中科院json协议模版
  */
 
 public class ZkyJson  {
@@ -22,6 +22,8 @@ public class ZkyJson  {
     private String Fir_tt_Sec,Sec_tt_Sec,Thir_tt_Sec,Four_tt_Sec,Fif_tt_Sec,Six_tt_Sec;
     // 副灯调光亮度
     private String Fir_tp_Sec,Sec_tp_Sec,Thir_tp_Sec,Four_tp_Sec,Fif_tp_Sec,Six_tp_Sec;
+
+
 
 
 

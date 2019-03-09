@@ -45,7 +45,7 @@ import com.ldsight.component.DeviceTable;
 import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.ElectricityDeviceStatus;
 import com.ldsight.entity.StreetAndDevice;
-import com.ldsight.entity.ZkyJson;
+import com.ldsight.entity.zkyjson.ZkyJson;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
