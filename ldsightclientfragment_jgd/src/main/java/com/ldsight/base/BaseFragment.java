@@ -20,7 +20,7 @@ public abstract class BaseFragment  extends Fragment {
     private static final int SHOW_PROGRESS = 21;
     // 关闭加载框
     private static final int STOP_PROGRESS = 22;
-    private final Context context;
+    protected final Context context;
     // 加载框
     private ProgressDialog mProgress;
 

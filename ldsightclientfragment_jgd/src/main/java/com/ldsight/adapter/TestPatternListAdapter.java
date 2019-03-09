@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.ldsightclient_jgd.R;
 import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.StreetAndDevice;
+import com.ldsight.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,9 @@ public class TestPatternListAdapter extends BaseAdapter {
     public void setTags(boolean[] tags) {
         this.tags = tags;
     }
+    public void changeTags(){
+        this.tags = new boolean[electricityBoxList.size()];
+    }
 
     public TestPatternListAdapter(Context context,
                                   List<ElectricityBox.ElectricityBoxList> electricityBoxList) {
@@ -80,7 +84,8 @@ public class TestPatternListAdapter extends BaseAdapter {
         //	this.streetAndDevices = streetAndDevices;
         this.electricityBoxList = electricityBoxList;
         mInflater = LayoutInflater.from(context);
-        tags = new boolean[electricityBoxList.size()];
+        LogUtil.e("electricityBoxList.size() = " + electricityBoxList.size());
+      //  tags = new boolean[electricityBoxList.size()];
     }
 
     public int getCount() {
@@ -91,7 +96,7 @@ public class TestPatternListAdapter extends BaseAdapter {
     @Override
     public Object getItem(int position) {
         // TODO Auto-generated method stub
-        return position;
+        return electricityBoxList.get(position);
     }
 
     @Override

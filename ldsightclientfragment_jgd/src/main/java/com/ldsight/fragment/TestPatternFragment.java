@@ -1,5 +1,6 @@
 package com.ldsight.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -41,13 +42,17 @@ import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.LoginInfo;
 import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
+import com.ldsight.entity.ZkyJson;
+import com.ldsight.service.ZkyOnlineService;
+import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
+import com.ldsight.util.LogUtil;
+import com.ldsight.util.StringUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.Call;
@@ -124,6 +129,9 @@ public class TestPatternFragment  extends BaseFragment {
                 container, false);
 
         listView = (ListView) rootView.findViewById(R.id.test_pattern_list);
+        adapter = new TestPatternListAdapter(TestPatternFragment.this.getActivity(),electricityBoxList);
+        listView.setAdapter(adapter);
+
         streetAndDevices = new ArrayList<StreetAndDevice>();
         mVolleyQueue = Volley.newRequestQueue(this.getActivity()
                 .getApplicationContext());
@@ -773,7 +781,7 @@ public class TestPatternFragment  extends BaseFragment {
      *
      * @param id 项目id
      */
-    public void getElectricTransducer(final String id) {
+    public  void getElectricTransducer(final String id) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -812,7 +820,7 @@ public class TestPatternFragment  extends BaseFragment {
      *
      * @param id 变电器id
      */
-    public void getElectricalBox(final String id) {
+    public  void getElectricalBox(final String id) {
 
         new Thread(new Runnable() {
             @Override
@@ -843,16 +851,17 @@ public class TestPatternFragment  extends BaseFragment {
 
                         // 保存在 List中
                         electricityBoxList.addAll(electricityBox.getData());
+
                         // 更新 listview
-                        getActivity().runOnUiThread(new Runnable() {
+
+                        Activity activity = (Activity) context;
+                        activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                               //adapter.notifyDataSetChanged();
-                                adapter = new TestPatternListAdapter(TestPatternFragment.this.getActivity(),electricityBoxList);
-                                listView.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
+                                adapter.changeTags();
                             }
                         });
-
 
 
                     }
@@ -899,9 +908,51 @@ public class TestPatternFragment  extends BaseFragment {
         boolean[] tags = adapter.getTags();
         for (int i = 0; i < tags.length; i++) {
             if (tags[i]) {
-                System.out.println("pushBrightness 当前uuid" + Arrays.toString(streetAndDevices
-                        .get(i).getByteUuid()));
-                final byte[] uuid = streetAndDevices.get(i)
+                LogUtil.e("i = " + i +"xxx Name = " + electricityBoxList.get(i).getText().trim());
+
+                // 创建json指令
+                Gson gson = new Gson();
+                ZkyJson zkyJson = new ZkyJson();
+                zkyJson.setConfirm("4");
+                zkyJson.setDimming(brightness+"");
+                String jsonStr = gson.toJson(zkyJson) + "#";
+             //   jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
+                jsonStr  = StringUtil.stringToHexString("{\"Confirm\":4,\"Dimming\":100}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
+                int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("version", "225")
+                        .add("type",  type + "")
+                        .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
+                        .add("uuidFrom", HttpConfiguration._Clientuuid)
+                        .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
+                        .add("crc", "")
+                        .add("data", jsonStr)
+                        .build();
+
+                HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("xxx", "调光失败" + e.toString());
+                        stopProgress();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                        String json = response.body().string();
+                        Log.e("xxx", "调光返回  " + json);
+                        stopProgress();
+
+                    }
+
+
+                }, requestBody);
+
+
+
+
+
+            /*    final byte[] uuid = streetAndDevices.get(i)
                         .getByteUuid();
                 new Thread() {
                     public void run() {
@@ -943,7 +994,7 @@ public class TestPatternFragment  extends BaseFragment {
                     }
 
                     ;
-                }.start();
+                }.start();*/
             }
         }
 

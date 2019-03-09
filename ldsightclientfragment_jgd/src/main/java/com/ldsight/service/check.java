@@ -137,79 +137,28 @@ public class check {
     }
 
     public static void main(String[] args) {
-  /*      // 发送心跳
-        startHeartbeat();
-
-        new Thread() {
-
-            @Override
-            public void run() {
-                super.run();
-
-                // 拉取数据
-                while (stoped == false) {
-                    try {
-                        pullData();
-                        Thread.sleep(6000);
-                        pullData();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        }.start();*/
-
-     /*   HeartbeatStatis heartbeatStatis = new HeartbeatStatis();
-        heartbeatStatis.getData().setBKey(5566);
-        heartbeatStatis.getData().setISessionKey(3368888);
-        HeartbeatStatis clo = null;
-        try {
-             clo = (HeartbeatStatis) heartbeatStatis.clone();
-            System.out.println("clo = " + clo.getData().getBKey());
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-
-        heartbeatStatis.getData().setBKey(7755);
-        System.out.println("clo = " + clo.getData().getBKey());*/
-
-/*
-     ZkyJson zkyJson = new ZkyJson();
-        zkyJson.setConfirm("669");
-
-        Gson gson = new Gson();
-        String objectStr =  gson.toJson(zkyJson);
-        System.out.println(objectStr);
-*/
-
-/*
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date());
-        int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
-        System.out.println("week_index = " + week_index);
+        System.out.println(getRelayOrderNub());
+    }
 
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd E HH:mm:ss");
-      //   SimpleDateFormat sdf = new SimpleDateFormat("yy:MM:dd:hh:mm:ss e");
-        System.out.println(sdf.format(new java.util.Date()));*/
+    private static int getRelayOrderNub() {
 
+        StringBuilder sb = new StringBuilder();
 
+        sb.append(1);
+        sb.append(1);
+        sb.append(1);
+        sb.append(1);
+        sb.append(1);
 
+        // dimmer += (tb1 << 0) + (tb2 << 1) + (tb3 << 2)+(tb4 << 3)+(tb5 <<
+        // 4);
+        // dimmer = (tb5 << 4) + (tb4 << 3) + (tb3 << 2) + (tb2 << 1) + (tb1
+        // << 0);
+        System.out.println(sb.toString());
+        int dimmer = Integer.parseInt(sb.toString(), 2);
 
-
-
-
-
-
-
-
-
-
-        System.out.println(1 << 4 | 6);
-
-
-
+        return dimmer;
     }
 
 
