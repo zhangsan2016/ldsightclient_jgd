@@ -840,6 +840,9 @@ public class TestPatternFragment  extends BaseFragment {
                     /*    for (int i = 0; i < electricityBox.getData().size(); i++) {
                             getElectricityState(electricityBox.getData().get(i).getUuid());
                         }*/
+
+                        // 保存在 List中
+                        electricityBoxList.addAll(electricityBox.getData());
                         // 更新 listview
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -850,8 +853,7 @@ public class TestPatternFragment  extends BaseFragment {
                             }
                         });
 
-                        // 保存在 List中
-                        electricityBoxList.addAll(electricityBox.getData());
+
 
                     }
                 }, requestBody);

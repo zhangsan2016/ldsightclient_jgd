@@ -119,7 +119,7 @@ public class TestPatternListAdapter extends BaseAdapter {
             }
         });
         //	uuid.setText(streetAndDevices.get(position).getStreetId());
-        streetName.setText(electricityBoxList.get(0).getText());
+        streetName.setText(electricityBoxList.get(position).getText());
         return view;
     }
 }
