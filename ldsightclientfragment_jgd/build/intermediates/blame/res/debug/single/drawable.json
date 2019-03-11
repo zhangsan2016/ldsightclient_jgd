@@ -4,28 +4,28 @@
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\btn_login_pressed.9.png"
     },
     {
-        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\brighten_main_listview_item_detail_border.xml",
-        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\brighten_main_listview_item_detail_border.xml"
+        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_catalog_brighten_selector.xml",
+        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\btn_catalog_brighten_selector.xml"
     },
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\device_top_item_shape.xml",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\device_top_item_shape.xml"
     },
     {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_catalog_brighten_selector.xml",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\btn_catalog_brighten_selector.xml"
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\brighten_main_listview_item_detail_border.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\brighten_main_listview_item_detail_border.xml"
     },
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\cable_is_abnormal_null.xml",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\cable_is_abnormal_null.xml"
     },
     {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\switch_selector2.xml",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\switch_selector2.xml"
-    },
-    {
         "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\cable_is_abnormal.xml",
         "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\cable_is_abnormal.xml"
+    },
+    {
+        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\switch_selector2.xml",
+        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\switch_selector2.xml"
     },
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_catalog_brighten_selector.xml",

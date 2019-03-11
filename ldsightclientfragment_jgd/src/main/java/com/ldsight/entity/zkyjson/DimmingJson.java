@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 /**
  * Created by ldgd on 2019/3/9.
  * 功能：
- * 说明：中科院协议，调光模版
+ * 说明：中科院协议，全亮度调节
  */
 
 public class DimmingJson {
