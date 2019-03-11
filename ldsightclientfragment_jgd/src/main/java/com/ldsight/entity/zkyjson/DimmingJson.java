@@ -1,5 +1,8 @@
 package com.ldsight.entity.zkyjson;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 /**
  * Created by ldgd on 2019/3/9.
  * 功能：
@@ -15,7 +18,7 @@ public class DimmingJson {
      */
 
     private int Confirm;
-    private int Dimming;
+    private  int Dimming;
 
     public int getConfirm() {
         return Confirm;
@@ -32,4 +35,18 @@ public class DimmingJson {
     public void setDimming(int Dimming) {
         this.Dimming = Dimming;
     }
+
+
+    public static void main(String args[]) {
+
+        Gson gson = new GsonBuilder().serializeNulls().create();
+
+        DimmingJson dimmingJson = new DimmingJson();
+        dimmingJson.setConfirm(55);
+        System.out.println(gson.toJson(dimmingJson));
+
+
+
+    }
+
 }

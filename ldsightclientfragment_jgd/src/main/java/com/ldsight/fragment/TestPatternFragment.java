@@ -43,6 +43,8 @@ import com.ldsight.entity.LoginInfo;
 import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
 import com.ldsight.entity.zkyjson.DimmingJson;
+import com.ldsight.entity.zkyjson.FirDimmingJson;
+import com.ldsight.entity.zkyjson.SecDimmingJson;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
@@ -913,13 +915,26 @@ public class TestPatternFragment  extends BaseFragment {
 
                 // 创建json指令
                 Gson gson = new Gson();
-                DimmingJson dimmingJson = new DimmingJson();
-                dimmingJson.setConfirm(4);
-                dimmingJson.setDimming(brightness);
-                String jsonStr = gson.toJson(dimmingJson) + "#";
+                String jsonStr ="";
+                // 判断主、辅或者全亮 Dimming，主灯亮度值FirDimming，副灯亮度值SecDimming
+                if(cbM.isChecked() && cbA.isChecked()){
+                    DimmingJson dimmingJson = new DimmingJson();
+                    dimmingJson.setConfirm(4);
+                    dimmingJson.setDimming(brightness);
+                    jsonStr =   gson.toJson(dimmingJson) + "#";
+                }else if(cbM.isChecked()){
+                    FirDimmingJson firDimmingJson = new FirDimmingJson();
+                    firDimmingJson.setConfirm(4);
+                    firDimmingJson.setFirDimming(brightness);
+                    jsonStr =   gson.toJson(firDimmingJson) + "#";
+                }else if(cbA.isChecked()){
+                    SecDimmingJson secDimmingJson = new SecDimmingJson();
+                    secDimmingJson.setConfirm(4);
+                    secDimmingJson.setSecDimming(brightness);
+                    jsonStr =   gson.toJson(secDimmingJson) + "#";
+                }
 
                 LogUtil.e("xxx jsonStr = " + jsonStr);
-
                 if(ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null){
                     showToast("服务器无法连接，请稍后再试！");
                     stopProgress();
