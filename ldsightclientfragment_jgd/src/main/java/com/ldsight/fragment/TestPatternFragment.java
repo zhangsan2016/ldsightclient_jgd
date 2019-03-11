@@ -44,6 +44,7 @@ import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
 import com.ldsight.entity.zkyjson.DimmingJson;
 import com.ldsight.entity.zkyjson.FirDimmingJson;
+import com.ldsight.entity.zkyjson.RelayStateJson;
 import com.ldsight.entity.zkyjson.SecDimmingJson;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.HttpConfiguration;
@@ -649,7 +650,52 @@ public class TestPatternFragment  extends BaseFragment {
      */
     private void relaySetting(final int relayOrderNub) {
         showProgress();
-        boolean[] tags = adapter.getTags();
+        // 创建json指令
+        Gson gson = new Gson();
+        RelayStateJson relayStateJson = new RelayStateJson();
+        relayStateJson.setConfirm(200);
+        relayStateJson.setRel_State(relayOrderNub);
+        String jsonStr =  gson.toJson(relayStateJson) + "#";
+        LogUtil.e("xxx jsonStr = " + jsonStr);
+        if(ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null){
+            showToast("服务器无法连接，请稍后再试！");
+            stopProgress();
+            return;
+        }
+        jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
+        int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
+        RequestBody requestBody = new FormBody.Builder()
+                .add("version", "225")
+                .add("type",  type + "")
+                .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
+                .add("uuidFrom", HttpConfiguration._Clientuuid)
+                .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
+                .add("crc", "")
+                .add("data", jsonStr)
+                .build();
+
+        HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("xxx", "设置继电器失败" + e.toString());
+                stopProgress();
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                String json = response.body().string();
+                Log.e("xxx", "设置继电器返回  " + json);
+                stopProgress();
+
+            }
+
+
+        }, requestBody);
+
+
+
+     /*   boolean[] tags = adapter.getTags();
         // 先判断选中路灯是否为null
         int count = 0;
         for (boolean b : tags) {
@@ -684,10 +730,10 @@ public class TestPatternFragment  extends BaseFragment {
                             pusher = new Pusher(MyApplication.getIp(), 9966,
                                     5000);
                             pusher.push0x20Message(uuid, data);
-								/*	for (int i = 0; i < 2; i++) {
+								*//*	for (int i = 0; i < 2; i++) {
 										Thread.sleep(2000);
 										pusher.push0x20Message(uuid, data);
-									}*/
+									}*//*
                             pusher.push0x20Message(uuid,
                                     new byte[]{0});
                         } catch (Exception e) {
@@ -719,7 +765,7 @@ public class TestPatternFragment  extends BaseFragment {
             }
 
             ;
-        }.start();
+        }.start();*/
     }
 
 

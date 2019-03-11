@@ -193,6 +193,7 @@ public class LoginAct extends Activity {
 					@Override
 					public void onFailure(Call call, IOException e) {
 						LogUtil.e("xxx" + "失败" + e.toString());
+						showToast("连接服务器异常！");
 						stopProgress();
 					}
 

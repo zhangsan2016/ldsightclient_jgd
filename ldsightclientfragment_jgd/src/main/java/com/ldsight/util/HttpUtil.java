@@ -136,7 +136,7 @@ public class HttpUtil {
             @Override
             public void run() {
                 OkHttpClient client = new OkHttpClient.Builder()
-                        .connectTimeout(10, TimeUnit.SECONDS)//设置连接超时时间
+                        .connectTimeout(100, TimeUnit.SECONDS)//设置连接超时时间
                         .readTimeout(20, TimeUnit.SECONDS).build();//设置读取超时时间;
 
                 Request request = new Request.Builder()

@@ -62,6 +62,7 @@ public class ZkyOnlineService extends Service {
                             Log.e("startHeartbeat", "heartbeatStatis = " + heartbeatStatis.toString());
                         } else {
                             LogUtil.e("startHeartbeat" + "心跳异常 ,请稍等60秒..." + "\n");
+                            heartbeatStatis = null;
                             // 重新发送心跳包
                             //  heartbeatStatis = new HeartbeatStatis();
                             // sendHttpHeartbeat();
