@@ -1,5 +1,6 @@
 package com.ldsight.act;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +19,7 @@ import com.ldsight.fragment.MainFragment;
 import com.ldsight.fragment.SettingFragment;
 import com.ldsight.fragment.SystemLogFragment;
 import com.ldsight.fragment.TestPatternFragment;
+import com.ldsight.service.ZkyOnlineService;
 
 public class ParameterAct extends FragmentActivity {
 	public static int SYSTEM_LOG = 1;
@@ -35,6 +37,7 @@ public class ParameterAct extends FragmentActivity {
 	private SettingFragment settingFragment;
 	private MainFragment mainFragment;
 	private BaiDuMapFragment mapFragment;
+
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -221,4 +224,11 @@ public class ParameterAct extends FragmentActivity {
 		mFiveText.setTextColor(Color.parseColor("#C3C3C3"));
 	}
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		// 关闭心跳服务
+		Intent stopIntent = new Intent(this,ZkyOnlineService.class);
+		stopService(stopIntent);
+	}
 }

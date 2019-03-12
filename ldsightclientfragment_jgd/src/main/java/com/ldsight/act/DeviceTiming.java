@@ -26,7 +26,8 @@ import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
 import com.ldsight.application.MyApplication;
 import com.ldsight.entity.ElectricityDeviceStatus;
-import com.ldsight.entity.zkyjson.ZkyJson;
+import com.ldsight.entity.zkyjson.MasterTimingJson;
+import com.ldsight.entity.zkyjson.SubsidiaryTimingJson;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
@@ -658,25 +659,22 @@ public class DeviceTiming extends Activity {
     private byte[] timeData;
 
     private void getTimingParameter() {
+
         timeData = new byte[18];
         // 定时开始结束时间
         String[] txtStartTimeAry = txtStartTime.getText().toString().trim()
                 .split(":");
         String[] txtEndTimeAry = txtEndTime.getText().toString().trim()
                 .split(":");
+
         // 六段调光时间
-        String[] timingTime1 = tv_spacing_start_time1.getText().toString()
-                .trim().split(":");
-        String[] timingTime2 = tv_spacing_start_time2.getText().toString()
-                .trim().split(":");
-        String[] timingTime3 = tv_spacing_start_time3.getText().toString()
-                .trim().split(":");
-        String[] timingTime4 = tv_spacing_start_time4.getText().toString()
-                .trim().split(":");
-        String[] timingTime5 = tv_spacing_start_time5.getText().toString()
-                .trim().split(":");
-        String[] timingTime6 = tv_spacing_start_time6.getText().toString()
-                .trim().split(":");
+        String timingTime1 = tv_spacing_start_time1.getText().toString();
+        String timingTime2 = tv_spacing_start_time2.getText().toString();
+        String timingTime3 = tv_spacing_start_time3.getText().toString();
+        String timingTime4 = tv_spacing_start_time4.getText().toString();
+        String timingTime5 = tv_spacing_start_time5.getText().toString();
+        String timingTime6 = tv_spacing_start_time6.getText().toString();
+
         // 六段调光亮度
         int progress1 = sb_brightness1.getProgress();
         int progress2 = sb_brightness2.getProgress();
@@ -689,31 +687,50 @@ public class DeviceTiming extends Activity {
 
         // 创建json指令
         Gson gson = new Gson();
-        ZkyJson zkyJson = new ZkyJson();
+        String jsonStr ="";
         // 判断主辅灯
         if(advocateComplementaryCode == DeviceMainAct.PRINCIPAL){
 
-            zkyJson.setConfirm("3");
+            // 主灯定时指令
+            MasterTimingJson zkyJson = new MasterTimingJson();
+            zkyJson.setConfirm(3);
 
-            zkyJson.setFir_tt_Fir("18:01");
-            zkyJson.setFir_tp_Fir(progress1+"");
-            zkyJson.setSec_tt_Fir("19:01");
-            zkyJson.setFir_tp_Fir(progress2+"");
-            zkyJson.setThir_tt_Fir("20:01");
-            zkyJson.setThir_tp_Fir(progress3+"");
-            zkyJson.setFour_tt_Fir("21:01");
-            zkyJson.setFour_tp_Fir(progress4 + "");
-            zkyJson.setFif_tt_Fir("22:01");
-            zkyJson.setFir_tp_Fir(progress5 + "");
-            zkyJson.setSix_tt_Fir("23:01");
-            zkyJson.setSix_tp_Fir(progress6+"");
-
+            zkyJson.setFir_tt_Fir(timingTime1);
+            zkyJson.setFir_tp_Fir(progress1);
+            zkyJson.setSec_tt_Fir(timingTime2);
+            zkyJson.setFir_tp_Fir(progress2);
+            zkyJson.setThir_tt_Fir(timingTime3);
+            zkyJson.setThir_tp_Fir(progress3);
+            zkyJson.setFour_tt_Fir(timingTime4);
+            zkyJson.setFour_tp_Fir(progress4);
+            zkyJson.setFif_tt_Fir(timingTime5);
+            zkyJson.setFir_tp_Fir(progress5 );
+            zkyJson.setSix_tt_Fir(timingTime6);
+            zkyJson.setSix_tp_Fir(progress6);
+            jsonStr = gson.toJson(zkyJson) + "#";
 
         }else if(advocateComplementaryCode == DeviceMainAct.SUBSIDIARY){
+            // 辅灯定时指令
+            SubsidiaryTimingJson zkyJson = new SubsidiaryTimingJson();
+            zkyJson.setConfirm(3);
+
+            zkyJson.setFir_tt_Sec(timingTime1);
+            zkyJson.setFir_tp_Sec(progress1);
+            zkyJson.setSec_tt_Sec(timingTime2);
+            zkyJson.setFir_tp_Sec(progress2);
+            zkyJson.setThir_tt_Sec(timingTime3);
+            zkyJson.setThir_tp_Sec(progress3);
+            zkyJson.setFour_tt_Sec(timingTime4);
+            zkyJson.setFour_tp_Sec(progress4);
+            zkyJson.setFif_tt_Sec(timingTime5);
+            zkyJson.setFir_tp_Sec(progress5);
+            zkyJson.setSix_tt_Sec(timingTime6);
+            zkyJson.setSix_tp_Sec(progress6);
+            jsonStr = gson.toJson(zkyJson) + "#";
 
         }
-        String jsonStr = gson.toJson(zkyJson) + "#";
-        jsonStr  = StringUtil.stringToHexString("\t{\"Confirm\":3,\"Fir_tt_Fir\":\"16:00\",\"Fir_tp_Fir\" :72,\"Sec_tt_Fir\":\"18:01\",\"Sec_tp_Fir\":0,\"Thir_tt_Fir\":\"20:02\",\"Thir_tp_Fir\" :73,\"Four_tt_Fir\":\"22:03\",\"Four_tp_Fir\":0,\"Fif_tt_Fir\":\"03:04\",\"Fif_tp_Fir\":73 ,\"Six_tt_Fir\":\"07:05\",\"Six_tp_Fir\":0}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
+
+        jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
         int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
         RequestBody requestBody = new FormBody.Builder()
                 .add("version", "225")
@@ -746,44 +763,11 @@ public class DeviceTiming extends Activity {
 
         }, requestBody);
 
-
-
-        // 封装到data数组
-        timeData[0] = (byte) Integer.parseInt(timingTime1[0].trim());
-        timeData[1] = (byte) Integer.parseInt(timingTime1[1].trim());
-        timeData[2] = (byte) progress1;
-
-        timeData[3] = (byte) Integer.parseInt(timingTime2[0].trim());
-        timeData[4] = (byte) Integer.parseInt(timingTime2[1].trim());
-        timeData[5] = (byte) progress2;
-
-        timeData[6] = (byte) Integer.parseInt(timingTime3[0].trim());
-        timeData[7] = (byte) Integer.parseInt(timingTime3[1].trim());
-        timeData[8] = (byte) progress3;
-
-        timeData[9] = (byte) Integer.parseInt(timingTime4[0].trim());
-        timeData[10] = (byte) Integer.parseInt(timingTime4[1].trim());
-        timeData[11] = (byte) progress4;
-
-        timeData[12] = (byte) Integer.parseInt(timingTime5[0].trim());
-        timeData[13] = (byte) Integer.parseInt(timingTime5[1].trim());
-        timeData[14] = (byte) progress5;
-
-        timeData[15] = (byte) Integer.parseInt(timingTime6[0].trim());
-        timeData[16] = (byte) Integer.parseInt(timingTime6[1].trim());
-        timeData[17] = (byte) progress6;
-
-		/*
-		 * Intent intent = new Intent(); intent.putExtra("parameter", data);
-		 * setResult(advocateComplementaryCode, intent);
-		 */
-
         // 推送定时到下位机
         pusher(timeData);
 
     }
 
-    ;
 
     private void pusher(final byte[] timing) {
         new Thread() {

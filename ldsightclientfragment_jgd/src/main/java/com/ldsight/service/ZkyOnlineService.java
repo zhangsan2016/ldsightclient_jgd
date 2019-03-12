@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ldsight.entity.HeartbeatStatis;
@@ -207,6 +208,8 @@ public class ZkyOnlineService extends Service {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         Log.e("startHeartbeat", "startHeartbeat失败" + e.toString());
+                        Toast.makeText(ZkyOnlineService.this,"服务器连接超时！",Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override

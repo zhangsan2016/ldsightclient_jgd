@@ -653,7 +653,7 @@ public class TestPatternFragment  extends BaseFragment {
         // 创建json指令
         Gson gson = new Gson();
         RelayStateJson relayStateJson = new RelayStateJson();
-        relayStateJson.setConfirm(200);
+        relayStateJson.setConfirm(512);
         relayStateJson.setRel_State(relayOrderNub);
         String jsonStr =  gson.toJson(relayStateJson) + "#";
         LogUtil.e("xxx jsonStr = " + jsonStr);
