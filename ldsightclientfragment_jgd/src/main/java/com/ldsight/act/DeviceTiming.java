@@ -1,6 +1,5 @@
 package com.ldsight.act;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
@@ -25,12 +24,14 @@ import android.widget.Toast;
 import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
 import com.ldsight.application.MyApplication;
+import com.ldsight.base.BaseActivity;
 import com.ldsight.entity.ElectricityDeviceStatus;
 import com.ldsight.entity.zkyjson.MasterTimingJson;
 import com.ldsight.entity.zkyjson.SubsidiaryTimingJson;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
+import com.ldsight.util.LogUtil;
 import com.ldsight.util.StringUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
@@ -45,7 +46,7 @@ import okhttp3.RequestBody;
 
 import static com.example.ldsightclient_jgd.R.id.txt_device_main_start_time;
 
-public class DeviceTiming extends Activity {
+public class DeviceTiming extends BaseActivity {
     public static String receiver = "DEVICE_TIMING_RECELVER";
     // 定时开始结束时间
     TextView txtStartTime, txtEndTime;
@@ -660,20 +661,17 @@ public class DeviceTiming extends Activity {
 
     private void getTimingParameter() {
 
-        timeData = new byte[18];
         // 定时开始结束时间
-        String[] txtStartTimeAry = txtStartTime.getText().toString().trim()
-                .split(":");
-        String[] txtEndTimeAry = txtEndTime.getText().toString().trim()
-                .split(":");
+     /*   String txtStartTimeAry = txtStartTime.getText().toString().trim();
+        String txtEndTimeAry = txtEndTime.getText().toString().trim();*/
 
         // 六段调光时间
-        String timingTime1 = tv_spacing_start_time1.getText().toString();
-        String timingTime2 = tv_spacing_start_time2.getText().toString();
-        String timingTime3 = tv_spacing_start_time3.getText().toString();
-        String timingTime4 = tv_spacing_start_time4.getText().toString();
-        String timingTime5 = tv_spacing_start_time5.getText().toString();
-        String timingTime6 = tv_spacing_start_time6.getText().toString();
+        String timingTime1 = tv_spacing_start_time1.getText().toString().replaceAll(" ","");
+        String timingTime2 = tv_spacing_start_time2.getText().toString().replaceAll(" ","");
+        String timingTime3 = tv_spacing_start_time3.getText().toString().replaceAll(" ","");
+        String timingTime4 = tv_spacing_start_time4.getText().toString().replaceAll(" ","");
+        String timingTime5 = tv_spacing_start_time5.getText().toString().replaceAll(" ","");
+        String timingTime6 = tv_spacing_start_time6.getText().toString().replaceAll(" ","");
 
         // 六段调光亮度
         int progress1 = sb_brightness1.getProgress();
@@ -698,13 +696,13 @@ public class DeviceTiming extends Activity {
             zkyJson.setFir_tt_Fir(timingTime1);
             zkyJson.setFir_tp_Fir(progress1);
             zkyJson.setSec_tt_Fir(timingTime2);
-            zkyJson.setFir_tp_Fir(progress2);
+            zkyJson.setSec_tp_Fir(progress2);
             zkyJson.setThir_tt_Fir(timingTime3);
             zkyJson.setThir_tp_Fir(progress3);
             zkyJson.setFour_tt_Fir(timingTime4);
             zkyJson.setFour_tp_Fir(progress4);
             zkyJson.setFif_tt_Fir(timingTime5);
-            zkyJson.setFir_tp_Fir(progress5 );
+            zkyJson.setFif_tp_Fir(progress5 );
             zkyJson.setSix_tt_Fir(timingTime6);
             zkyJson.setSix_tp_Fir(progress6);
             jsonStr = gson.toJson(zkyJson) + "#";
@@ -712,23 +710,24 @@ public class DeviceTiming extends Activity {
         }else if(advocateComplementaryCode == DeviceMainAct.SUBSIDIARY){
             // 辅灯定时指令
             SubsidiaryTimingJson zkyJson = new SubsidiaryTimingJson();
-            zkyJson.setConfirm(3);
+            zkyJson.setConfirm(7);
 
             zkyJson.setFir_tt_Sec(timingTime1);
             zkyJson.setFir_tp_Sec(progress1);
             zkyJson.setSec_tt_Sec(timingTime2);
-            zkyJson.setFir_tp_Sec(progress2);
+            zkyJson.setSec_tp_Sec(progress2);
             zkyJson.setThir_tt_Sec(timingTime3);
             zkyJson.setThir_tp_Sec(progress3);
             zkyJson.setFour_tt_Sec(timingTime4);
             zkyJson.setFour_tp_Sec(progress4);
             zkyJson.setFif_tt_Sec(timingTime5);
-            zkyJson.setFir_tp_Sec(progress5);
+            zkyJson.setFif_tp_Sec(progress5);
             zkyJson.setSix_tt_Sec(timingTime6);
             zkyJson.setSix_tp_Sec(progress6);
             jsonStr = gson.toJson(zkyJson) + "#";
 
         }
+        LogUtil.e("xxx jsonStr = " + jsonStr);
 
         jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
         int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
@@ -746,7 +745,8 @@ public class DeviceTiming extends Activity {
 
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.e("xxx", "定时失败！" + e.toString());
+                Log.e("xxx", "定时指令发送失败！" + e.toString());
+                showToast("定时指令发送失败！");
                 stopProgress();
             }
 
@@ -754,7 +754,9 @@ public class DeviceTiming extends Activity {
             public void onResponse(Call call, okhttp3.Response response) throws IOException {
                 String json = response.body().string();
 
-                Log.e("xxx", "定时成功  " + json);
+                Log.e("xxx", "定时指令发送成功！" + json);
+
+                showToast("定时指令发送成功！");
 
                 stopProgress();
 
@@ -837,7 +839,7 @@ public class DeviceTiming extends Activity {
         }
     };
 
-    private void showProgress() {
+/*    private void showProgress() {
         mProgress = ProgressDialog.show(this, "", "Loading...", true, false);
     }
 
@@ -845,7 +847,7 @@ public class DeviceTiming extends Activity {
         if (mProgress != null) {
             mProgress.dismiss();
         }
-    }
+    }*/
 
     @Override
     protected void onDestroy() {

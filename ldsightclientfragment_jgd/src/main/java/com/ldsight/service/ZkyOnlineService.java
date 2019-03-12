@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
@@ -126,7 +127,7 @@ public class ZkyOnlineService extends Service {
 
                         // 保存心跳返回数据
                         Gson gson = new Gson();
-                      //  Log.e("pullData", "pullData 成 功" + json);
+                        Log.e("pullData", "pullData 成 功" + json);
 
                     }
 
@@ -208,7 +209,10 @@ public class ZkyOnlineService extends Service {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         Log.e("startHeartbeat", "startHeartbeat失败" + e.toString());
-                        Toast.makeText(ZkyOnlineService.this,"服务器连接超时！",Toast.LENGTH_SHORT).show();
+                        Looper.prepare();
+                        Toast.makeText(ZkyOnlineService.this.getApplicationContext(),"服务器连接超时！",Toast.LENGTH_SHORT).show();
+                        Looper.loop();
+
 
                     }
 

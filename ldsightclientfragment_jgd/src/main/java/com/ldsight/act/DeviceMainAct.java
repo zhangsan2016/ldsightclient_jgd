@@ -569,8 +569,7 @@ public class DeviceMainAct extends BaseActivity {
             stopProgress();
            return;
         }
-        jsonStr  = StringUtil.stringToHexString("{\"Confirm\":4,\"Dimming\":0}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
-        LogUtil.e("jsonStr = " + jsonStr);
+        jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
 
         LogUtil.e("uuidTo = " + uuidTo);
         int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
@@ -589,6 +588,7 @@ public class DeviceMainAct extends BaseActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("xxx", "校时失败" + e.toString());
+                showToast("校时失败！");
                 stopProgress();
             }
 
@@ -596,6 +596,7 @@ public class DeviceMainAct extends BaseActivity {
             public void onResponse(Call call, okhttp3.Response response) throws IOException {
                 String json = response.body().string();
                 Log.e("xxx", "校时返回  " + json);
+                showToast("校时成功！");
                 stopProgress();
 
             }

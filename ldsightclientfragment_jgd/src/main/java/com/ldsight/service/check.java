@@ -137,28 +137,12 @@ public class check {
     }
 
     public static void main(String[] args) {
-        System.out.println(getRelayOrderNub());
-    }
+
+        String str = "\t{\"Confirm\":3,\"Fif_tp_Fir\":80,\"Fif_tt_Fir\":\"04:00\",\"Fir_tp_Fir\":100,\"Fir_tt_Fir\":\"18:30\",\"Four_tp_Fir\":30,\"Four_tt_Fir\":\"00 : 00\",\"Sec_tp_Fir\":0,\"Sec_tt_Fir\":\"20:00\",\"Six_tp_Fir\":0,\"Six_tt_Fir\":\"07 : 00\",\"Thir_tp_Fir\":60,\"Thir_tt_Fir\":\"22 : 00\"}#";
+
+        System.out.println("xx = " + str.replaceAll(" ", ""));
 
 
-    private static int getRelayOrderNub() {
-
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(1);
-        sb.append(1);
-        sb.append(1);
-        sb.append(1);
-        sb.append(1);
-
-        // dimmer += (tb1 << 0) + (tb2 << 1) + (tb3 << 2)+(tb4 << 3)+(tb5 <<
-        // 4);
-        // dimmer = (tb5 << 4) + (tb4 << 3) + (tb3 << 2) + (tb2 << 1) + (tb1
-        // << 0);
-        System.out.println(sb.toString());
-        int dimmer = Integer.parseInt(sb.toString(), 2);
-
-        return dimmer;
     }
 
 
