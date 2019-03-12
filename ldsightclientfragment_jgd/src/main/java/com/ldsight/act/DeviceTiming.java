@@ -713,7 +713,7 @@ public class DeviceTiming extends Activity {
 
         }
         String jsonStr = gson.toJson(zkyJson) + "#";
-        jsonStr  = StringUtil.stringToHexString("\t{\"Confirm\":3,\"Fir_tt_Fir\":\"16:00\",\"Fir_tp_Fir\" :72,\"Sec_tt_Fir\":\"16:01\",\"Sec_tp_Fir\":0,\"Thir_tt_Fir\":\"16:02\",\"Thir_tp_Fir\" :73,\"Four_tt_Fir\":\"16:03\",\"Four_tp_Fir\":0,\"Fif_tt_Fir\":\"16:04\",\"Fif_tp_Fir\":73 ,\"Six_tt_Fir\":\"16:05\",\"Six_tp_Fir\":0}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
+        jsonStr  = StringUtil.stringToHexString("\t{\"Confirm\":3,\"Fir_tt_Fir\":\"16:00\",\"Fir_tp_Fir\" :72,\"Sec_tt_Fir\":\"18:01\",\"Sec_tp_Fir\":0,\"Thir_tt_Fir\":\"20:02\",\"Thir_tp_Fir\" :73,\"Four_tt_Fir\":\"22:03\",\"Four_tp_Fir\":0,\"Fif_tt_Fir\":\"03:04\",\"Fif_tp_Fir\":73 ,\"Six_tt_Fir\":\"07:05\",\"Six_tp_Fir\":0}#", ZkyOnlineService.heartbeatStatis.getData().getBKey());
         int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
         RequestBody requestBody = new FormBody.Builder()
                 .add("version", "225")

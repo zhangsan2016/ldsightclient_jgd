@@ -552,7 +552,7 @@ public class DeviceMainAct extends BaseActivity {
 
         // 获取当前日期 ，按照日期格式 19:03:04:03:21:19:01
         SimpleDateFormat sdf1 = new SimpleDateFormat("yy-MM-dd-");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("-hh-mm-ss");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("-HH-mm-ss");
         Calendar cal = Calendar.getInstance();
         int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
         cal.setTime(new Date());
