@@ -766,7 +766,7 @@ public class DeviceTiming extends BaseActivity {
         }, requestBody);
 
         // 推送定时到下位机
-        pusher(timeData);
+      //  pusher(timeData);
 
     }
 

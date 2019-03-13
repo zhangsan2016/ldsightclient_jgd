@@ -561,6 +561,7 @@ public class DeviceMainAct extends BaseActivity {
 
 
         // {"Confirm":"2","Time":"19:03:07:02:39:57:4"}#
+
         String jsonStr = gson.toJson(zkyJson) + "#";
         LogUtil.e("校时 jsonStr = " + jsonStr);
 

@@ -61,7 +61,6 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.Headers;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
@@ -805,19 +804,22 @@ public class TestPatternFragment  extends BaseFragment {
                     public void onResponse(Call call, Response response) throws IOException {
                         String json = response.body().string();
                         Log.e("xxx", "成功获取项目信息" + json);
-                        Headers headers = response.headers();
-                        Log.e("xxx", "headers      " + response.headers());
                         Gson gson = new Gson();
                         ProjectItem projectItem = gson.fromJson(json, ProjectItem.class);
 
-
-                        if(projectItem != null && projectItem.getData().size() > 0){
-                            for (int i = 0; i < projectItem.getData().size(); i++) {
-                                getElectricTransducer(projectItem.getData().get(i).getId());
+                        if(projectItem.isB()){
+                            if(projectItem != null && projectItem.getData() != null && projectItem.getData().size() > 0){
+                                for (int i = 0; i < projectItem.getData().size(); i++) {
+                                    getElectricTransducer(projectItem.getData().get(i).getId());
+                                }
+                            }else{
+                                showToast("连接服务器失败！");
                             }
-                        }else{
-                            showToast("连接服务器失败！");
+                       }else {
+                            showToast("获取数据失败：" + projectItem.getMsg().toString());
                         }
+
+
                     }
                 }, requestBody);
             }
