@@ -9,7 +9,7 @@ package com.ldsight.entity.zkyjson;
 public class ZkyJson  {
 
     // 指令码
-    private String Confirm;
+    private int Confirm;
     // 亮度值
     private String Dimming;
     // 时间
@@ -228,11 +228,11 @@ public class ZkyJson  {
         Six_tp_Sec = six_tp_Sec;
     }
 
-    public String getConfirm() {
+    public int getConfirm() {
         return Confirm;
     }
 
-    public void setConfirm(String confirm) {
+    public void setConfirm(int confirm) {
         Confirm = confirm;
     }
 

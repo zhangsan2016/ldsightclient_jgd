@@ -811,7 +811,7 @@ public class TestPatternFragment  extends BaseFragment {
                         ProjectItem projectItem = gson.fromJson(json, ProjectItem.class);
 
 
-                        if(projectItem != null){
+                        if(projectItem != null && projectItem.getData().size() > 0){
                             for (int i = 0; i < projectItem.getData().size(); i++) {
                                 getElectricTransducer(projectItem.getData().get(i).getId());
                             }

@@ -548,7 +548,7 @@ public class DeviceMainAct extends BaseActivity {
         // 创建json指令
         Gson gson = new Gson();
         ZkyJson zkyJson = new ZkyJson();
-        zkyJson.setConfirm("2");
+        zkyJson.setConfirm(2);
 
         // 获取当前日期 ，按照日期格式 19:03:04:03:21:19:01
         SimpleDateFormat sdf1 = new SimpleDateFormat("yy-MM-dd-");
