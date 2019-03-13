@@ -741,7 +741,7 @@ public class DeviceTiming extends BaseActivity {
                 .add("data", jsonStr)
                 .build();
 
-        HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
+        HttpUtil.sendHttpRequest(HttpConfiguration.urlSend, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {

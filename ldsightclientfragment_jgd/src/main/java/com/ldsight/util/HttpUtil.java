@@ -42,9 +42,9 @@ public class HttpUtil {
                 public List<Cookie> loadForRequest(HttpUrl httpUrl) {
                     List<Cookie> cookies = cookieStore.get(httpUrl.host());
 
-                   /* if(cookies==null){
-                        Log.e("xxxx", "没加载到cookie");
-                    }*/
+                    if(cookies==null){
+                        LogUtil.e("没加载到cookie");
+                    }
                     return cookies != null ? cookies : new ArrayList<Cookie>();
                 }
             })

@@ -155,7 +155,6 @@ public class DeviceMainAct extends BaseActivity {
     private byte[] mainSixSectionDimmerIntensity;
     private byte[] assistSixSectionDimmerIntensity;
 
-    private HttpUtil httpUtil;
 
     /**
      * 电箱状态
@@ -258,7 +257,7 @@ public class DeviceMainAct extends BaseActivity {
                         .add("strNameObject", "data")
                         .build();
 
-                HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+                HttpUtil.sendHttpRequest(url, new Callback() {
 
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -584,7 +583,7 @@ public class DeviceMainAct extends BaseActivity {
                 .add("data", jsonStr)
                 .build();
 
-        HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
+        HttpUtil.sendHttpRequest(HttpConfiguration.urlSend, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -1567,20 +1566,29 @@ public class DeviceMainAct extends BaseActivity {
             int enTimeMinute;
             switch (v.getId()) {
                 case R.id.rly_primary_timing:
-                    intent = new Intent(DeviceMainAct.this, DeviceTiming.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("primary_timing", PRINCIPAL);
-                    bundle.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
-                    intent.putExtras(bundle);
-                    DeviceMainAct.this.startActivityForResult(intent, 0);
+                    if (electricityDeviceStatuses != null) {
+                        intent = new Intent(DeviceMainAct.this, DeviceTiming.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("primary_timing", PRINCIPAL);
+                        bundle.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
+                        intent.putExtras(bundle);
+                        DeviceMainAct.this.startActivityForResult(intent, 0);
+                    }else{
+                        showToast("当前状态为空！");
+                    }
+
                     break;
                 case R.id.rly_subsidiary_timing:
-                    intent = new Intent(DeviceMainAct.this, DeviceTiming.class);
-                    Bundle bundle2 = new Bundle();
-                    bundle2.putInt("primary_timing", SUBSIDIARY);
-                    bundle2.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
-                    intent.putExtras(bundle2);
-                    DeviceMainAct.this.startActivityForResult(intent, 0);
+                    if (electricityDeviceStatuses != null) {
+                        intent = new Intent(DeviceMainAct.this, DeviceTiming.class);
+                        Bundle bundle2 = new Bundle();
+                        bundle2.putInt("primary_timing", SUBSIDIARY);
+                        bundle2.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
+                        intent.putExtras(bundle2);
+                        DeviceMainAct.this.startActivityForResult(intent, 0);
+                    }else{
+                        showToast("当前状态为空！");
+                    }
                     break;
             }
         }
