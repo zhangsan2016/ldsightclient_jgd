@@ -217,9 +217,8 @@ public class LoginAct extends Activity {
 									showToast("账号或者用户名错误！");
 								}
 							});
-
+							stopProgress();
 						}
-						stopProgress();
 
 					}
 				}, requestBody);
@@ -357,6 +356,7 @@ public class LoginAct extends Activity {
 			@Override
 			public void onFailure(Call call, IOException e) {
 				Log.e("xxx", "失败" + e.toString());
+				stopProgress();
 			}
 
 			@Override
@@ -382,7 +382,7 @@ public class LoginAct extends Activity {
 				startActivity(intent);
 
 
-
+				stopProgress();
 				LoginAct.this.finish();
 
 			}
