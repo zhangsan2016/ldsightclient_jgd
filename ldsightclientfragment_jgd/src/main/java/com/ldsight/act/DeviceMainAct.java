@@ -579,6 +579,7 @@ public class DeviceMainAct extends BaseActivity {
                 .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
                 .add("uuidFrom", HttpConfiguration._Clientuuid)
                 .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
+             //   .add("uuidTo", electricityDeviceStatuses.get(0).getUUID())
                 .add("crc", "")
                 .add("data", jsonStr)
                 .build();
