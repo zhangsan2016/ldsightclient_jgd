@@ -623,227 +623,226 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int add_device_list=0x7f0b001d;
-        public static final int alert_manage_listview=0x7f0b004a;
-        public static final int back=0x7f0b0049;
-        public static final int bmapView=0x7f0b004b;
+        public static final int alert_manage_listview=0x7f0b0049;
+        public static final int back=0x7f0b0048;
+        public static final int bmapView=0x7f0b004a;
         public static final int bottom=0x7f0b0003;
-        public static final int brighten=0x7f0b00a7;
-        public static final int brighten_main_list=0x7f0b004e;
-        public static final int bt_add=0x7f0b0125;
+        public static final int brighten=0x7f0b00a6;
+        public static final int brighten_main_list=0x7f0b004d;
+        public static final int bt_add=0x7f0b0124;
         public static final int bt_add_user=0x7f0b0027;
-        public static final int bt_brightness_control=0x7f0b012e;
-        public static final int bt_calibration_time=0x7f0b00ae;
-        public static final int bt_check=0x7f0b012a;
-        public static final int bt_current_state=0x7f0b00c4;
-        public static final int bt_minus=0x7f0b0126;
-        public static final int bt_relay_all_off=0x7f0b0150;
-        public static final int bt_relay_full_open=0x7f0b014f;
-        public static final int bt_relay_setting=0x7f0b014e;
-        public static final int bt_relay_switch=0x7f0b0144;
-        public static final int bt_send=0x7f0b0121;
-        public static final int bt_setting=0x7f0b0059;
+        public static final int bt_brightness_control=0x7f0b012d;
+        public static final int bt_calibration_time=0x7f0b00ad;
+        public static final int bt_check=0x7f0b0129;
+        public static final int bt_current_state=0x7f0b00c3;
+        public static final int bt_minus=0x7f0b0125;
+        public static final int bt_relay_all_off=0x7f0b014f;
+        public static final int bt_relay_full_open=0x7f0b014e;
+        public static final int bt_relay_setting=0x7f0b014d;
+        public static final int bt_relay_switch=0x7f0b0143;
+        public static final int bt_send=0x7f0b0120;
+        public static final int bt_setting=0x7f0b0058;
         public static final int bt_single_linght_check=0x7f0b0011;
-        public static final int bt_timing=0x7f0b004d;
-        public static final int bt_tourist_login=0x7f0b00f2;
+        public static final int bt_timing=0x7f0b004c;
+        public static final int bt_tourist_login=0x7f0b00f1;
         public static final int btn_addUer_back=0x7f0b003a;
         public static final int btn_add_device=0x7f0b001f;
         public static final int btn_add_device_back=0x7f0b001e;
         public static final int btn_add_device_edit=0x7f0b0023;
-        public static final int btn_add_user=0x7f0b0120;
-        public static final int btn_calibrate_time_server=0x7f0b013b;
-        public static final int btn_device_param_back=0x7f0b00d2;
-        public static final int btn_device_param_ok=0x7f0b00cf;
-        public static final int btn_login=0x7f0b00f0;
-        public static final int btn_ok_device_main=0x7f0b00a5;
+        public static final int btn_add_user=0x7f0b011f;
+        public static final int btn_calibrate_time_server=0x7f0b013a;
+        public static final int btn_device_param_back=0x7f0b00d1;
+        public static final int btn_device_param_ok=0x7f0b00ce;
+        public static final int btn_login=0x7f0b00ef;
+        public static final int btn_ok_device_main=0x7f0b00a4;
         public static final int btn_reset=0x7f0b0039;
-        public static final int btn_setting_dandengkongzhi=0x7f0b011d;
-        public static final int btn_setting_fragment_alert_manage=0x7f0b011e;
-        public static final int btn_setting_fragment_alert_sound=0x7f0b0112;
-        public static final int btn_setting_fragment_back=0x7f0b0123;
-        public static final int btn_test_pattern_fragment_25=0x7f0b0157;
-        public static final int btn_test_pattern_fragment_50=0x7f0b0156;
-        public static final int btn_test_pattern_fragment_75=0x7f0b0155;
-        public static final int btn_test_pattern_fragment_down=0x7f0b0158;
-        public static final int btn_test_pattern_fragment_invert=0x7f0b0153;
-        public static final int btn_test_pattern_fragment_select_all=0x7f0b0152;
-        public static final int btn_test_pattern_fragment_up=0x7f0b0154;
-        public static final int button1=0x7f0b00d1;
-        public static final int button2=0x7f0b0124;
+        public static final int btn_setting_dandengkongzhi=0x7f0b011c;
+        public static final int btn_setting_fragment_alert_manage=0x7f0b011d;
+        public static final int btn_setting_fragment_alert_sound=0x7f0b0111;
+        public static final int btn_setting_fragment_back=0x7f0b0122;
+        public static final int btn_test_pattern_fragment_25=0x7f0b0156;
+        public static final int btn_test_pattern_fragment_50=0x7f0b0155;
+        public static final int btn_test_pattern_fragment_75=0x7f0b0154;
+        public static final int btn_test_pattern_fragment_down=0x7f0b0157;
+        public static final int btn_test_pattern_fragment_invert=0x7f0b0152;
+        public static final int btn_test_pattern_fragment_select_all=0x7f0b0151;
+        public static final int btn_test_pattern_fragment_up=0x7f0b0153;
+        public static final int button1=0x7f0b00d0;
+        public static final int button2=0x7f0b0123;
         public static final int button4=0x7f0b003b;
-        public static final int cb_1=0x7f0b0051;
-        public static final int cb_10=0x7f0b0076;
-        public static final int cb_11=0x7f0b0077;
-        public static final int cb_12=0x7f0b0078;
-        public static final int cb_13=0x7f0b0079;
-        public static final int cb_14=0x7f0b007a;
-        public static final int cb_15=0x7f0b007b;
-        public static final int cb_16=0x7f0b007c;
-        public static final int cb_17=0x7f0b007f;
-        public static final int cb_18=0x7f0b0080;
-        public static final int cb_19=0x7f0b0081;
-        public static final int cb_2=0x7f0b0052;
-        public static final int cb_20=0x7f0b0082;
-        public static final int cb_21=0x7f0b0083;
-        public static final int cb_22=0x7f0b0084;
-        public static final int cb_23=0x7f0b0085;
-        public static final int cb_24=0x7f0b0086;
-        public static final int cb_25=0x7f0b0089;
-        public static final int cb_26=0x7f0b008a;
-        public static final int cb_27=0x7f0b008b;
-        public static final int cb_28=0x7f0b008c;
-        public static final int cb_29=0x7f0b008d;
-        public static final int cb_3=0x7f0b0053;
-        public static final int cb_30=0x7f0b008e;
-        public static final int cb_31=0x7f0b008f;
-        public static final int cb_32=0x7f0b0090;
-        public static final int cb_33=0x7f0b0093;
-        public static final int cb_34=0x7f0b0094;
-        public static final int cb_35=0x7f0b0095;
-        public static final int cb_36=0x7f0b0096;
-        public static final int cb_37=0x7f0b0097;
-        public static final int cb_38=0x7f0b0098;
-        public static final int cb_39=0x7f0b0099;
-        public static final int cb_4=0x7f0b0054;
-        public static final int cb_40=0x7f0b009a;
-        public static final int cb_41=0x7f0b009d;
-        public static final int cb_42=0x7f0b009e;
-        public static final int cb_43=0x7f0b009f;
-        public static final int cb_44=0x7f0b00a0;
-        public static final int cb_45=0x7f0b00a1;
-        public static final int cb_46=0x7f0b00a2;
-        public static final int cb_47=0x7f0b00a3;
-        public static final int cb_48=0x7f0b00a4;
-        public static final int cb_5=0x7f0b0055;
-        public static final int cb_6=0x7f0b0056;
-        public static final int cb_7=0x7f0b0057;
-        public static final int cb_8=0x7f0b0058;
-        public static final int cb_9=0x7f0b0075;
-        public static final int cb_a=0x7f0b0147;
-        public static final int cb_m=0x7f0b0145;
-        public static final int cb_relay1=0x7f0b0149;
-        public static final int cb_relay2=0x7f0b014a;
-        public static final int cb_relay3=0x7f0b014b;
-        public static final int cb_relay4=0x7f0b014c;
-        public static final int cb_relay5=0x7f0b014d;
-        public static final int cb_test_pattern_select_all=0x7f0b0140;
-        public static final int checkBox3=0x7f0b0146;
-        public static final int checkbtn_test_pattern_list_item_selected=0x7f0b015a;
-        public static final int complete=0x7f0b0162;
-        public static final int edit_device_param_password=0x7f0b00d0;
-        public static final int edit_device_param_street_id=0x7f0b00cd;
-        public static final int edit_device_param_street_name=0x7f0b00ce;
-        public static final int etPWD=0x7f0b0103;
-        public static final int et_checkUserPassword=0x7f0b015e;
-        public static final int et_contact=0x7f0b0161;
+        public static final int cb_1=0x7f0b0050;
+        public static final int cb_10=0x7f0b0075;
+        public static final int cb_11=0x7f0b0076;
+        public static final int cb_12=0x7f0b0077;
+        public static final int cb_13=0x7f0b0078;
+        public static final int cb_14=0x7f0b0079;
+        public static final int cb_15=0x7f0b007a;
+        public static final int cb_16=0x7f0b007b;
+        public static final int cb_17=0x7f0b007e;
+        public static final int cb_18=0x7f0b007f;
+        public static final int cb_19=0x7f0b0080;
+        public static final int cb_2=0x7f0b0051;
+        public static final int cb_20=0x7f0b0081;
+        public static final int cb_21=0x7f0b0082;
+        public static final int cb_22=0x7f0b0083;
+        public static final int cb_23=0x7f0b0084;
+        public static final int cb_24=0x7f0b0085;
+        public static final int cb_25=0x7f0b0088;
+        public static final int cb_26=0x7f0b0089;
+        public static final int cb_27=0x7f0b008a;
+        public static final int cb_28=0x7f0b008b;
+        public static final int cb_29=0x7f0b008c;
+        public static final int cb_3=0x7f0b0052;
+        public static final int cb_30=0x7f0b008d;
+        public static final int cb_31=0x7f0b008e;
+        public static final int cb_32=0x7f0b008f;
+        public static final int cb_33=0x7f0b0092;
+        public static final int cb_34=0x7f0b0093;
+        public static final int cb_35=0x7f0b0094;
+        public static final int cb_36=0x7f0b0095;
+        public static final int cb_37=0x7f0b0096;
+        public static final int cb_38=0x7f0b0097;
+        public static final int cb_39=0x7f0b0098;
+        public static final int cb_4=0x7f0b0053;
+        public static final int cb_40=0x7f0b0099;
+        public static final int cb_41=0x7f0b009c;
+        public static final int cb_42=0x7f0b009d;
+        public static final int cb_43=0x7f0b009e;
+        public static final int cb_44=0x7f0b009f;
+        public static final int cb_45=0x7f0b00a0;
+        public static final int cb_46=0x7f0b00a1;
+        public static final int cb_47=0x7f0b00a2;
+        public static final int cb_48=0x7f0b00a3;
+        public static final int cb_5=0x7f0b0054;
+        public static final int cb_6=0x7f0b0055;
+        public static final int cb_7=0x7f0b0056;
+        public static final int cb_8=0x7f0b0057;
+        public static final int cb_9=0x7f0b0074;
+        public static final int cb_a=0x7f0b0146;
+        public static final int cb_m=0x7f0b0144;
+        public static final int cb_relay1=0x7f0b0148;
+        public static final int cb_relay2=0x7f0b0149;
+        public static final int cb_relay3=0x7f0b014a;
+        public static final int cb_relay4=0x7f0b014b;
+        public static final int cb_relay5=0x7f0b014c;
+        public static final int cb_test_pattern_select_all=0x7f0b013f;
+        public static final int checkBox3=0x7f0b0145;
+        public static final int checkbtn_test_pattern_list_item_selected=0x7f0b0159;
+        public static final int complete=0x7f0b0161;
+        public static final int edit_device_param_password=0x7f0b00cf;
+        public static final int edit_device_param_street_id=0x7f0b00cc;
+        public static final int edit_device_param_street_name=0x7f0b00cd;
+        public static final int etPWD=0x7f0b0102;
+        public static final int et_checkUserPassword=0x7f0b015d;
+        public static final int et_contact=0x7f0b0160;
         public static final int et_electric_uuid=0x7f0b0026;
         public static final int et_lightid=0x7f0b0010;
         public static final int et_number_id=0x7f0b003c;
         public static final int et_street_name=0x7f0b0025;
-        public static final int et_title=0x7f0b015f;
-        public static final int et_userPassword=0x7f0b015d;
-        public static final int et_work_units=0x7f0b0160;
-        public static final int etuserName=0x7f0b0101;
-        public static final int fragment_layout=0x7f0b0105;
-        public static final int id=0x7f0b0134;
-        public static final int illumination=0x7f0b00a6;
-        public static final int image=0x7f0b00df;
-        public static final int imageView1=0x7f0b00ec;
-        public static final int imageView2=0x7f0b00ee;
-        public static final int imageView3=0x7f0b00f8;
-        public static final int indicator=0x7f0b00fb;
-        public static final int ivDelete=0x7f0b00e3;
-        public static final int iv_control=0x7f0b013c;
-        public static final int iv_tab_1=0x7f0b0107;
-        public static final int iv_tab_2=0x7f0b010a;
-        public static final int iv_tab_3=0x7f0b010c;
-        public static final int iv_tab_4=0x7f0b010e;
-        public static final int iv_tab_5=0x7f0b0110;
-        public static final int line_state=0x7f0b0135;
+        public static final int et_title=0x7f0b015e;
+        public static final int et_userPassword=0x7f0b015c;
+        public static final int et_work_units=0x7f0b015f;
+        public static final int etuserName=0x7f0b0100;
+        public static final int fragment_layout=0x7f0b0104;
+        public static final int id=0x7f0b0133;
+        public static final int illumination=0x7f0b00a5;
+        public static final int image=0x7f0b00de;
+        public static final int imageView1=0x7f0b00eb;
+        public static final int imageView2=0x7f0b00ed;
+        public static final int imageView3=0x7f0b00f7;
+        public static final int indicator=0x7f0b00fa;
+        public static final int ivDelete=0x7f0b00e2;
+        public static final int iv_control=0x7f0b013b;
+        public static final int iv_tab_1=0x7f0b0106;
+        public static final int iv_tab_2=0x7f0b0109;
+        public static final int iv_tab_3=0x7f0b010b;
+        public static final int iv_tab_4=0x7f0b010d;
+        public static final int iv_tab_5=0x7f0b010f;
+        public static final int line_state=0x7f0b0134;
         public static final int linearLayout1=0x7f0b0031;
         public static final int linerlayout1=0x7f0b0028;
-        public static final int listView1=0x7f0b00fd;
+        public static final int listView1=0x7f0b00fc;
         public static final int ll_addUer_back=0x7f0b0024;
         public static final int ll_add_device=0x7f0b001c;
         public static final int ll_add_device_back=0x7f0b001b;
-        public static final int ll_alarm_record=0x7f0b00ad;
-        public static final int ll_device_main_end_time=0x7f0b006f;
-        public static final int ll_device_main_refresh=0x7f0b00b0;
-        public static final int ll_device_main_start_time=0x7f0b006d;
-        public static final int ll_device_param_back=0x7f0b00ca;
-        public static final int ll_device_param_delete=0x7f0b00cb;
-        public static final int ll_electric_parameter1=0x7f0b00b1;
-        public static final int ll_electric_parameter10=0x7f0b00c0;
-        public static final int ll_electric_parameter11=0x7f0b00c1;
-        public static final int ll_electric_parameter2=0x7f0b00b3;
-        public static final int ll_electric_parameter4=0x7f0b00b5;
-        public static final int ll_electric_parameter5=0x7f0b00b7;
-        public static final int ll_electric_parameter7=0x7f0b00ba;
-        public static final int ll_electric_parameter8=0x7f0b00bc;
-        public static final int ll_login=0x7f0b00f1;
-        public static final int ll_prev_device_main=0x7f0b00af;
-        public static final int ll_single_light_control=0x7f0b00c7;
-        public static final int ll_spacing_start_time1=0x7f0b004f;
-        public static final int ll_spacing_start_time2=0x7f0b0073;
-        public static final int ll_spacing_start_time3=0x7f0b007d;
-        public static final int ll_spacing_start_time4=0x7f0b0087;
-        public static final int ll_spacing_start_time5=0x7f0b0091;
-        public static final int ll_spacing_start_time6=0x7f0b009b;
-        public static final int ll_test_pattern_deselect=0x7f0b013e;
-        public static final int ll_test_pattern_select_all=0x7f0b013f;
-        public static final int ll_view=0x7f0b00fe;
+        public static final int ll_alarm_record=0x7f0b00ac;
+        public static final int ll_device_main_end_time=0x7f0b006e;
+        public static final int ll_device_main_refresh=0x7f0b00af;
+        public static final int ll_device_main_start_time=0x7f0b006c;
+        public static final int ll_device_param_back=0x7f0b00c9;
+        public static final int ll_device_param_delete=0x7f0b00ca;
+        public static final int ll_electric_parameter1=0x7f0b00b0;
+        public static final int ll_electric_parameter10=0x7f0b00bf;
+        public static final int ll_electric_parameter11=0x7f0b00c0;
+        public static final int ll_electric_parameter2=0x7f0b00b2;
+        public static final int ll_electric_parameter4=0x7f0b00b4;
+        public static final int ll_electric_parameter5=0x7f0b00b6;
+        public static final int ll_electric_parameter7=0x7f0b00b9;
+        public static final int ll_electric_parameter8=0x7f0b00bb;
+        public static final int ll_login=0x7f0b00f0;
+        public static final int ll_prev_device_main=0x7f0b00ae;
+        public static final int ll_single_light_control=0x7f0b00c6;
+        public static final int ll_spacing_start_time1=0x7f0b004e;
+        public static final int ll_spacing_start_time2=0x7f0b0072;
+        public static final int ll_spacing_start_time3=0x7f0b007c;
+        public static final int ll_spacing_start_time4=0x7f0b0086;
+        public static final int ll_spacing_start_time5=0x7f0b0090;
+        public static final int ll_spacing_start_time6=0x7f0b009a;
+        public static final int ll_test_pattern_deselect=0x7f0b013d;
+        public static final int ll_test_pattern_select_all=0x7f0b013e;
+        public static final int ll_view=0x7f0b00fd;
         public static final int ll_warning_back=0x7f0b0005;
         public static final int lv_alarm_record=0x7f0b0006;
         public static final int lv_single_light=0x7f0b0007;
-        public static final int ly_linear_graph=0x7f0b013d;
-        public static final int main_list=0x7f0b00f3;
-        public static final int main_pattern_layout=0x7f0b0106;
-        public static final int map_pattern_layout=0x7f0b0109;
-        public static final int monitoring=0x7f0b00a8;
-        public static final int name=0x7f0b00e0;
+        public static final int ly_linear_graph=0x7f0b013c;
+        public static final int main_list=0x7f0b00f2;
+        public static final int main_pattern_layout=0x7f0b0105;
+        public static final int map_pattern_layout=0x7f0b0108;
+        public static final int monitoring=0x7f0b00a7;
+        public static final int name=0x7f0b00df;
         public static final int none=0x7f0b0000;
-        public static final int pager=0x7f0b00fc;
+        public static final int pager=0x7f0b00fb;
         public static final int power_layout=0x7f0b002a;
-        public static final int progressbar=0x7f0b00e2;
+        public static final int progressbar=0x7f0b00e1;
         public static final int rb_add_user_administrator=0x7f0b003e;
         public static final int rb_add_user_average_user=0x7f0b0040;
-        public static final int rl_add_user=0x7f0b0117;
+        public static final int rl_add_user=0x7f0b0116;
         public static final int rl_administrator=0x7f0b003d;
         public static final int rl_average_user=0x7f0b003f;
-        public static final int rl_device_main_refresh=0x7f0b0138;
-        public static final int rl_download_configuration=0x7f0b0119;
-        public static final int rl_setting_dandengkongzhi=0x7f0b0116;
-        public static final int rl_setting_fragment_alert_manage=0x7f0b0115;
-        public static final int rl_title=0x7f0b0048;
-        public static final int rlt_upload=0x7f0b0118;
-        public static final int rly_primary_timing=0x7f0b00c8;
-        public static final int rly_subsidiary_timing=0x7f0b00c9;
-        public static final int sb_brightness1=0x7f0b00d4;
-        public static final int sb_brightness2=0x7f0b00d6;
-        public static final int sb_brightness3=0x7f0b00d8;
-        public static final int sb_brightness4=0x7f0b00da;
-        public static final int sb_brightness5=0x7f0b00dc;
-        public static final int sb_brightness6=0x7f0b00de;
-        public static final int sb_single_light_brightness=0x7f0b012d;
-        public static final int scrollView1=0x7f0b011a;
-        public static final int se_test_pattem_fragment_light=0x7f0b0148;
-        public static final int setting_layout=0x7f0b00f7;
-        public static final int single_light_control_start_lamp=0x7f0b0128;
-        public static final int single_light_control_stop_lamp=0x7f0b0129;
-        public static final int single_light_setting_param_text=0x7f0b013a;
+        public static final int rl_device_main_refresh=0x7f0b0137;
+        public static final int rl_download_configuration=0x7f0b0118;
+        public static final int rl_setting_dandengkongzhi=0x7f0b0115;
+        public static final int rl_setting_fragment_alert_manage=0x7f0b0114;
+        public static final int rlt_upload=0x7f0b0117;
+        public static final int rly_primary_timing=0x7f0b00c7;
+        public static final int rly_subsidiary_timing=0x7f0b00c8;
+        public static final int sb_brightness1=0x7f0b00d3;
+        public static final int sb_brightness2=0x7f0b00d5;
+        public static final int sb_brightness3=0x7f0b00d7;
+        public static final int sb_brightness4=0x7f0b00d9;
+        public static final int sb_brightness5=0x7f0b00db;
+        public static final int sb_brightness6=0x7f0b00dd;
+        public static final int sb_single_light_brightness=0x7f0b012c;
+        public static final int scrollView1=0x7f0b0119;
+        public static final int se_test_pattem_fragment_light=0x7f0b0147;
+        public static final int setting_layout=0x7f0b00f6;
+        public static final int single_light_control_start_lamp=0x7f0b0127;
+        public static final int single_light_control_stop_lamp=0x7f0b0128;
+        public static final int single_light_setting_param_text=0x7f0b0139;
         public static final int sp_jurisdiction=0x7f0b0041;
-        public static final int stat_light=0x7f0b0137;
-        public static final int stop_light=0x7f0b0136;
+        public static final int stat_light=0x7f0b0136;
+        public static final int stop_light=0x7f0b0135;
         public static final int street_name=0x7f0b0029;
-        public static final int surfaceView1=0x7f0b00ff;
-        public static final int system_log_layout=0x7f0b00f5;
-        public static final int system_map_layout=0x7f0b00f4;
-        public static final int tb_Light_make=0x7f0b00c5;
-        public static final int tb_alarm_lamp_switch=0x7f0b012b;
-        public static final int tb_relay_switch=0x7f0b0143;
-        public static final int tb_start_or_stop_switch=0x7f0b0071;
-        public static final int test_pattern_layout=0x7f0b00f6;
-        public static final int test_pattern_list=0x7f0b0141;
-        public static final int test_pattern_stop_lights=0x7f0b0151;
+        public static final int surfaceView1=0x7f0b00fe;
+        public static final int system_log_layout=0x7f0b00f4;
+        public static final int system_map_layout=0x7f0b00f3;
+        public static final int tb_Light_make=0x7f0b00c4;
+        public static final int tb_alarm_lamp_switch=0x7f0b012a;
+        public static final int tb_relay_switch=0x7f0b0142;
+        public static final int tb_start_or_stop_switch=0x7f0b0070;
+        public static final int test_pattern_layout=0x7f0b00f5;
+        public static final int test_pattern_list=0x7f0b0140;
+        public static final int test_pattern_stop_lights=0x7f0b0150;
         public static final int textView1=0x7f0b0012;
         public static final int textView10=0x7f0b0032;
         public static final int textView11=0x7f0b0033;
@@ -851,13 +850,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textView13=0x7f0b0035;
         public static final int textView14=0x7f0b0037;
         public static final int textView15=0x7f0b0038;
-        public static final int textView16=0x7f0b011b;
-        public static final int textView17=0x7f0b011c;
-        public static final int textView18=0x7f0b011f;
+        public static final int textView16=0x7f0b011a;
+        public static final int textView17=0x7f0b011b;
+        public static final int textView18=0x7f0b011e;
         public static final int textView2=0x7f0b0030;
         public static final int textView3=0x7f0b0013;
-        public static final int textView31=0x7f0b00f9;
-        public static final int textView312=0x7f0b00fa;
+        public static final int textView31=0x7f0b00f8;
+        public static final int textView312=0x7f0b00f9;
         public static final int textView4=0x7f0b002c;
         public static final int textView5=0x7f0b002e;
         public static final int textView6=0x7f0b002b;
@@ -865,118 +864,118 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textView8=0x7f0b002f;
         public static final int textView9=0x7f0b0036;
         public static final int toggleButton1=0x7f0b0047;
-        public static final int toggleButton3=0x7f0b0113;
-        public static final int toggleButton4=0x7f0b0114;
+        public static final int toggleButton3=0x7f0b0112;
+        public static final int toggleButton4=0x7f0b0113;
         public static final int top=0x7f0b0004;
         public static final int triangle=0x7f0b0001;
-        public static final int tv=0x7f0b0104;
-        public static final int tvPWD=0x7f0b0102;
-        public static final int tv_alarm_ampere=0x7f0b00e6;
+        public static final int tv=0x7f0b0103;
+        public static final int tvPWD=0x7f0b0101;
+        public static final int tv_alarm_ampere=0x7f0b00e5;
         public static final int tv_alarm_date=0x7f0b0044;
-        public static final int tv_alarm_deviceId=0x7f0b00e5;
-        public static final int tv_alarm_device_address=0x7f0b00e9;
-        public static final int tv_alarm_electric=0x7f0b00e8;
-        public static final int tv_alarm_factor=0x7f0b00ea;
-        public static final int tv_alarm_id=0x7f0b00e4;
-        public static final int tv_alarm_lamp_switch=0x7f0b00c6;
-        public static final int tv_alarm_power=0x7f0b00eb;
+        public static final int tv_alarm_deviceId=0x7f0b00e4;
+        public static final int tv_alarm_device_address=0x7f0b00e8;
+        public static final int tv_alarm_electric=0x7f0b00e7;
+        public static final int tv_alarm_factor=0x7f0b00e9;
+        public static final int tv_alarm_id=0x7f0b00e3;
+        public static final int tv_alarm_lamp_switch=0x7f0b00c5;
+        public static final int tv_alarm_power=0x7f0b00ea;
         public static final int tv_alarm_type=0x7f0b0043;
-        public static final int tv_alarm_voltage=0x7f0b00e7;
+        public static final int tv_alarm_voltage=0x7f0b00e6;
         public static final int tv_ampere=0x7f0b000c;
-        public static final int tv_back=0x7f0b004c;
-        public static final int tv_brightness=0x7f0b00c3;
-        public static final int tv_control=0x7f0b0050;
-        public static final int tv_date=0x7f0b00c2;
-        public static final int tv_delete=0x7f0b00cc;
-        public static final int tv_details=0x7f0b005c;
-        public static final int tv_deviceIMEI=0x7f0b0131;
-        public static final int tv_deviceId=0x7f0b005d;
+        public static final int tv_back=0x7f0b004b;
+        public static final int tv_brightness=0x7f0b00c2;
+        public static final int tv_control=0x7f0b004f;
+        public static final int tv_date=0x7f0b00c1;
+        public static final int tv_delete=0x7f0b00cb;
+        public static final int tv_details=0x7f0b005b;
+        public static final int tv_deviceIMEI=0x7f0b0130;
+        public static final int tv_deviceId=0x7f0b005c;
         public static final int tv_device_address=0x7f0b0015;
         public static final int tv_device_editor=0x7f0b0022;
         public static final int tv_device_electricity=0x7f0b0017;
         public static final int tv_device_energy=0x7f0b0019;
         public static final int tv_device_power=0x7f0b0018;
         public static final int tv_device_power_diviseur=0x7f0b001a;
-        public static final int tv_device_status=0x7f0b006c;
+        public static final int tv_device_status=0x7f0b006b;
         public static final int tv_device_type=0x7f0b0014;
         public static final int tv_device_volt=0x7f0b0016;
-        public static final int tv_deviceid=0x7f0b0139;
-        public static final int tv_download_configuration=0x7f0b0122;
+        public static final int tv_deviceid=0x7f0b0138;
+        public static final int tv_download_configuration=0x7f0b0121;
         public static final int tv_dvid=0x7f0b0009;
-        public static final int tv_electric_box_state=0x7f0b00bf;
+        public static final int tv_electric_box_state=0x7f0b00be;
         public static final int tv_electricity=0x7f0b000e;
-        public static final int tv_energy=0x7f0b0132;
-        public static final int tv_guangqiangdu=0x7f0b00ab;
-        public static final int tv_id=0x7f0b005a;
-        public static final int tv_jidianqi=0x7f0b0142;
-        public static final int tv_line=0x7f0b0130;
-        public static final int tv_luminance1=0x7f0b0060;
-        public static final int tv_luminance2=0x7f0b0062;
-        public static final int tv_luminance3=0x7f0b0064;
-        public static final int tv_luminance4=0x7f0b0066;
-        public static final int tv_luminance5=0x7f0b0068;
-        public static final int tv_luminance6=0x7f0b006a;
-        public static final int tv_number=0x7f0b0127;
+        public static final int tv_energy=0x7f0b0131;
+        public static final int tv_guangqiangdu=0x7f0b00aa;
+        public static final int tv_id=0x7f0b0059;
+        public static final int tv_jidianqi=0x7f0b0141;
+        public static final int tv_line=0x7f0b012f;
+        public static final int tv_luminance1=0x7f0b005f;
+        public static final int tv_luminance2=0x7f0b0061;
+        public static final int tv_luminance3=0x7f0b0063;
+        public static final int tv_luminance4=0x7f0b0065;
+        public static final int tv_luminance5=0x7f0b0067;
+        public static final int tv_luminance6=0x7f0b0069;
+        public static final int tv_number=0x7f0b0126;
         public static final int tv_online_status=0x7f0b0008;
-        public static final int tv_pf=0x7f0b012f;
-        public static final int tv_pfav=0x7f0b0133;
+        public static final int tv_pf=0x7f0b012e;
+        public static final int tv_pfav=0x7f0b0132;
         public static final int tv_power=0x7f0b000d;
         public static final int tv_power_factor=0x7f0b000f;
-        public static final int tv_progress=0x7f0b00e1;
-        public static final int tv_progress1=0x7f0b00d3;
-        public static final int tv_progress2=0x7f0b00d5;
-        public static final int tv_progress3=0x7f0b00d7;
-        public static final int tv_progress4=0x7f0b00d9;
-        public static final int tv_progress5=0x7f0b00db;
-        public static final int tv_progress6=0x7f0b00dd;
-        public static final int tv_sequenceId=0x7f0b005e;
-        public static final int tv_shidu=0x7f0b00ac;
-        public static final int tv_single_light_percentage=0x7f0b012c;
-        public static final int tv_single_luminance=0x7f0b006b;
-        public static final int tv_spacing_start_time1=0x7f0b0072;
-        public static final int tv_spacing_start_time2=0x7f0b0074;
-        public static final int tv_spacing_start_time3=0x7f0b007e;
-        public static final int tv_spacing_start_time4=0x7f0b0088;
-        public static final int tv_spacing_start_time5=0x7f0b0092;
-        public static final int tv_spacing_start_time6=0x7f0b009c;
-        public static final int tv_state=0x7f0b005b;
+        public static final int tv_progress=0x7f0b00e0;
+        public static final int tv_progress1=0x7f0b00d2;
+        public static final int tv_progress2=0x7f0b00d4;
+        public static final int tv_progress3=0x7f0b00d6;
+        public static final int tv_progress4=0x7f0b00d8;
+        public static final int tv_progress5=0x7f0b00da;
+        public static final int tv_progress6=0x7f0b00dc;
+        public static final int tv_sequenceId=0x7f0b005d;
+        public static final int tv_shidu=0x7f0b00ab;
+        public static final int tv_single_light_percentage=0x7f0b012b;
+        public static final int tv_single_luminance=0x7f0b006a;
+        public static final int tv_spacing_start_time1=0x7f0b0071;
+        public static final int tv_spacing_start_time2=0x7f0b0073;
+        public static final int tv_spacing_start_time3=0x7f0b007d;
+        public static final int tv_spacing_start_time4=0x7f0b0087;
+        public static final int tv_spacing_start_time5=0x7f0b0091;
+        public static final int tv_spacing_start_time6=0x7f0b009b;
+        public static final int tv_state=0x7f0b005a;
         public static final int tv_street_name=0x7f0b0042;
         public static final int tv_string_dvid=0x7f0b000a;
-        public static final int tv_tab_1=0x7f0b0108;
-        public static final int tv_tab_2=0x7f0b010b;
-        public static final int tv_tab_3=0x7f0b010d;
-        public static final int tv_tab_4=0x7f0b010f;
-        public static final int tv_tab_5=0x7f0b0111;
-        public static final int tv_timing_stages1=0x7f0b005f;
-        public static final int tv_timing_stages2=0x7f0b0061;
-        public static final int tv_timing_stages3=0x7f0b0063;
-        public static final int tv_timing_stages4=0x7f0b0065;
-        public static final int tv_timing_stages5=0x7f0b0067;
-        public static final int tv_timing_stages6=0x7f0b0069;
+        public static final int tv_tab_1=0x7f0b0107;
+        public static final int tv_tab_2=0x7f0b010a;
+        public static final int tv_tab_3=0x7f0b010c;
+        public static final int tv_tab_4=0x7f0b010e;
+        public static final int tv_tab_5=0x7f0b0110;
+        public static final int tv_timing_stages1=0x7f0b005e;
+        public static final int tv_timing_stages2=0x7f0b0060;
+        public static final int tv_timing_stages3=0x7f0b0062;
+        public static final int tv_timing_stages4=0x7f0b0064;
+        public static final int tv_timing_stages5=0x7f0b0066;
+        public static final int tv_timing_stages6=0x7f0b0068;
         public static final int tv_volt=0x7f0b000b;
-        public static final int tvuserName=0x7f0b0100;
-        public static final int txt_Bvolt=0x7f0b00b8;
-        public static final int txt_Cvolt=0x7f0b00b9;
+        public static final int tvuserName=0x7f0b00ff;
+        public static final int txt_Bvolt=0x7f0b00b7;
+        public static final int txt_Cvolt=0x7f0b00b8;
         public static final int txt_add_device_list_item_id=0x7f0b0021;
         public static final int txt_add_device_list_item_street_name=0x7f0b0020;
         public static final int txt_alert_manage_list_item_id=0x7f0b0046;
         public static final int txt_alert_manage_list_item_street_name=0x7f0b0045;
-        public static final int txt_ampere=0x7f0b00bb;
-        public static final int txt_ampereb=0x7f0b00bd;
-        public static final int txt_amperec=0x7f0b00be;
-        public static final int txt_device_main_end_time=0x7f0b0070;
-        public static final int txt_device_main_start_time=0x7f0b006e;
-        public static final int txt_energy=0x7f0b00b4;
-        public static final int txt_life_cycle=0x7f0b00aa;
-        public static final int txt_pass_word=0x7f0b00ef;
-        public static final int txt_psum=0x7f0b00b2;
-        public static final int txt_street_name=0x7f0b00a9;
-        public static final int txt_test_pattern_list_item_street_name=0x7f0b0159;
-        public static final int txt_test_pattern_list_item_uuid=0x7f0b015b;
-        public static final int txt_user_name=0x7f0b00ed;
-        public static final int txt_volt=0x7f0b00b6;
+        public static final int txt_ampere=0x7f0b00ba;
+        public static final int txt_ampereb=0x7f0b00bc;
+        public static final int txt_amperec=0x7f0b00bd;
+        public static final int txt_device_main_end_time=0x7f0b006f;
+        public static final int txt_device_main_start_time=0x7f0b006d;
+        public static final int txt_energy=0x7f0b00b3;
+        public static final int txt_life_cycle=0x7f0b00a9;
+        public static final int txt_pass_word=0x7f0b00ee;
+        public static final int txt_psum=0x7f0b00b1;
+        public static final int txt_street_name=0x7f0b00a8;
+        public static final int txt_test_pattern_list_item_street_name=0x7f0b0158;
+        public static final int txt_test_pattern_list_item_uuid=0x7f0b015a;
+        public static final int txt_user_name=0x7f0b00ec;
+        public static final int txt_volt=0x7f0b00b5;
         public static final int underline=0x7f0b0002;
-        public static final int userName=0x7f0b015c;
+        public static final int userName=0x7f0b015b;
     }
     public static final class integer {
         public static final int default_circle_indicator_orientation=0x7f0a0000;
@@ -1058,8 +1057,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class style {
         /**  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+
+        
          */
         public static final int AppBaseTheme=0x7f040000;
+        /**  All customizations that are NOT specific to a particular API-level can go here. 
+         */
         public static final int AppTheme=0x7f040001;
         public static final int CustomText=0x7f040002;
         public static final int MonitorMainPageIndicator=0x7f040003;
@@ -1091,13 +1098,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #CirclePageIndicator_android_background android:background}</code></td><td></td></tr>
            <tr><td><code>{@link #CirclePageIndicator_android_orientation android:orientation}</code></td><td></td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_centered com.example.ldsightclient_zky:centered}</code></td><td></td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_fillColor com.example.ldsightclient_zky:fillColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_pageColor com.example.ldsightclient_zky:pageColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_radius com.example.ldsightclient_zky:radius}</code></td><td></td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_snap com.example.ldsightclient_zky:snap}</code></td><td></td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_strokeColor com.example.ldsightclient_zky:strokeColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_strokeWidth com.example.ldsightclient_zky:strokeWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_centered com.example.ldsightclient_jgd:centered}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_fillColor com.example.ldsightclient_jgd:fillColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_pageColor com.example.ldsightclient_jgd:pageColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_radius com.example.ldsightclient_jgd:radius}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_snap com.example.ldsightclient_jgd:snap}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_strokeColor com.example.ldsightclient_jgd:strokeColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_strokeWidth com.example.ldsightclient_jgd:strokeWidth}</code></td><td></td></tr>
            </table>
            @see #CirclePageIndicator_android_background
            @see #CirclePageIndicator_android_orientation
@@ -1127,7 +1134,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         */
         public static final int CirclePageIndicator_android_orientation = 0;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#centered}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#centered}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
@@ -1137,11 +1144,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:centered
+          @attr name com.example.ldsightclient_jgd:centered
         */
         public static final int CirclePageIndicator_centered = 2;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#fillColor}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#fillColor}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
@@ -1152,11 +1159,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:fillColor
+          @attr name com.example.ldsightclient_jgd:fillColor
         */
         public static final int CirclePageIndicator_fillColor = 4;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#pageColor}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#pageColor}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
@@ -1167,11 +1174,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:pageColor
+          @attr name com.example.ldsightclient_jgd:pageColor
         */
         public static final int CirclePageIndicator_pageColor = 5;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#radius}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#radius}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
@@ -1183,11 +1190,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:radius
+          @attr name com.example.ldsightclient_jgd:radius
         */
         public static final int CirclePageIndicator_radius = 6;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#snap}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#snap}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
@@ -1197,11 +1204,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:snap
+          @attr name com.example.ldsightclient_jgd:snap
         */
         public static final int CirclePageIndicator_snap = 7;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#strokeColor}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#strokeColor}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
@@ -1212,11 +1219,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:strokeColor
+          @attr name com.example.ldsightclient_jgd:strokeColor
         */
         public static final int CirclePageIndicator_strokeColor = 8;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#strokeWidth}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#strokeWidth}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
@@ -1228,7 +1235,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:strokeWidth
+          @attr name com.example.ldsightclient_jgd:strokeWidth
         */
         public static final int CirclePageIndicator_strokeWidth = 3;
         /** Attributes that can be used with a LinePageIndicator.
@@ -1238,12 +1245,12 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #LinePageIndicator_android_background android:background}</code></td><td></td></tr>
-           <tr><td><code>{@link #LinePageIndicator_centered com.example.ldsightclient_zky:centered}</code></td><td></td></tr>
-           <tr><td><code>{@link #LinePageIndicator_gapWidth com.example.ldsightclient_zky:gapWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #LinePageIndicator_lineWidth com.example.ldsightclient_zky:lineWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #LinePageIndicator_selectedColor com.example.ldsightclient_zky:selectedColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #LinePageIndicator_strokeWidth com.example.ldsightclient_zky:strokeWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #LinePageIndicator_unselectedColor com.example.ldsightclient_zky:unselectedColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_centered com.example.ldsightclient_jgd:centered}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_gapWidth com.example.ldsightclient_jgd:gapWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_lineWidth com.example.ldsightclient_jgd:lineWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_selectedColor com.example.ldsightclient_jgd:selectedColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_strokeWidth com.example.ldsightclient_jgd:strokeWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_unselectedColor com.example.ldsightclient_jgd:unselectedColor}</code></td><td></td></tr>
            </table>
            @see #LinePageIndicator_android_background
            @see #LinePageIndicator_centered
@@ -1264,7 +1271,7 @@ containing a value of this type.
         */
         public static final int LinePageIndicator_android_background = 0;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#centered}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#centered}
           attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
@@ -1274,11 +1281,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:centered
+          @attr name com.example.ldsightclient_jgd:centered
         */
         public static final int LinePageIndicator_centered = 1;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#gapWidth}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#gapWidth}
           attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
@@ -1290,11 +1297,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:gapWidth
+          @attr name com.example.ldsightclient_jgd:gapWidth
         */
         public static final int LinePageIndicator_gapWidth = 6;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#lineWidth}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#lineWidth}
           attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
@@ -1306,11 +1313,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:lineWidth
+          @attr name com.example.ldsightclient_jgd:lineWidth
         */
         public static final int LinePageIndicator_lineWidth = 5;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#selectedColor}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#selectedColor}
           attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
@@ -1321,11 +1328,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:selectedColor
+          @attr name com.example.ldsightclient_jgd:selectedColor
         */
         public static final int LinePageIndicator_selectedColor = 2;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#strokeWidth}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#strokeWidth}
           attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
@@ -1337,11 +1344,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:strokeWidth
+          @attr name com.example.ldsightclient_jgd:strokeWidth
         */
         public static final int LinePageIndicator_strokeWidth = 3;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#unselectedColor}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#unselectedColor}
           attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
@@ -1352,7 +1359,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:unselectedColor
+          @attr name com.example.ldsightclient_jgd:unselectedColor
         */
         public static final int LinePageIndicator_unselectedColor = 4;
         /** Attributes that can be used with a TitlePageIndicator.
@@ -1364,18 +1371,18 @@ containing a value of this type.
            <tr><td><code>{@link #TitlePageIndicator_android_background android:background}</code></td><td></td></tr>
            <tr><td><code>{@link #TitlePageIndicator_android_textColor android:textColor}</code></td><td></td></tr>
            <tr><td><code>{@link #TitlePageIndicator_android_textSize android:textSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_clipPadding com.example.ldsightclient_zky:clipPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerColor com.example.ldsightclient_zky:footerColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorHeight com.example.ldsightclient_zky:footerIndicatorHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorStyle com.example.ldsightclient_zky:footerIndicatorStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorUnderlinePadding com.example.ldsightclient_zky:footerIndicatorUnderlinePadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerLineHeight com.example.ldsightclient_zky:footerLineHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerPadding com.example.ldsightclient_zky:footerPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_linePosition com.example.ldsightclient_zky:linePosition}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_selectedBold com.example.ldsightclient_zky:selectedBold}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_selectedColor com.example.ldsightclient_zky:selectedColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_titlePadding com.example.ldsightclient_zky:titlePadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_topPadding com.example.ldsightclient_zky:topPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_clipPadding com.example.ldsightclient_jgd:clipPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerColor com.example.ldsightclient_jgd:footerColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorHeight com.example.ldsightclient_jgd:footerIndicatorHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorStyle com.example.ldsightclient_jgd:footerIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorUnderlinePadding com.example.ldsightclient_jgd:footerIndicatorUnderlinePadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerLineHeight com.example.ldsightclient_jgd:footerLineHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerPadding com.example.ldsightclient_jgd:footerPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_linePosition com.example.ldsightclient_jgd:linePosition}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_selectedBold com.example.ldsightclient_jgd:selectedBold}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_selectedColor com.example.ldsightclient_jgd:selectedColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_titlePadding com.example.ldsightclient_jgd:titlePadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_topPadding com.example.ldsightclient_jgd:topPadding}</code></td><td></td></tr>
            </table>
            @see #TitlePageIndicator_android_background
            @see #TitlePageIndicator_android_textColor
@@ -1418,7 +1425,7 @@ containing a value of this type.
         */
         public static final int TitlePageIndicator_android_textSize = 0;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#clipPadding}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#clipPadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1430,11 +1437,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:clipPadding
+          @attr name com.example.ldsightclient_jgd:clipPadding
         */
         public static final int TitlePageIndicator_clipPadding = 4;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#footerColor}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#footerColor}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1445,11 +1452,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:footerColor
+          @attr name com.example.ldsightclient_jgd:footerColor
         */
         public static final int TitlePageIndicator_footerColor = 5;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#footerIndicatorHeight}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#footerIndicatorHeight}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1461,11 +1468,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:footerIndicatorHeight
+          @attr name com.example.ldsightclient_jgd:footerIndicatorHeight
         */
         public static final int TitlePageIndicator_footerIndicatorHeight = 8;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#footerIndicatorStyle}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#footerIndicatorStyle}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1479,11 +1486,11 @@ containing a value of this type.
 <tr><td><code>triangle</code></td><td>1</td><td></td></tr>
 <tr><td><code>underline</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name com.example.ldsightclient_zky:footerIndicatorStyle
+          @attr name com.example.ldsightclient_jgd:footerIndicatorStyle
         */
         public static final int TitlePageIndicator_footerIndicatorStyle = 7;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#footerIndicatorUnderlinePadding}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#footerIndicatorUnderlinePadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1495,11 +1502,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:footerIndicatorUnderlinePadding
+          @attr name com.example.ldsightclient_jgd:footerIndicatorUnderlinePadding
         */
         public static final int TitlePageIndicator_footerIndicatorUnderlinePadding = 9;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#footerLineHeight}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#footerLineHeight}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1511,11 +1518,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:footerLineHeight
+          @attr name com.example.ldsightclient_jgd:footerLineHeight
         */
         public static final int TitlePageIndicator_footerLineHeight = 6;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#footerPadding}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#footerPadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1527,11 +1534,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:footerPadding
+          @attr name com.example.ldsightclient_jgd:footerPadding
         */
         public static final int TitlePageIndicator_footerPadding = 10;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#linePosition}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#linePosition}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1544,11 +1551,11 @@ containing a value of this type.
 <tr><td><code>bottom</code></td><td>0</td><td></td></tr>
 <tr><td><code>top</code></td><td>1</td><td></td></tr>
 </table>
-          @attr name com.example.ldsightclient_zky:linePosition
+          @attr name com.example.ldsightclient_jgd:linePosition
         */
         public static final int TitlePageIndicator_linePosition = 11;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#selectedBold}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#selectedBold}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1558,11 +1565,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:selectedBold
+          @attr name com.example.ldsightclient_jgd:selectedBold
         */
         public static final int TitlePageIndicator_selectedBold = 12;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#selectedColor}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#selectedColor}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1573,11 +1580,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:selectedColor
+          @attr name com.example.ldsightclient_jgd:selectedColor
         */
         public static final int TitlePageIndicator_selectedColor = 3;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#titlePadding}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#titlePadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1589,11 +1596,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:titlePadding
+          @attr name com.example.ldsightclient_jgd:titlePadding
         */
         public static final int TitlePageIndicator_titlePadding = 13;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#topPadding}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#topPadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
@@ -1605,7 +1612,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:topPadding
+          @attr name com.example.ldsightclient_jgd:topPadding
         */
         public static final int TitlePageIndicator_topPadding = 14;
         /** Attributes that can be used with a UnderlinePageIndicator.
@@ -1615,10 +1622,10 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #UnderlinePageIndicator_android_background android:background}</code></td><td></td></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_fadeDelay com.example.ldsightclient_zky:fadeDelay}</code></td><td></td></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_fadeLength com.example.ldsightclient_zky:fadeLength}</code></td><td></td></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_fades com.example.ldsightclient_zky:fades}</code></td><td></td></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_selectedColor com.example.ldsightclient_zky:selectedColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_fadeDelay com.example.ldsightclient_jgd:fadeDelay}</code></td><td></td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_fadeLength com.example.ldsightclient_jgd:fadeLength}</code></td><td></td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_fades com.example.ldsightclient_jgd:fades}</code></td><td></td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_selectedColor com.example.ldsightclient_jgd:selectedColor}</code></td><td></td></tr>
            </table>
            @see #UnderlinePageIndicator_android_background
            @see #UnderlinePageIndicator_fadeDelay
@@ -1637,7 +1644,7 @@ containing a value of this type.
         */
         public static final int UnderlinePageIndicator_android_background = 0;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#fadeDelay}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#fadeDelay}
           attribute's value can be found in the {@link #UnderlinePageIndicator} array.
 
 
@@ -1647,11 +1654,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:fadeDelay
+          @attr name com.example.ldsightclient_jgd:fadeDelay
         */
         public static final int UnderlinePageIndicator_fadeDelay = 3;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#fadeLength}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#fadeLength}
           attribute's value can be found in the {@link #UnderlinePageIndicator} array.
 
 
@@ -1661,11 +1668,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:fadeLength
+          @attr name com.example.ldsightclient_jgd:fadeLength
         */
         public static final int UnderlinePageIndicator_fadeLength = 4;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#fades}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#fades}
           attribute's value can be found in the {@link #UnderlinePageIndicator} array.
 
 
@@ -1675,11 +1682,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:fades
+          @attr name com.example.ldsightclient_jgd:fades
         */
         public static final int UnderlinePageIndicator_fades = 2;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#selectedColor}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#selectedColor}
           attribute's value can be found in the {@link #UnderlinePageIndicator} array.
 
 
@@ -1690,7 +1697,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.ldsightclient_zky:selectedColor
+          @attr name com.example.ldsightclient_jgd:selectedColor
         */
         public static final int UnderlinePageIndicator_selectedColor = 1;
         /** Attributes that can be used with a ViewPagerIndicator.
@@ -1699,12 +1706,12 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiCirclePageIndicatorStyle com.example.ldsightclient_zky:vpiCirclePageIndicatorStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiIconPageIndicatorStyle com.example.ldsightclient_zky:vpiIconPageIndicatorStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiLinePageIndicatorStyle com.example.ldsightclient_zky:vpiLinePageIndicatorStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiTabPageIndicatorStyle com.example.ldsightclient_zky:vpiTabPageIndicatorStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiTitlePageIndicatorStyle com.example.ldsightclient_zky:vpiTitlePageIndicatorStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiUnderlinePageIndicatorStyle com.example.ldsightclient_zky:vpiUnderlinePageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiCirclePageIndicatorStyle com.example.ldsightclient_jgd:vpiCirclePageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiIconPageIndicatorStyle com.example.ldsightclient_jgd:vpiIconPageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiLinePageIndicatorStyle com.example.ldsightclient_jgd:vpiLinePageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiTabPageIndicatorStyle com.example.ldsightclient_jgd:vpiTabPageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiTitlePageIndicatorStyle com.example.ldsightclient_jgd:vpiTitlePageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiUnderlinePageIndicatorStyle com.example.ldsightclient_jgd:vpiUnderlinePageIndicatorStyle}</code></td><td></td></tr>
            </table>
            @see #ViewPagerIndicator_vpiCirclePageIndicatorStyle
            @see #ViewPagerIndicator_vpiIconPageIndicatorStyle
@@ -1718,63 +1725,63 @@ containing a value of this type.
             0x7f01001d, 0x7f01001e
         };
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#vpiCirclePageIndicatorStyle}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#vpiCirclePageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.example.ldsightclient_zky:vpiCirclePageIndicatorStyle
+          @attr name com.example.ldsightclient_jgd:vpiCirclePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiCirclePageIndicatorStyle = 0;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#vpiIconPageIndicatorStyle}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#vpiIconPageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.example.ldsightclient_zky:vpiIconPageIndicatorStyle
+          @attr name com.example.ldsightclient_jgd:vpiIconPageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiIconPageIndicatorStyle = 1;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#vpiLinePageIndicatorStyle}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#vpiLinePageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.example.ldsightclient_zky:vpiLinePageIndicatorStyle
+          @attr name com.example.ldsightclient_jgd:vpiLinePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiLinePageIndicatorStyle = 2;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#vpiTabPageIndicatorStyle}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#vpiTabPageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.example.ldsightclient_zky:vpiTabPageIndicatorStyle
+          @attr name com.example.ldsightclient_jgd:vpiTabPageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiTabPageIndicatorStyle = 4;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#vpiTitlePageIndicatorStyle}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#vpiTitlePageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.example.ldsightclient_zky:vpiTitlePageIndicatorStyle
+          @attr name com.example.ldsightclient_jgd:vpiTitlePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiTitlePageIndicatorStyle = 3;
         /**
-          <p>This symbol is the offset where the {@link com.example.ldsightclient_zky.R.attr#vpiUnderlinePageIndicatorStyle}
+          <p>This symbol is the offset where the {@link com.example.ldsightclient_jgd.R.attr#vpiUnderlinePageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.example.ldsightclient_zky:vpiUnderlinePageIndicatorStyle
+          @attr name com.example.ldsightclient_jgd:vpiUnderlinePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiUnderlinePageIndicatorStyle = 5;
     };

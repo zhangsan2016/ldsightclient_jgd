@@ -209,21 +209,16 @@
     <integer name="default_title_indicator_line_position">0</integer>
     <integer name="default_underline_indicator_fade_delay">300</integer>
     <integer name="default_underline_indicator_fade_length">400</integer>
-    <string name="app_name">ld_景观灯</string>
+    <string name="app_name">洛丁智慧城市</string>
     <string name="configuration_download">http://121.40.194.91:8080/excel.xls</string>
     <string name="ip">121.40.194.91</string>
     <string name="system_log">System Log</string>
     <string name="system_map">百度地图</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-
-        -->
+        
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        
     </style>
     <style name="CustomText">
         <item name="android:textSize">20sp</item>

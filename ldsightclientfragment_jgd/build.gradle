@@ -12,7 +12,7 @@ android {
     compileSdkVersion 20
     buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "com.example.ldsightclient_jgd"
+        applicationId "com.example.ldsightclient_zky"
         minSdkVersion 11
         targetSdkVersion 19
     }
@@ -32,7 +32,7 @@ android {
 
         variant.outputs.each { output ->
 
-            output.outputFile = new File(output.outputFile.parent, "LD_安置房" +  ".apk");
+            output.outputFile = new File(output.outputFile.parent, "ldsightclient_zky" +  ".apk");
         }
 
     }

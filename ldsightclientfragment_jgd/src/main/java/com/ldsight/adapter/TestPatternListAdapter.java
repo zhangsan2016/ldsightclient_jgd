@@ -114,7 +114,7 @@ public class TestPatternListAdapter extends BaseAdapter {
                 .findViewById(R.id.txt_test_pattern_list_item_street_name);
         CheckBox checkBox = (CheckBox) view
                 .findViewById(R.id.checkbtn_test_pattern_list_item_selected);
-        if(tags != null && tags.length > 0 ){
+        if(tags != null && tags.length >= position ){
            checkBox.setChecked(tags[position]);
         }
         checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
