@@ -12,7 +12,15 @@
                     "endOffset": 182
                 },
                 "from": {
-                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\arryas.xml"
+                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\arryas.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endLine": 6,
+                        "endColumn": 19,
+                        "endOffset": 188
+                    }
                 }
             },
             {
@@ -43,7 +51,14 @@
                     "endOffset": 313
                 },
                 "from": {
-                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\strings.xml"
+                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 3,
+                        "startOffset": 340,
+                        "endColumn": 85,
+                        "endOffset": 422
+                    }
                 }
             },
             {
@@ -55,7 +70,14 @@
                     "endOffset": 358
                 },
                 "from": {
-                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\strings.xml"
+                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 10,
+                        "startOffset": 120,
+                        "endColumn": 50,
+                        "endOffset": 160
+                    }
                 }
             },
             {
@@ -67,7 +89,14 @@
                     "endOffset": 402
                 },
                 "from": {
-                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\strings.xml"
+                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 296,
+                        "endColumn": 43,
+                        "endOffset": 335
+                    }
                 }
             },
             {
@@ -79,7 +108,14 @@
                     "endOffset": 446
                 },
                 "from": {
-                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\strings.xml"
+                    "file": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\values-zh-rCN\\strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 428,
+                        "endColumn": 43,
+                        "endOffset": 467
+                    }
                 }
             }
         ]

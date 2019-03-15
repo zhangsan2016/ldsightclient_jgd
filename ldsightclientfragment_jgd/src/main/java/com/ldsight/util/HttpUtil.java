@@ -43,7 +43,10 @@ public class HttpUtil {
                     List<Cookie> cookies = cookieStore.get(httpUrl.host());
 
                     if(cookies==null){
-                        LogUtil.e("没加载到cookie");
+                        //LogUtil.e("没加载到cookie");
+                        System.out.println(" OkHttpClient 没加载到cookie");
+                    }else{
+                        System.out.println(" OkHttpClient 加载到cookie");
                     }
                     return cookies != null ? cookies : new ArrayList<Cookie>();
                 }

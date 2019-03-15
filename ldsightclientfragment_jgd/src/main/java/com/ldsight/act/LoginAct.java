@@ -522,4 +522,5 @@ public class LoginAct extends Activity {
 		}
 		return b.toString();
 	}
+
 }
