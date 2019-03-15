@@ -487,7 +487,8 @@
         android:layout_height="55dp"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -518,7 +519,8 @@
         android:layout_height="55dp"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -550,7 +552,8 @@
         android:layout_height="55dp"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="fill_parent"

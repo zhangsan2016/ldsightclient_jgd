@@ -200,6 +200,9 @@ public class LoginAct extends Activity {
 					@Override
 					public void onResponse(Call call, Response response) throws IOException {
 						String json = response.body().string();
+						/*Log.e("xxx", "成功 json = " + json);
+						stopProgress();*/
+
 						Gson gson = new Gson();
 						LoginInfo loginInfo = gson.fromJson(json, LoginInfo.class);
 						if(loginInfo.isB()){
@@ -344,12 +347,10 @@ public class LoginAct extends Activity {
 
 	/**
 	 *  获取sookie做持久化操作
-	 * @param url
+	 * @param url Response 地址
 	 * @param loginInfo
 	 */
 	private void getSookie(String url, final LoginInfo loginInfo) {
-
-
 
 		HttpUtil.sendGetSookieHttpRequest(url, new Callback() {
 

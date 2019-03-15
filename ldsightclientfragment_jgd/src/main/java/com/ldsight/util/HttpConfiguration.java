@@ -12,6 +12,8 @@ public class HttpConfiguration {
     public static final String  _Clientuuid = "13,11,99,99,99,99,99,99,99,99,99,99,99,99,99,12";
     public static final String urlSend = "http://47.99.177.66:9000/send ";
     public static final String urlPoll = "http://47.99.177.66:9000/poll ";
+    public static final String urlLoginToken = "http://47.99.168.98:9002/api/Common.asmx/LoginToken";
+
     public static final int NET = 6;
 
     public class PushType{
