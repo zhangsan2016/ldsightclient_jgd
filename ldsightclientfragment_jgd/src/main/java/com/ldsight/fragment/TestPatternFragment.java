@@ -855,6 +855,8 @@ public class TestPatternFragment  extends BaseFragment {
                         Gson gson = new Gson();
                         ElectricTransducer electricTransducer = gson.fromJson(json, ElectricTransducer.class);
 
+                        // 清空之前电箱
+                        electricityBoxList.clear();
                         for (int i = 0; i < electricTransducer.getData().size(); i++) {
                             getElectricalBox(electricTransducer.getData().get(i).getId());
                         }
@@ -909,7 +911,7 @@ public class TestPatternFragment  extends BaseFragment {
                             @Override
                             public void run() {
                                 adapter.changeTags();
-                                listView.requestLayout();
+                               // listView.requestLayout();
                                 adapter.notifyDataSetChanged();
                             }
                         });

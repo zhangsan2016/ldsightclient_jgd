@@ -729,6 +729,12 @@ public class DeviceTiming extends BaseActivity {
         }
         LogUtil.e("xxx jsonStr = " + jsonStr);
 
+        if(ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null){
+            showToast("服务器无法连接，请稍后再试！");
+            stopProgress();
+            return;
+        }
+
         jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
         int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
         RequestBody requestBody = new FormBody.Builder()
