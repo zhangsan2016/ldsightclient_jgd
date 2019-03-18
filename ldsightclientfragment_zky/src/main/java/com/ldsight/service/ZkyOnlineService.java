@@ -243,8 +243,9 @@ public class ZkyOnlineService extends Service {
 
     @Override
     public void onDestroy() {
+        stoped = true;
         super.onDestroy();
         LogUtil.e("service onDestroy 被执行");
-        stoped = true;
+
     }
 }
