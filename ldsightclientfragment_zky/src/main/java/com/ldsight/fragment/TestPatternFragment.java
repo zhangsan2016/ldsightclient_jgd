@@ -64,6 +64,7 @@ import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+
 public class TestPatternFragment extends BaseFragment {
     public static String TestPatternFragmentBroadcast = "TestPatternFragmentBroadcast"; // 广播接收者
     private JsonObjectRequest jsonObjRequest;
@@ -83,23 +84,26 @@ public class TestPatternFragment extends BaseFragment {
     private Button btRelayFullOpen, btRelayAllOff;
     private CheckBox cb_relay1, cb_relay2, cb_relay3, cb_relay4, cb_relay5;
     private LoginInfo loginInfo;
+    private Context context;
 
 
-    public TestPatternFragment() {super(null);}
-
-    public TestPatternFragment(Context context) {
-        super(context);
+    public TestPatternFragment() {
     }
 
-    public static Fragment newInstance(Context context,LoginInfo loginInfo){
-        TestPatternFragment fragment = new TestPatternFragment(context);
+
+    public static Fragment newInstance(Context context, LoginInfo loginInfo) {
+        TestPatternFragment fragment = new TestPatternFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("loginInfo", loginInfo);
-        bundle.putString("string", "zhangsan");
         fragment.setArguments(bundle);
         return fragment;
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        context = activity;
+    }
 
     /**
      * 电箱列表
@@ -149,9 +153,9 @@ public class TestPatternFragment extends BaseFragment {
                 .getApplicationContext());
 
         // 获取传递过来的数据
-      //  loginInfo = (LoginInfo) getActivity().getIntent().getSerializableExtra("loginInfo");
-      //  loginInfo = (LoginInfo)  getArguments().getString("loginInfo");
-        loginInfo = (LoginInfo)  getArguments().getSerializable("loginInfo");
+        //  loginInfo = (LoginInfo) getActivity().getIntent().getSerializableExtra("loginInfo");
+        //  loginInfo = (LoginInfo)  getArguments().getString("loginInfo");
+        loginInfo = (LoginInfo) getArguments().getSerializable("loginInfo");
 
         //  showProgress();
         // 初始化View
@@ -487,7 +491,7 @@ public class TestPatternFragment extends BaseFragment {
                                                             pusher = new Pusher(MyApplication.getIp(), 9966,
                                                                     5000);
                                                             pusher.push0x20Message(uuid, data);
-												/*	for (int i = 0; i < 2; i++) {
+                                                /*	for (int i = 0; i < 2; i++) {
 														Thread.sleep(2000);
 														pusher.push0x20Message(uuid, data);
 													}*/
@@ -885,48 +889,48 @@ public class TestPatternFragment extends BaseFragment {
      */
     public void getElectricalBox(final String id) {
 
-                RequestBody requestBody = new FormBody.Builder()
-                        .add("strTemplate", "{\"ischeck\":$data.rows}")
-                        .add("ID", id)
-                        .build();
-                String url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyTwo";
+        RequestBody requestBody = new FormBody.Builder()
+                .add("strTemplate", "{\"ischeck\":$data.rows}")
+                .add("ID", id)
+                .build();
+        String url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyTwo";
 
-                HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+        HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
 
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Log.e("xxx", "失败" + e.toString());
-                    }
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("xxx", "失败" + e.toString());
+            }
 
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        String json = response.body().string();
-                        Log.e("xxx", "成功获取电箱设备" + json);
-                        Gson gson = new Gson();
-                        ElectricityBox electricityBox = gson.fromJson(json, ElectricityBox.class);
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String json = response.body().string();
+                Log.e("xxx", "成功获取电箱设备" + json);
+                Gson gson = new Gson();
+                ElectricityBox electricityBox = gson.fromJson(json, ElectricityBox.class);
 
                     /*    for (int i = 0; i < electricityBox.getData().size(); i++) {
                             getElectricityState(electricityBox.getData().get(i).getUuid());
                         }*/
 
-                        // 保存在 List中
-                        electricityBoxList.addAll(electricityBox.getData());
+                // 保存在 List中
+                electricityBoxList.addAll(electricityBox.getData());
 
 
-                        // 更新 listview
-                        Activity activity = (Activity) context;
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                adapter.changeTags();
-                                adapter.notifyDataSetChanged();
-                            }
-                        });
-
-                        LogUtil.e("electricityBoxList.size" + electricityBoxList.size());
-
+                // 更新 listview
+                Activity activity = (Activity) context;
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.changeTags();
+                        adapter.notifyDataSetChanged();
                     }
-                }, requestBody);
+                });
+
+                LogUtil.e("electricityBoxList.size" + electricityBoxList.size());
+
+            }
+        }, requestBody);
 
 
     }

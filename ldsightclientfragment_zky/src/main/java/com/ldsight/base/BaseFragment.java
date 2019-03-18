@@ -1,7 +1,6 @@
 package com.ldsight.base;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -20,12 +19,10 @@ public abstract class BaseFragment  extends Fragment {
     private static final int SHOW_PROGRESS = 21;
     // 关闭加载框
     private static final int STOP_PROGRESS = 22;
-    protected final Context context;
     // 加载框
     private ProgressDialog mProgress;
 
-    public BaseFragment(Context context) {
-        this.context = context;
+    public BaseFragment() {
 
     }
 
@@ -35,11 +32,11 @@ public abstract class BaseFragment  extends Fragment {
             switch (msg.what) {
                 case SHOW_TOAST:
                     String text = (String) msg.obj;
-                    Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
                     break;
 
                 case SHOW_PROGRESS:
-                    mProgress = ProgressDialog.show(context, "", "Loading...", true, false);
+                    mProgress = ProgressDialog.show(getActivity(), "", "Loading...", true, false);
                     break;
 
                 case STOP_PROGRESS:
