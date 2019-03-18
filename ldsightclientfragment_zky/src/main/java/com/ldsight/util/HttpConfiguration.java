@@ -10,6 +10,7 @@ public class HttpConfiguration {
 
     //	String _Clientuuid = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1";
    // public static final String  _Clientuuid = "13,11,99,99,99,99,99,99,99,99,99,99,99,99,99,12";
+    public static String  UUID_SCRIPT = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
     public static String  _Clientuuid = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
     public static final String urlSend = "http://47.99.177.66:9000/send ";
     public static final String urlPoll = "http://47.99.177.66:9000/poll ";

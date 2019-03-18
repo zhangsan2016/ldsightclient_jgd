@@ -545,7 +545,7 @@ public class LoginAct extends Activity {
 			result[i] =  (byte) b;
 		}
 		// 拼接appuuid
-		byte[] uuidScript = getByteUuid(HttpConfiguration._Clientuuid);
+		byte[] uuidScript = getByteUuid(HttpConfiguration.UUID_SCRIPT);
 		System.arraycopy(result, 0, uuidScript,uuidScript.length - result.length, result.length);
 
 		// 判断uuid是否正确生成

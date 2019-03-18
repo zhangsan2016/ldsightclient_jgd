@@ -48,7 +48,7 @@ public class ParameterAct extends FragmentActivity {
 
 		// 获取传递过来的参数
 		int fragmentFlag = getIntent().getIntExtra(FRAGMENT_FLAG, SYSTEM_LOG);
-		LoginInfo loginInfo = (LoginInfo) getIntent().getSerializableExtra("loginInfo");
+		final LoginInfo loginInfo = (LoginInfo) getIntent().getSerializableExtra("loginInfo");
 
 		if (fragmentFlag == SYSTEM_LOG) {
 			// 在程序中加入Fragment
@@ -66,11 +66,11 @@ public class ParameterAct extends FragmentActivity {
 			FragmentTransaction fragmentTransaction = fragmentManager
 					.beginTransaction();
 			if (testPatternFragment == null) {
-				testPatternFragment = new TestPatternFragment(this);
+				testPatternFragment = (TestPatternFragment) TestPatternFragment.newInstance(ParameterAct.this,loginInfo);
 			}
 			// 传递登录对象到fragment
-			Bundle args = new Bundle();
-			args.putSerializable("loginInfo", loginInfo);
+			/*Bundle args = new Bundle();
+			args.putSerializable("loginInfo", loginInfo);*/
 			fragmentTransaction.add(R.id.fragment_layout, testPatternFragment);
 			fragmentTransaction.commit();
 		} else if (fragmentFlag == SETTING) {
@@ -141,7 +141,7 @@ public class ParameterAct extends FragmentActivity {
 				mThreeImage.setImageResource(R.drawable.parameter_test1);
 				mThreeText.setTextColor(Color.parseColor("#00B28A"));
 				if(testPatternFragment == null){
-					 testPatternFragment = new TestPatternFragment(ParameterAct.this);
+					testPatternFragment = (TestPatternFragment) TestPatternFragment.newInstance(ParameterAct.this,loginInfo);
 				}
 			//	TestPatternFragment testPatternFragment = new TestPatternFragment(ParameterAct.this);
 				getSupportFragmentManager().beginTransaction()

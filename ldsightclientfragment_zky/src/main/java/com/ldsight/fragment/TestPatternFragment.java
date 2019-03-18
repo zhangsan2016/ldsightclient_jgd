@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -90,6 +91,16 @@ public class TestPatternFragment extends BaseFragment {
         super(context);
     }
 
+    public static Fragment newInstance(Context context,LoginInfo loginInfo){
+        TestPatternFragment fragment = new TestPatternFragment(context);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("loginInfo", loginInfo);
+        bundle.putString("string", "zhangsan");
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+
     /**
      * 电箱列表
      */
@@ -138,7 +149,9 @@ public class TestPatternFragment extends BaseFragment {
                 .getApplicationContext());
 
         // 获取传递过来的数据
-        loginInfo = (LoginInfo) getActivity().getIntent().getSerializableExtra("loginInfo");
+      //  loginInfo = (LoginInfo) getActivity().getIntent().getSerializableExtra("loginInfo");
+      //  loginInfo = (LoginInfo)  getArguments().getString("loginInfo");
+        loginInfo = (LoginInfo)  getArguments().getSerializable("loginInfo");
 
         //  showProgress();
         // 初始化View
@@ -904,13 +917,10 @@ public class TestPatternFragment extends BaseFragment {
                         electricityBoxList.addAll(electricityBox.getData());
 
                         // 更新 listview
-
                         Activity activity = (Activity) context;
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                adapter.changeTags();
-                                // listView.requestLayout();
                                 adapter.notifyDataSetChanged();
                             }
                         });
