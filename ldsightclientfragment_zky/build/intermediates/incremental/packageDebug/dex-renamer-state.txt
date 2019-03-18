@@ -1,4 +1,4 @@
-#Mon Mar 18 13:56:28 CST 2019
+#Mon Mar 18 14:15:59 CST 2019
 base.0=I\:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_zky\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
 file.0=I\:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_zky\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

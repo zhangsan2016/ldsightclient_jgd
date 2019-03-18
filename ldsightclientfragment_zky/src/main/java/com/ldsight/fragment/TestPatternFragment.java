@@ -872,7 +872,6 @@ public class TestPatternFragment extends BaseFragment {
                         for (int i = 0; i < electricTransducer.getData().size(); i++) {
                             getElectricalBox(electricTransducer.getData().get(i).getId());
                         }
-
                     }
                 }, requestBody);
             }
@@ -886,9 +885,6 @@ public class TestPatternFragment extends BaseFragment {
      */
     public void getElectricalBox(final String id) {
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
                 RequestBody requestBody = new FormBody.Builder()
                         .add("strTemplate", "{\"ischeck\":$data.rows}")
                         .add("ID", id)
@@ -916,20 +912,22 @@ public class TestPatternFragment extends BaseFragment {
                         // 保存在 List中
                         electricityBoxList.addAll(electricityBox.getData());
 
+
                         // 更新 listview
                         Activity activity = (Activity) context;
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                adapter.changeTags();
                                 adapter.notifyDataSetChanged();
                             }
                         });
 
+                        LogUtil.e("electricityBoxList.size" + electricityBoxList.size());
 
                     }
                 }, requestBody);
-            }
-        }).start();
+
 
     }
 
