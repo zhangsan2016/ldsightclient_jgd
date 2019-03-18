@@ -63,8 +63,7 @@ import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
-public class TestPatternFragment  extends BaseFragment {
+public class TestPatternFragment extends BaseFragment {
     public static String TestPatternFragmentBroadcast = "TestPatternFragmentBroadcast"; // 广播接收者
     private JsonObjectRequest jsonObjRequest;
     private RequestQueue mVolleyQueue;
@@ -80,19 +79,21 @@ public class TestPatternFragment  extends BaseFragment {
 
     // 设置继电器
     private Button btRelaySetting;
-    private Button btRelayFullOpen,btRelayAllOff;
+    private Button btRelayFullOpen, btRelayAllOff;
     private CheckBox cb_relay1, cb_relay2, cb_relay3, cb_relay4, cb_relay5;
     private LoginInfo loginInfo;
 
+
+    public TestPatternFragment() {super(null);}
 
     public TestPatternFragment(Context context) {
         super(context);
     }
 
     /**
-     *  电箱列表
+     * 电箱列表
      */
-    private List<ElectricityBox.ElectricityBoxList> electricityBoxList  = new ArrayList<ElectricityBox.ElectricityBoxList>();
+    private List<ElectricityBox.ElectricityBoxList> electricityBoxList = new ArrayList<ElectricityBox.ElectricityBoxList>();
 
     private Handler myHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -122,8 +123,6 @@ public class TestPatternFragment  extends BaseFragment {
     };
 
 
-
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -131,7 +130,7 @@ public class TestPatternFragment  extends BaseFragment {
                 container, false);
 
         listView = (ListView) rootView.findViewById(R.id.test_pattern_list);
-        adapter = new TestPatternListAdapter(TestPatternFragment.this.getActivity(),electricityBoxList);
+        adapter = new TestPatternListAdapter(TestPatternFragment.this.getActivity(), electricityBoxList);
         listView.setAdapter(adapter);
 
         streetAndDevices = new ArrayList<StreetAndDevice>();
@@ -139,9 +138,9 @@ public class TestPatternFragment  extends BaseFragment {
                 .getApplicationContext());
 
         // 获取传递过来的数据
-        loginInfo = (LoginInfo)  getActivity().getIntent().getSerializableExtra("loginInfo");
+        loginInfo = (LoginInfo) getActivity().getIntent().getSerializableExtra("loginInfo");
 
-      //  showProgress();
+        //  showProgress();
         // 初始化View
         initView(rootView);
 
@@ -390,7 +389,7 @@ public class TestPatternFragment  extends BaseFragment {
                                                                     5000);
                                                             pusher.push0x20Message(uuid, data);
                                                 /*	for (int i = 0; i < 2; i++) {
-														Thread.sleep(2000);
+                                                        Thread.sleep(2000);
 														pusher.push0x20Message(uuid, data);
 													}*/
                                                             pusher.push0x20Message(uuid,
@@ -633,7 +632,6 @@ public class TestPatternFragment  extends BaseFragment {
         });
 
 
-
         // 接收更新广播
         IntentFilter filter = new IntentFilter(TestPatternFragment.TestPatternFragmentBroadcast);
         TestPatternFragment.this.getActivity().getApplicationContext().registerReceiver(dataRefreshReceiver, filter);
@@ -643,8 +641,9 @@ public class TestPatternFragment  extends BaseFragment {
 
 
     /**
-     *  设置继电器
+     * 设置继电器
      * 五个继电器对应用十进制前五位，0代表开，1代表关
+     *
      * @param relayOrderNub 开关指令
      */
     private void relaySetting(final int relayOrderNub) {
@@ -654,18 +653,18 @@ public class TestPatternFragment  extends BaseFragment {
         RelayStateJson relayStateJson = new RelayStateJson();
         relayStateJson.setConfirm(512);
         relayStateJson.setRel_State(relayOrderNub);
-        String jsonStr =  gson.toJson(relayStateJson) + "#";
+        String jsonStr = gson.toJson(relayStateJson) + "#";
         LogUtil.e("xxx jsonStr = " + jsonStr);
-        if(ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null){
+        if (ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null) {
             showToast("服务器无法连接，请稍后再试！");
             stopProgress();
             return;
         }
-        jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
+        jsonStr = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
         int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
         RequestBody requestBody = new FormBody.Builder()
                 .add("version", "225")
-                .add("type",  type + "")
+                .add("type", type + "")
                 .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
                 .add("uuidFrom", HttpConfiguration._Clientuuid)
                 .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
@@ -807,15 +806,15 @@ public class TestPatternFragment  extends BaseFragment {
                         Gson gson = new Gson();
                         ProjectItem projectItem = gson.fromJson(json, ProjectItem.class);
 
-                        if(projectItem.isB()){
-                            if(projectItem != null && projectItem.getData() != null && projectItem.getData().size() > 0){
+                        if (projectItem.isB()) {
+                            if (projectItem != null && projectItem.getData() != null && projectItem.getData().size() > 0) {
                                 for (int i = 0; i < projectItem.getData().size(); i++) {
                                     getElectricTransducer(projectItem.getData().get(i).getId());
                                 }
-                            }else{
+                            } else {
                                 showToast("连接服务器失败！");
                             }
-                       }else {
+                        } else {
                             showToast("获取数据失败：" + projectItem.getMsg().toString());
                         }
 
@@ -831,7 +830,7 @@ public class TestPatternFragment  extends BaseFragment {
      *
      * @param id 项目id
      */
-    public  void getElectricTransducer(final String id) {
+    public void getElectricTransducer(final String id) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -872,7 +871,7 @@ public class TestPatternFragment  extends BaseFragment {
      *
      * @param id 变电器id
      */
-    public  void getElectricalBox(final String id) {
+    public void getElectricalBox(final String id) {
 
         new Thread(new Runnable() {
             @Override
@@ -911,7 +910,7 @@ public class TestPatternFragment  extends BaseFragment {
                             @Override
                             public void run() {
                                 adapter.changeTags();
-                               // listView.requestLayout();
+                                // listView.requestLayout();
                                 adapter.notifyDataSetChanged();
                             }
                         });
@@ -961,44 +960,44 @@ public class TestPatternFragment  extends BaseFragment {
         boolean[] tags = adapter.getTags();
         for (int i = 0; i < tags.length; i++) {
             if (tags[i]) {
-                LogUtil.e("i = " + i +"xxx Name = " + electricityBoxList.get(i).getText().trim());
+                LogUtil.e("i = " + i + "xxx Name = " + electricityBoxList.get(i).getText().trim());
 
                 // 创建json指令
                 Gson gson = new Gson();
-                String jsonStr ="";
+                String jsonStr = "";
                 // 判断主、辅或者全亮 Dimming，主灯亮度值FirDimming，副灯亮度值SecDimming
-                if(cbM.isChecked() && cbA.isChecked()){
+                if (cbM.isChecked() && cbA.isChecked()) {
                     DimmingJson dimmingJson = new DimmingJson();
                     dimmingJson.setConfirm(4);
                     dimmingJson.setDimming(brightness);
-                    jsonStr =   gson.toJson(dimmingJson) + "#";
-                }else if(cbM.isChecked()){
+                    jsonStr = gson.toJson(dimmingJson) + "#";
+                } else if (cbM.isChecked()) {
                     FirDimmingJson firDimmingJson = new FirDimmingJson();
                     firDimmingJson.setConfirm(4);
                     firDimmingJson.setFirDimming(brightness);
-                    jsonStr =   gson.toJson(firDimmingJson) + "#";
-                }else if(cbA.isChecked()){
+                    jsonStr = gson.toJson(firDimmingJson) + "#";
+                } else if (cbA.isChecked()) {
                     SecDimmingJson secDimmingJson = new SecDimmingJson();
                     secDimmingJson.setConfirm(4);
                     secDimmingJson.setSecDimming(brightness);
-                    jsonStr =   gson.toJson(secDimmingJson) + "#";
+                    jsonStr = gson.toJson(secDimmingJson) + "#";
                 }
 
                 LogUtil.e("xxx jsonStr = " + jsonStr);
-                if(ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null){
+                if (ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null) {
                     showToast("服务器无法连接，请稍后再试！");
                     stopProgress();
                     return;
                 }
 
-                jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
+                jsonStr = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
                 int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
                 RequestBody requestBody = new FormBody.Builder()
                         .add("version", "225")
-                        .add("type",  type + "")
+                        .add("type", type + "")
                         .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
                         .add("uuidFrom", HttpConfiguration._Clientuuid)
-                       // .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
+                        // .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
                         .add("uuidTo", electricityBoxList.get(i).getUuid())
                         .add("crc", "")
                         .add("data", jsonStr)

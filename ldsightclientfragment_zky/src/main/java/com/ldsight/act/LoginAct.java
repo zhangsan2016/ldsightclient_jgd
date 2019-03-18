@@ -29,12 +29,14 @@ import com.ldsight.entity.LoginInfo;
 import com.ldsight.service.UpdateService;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.CustomUtils;
+import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
 
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -150,7 +152,6 @@ public class LoginAct extends Activity {
 		if (CustomUtils.isNetworkConnected(LoginAct.this)) {
 			// 根据登录的次数判断是否检测更新
 			int clientCount = preferences.getInt("client_count", 0);
-			System.out.println("client_count =" + clientCount);
 			if (clientCount % 2 == 0) {
 				// 检测版本更新
 				new checkNewestVersionAsyncTask().execute();
@@ -364,6 +365,12 @@ public class LoginAct extends Activity {
 			public void onResponse(Call call, Response response) throws IOException {
 				Log.e("xxx", "成功" + response.body().string());
 
+				// 获取uuid
+				boolean uuidState = getAppUuid(username);
+				if(!uuidState){
+					showToast("本地生成应用UUID失败！");
+                    return;
+				}
 
 				// 保存用户名和密码
 				SharedPreferences.Editor editor = preferences.edit();
@@ -522,5 +529,55 @@ public class LoginAct extends Activity {
 		}
 		return b.toString();
 	}
+
+
+	/**
+	 *  根据用户名转换为ascii码，拼接成uuid
+	 * @param username  用户名
+	 * @return
+	 */
+	public static boolean getAppUuid(String username){
+		byte[] result =  new byte[username.length()];
+		int max = username.length();
+		for (int i=0; i<max; i++){
+			char c = username.charAt(i);
+			int b = (int)c;
+			result[i] =  (byte) b;
+		}
+		// 拼接appuuid
+		byte[] uuidScript = getByteUuid(HttpConfiguration._Clientuuid);
+		System.arraycopy(result, 0, uuidScript,uuidScript.length - result.length, result.length);
+
+		// 判断uuid是否正确生成
+		int sum = 0;
+		for (int i = 0; i < uuidScript.length; i++) {
+			sum += uuidScript[i];
+		}
+		if(sum > 1){
+			String appUuid = Arrays.toString(uuidScript);
+			appUuid =  appUuid.substring(1, appUuid.length()-1);
+			HttpConfiguration._Clientuuid = appUuid;
+			LogUtil.e("uuidScript = " +HttpConfiguration._Clientuuid);
+			return true;
+		}
+
+		return false;
+	}
+
+
+	/**
+	 *  String uuid 转 byte uuid
+	 * @param uuid
+	 * @return
+	 */
+	public static byte[] getByteUuid(String uuid) {
+		byte[] byteUuid = new byte[16];
+		String[] struuid = uuid.split(",");
+		for (int i = 0; i < byteUuid.length; i++) {
+			byteUuid[i] = Byte.parseByte(struuid[i]);
+		}
+		return byteUuid;
+	}
+
 
 }

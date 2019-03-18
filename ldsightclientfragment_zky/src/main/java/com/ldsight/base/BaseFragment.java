@@ -25,8 +25,11 @@ public abstract class BaseFragment  extends Fragment {
     private ProgressDialog mProgress;
 
     public BaseFragment(Context context) {
-        this.context = context;
-
+        if(context != null){
+            this.context = context;
+        }else{
+            this.context = getActivity();
+        }
     }
 
     private Handler baseHandler = new Handler() {
