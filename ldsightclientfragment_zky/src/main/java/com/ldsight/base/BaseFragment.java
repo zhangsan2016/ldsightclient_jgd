@@ -66,4 +66,10 @@ public abstract class BaseFragment  extends Fragment {
         baseHandler.sendEmptyMessage(STOP_PROGRESS);
     }
 
+    protected void delayedStopsendProgress(long millisecond) {
+        baseHandler.sendEmptyMessageDelayed(STOP_PROGRESS,1000);
+    }
+
+
+
 }

@@ -62,4 +62,8 @@ public class BaseActivity extends Activity {
         baseHandler.sendEmptyMessage(STOP_PROGRESS);
     }
 
+    protected void delayedStopsendProgress(long millisecond) {
+        baseHandler.sendEmptyMessageDelayed(STOP_PROGRESS,millisecond);
+    }
+
 }

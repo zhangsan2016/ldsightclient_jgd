@@ -86,9 +86,14 @@ public class DeviceTiming extends BaseActivity {
     // 开关灯的小时分钟
     private String startTimeH, startTimeM, endTimeH, endTimeM;
     // 其他四段段调光
-    private String timeTwoH,timeTwoM,timeThirH,timeThirM,timeFourH,timeFourM,timeFifH,timeFifM,timeSixH,timeSixM;
+    private String timeTwoH, timeTwoM, timeThirH, timeThirM, timeFourH, timeFourM, timeFifH, timeFifM, timeSixH, timeSixM;
     // 亮度
-    private int brightness1,brightness2,brightness3,brightness4,brightness5;
+    private int brightness1, brightness2, brightness3, brightness4, brightness5;
+
+    //  Progress加载框延迟关闭时间，毫秒
+    private long stopProgressTime = 3000;
+
+
 
     private Handler myHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -152,86 +157,85 @@ public class DeviceTiming extends BaseActivity {
 
         // 开关灯时间
         if (electricityDeviceStatus == null) {
-            return ;
-        }else {
+            return;
+        } else {
             // 判断设置主灯还是辅灯
-          if(advocateComplementaryCode == DeviceMainAct.PRINCIPAL){
+            if (advocateComplementaryCode == DeviceMainAct.PRINCIPAL) {
 
-              // 主灯获取开始时间和结束时间
-              String[] startTimeArrays = electricityDeviceStatus.getFir_tt_Fir().split(":");
-              startTimeH = String.format("%02d", Integer.parseInt(startTimeArrays[0]));
-              startTimeM = String.format("%02d", Integer.parseInt(startTimeArrays[1]));
-              brightness1 = Integer.parseInt(electricityDeviceStatus.getFir_tp_Fir());
+                // 主灯获取开始时间和结束时间
+                String[] startTimeArrays = electricityDeviceStatus.getFir_tt_Fir().split(":");
+                startTimeH = String.format("%02d", Integer.parseInt(startTimeArrays[0]));
+                startTimeM = String.format("%02d", Integer.parseInt(startTimeArrays[1]));
+                brightness1 = Integer.parseInt(electricityDeviceStatus.getFir_tp_Fir());
 
-              String[] endTimeArrays = electricityDeviceStatus.getSix_tt_Fir().split(":");
-              endTimeH = String.format("%02d", Integer.parseInt(endTimeArrays[0]));
-              endTimeM = String.format("%02d", Integer.parseInt(endTimeArrays[1]));
-              brightness2 = Integer.parseInt( electricityDeviceStatus.getSec_tp_Fir());
+                String[] endTimeArrays = electricityDeviceStatus.getSix_tt_Fir().split(":");
+                endTimeH = String.format("%02d", Integer.parseInt(endTimeArrays[0]));
+                endTimeM = String.format("%02d", Integer.parseInt(endTimeArrays[1]));
+                brightness2 = Integer.parseInt(electricityDeviceStatus.getSec_tp_Fir());
 
-              //  五段
-              String[] timeTwoArrays = electricityDeviceStatus.getSec_tt_Fir().split(":");
-              timeTwoH = String.format("%02d", Integer.parseInt(timeTwoArrays[0]));
-              timeTwoM = String.format("%02d", Integer.parseInt(timeTwoArrays[1]));
-              brightness3 = Integer.parseInt(electricityDeviceStatus.getThir_tp_Fir());
+                //  五段
+                String[] timeTwoArrays = electricityDeviceStatus.getSec_tt_Fir().split(":");
+                timeTwoH = String.format("%02d", Integer.parseInt(timeTwoArrays[0]));
+                timeTwoM = String.format("%02d", Integer.parseInt(timeTwoArrays[1]));
+                brightness3 = Integer.parseInt(electricityDeviceStatus.getThir_tp_Fir());
 
-              String[] timeThirArrays = electricityDeviceStatus.getThir_tt_Fir().split(":");
-              timeThirH = String.format("%02d", Integer.parseInt(timeThirArrays[0]));
-              timeThirM = String.format("%02d", Integer.parseInt(timeThirArrays[1]));
-              brightness4 = Integer.parseInt(electricityDeviceStatus.getFour_tp_Fir());
+                String[] timeThirArrays = electricityDeviceStatus.getThir_tt_Fir().split(":");
+                timeThirH = String.format("%02d", Integer.parseInt(timeThirArrays[0]));
+                timeThirM = String.format("%02d", Integer.parseInt(timeThirArrays[1]));
+                brightness4 = Integer.parseInt(electricityDeviceStatus.getFour_tp_Fir());
 
-              String[] timeFourArrays = electricityDeviceStatus.getFour_tt_Fir().split(":");
-              timeFourH = String.format("%02d", Integer.parseInt(timeFourArrays[0]));
-              timeFourM = String.format("%02d", Integer.parseInt(timeFourArrays[1]));
-              brightness5 = Integer.parseInt(electricityDeviceStatus.getFif_tp_Fir());
+                String[] timeFourArrays = electricityDeviceStatus.getFour_tt_Fir().split(":");
+                timeFourH = String.format("%02d", Integer.parseInt(timeFourArrays[0]));
+                timeFourM = String.format("%02d", Integer.parseInt(timeFourArrays[1]));
+                brightness5 = Integer.parseInt(electricityDeviceStatus.getFif_tp_Fir());
 
-              String[] timeFifArrays = electricityDeviceStatus.getFif_tt_Fir().split(":");
-              timeFifH = String.format("%02d", Integer.parseInt(timeFifArrays[0]));
-              timeFifM = String.format("%02d", Integer.parseInt(timeFifArrays[1]));
+                String[] timeFifArrays = electricityDeviceStatus.getFif_tt_Fir().split(":");
+                timeFifH = String.format("%02d", Integer.parseInt(timeFifArrays[0]));
+                timeFifM = String.format("%02d", Integer.parseInt(timeFifArrays[1]));
 
-              String[] timeSixArrays = electricityDeviceStatus.getSix_tt_Fir().split(":");
-              timeSixH = String.format("%02d", Integer.parseInt(timeSixArrays[0]));
-              timeSixM = String.format("%02d", Integer.parseInt(timeSixArrays[1]));
+                String[] timeSixArrays = electricityDeviceStatus.getSix_tt_Fir().split(":");
+                timeSixH = String.format("%02d", Integer.parseInt(timeSixArrays[0]));
+                timeSixM = String.format("%02d", Integer.parseInt(timeSixArrays[1]));
 
 
+            } else if (advocateComplementaryCode == DeviceMainAct.SUBSIDIARY) {
 
-          }else if(advocateComplementaryCode == DeviceMainAct.SUBSIDIARY){
+                // 辅灯获取开始时间和结束时间
+                String[] startTimeArrays = electricityDeviceStatus.getFir_tt_Sec().split(":");
+                startTimeH = String.format("%02d", Integer.parseInt(startTimeArrays[0]));
+                startTimeM = String.format("%02d", Integer.parseInt(startTimeArrays[1]));
+                brightness1 = Integer.parseInt(electricityDeviceStatus.getFir_tp_Sec());
 
-              // 辅灯获取开始时间和结束时间
-              String[] startTimeArrays = electricityDeviceStatus.getFir_tt_Sec().split(":");
-              startTimeH = String.format("%02d", Integer.parseInt(startTimeArrays[0]));
-              startTimeM = String.format("%02d", Integer.parseInt(startTimeArrays[1]));
-              brightness1 = Integer.parseInt(electricityDeviceStatus.getFir_tp_Sec());
+                String[] endTimeArrays = electricityDeviceStatus.getSix_tt_Sec().split(":");
+                endTimeH = String.format("%02d", Integer.parseInt(endTimeArrays[0]));
+                endTimeM = String.format("%02d", Integer.parseInt(endTimeArrays[1]));
+                brightness2 = Integer.parseInt(electricityDeviceStatus.getSec_tp_Sec());
 
-              String[] endTimeArrays = electricityDeviceStatus.getSix_tt_Sec().split(":");
-              endTimeH = String.format("%02d", Integer.parseInt(endTimeArrays[0]));
-              endTimeM = String.format("%02d", Integer.parseInt(endTimeArrays[1]));
-              brightness2 = Integer.parseInt( electricityDeviceStatus.getSec_tp_Sec());
+                // 五段
+                String[] timeTwoArrays = electricityDeviceStatus.getSec_tt_Sec().split(":");
+                timeTwoH = String.format("%02d", Integer.parseInt(timeTwoArrays[0]));
+                timeTwoM = String.format("%02d", Integer.parseInt(timeTwoArrays[1]));
+                brightness3 = Integer.parseInt(electricityDeviceStatus.getThir_tp_Sec());
 
-              // 五段
-              String[] timeTwoArrays = electricityDeviceStatus.getSec_tt_Sec().split(":");
-              timeTwoH = String.format("%02d", Integer.parseInt(timeTwoArrays[0]));
-              timeTwoM = String.format("%02d", Integer.parseInt(timeTwoArrays[1]));
-              brightness3 = Integer.parseInt(electricityDeviceStatus.getThir_tp_Sec());
+                String[] timeThirArrays = electricityDeviceStatus.getThir_tt_Sec().split(":");
+                timeThirH = String.format("%02d", Integer.parseInt(timeThirArrays[0]));
+                timeThirM = String.format("%02d", Integer.parseInt(timeThirArrays[1]));
+                brightness4 = Integer.parseInt(electricityDeviceStatus.getFour_tp_Sec());
 
-              String[] timeThirArrays = electricityDeviceStatus.getThir_tt_Sec().split(":");
-              timeThirH = String.format("%02d", Integer.parseInt(timeThirArrays[0]));
-              timeThirM = String.format("%02d", Integer.parseInt(timeThirArrays[1]));
-              brightness4 = Integer.parseInt(electricityDeviceStatus.getFour_tp_Sec());
+                String[] timeFourArrays = electricityDeviceStatus.getFour_tt_Sec().split(":");
+                timeFourH = String.format("%02d", Integer.parseInt(timeFourArrays[0]));
+                timeFourM = String.format("%02d", Integer.parseInt(timeFourArrays[1]));
+                brightness5 = Integer.parseInt(electricityDeviceStatus.getFif_tp_Sec());
 
-              String[] timeFourArrays = electricityDeviceStatus.getFour_tt_Sec().split(":");
-              timeFourH = String.format("%02d", Integer.parseInt(timeFourArrays[0]));
-              timeFourM = String.format("%02d", Integer.parseInt(timeFourArrays[1]));
-              brightness5 = Integer.parseInt(electricityDeviceStatus.getFif_tp_Sec());
+                String[] timeFifArrays = electricityDeviceStatus.getFif_tt_Sec().split(":");
+                timeFifH = String.format("%02d", Integer.parseInt(timeFifArrays[0]));
+                timeFifM = String.format("%02d", Integer.parseInt(timeFifArrays[1]));
 
-              String[] timeFifArrays = electricityDeviceStatus.getFif_tt_Sec().split(":");
-              timeFifH = String.format("%02d", Integer.parseInt(timeFifArrays[0]));
-              timeFifM = String.format("%02d", Integer.parseInt(timeFifArrays[1]));
+                String[] timeSixArrays = electricityDeviceStatus.getSix_tt_Sec().split(":");
+                timeSixH = String.format("%02d", Integer.parseInt(timeSixArrays[0]));
+                timeSixM = String.format("%02d", Integer.parseInt(timeSixArrays[1]));
 
-              String[] timeSixArrays = electricityDeviceStatus.getSix_tt_Sec().split(":");
-              timeSixH = String.format("%02d", Integer.parseInt(timeSixArrays[0]));
-              timeSixM = String.format("%02d", Integer.parseInt(timeSixArrays[1]));
-
-          }
+            }
         }
     }
 
@@ -297,7 +301,7 @@ public class DeviceTiming extends BaseActivity {
         // 设置六段定时时间
         tv_spacing_start_time1.setText(startTimeH + ":" + startTimeM);
         tv_spacing_start_time2.setText(timeTwoH + ":" + timeTwoM);
-        tv_spacing_start_time3.setText(timeFifH + ":" +  timeFifM);
+        tv_spacing_start_time3.setText(timeFifH + ":" + timeFifM);
         tv_spacing_start_time4.setText(timeFourH + ":" + timeFourM);
         tv_spacing_start_time5.setText(timeFifH + ":" + timeFifM);
         tv_spacing_start_time6.setText(timeSixH + ":" + timeSixM);
@@ -473,22 +477,15 @@ public class DeviceTiming extends BaseActivity {
 
         @Override
         public void onClick(View v) {
+
             Intent intent;
             switch (v.getId()) {
                 case R.id.btn_ok_device_main:
+                    // 显示加载框
                     showProgress();
                     new Thread() {
                         public void run() {
                             getTimingParameter();
-                            try {
-                                sleep(5000);
-                            } catch (InterruptedException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                            }
-
-                            // finish();
-
                         }
 
                     }.start();
@@ -661,17 +658,20 @@ public class DeviceTiming extends BaseActivity {
 
     private void getTimingParameter() {
 
+        // 保存当前时间
+        final long currentRecordTime = System.currentTimeMillis();
+
         // 定时开始结束时间
      /*   String txtStartTimeAry = txtStartTime.getText().toString().trim();
         String txtEndTimeAry = txtEndTime.getText().toString().trim();*/
 
         // 六段调光时间
-        String timingTime1 = tv_spacing_start_time1.getText().toString().replaceAll(" ","");
-        String timingTime2 = tv_spacing_start_time2.getText().toString().replaceAll(" ","");
-        String timingTime3 = tv_spacing_start_time3.getText().toString().replaceAll(" ","");
-        String timingTime4 = tv_spacing_start_time4.getText().toString().replaceAll(" ","");
-        String timingTime5 = tv_spacing_start_time5.getText().toString().replaceAll(" ","");
-        String timingTime6 = tv_spacing_start_time6.getText().toString().replaceAll(" ","");
+        String timingTime1 = tv_spacing_start_time1.getText().toString().replaceAll(" ", "");
+        String timingTime2 = tv_spacing_start_time2.getText().toString().replaceAll(" ", "");
+        String timingTime3 = tv_spacing_start_time3.getText().toString().replaceAll(" ", "");
+        String timingTime4 = tv_spacing_start_time4.getText().toString().replaceAll(" ", "");
+        String timingTime5 = tv_spacing_start_time5.getText().toString().replaceAll(" ", "");
+        String timingTime6 = tv_spacing_start_time6.getText().toString().replaceAll(" ", "");
 
         // 六段调光亮度
         int progress1 = sb_brightness1.getProgress();
@@ -682,12 +682,11 @@ public class DeviceTiming extends BaseActivity {
         int progress6 = sb_brightness6.getProgress();
 
 
-
         // 创建json指令
         Gson gson = new Gson();
-        String jsonStr ="";
+        String jsonStr = "";
         // 判断主辅灯
-        if(advocateComplementaryCode == DeviceMainAct.PRINCIPAL){
+        if (advocateComplementaryCode == DeviceMainAct.PRINCIPAL) {
 
             // 主灯定时指令
             MasterTimingJson zkyJson = new MasterTimingJson();
@@ -702,12 +701,12 @@ public class DeviceTiming extends BaseActivity {
             zkyJson.setFour_tt_Fir(timingTime4);
             zkyJson.setFour_tp_Fir(progress4);
             zkyJson.setFif_tt_Fir(timingTime5);
-            zkyJson.setFif_tp_Fir(progress5 );
+            zkyJson.setFif_tp_Fir(progress5);
             zkyJson.setSix_tt_Fir(timingTime6);
             zkyJson.setSix_tp_Fir(progress6);
             jsonStr = gson.toJson(zkyJson) + "#";
 
-        }else if(advocateComplementaryCode == DeviceMainAct.SUBSIDIARY){
+        } else if (advocateComplementaryCode == DeviceMainAct.SUBSIDIARY) {
             // 辅灯定时指令
             SubsidiaryTimingJson zkyJson = new SubsidiaryTimingJson();
             zkyJson.setConfirm(7);
@@ -729,21 +728,21 @@ public class DeviceTiming extends BaseActivity {
         }
         LogUtil.e("xxx jsonStr = " + jsonStr);
 
-        if(ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null){
+        if (ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null) {
             showToast("服务器无法连接，请稍后再试！");
             stopProgress();
             return;
         }
 
-        jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
+        jsonStr = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
         int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
         RequestBody requestBody = new FormBody.Builder()
                 .add("version", "225")
-                .add("type",  type + "")
+                .add("type", type + "")
                 .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
                 .add("uuidFrom", HttpConfiguration._Clientuuid)
-            //    .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
-                .add("uuidTo",  electricityDeviceStatus.getUUID())
+                //    .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
+                .add("uuidTo", electricityDeviceStatus.getUUID())
                 .add("crc", "")
                 .add("data", jsonStr)
                 .build();
@@ -753,8 +752,12 @@ public class DeviceTiming extends BaseActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("xxx", "定时指令发送失败！" + e.toString());
+
+                // 延迟关闭加载框
+                long delayedTime =   ( System.currentTimeMillis() - currentRecordTime ) < stopProgressTime ? stopProgressTime - ( System.currentTimeMillis() - currentRecordTime ): 0;
+                LogUtil.e("delayedTime = " + delayedTime);
+                delayedStopsendProgress(delayedTime);
                 showToast("定时指令发送失败！");
-                stopProgress();
             }
 
             @Override
@@ -763,9 +766,11 @@ public class DeviceTiming extends BaseActivity {
 
                 Log.e("xxx", "定时指令发送成功！" + json);
 
+                // 延迟关闭加载框
+               long delayedTime =   ( System.currentTimeMillis() - currentRecordTime ) < stopProgressTime ? stopProgressTime - ( System.currentTimeMillis() - currentRecordTime ): 0;
+                LogUtil.e("delayedTime = " + delayedTime);
+                delayedStopsendProgress(delayedTime);
                 showToast("定时指令发送成功！");
-
-                stopProgress();
 
             }
 
@@ -773,7 +778,7 @@ public class DeviceTiming extends BaseActivity {
         }, requestBody);
 
         // 推送定时到下位机
-      //  pusher(timeData);
+        //  pusher(timeData);
 
     }
 

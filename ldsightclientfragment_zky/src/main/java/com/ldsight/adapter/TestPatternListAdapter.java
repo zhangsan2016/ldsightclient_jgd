@@ -24,6 +24,9 @@ public class TestPatternListAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private ArrayList<StreetAndDevice> streetAndDevices;
     private boolean[] tags;
+    // 最快关闭 Progress 时间
+    private long stopsendProgressTime = 3000;
+
 
     public void selectAll() {
         for (int i = 0; i < tags.length; i++) {
