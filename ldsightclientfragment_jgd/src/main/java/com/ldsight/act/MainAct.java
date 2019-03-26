@@ -327,9 +327,7 @@ public class MainAct extends Activity {
 											}
 										}else if (cku.getUserName().equals(
 												"csazf")) {
-											if (!streetId.equals("SZ1061")
-													&& !streetId
-													.equals("SZ1062")) {
+											if (!streetId.equals("SZ1060")) {
 												continue;
 											}
 										} else if (cku.getUserName().equals(

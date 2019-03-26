@@ -1,13 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\btn_continue01.png",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-ldpi\\btn_continue01.png"
-    },
-    {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\btn_continue02.png",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-ldpi\\btn_continue02.png"
-    },
-    {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\btn_continue01.png",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-ldpi\\btn_continue01.png"
     },
@@ -18,9 +10,5 @@
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\btn_continue02.png",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-ldpi\\btn_continue02.png"
-    },
-    {
-        "merged": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\btn_cancel01.png",
-        "source": "C:\\Users\\ldgd\\Desktop\\xx\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable-ldpi\\btn_cancel01.png"
     }
 ]
