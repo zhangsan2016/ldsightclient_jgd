@@ -223,8 +223,12 @@ public class LoginAct extends Activity {
 										LoginAct.this, CatalogAct.class);
 								startActivity(intent);*/
 
-								Intent intent = new Intent(LoginAct.this, ParameterAct.class);
+					/*			Intent intent = new Intent(LoginAct.this, ParameterAct.class);
 								intent.putExtra(ParameterAct.FRAGMENT_FLAG, ParameterAct.MAIN);
+								startActivity(intent);*/
+
+
+								Intent intent = new Intent(LoginAct.this, BrightenMain.class);
 								startActivity(intent);
 
 

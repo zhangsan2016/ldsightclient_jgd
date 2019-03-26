@@ -72,12 +72,12 @@
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\switch_selector.xml"
     },
     {
-        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_indicator.xml",
-        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\bundles\\default\\res\\drawable\\vpi__tab_indicator.xml"
-    },
-    {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\single_light_setting_device_btn_bg.9.png",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\src\\main\\res\\drawable\\single_light_setting_device_btn_bg.9.png"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_indicator.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ViewPagerIndicator_library\\build\\intermediates\\bundles\\default\\res\\drawable\\vpi__tab_indicator.xml"
     },
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_jgd\\build\\intermediates\\res\\merged\\debug\\drawable\\brighten_main_listview_item_bg.9.png",
