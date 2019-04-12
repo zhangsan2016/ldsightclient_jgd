@@ -3,14 +3,18 @@ package com.ldsight.act;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ldsightclient_jgd.R;
 import com.ldsight.entity.LoginInfo;
@@ -231,4 +235,34 @@ public class ParameterAct extends FragmentActivity {
 		Intent stopIntent = new Intent(this,ZkyOnlineService.class);
 		stopService(stopIntent);
 	}
+
+
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			flag = true;
+			super.handleMessage(msg);
+		}
+	};
+
+	public boolean flag = true;
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+
+		if (keyCode == event.KEYCODE_BACK) {
+
+			if (flag) {
+				flag = false;
+				handler.sendEmptyMessageDelayed(0, 2000);
+				Toast.makeText(this,"再按一次退出！",Toast.LENGTH_SHORT).show();
+				return true;
+			}
+
+		}
+
+
+		return super.onKeyUp(keyCode, event);
+	}
+
+
 }

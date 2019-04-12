@@ -48,7 +48,7 @@ public class SystemLogFragment extends Fragment {
 		mXYMultipleSeriesRenderer = new XYMultipleSeriesRenderer();
 		mDataset = new XYMultipleSeriesDataset();
 
-		//String[] streetNames = { "安置房1", "安置房2", "安置房3" };
+	//	String[] streetNames = { "安置房1", "安置房2", "安置房3" };
 		String[] streetNames = {};
 
 		colors = new int[] { Color.GREEN, Color.RED, Color.YELLOW, Color.BLUE,
