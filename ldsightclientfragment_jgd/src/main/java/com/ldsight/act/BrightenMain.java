@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -643,4 +644,34 @@ public class BrightenMain extends Activity {
     private void showProgress() {
         updataHandler.sendEmptyMessage(0);
     }
+
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            flag = true;
+            super.handleMessage(msg);
+        }
+    };
+
+    public boolean flag = true;
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+
+        if (keyCode == event.KEYCODE_BACK) {
+
+            if (flag) {
+                flag = false;
+                handler.sendEmptyMessageDelayed(0, 2000);
+                Toast.makeText(this,"再按一次退出！",Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+        }
+
+
+        return super.onKeyUp(keyCode, event);
+    }
+
+
 }
