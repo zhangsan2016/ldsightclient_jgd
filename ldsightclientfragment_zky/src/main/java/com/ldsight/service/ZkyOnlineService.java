@@ -14,6 +14,7 @@ import com.ldsight.entity.HeartbeatStatis;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
+import com.ldsight.util.UuidSet;
 
 import java.io.IOException;
 
@@ -32,6 +33,10 @@ public class ZkyOnlineService extends Service {
     public boolean stoped = false;
     public final int HEARTBEAT = 10;
     public static HeartbeatStatis heartbeatStatis;
+    /**
+     * 更换uuid使用的uuid位置
+     */
+    public int uuidIndex = 0;
 
     private Handler handler = new Handler() {
 
@@ -47,13 +52,13 @@ public class ZkyOnlineService extends Service {
 
                     // 保存心跳返回数据
                     Gson gson = new Gson();
-                    HeartbeatStatis  statis = gson.fromJson(json, HeartbeatStatis.class);
+                    HeartbeatStatis statis = gson.fromJson(json, HeartbeatStatis.class);
 
-                    if(statis != null && statis.getData() != null){
+                    if (statis != null && statis.getData() != null) {
                         // 判断数据状态
                         if (statis.isB()) {
                             // 等于0表示返回成功
-                            if(statis.getData().getISessionKey() !=  0){
+                            if (statis.getData().getISessionKey() != 0) {
                                 try {
                                     heartbeatStatis = (HeartbeatStatis) statis.clone();
                                 } catch (CloneNotSupportedException e) {
@@ -61,14 +66,36 @@ public class ZkyOnlineService extends Service {
                                 }
                             }
 
-                            Log.e("startHeartbeat", "heartbeatStatis = " + heartbeatStatis.toString());
+                        //    Log.e("startHeartbeat", "heartbeatStatis = " + heartbeatStatis.toString());
                         } else {
+
                             LogUtil.e("startHeartbeat" + "心跳异常 ,请稍等60秒..." + "\n");
                             heartbeatStatis = null;
                             // 重新发送心跳包
                             //  heartbeatStatis = new HeartbeatStatis();
                             // sendHttpHeartbeat(); 6274420
                         }
+                    }else{
+
+                        LogUtil.e("startHeartbeat" + "心跳异常 ,请稍等60秒..." + "\n");
+                        heartbeatStatis = null;
+                        // 更换其他的uuid尝试重新连接
+                      /*  if(uuidIndex > UuidSet.UUID_SET.size()){
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }*/
+                        String newUuid = UuidSet.UUID_SET.get(uuidIndex);
+                        if (HttpConfiguration._Clientuuid.equals(newUuid)) {
+                            uuidIndex++;
+                            uuidIndex = uuidIndex % UuidSet.UUID_SET.size();
+                            newUuid = UuidSet.UUID_SET.get(uuidIndex);
+                        }
+                        HttpConfiguration._Clientuuid = newUuid;
+                        LogUtil.e("startHeartbeat" + "当前UUID = " +  HttpConfiguration._Clientuuid);
+                        sendHttpHeartbeat();
                     }
 
                     break;
@@ -78,7 +105,6 @@ public class ZkyOnlineService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
         // 发送心跳
         startHeartbeat();
 
@@ -92,7 +118,7 @@ public class ZkyOnlineService extends Service {
                     try {
                         pullData();
                         Thread.sleep(6000);
-                      //  pullData();
+                        //  pullData();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -181,14 +207,14 @@ public class ZkyOnlineService extends Service {
 
     }
 
-    private  int key = 0;
+
     private synchronized void sendHttpHeartbeat() {
 
         new Thread(new Runnable() {
             @Override
             public void run() {
 
-
+                int key = 0;
                 if (heartbeatStatis != null && heartbeatStatis.getData() != null) {
                     key = heartbeatStatis.getData().getISessionKey();
                 }
@@ -203,7 +229,7 @@ public class ZkyOnlineService extends Service {
                         .add("data", "")
                         .build();
 
-                LogUtil.e(" String.valueOf(key) = " + String.valueOf(key));
+                LogUtil.e(" String.valueOf(key) = " + String.valueOf(key) + "    当前UUID= " +  HttpConfiguration._Clientuuid);
 
                 HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
 
@@ -211,7 +237,7 @@ public class ZkyOnlineService extends Service {
                     public void onFailure(Call call, IOException e) {
                         Log.e("startHeartbeat", "startHeartbeat失败" + e.toString());
                         Looper.prepare();
-                        Toast.makeText(ZkyOnlineService.this.getApplicationContext(),"服务器连接超时！",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ZkyOnlineService.this.getApplicationContext(), "服务器连接超时！", Toast.LENGTH_SHORT).show();
                         Looper.loop();
 
 
@@ -246,6 +272,7 @@ public class ZkyOnlineService extends Service {
     public void onDestroy() {
         stoped = true;
         super.onDestroy();
+        stopSelf();
         LogUtil.e("service onDestroy 被执行");
 
     }
