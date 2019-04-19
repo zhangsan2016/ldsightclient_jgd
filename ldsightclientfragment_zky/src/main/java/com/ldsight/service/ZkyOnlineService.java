@@ -27,7 +27,7 @@ public class ZkyOnlineService extends Service {
     /**
      * 心跳间隔
      */
-    public int heartbeatInterval = 50;
+    public int heartbeatInterval = 2;
     public long lastSent = 0;
     public boolean stoped = false;
     public final int HEARTBEAT = 10;
@@ -67,7 +67,7 @@ public class ZkyOnlineService extends Service {
                             heartbeatStatis = null;
                             // 重新发送心跳包
                             //  heartbeatStatis = new HeartbeatStatis();
-                            // sendHttpHeartbeat();
+                            // sendHttpHeartbeat(); 6274420
                         }
                     }
 
@@ -181,12 +181,13 @@ public class ZkyOnlineService extends Service {
 
     }
 
+    private  int key = 0;
     private synchronized void sendHttpHeartbeat() {
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int key = 0;
+
 
                 if (heartbeatStatis != null && heartbeatStatis.getData() != null) {
                     key = heartbeatStatis.getData().getISessionKey();

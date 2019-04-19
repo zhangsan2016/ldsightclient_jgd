@@ -118,7 +118,12 @@ public class TestPatternListAdapter extends BaseAdapter {
         CheckBox checkBox = (CheckBox) view
                 .findViewById(R.id.checkbtn_test_pattern_list_item_selected);
         if(tags != null && tags.length >= position ){
-           checkBox.setChecked(tags[position]);
+            try {
+                checkBox.setChecked(tags[position]);
+            }catch(Exception e) {
+                LogUtil.e(" checkBox.setChecked(tags[position]); 异常 = " + e.toString());
+            }
+
         }
         checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView,
