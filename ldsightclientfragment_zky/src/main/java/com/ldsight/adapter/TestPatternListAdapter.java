@@ -132,7 +132,10 @@ public class TestPatternListAdapter extends BaseAdapter {
             }
         });
         //	uuid.setText(streetAndDevices.get(position).getStreetId());
-        streetName.setText(electricityBoxList.get(position).getText());
+        if(electricityBoxList.size() >= position && position != 0){
+            streetName.setText(electricityBoxList.get(position).getText());
+        }
+
         return view;
     }
 }

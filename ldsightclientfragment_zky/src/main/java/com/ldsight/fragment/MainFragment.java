@@ -63,7 +63,7 @@ public class MainFragment extends Fragment {
     private RequestQueue mVolleyQueue;
     private ArrayList<StreetAndDevice> streetAndDevices;
     private List<String> cableIsAbnormal = new ArrayList<String>();
-    MainListAdapter adapter;
+    private MainListAdapter adapter;
     private ProgressDialog mProgress;
     /*
      * 版本信息
@@ -114,6 +114,7 @@ public class MainFragment extends Fragment {
             makeSampleHttpRequest(loginInfo.getData().get(0).getID());
         }
 
+        electricityBoxList.clear();
         adapter = new MainListAdapter(MainFragment.this.getActivity(),
                 electricityBoxList, cableIsAbnormal);
 

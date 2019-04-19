@@ -209,7 +209,7 @@ public class LoginAct extends Activity {
 						if(loginInfo.isB()){
 
 							Log.e("xxx", "成功" + loginInfo.getData().get(0).getResponse());
-							// 持久化
+							// cookie持久化
 							String url = loginInfo.getData().get(0).getResponse();
 							getSookie(url,loginInfo);
 
