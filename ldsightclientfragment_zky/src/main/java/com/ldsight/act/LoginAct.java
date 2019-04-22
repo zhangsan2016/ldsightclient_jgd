@@ -90,8 +90,8 @@ public class LoginAct extends Activity {
 
 
 		// 测试
-		/*((EditText) findViewById(R.id.txt_user_name)).setText("ysdx");
-		((EditText) findViewById(R.id.txt_pass_word)).setText("ysdx");*/
+		((EditText) findViewById(R.id.txt_user_name)).setText("ldshow");
+		((EditText) findViewById(R.id.txt_pass_word)).setText("123456");
 
 		mVolleyQueue = Volley.newRequestQueue(this);
 

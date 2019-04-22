@@ -1018,7 +1018,7 @@ public class TestPatternFragment extends BaseFragment {
 
                 LogUtil.e("xxx jsonStr = " + jsonStr);
                 if (ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null) {
-                    showToast("服务器无法连接，请稍后再试！");
+                    showToast("服务器无法连接，请间隔 1 分钟后再试！");
                     stopProgress();
                     return;
                 }

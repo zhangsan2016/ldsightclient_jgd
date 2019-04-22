@@ -28,7 +28,8 @@ public class ZkyOnlineService extends Service {
     /**
      * 心跳间隔
      */
-    public int heartbeatInterval = 2;
+    public int heartbeatInterval = 50;
+
     public long lastSent = 0;
     public boolean stoped = false;
     public final int HEARTBEAT = 10;
@@ -57,7 +58,7 @@ public class ZkyOnlineService extends Service {
                     if (statis != null && statis.getData() != null) {
                         // 判断数据状态
                         if (statis.isB()) {
-                            // 等于0表示返回成功
+                            // 等于0表示返回成功，不需要理会，不等于0表示新连接需要保存当前服务器返回的心跳连接状态信息
                             if (statis.getData().getISessionKey() != 0) {
                                 try {
                                     heartbeatStatis = (HeartbeatStatis) statis.clone();
@@ -65,37 +66,31 @@ public class ZkyOnlineService extends Service {
                                     e.printStackTrace();
                                 }
                             }
-
-                        //    Log.e("startHeartbeat", "heartbeatStatis = " + heartbeatStatis.toString());
-                        } else {
-
-                            LogUtil.e("startHeartbeat" + "心跳异常 ,请稍等60秒..." + "\n");
-                            heartbeatStatis = null;
-                            // 重新发送心跳包
-                            //  heartbeatStatis = new HeartbeatStatis();
-                            // sendHttpHeartbeat(); 6274420
                         }
-                    }else{
+                    } else {
 
-                        LogUtil.e("startHeartbeat" + "心跳异常 ,请稍等60秒..." + "\n");
+                        // 心跳异常，修改当前uuid
+                        LogUtil.e("startHeartbeat" + "心跳异常 ,更换uuid再次尝试连接..." + "\n");
                         heartbeatStatis = null;
-                        // 更换其他的uuid尝试重新连接
-                      /*  if(uuidIndex > UuidSet.UUID_SET.size()){
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }*/
-                        String newUuid = UuidSet.UUID_SET.get(uuidIndex);
+
+                        // 如果所有的uuid都轮询完毕还没有连接上数据库，就先让心跳停留60秒
+                        if (uuidIndex > UuidSet.UUID_SET.size() && (uuidIndex % UuidSet.UUID_SET.size() == UuidSet.UUID_SET.size() - 1)) {
+                            LogUtil.e("startHeartbeat" + "心跳异常 ,uuid已经用完请稍等60秒..." + "\n");
+                            Toast.makeText(ZkyOnlineService.this.getApplicationContext(), "请稍等，正在连接服务器...", Toast.LENGTH_LONG).show();
+                            uuidIndex = 0;
+                            lastSent = lastSent + (60 - heartbeatInterval) * 1000;
+                            return;
+                        }
+                        String newUuid = UuidSet.UUID_SET.get(uuidIndex % UuidSet.UUID_SET.size());
                         if (HttpConfiguration._Clientuuid.equals(newUuid)) {
                             uuidIndex++;
-                            uuidIndex = uuidIndex % UuidSet.UUID_SET.size();
-                            newUuid = UuidSet.UUID_SET.get(uuidIndex);
+                            newUuid = UuidSet.UUID_SET.get(uuidIndex % UuidSet.UUID_SET.size());
                         }
                         HttpConfiguration._Clientuuid = newUuid;
-                        LogUtil.e("startHeartbeat" + "当前UUID = " +  HttpConfiguration._Clientuuid);
                         sendHttpHeartbeat();
+                        LogUtil.e("startHeartbeat" + "当前UUID = " + HttpConfiguration._Clientuuid);
+
+
                     }
 
                     break;
@@ -194,7 +189,6 @@ public class ZkyOnlineService extends Service {
     private void heartbeat() {
 
         if (System.currentTimeMillis() - lastSent < heartbeatInterval * 1000) {
-            //   LogUtil.e(" heartbeatInterval * 1000 = " +  heartbeatInterval * 1000);
             return;
         }
 
@@ -229,7 +223,7 @@ public class ZkyOnlineService extends Service {
                         .add("data", "")
                         .build();
 
-                LogUtil.e(" String.valueOf(key) = " + String.valueOf(key) + "    当前UUID= " +  HttpConfiguration._Clientuuid);
+                LogUtil.e(" String.valueOf(key) = " + String.valueOf(key) + "    当前UUID= " + HttpConfiguration._Clientuuid);
 
                 HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
 
