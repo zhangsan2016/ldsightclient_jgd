@@ -62,6 +62,7 @@ public class ZkyOnlineService extends Service {
                             if (statis.getData().getISessionKey() != 0) {
                                 try {
                                     heartbeatStatis = (HeartbeatStatis) statis.clone();
+                                    sendHttpHeartbeat();
                                 } catch (CloneNotSupportedException e) {
                                     e.printStackTrace();
                                 }
@@ -90,9 +91,7 @@ public class ZkyOnlineService extends Service {
                         sendHttpHeartbeat();
                         LogUtil.e("startHeartbeat" + "当前UUID = " + HttpConfiguration._Clientuuid);
 
-
                     }
-
                     break;
             }
         }
@@ -100,6 +99,13 @@ public class ZkyOnlineService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        LogUtil.e("startHeartbeat" + "onStartCommand 方法被执行" + "\n");
+        LogUtil.e("lastSent = " + lastSent);
+        if(heartbeatStatis != null){
+            LogUtil.e("startHeartbeat heartbeatStatis = " + heartbeatStatis.toString());
+            heartbeatStatis = null;
+        }
+
         // 发送心跳
         startHeartbeat();
 
@@ -212,6 +218,7 @@ public class ZkyOnlineService extends Service {
                 if (heartbeatStatis != null && heartbeatStatis.getData() != null) {
                     key = heartbeatStatis.getData().getISessionKey();
                 }
+
 
                 RequestBody requestBody = new FormBody.Builder()
                         .add("version", "225")
