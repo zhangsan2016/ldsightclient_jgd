@@ -3,8 +3,7 @@
     package="com.xmic.tvonviffinder"
     android:installLocation="auto"
     android:versionCode="1"
-    android:versionName="1.0" >
-
+    android:versionName="1.0" > <!-- 监控搜索 -->
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="17" />

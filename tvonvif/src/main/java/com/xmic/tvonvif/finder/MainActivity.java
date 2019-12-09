@@ -1,11 +1,5 @@
 package com.xmic.tvonvif.finder;
 
-import static com.googlecode.javacv.cpp.opencv_core.cvCreateImage;
-import static com.googlecode.javacv.cpp.opencv_imgproc.CV_BGR2RGBA;
-import static com.googlecode.javacv.cpp.opencv_imgproc.cvCvtColor;
-
-import java.lang.ref.WeakReference;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -24,7 +18,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,6 +40,12 @@ import com.xmic.tvonvif.IPCamManager.IPCam;
 import com.xmic.tvonvif.IPCamManager.IPCamManger;
 import com.xmic.tvonvif.finder.CameraService.CameraBinder;
 import com.xmic.tvonviffinder.R;
+
+import java.lang.ref.WeakReference;
+
+import static com.googlecode.javacv.cpp.opencv_core.cvCreateImage;
+import static com.googlecode.javacv.cpp.opencv_imgproc.CV_BGR2RGBA;
+import static com.googlecode.javacv.cpp.opencv_imgproc.cvCvtColor;
 
 public class MainActivity extends Activity {
 
@@ -101,7 +100,7 @@ public class MainActivity extends Activity {
 				break;
 			}
 
-			super.handleMessage(msg);
+			super.handleMessage(msg); // rtsp
 		}
 	}
 
