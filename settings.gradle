@@ -1,1 +1,1 @@
-include ':app', ':ldsightclientfragment_zky', ':ViewPagerIndicator_library', ':tvonvif'/*, ':EnvironmentalMonitoring'*/
+include ':app', ':ldsightclientfragment_mqtt', ':ViewPagerIndicator_library', ':tvonvif'/*, ':EnvironmentalMonitoring'*/

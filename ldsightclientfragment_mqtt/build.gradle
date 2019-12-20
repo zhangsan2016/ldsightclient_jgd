@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'ldgd'
+            keyPassword '12345678'
+            storeFile file('C:/Users/ldgd/Desktop/KEY/ldgd.jks')
+            storePassword '12345678'
+        }
+    }
+    compileSdkVersion 20
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "com.example.ldsightclient_mqtt"
+        minSdkVersion 11
+        targetSdkVersion 19
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+
+    /* 生成的apk name*/
+    android.applicationVariants.all { variant ->
+
+        variant.outputs.each { output ->
+
+            output.outputFile = new File(output.outputFile.parent, "ldsightclient_zky" +  ".apk");
+        }
+
+    }
+
+}
+
+
+dependencies {
+    // compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:support-v4:20.+'
+    compile files('libs/achartengine-1.1.0.jar')
+    compile files('libs/commons-lang3-3.4.jar')
+    compile files('libs/httpmime-4.1.2.jar')
+    compile files('libs/IndoorscapeAlbumPlugin.jar')
+    compile files('libs/volley.jar')
+    compile project(':ViewPagerIndicator_library')
+    compile files('libs/javacv.jar')
+    compile files('libs/javacpp.jar')
+    compile files('libs/maven-plugin-api-2.0.9.jar')
+    compile files('libs/BaiduLBS_Android.jar')
+    /* Okhttp3*/
+    compile 'com.squareup.okhttp3:okhttp:3.8.0'
+    compile 'com.squareup.okio:okio:1.12.0'
+    /* Gson */
+    compile 'com.google.code.gson:gson:2.8.4'
+
+
+}

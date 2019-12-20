@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicator_library/ViewPagerIndicator_library.iml" filepath="$PROJECT_DIR$/ViewPagerIndicator_library/ViewPagerIndicator_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ldsightclient_jgd.iml" filepath="$PROJECT_DIR$/ldsightclient_jgd.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ldsightclientfragment_zky/ldsightclientfragment_zky.iml" filepath="$PROJECT_DIR$/ldsightclientfragment_zky/ldsightclientfragment_zky.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ldsightclientfragment_mqtt/ldsightclientfragment_mqtt.iml" filepath="$PROJECT_DIR$/ldsightclientfragment_mqtt/ldsightclientfragment_mqtt.iml" />
       <module fileurl="file://$PROJECT_DIR$/tvonvif/tvonvif.iml" filepath="$PROJECT_DIR$/tvonvif/tvonvif.iml" />
     </modules>
   </component>
