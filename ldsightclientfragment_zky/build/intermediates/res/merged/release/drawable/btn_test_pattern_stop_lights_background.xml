@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    
-    <item android:drawable="@drawable/btn_login_normal" android:state_pressed="true"/>
-    <item android:drawable="@drawable/test_pattern_fragment_stop_lights"/>
-
-</selector>
