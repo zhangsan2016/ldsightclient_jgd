@@ -40,9 +40,9 @@ import com.ldsight.application.MyApplication;
 import com.ldsight.base.BaseFragment;
 import com.ldsight.entity.ElectricTransducer;
 import com.ldsight.entity.ElectricityBox;
-import com.ldsight.entity.LoginInfo;
 import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
+import com.ldsight.entity.xinjiang.LoginJson;
 import com.ldsight.entity.zkyjson.DimmingJson;
 import com.ldsight.entity.zkyjson.FirDimmingJson;
 import com.ldsight.entity.zkyjson.RelayStateJson;
@@ -83,7 +83,7 @@ public class TestPatternFragment extends BaseFragment {
     private Button btRelaySetting;
     private Button btRelayFullOpen, btRelayAllOff;
     private CheckBox cb_relay1, cb_relay2, cb_relay3, cb_relay4, cb_relay5;
-    private LoginInfo loginInfo;
+    private LoginJson loginInfo;
     private Context context;
 
 
@@ -91,7 +91,7 @@ public class TestPatternFragment extends BaseFragment {
     }
 
 
-    public static Fragment newInstance(Context context, LoginInfo loginInfo) {
+    public static Fragment newInstance(Context context, LoginJson loginInfo) {
         TestPatternFragment fragment = new TestPatternFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("loginInfo", loginInfo);
@@ -155,7 +155,7 @@ public class TestPatternFragment extends BaseFragment {
         // 获取传递过来的数据
         //  loginInfo = (LoginInfo) getActivity().getIntent().getSerializableExtra("loginInfo");
         //  loginInfo = (LoginInfo)  getArguments().getString("loginInfo");
-        loginInfo = (LoginInfo) getArguments().getSerializable("loginInfo");
+        loginInfo = (LoginJson) getArguments().getSerializable("loginInfo");
 
         //  showProgress();
         // 初始化View
@@ -163,7 +163,7 @@ public class TestPatternFragment extends BaseFragment {
 
 
         // 联网获取信息
-        makeSampleHttpRequest(loginInfo.getData().get(0).getID());
+       // makeSampleHttpRequest(loginInfo.getData().get(0).getID());
 
 
         listView.setOnItemClickListener(new OnItemClickListener() {

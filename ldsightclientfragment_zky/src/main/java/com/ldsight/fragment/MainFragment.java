@@ -31,10 +31,9 @@ import com.ldsight.adapter.MainListAdapter;
 import com.ldsight.dao.MakeSampleHttpRequest;
 import com.ldsight.entity.ElectricTransducer;
 import com.ldsight.entity.ElectricityBox;
-import com.ldsight.entity.LoginInfo;
 import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
-import com.ldsight.service.OnlineService;
+import com.ldsight.entity.xinjiang.LoginJson;
 import com.ldsight.service.UpdateService;
 import com.ldsight.util.CustomUtils;
 import com.ldsight.util.HttpUtil;
@@ -77,7 +76,7 @@ public class MainFragment extends Fragment {
 
     private boolean updata = false;
 
-    private LoginInfo loginInfo;
+    private LoginJson loginInfo;
 
 
 
@@ -98,7 +97,7 @@ public class MainFragment extends Fragment {
                 .registerReceiver(dataRefreshReceiver, filter);
 
         // 获取传递过来的数据
-        loginInfo = (LoginInfo)  getActivity().getIntent().getSerializableExtra("loginInfo");
+        loginInfo = (LoginJson)  getActivity().getIntent().getSerializableExtra("loginInfo");
 
         // 初始化协议
         HttpUtil httpUtil = new HttpUtil();
@@ -111,7 +110,7 @@ public class MainFragment extends Fragment {
         streetAndDevices = new ArrayList<StreetAndDevice>();
         if (!updata) {
             // showProgress();
-            makeSampleHttpRequest(loginInfo.getData().get(0).getID());
+         //   makeSampleHttpRequest(loginInfo.getData().get(0).getID());
         }
 
         electricityBoxList.clear();
@@ -139,9 +138,9 @@ public class MainFragment extends Fragment {
         });
 
         // 启动心跳包服务
-        Intent intent = new Intent(MainFragment.this.getActivity()
+    /*    Intent intent = new Intent(MainFragment.this.getActivity()
                 .getApplicationContext(), OnlineService.class);
-        MainFragment.this.getActivity().startService(intent);
+        MainFragment.this.getActivity().startService(intent);*/
 
 
 

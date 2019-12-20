@@ -41,16 +41,20 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="38cGrmGwGxZcgL8l9HLPkFTB5HIVUlpd" />
+            android:value="4SGuG5AqiQMZBnk6hj3Erby2TKUm37pV" />
 
         <activity
-            android:name="com.ldsight.act.LoginAct"
+            android:name="com.ldsight.act.LoginXinjiangAct"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ldsight.act.LoginAct"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.ldsight.act.MainAct"
