@@ -42,7 +42,7 @@ import com.ldsight.entity.ElectricTransducer;
 import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
-import com.ldsight.entity.xinjiang.LoginJson;
+import com.ldsight.entity.xinjiangJson.LoginJson;
 import com.ldsight.entity.zkyjson.DimmingJson;
 import com.ldsight.entity.zkyjson.FirDimmingJson;
 import com.ldsight.entity.zkyjson.RelayStateJson;

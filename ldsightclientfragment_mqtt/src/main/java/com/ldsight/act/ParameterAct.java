@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ldsightclient_jgd.R;
-import com.ldsight.entity.xinjiang.LoginJson;
+import com.ldsight.entity.xinjiangJson.LoginJson;
 import com.ldsight.fragment.BaiDuMapFragment;
 import com.ldsight.fragment.MainFragment;
 import com.ldsight.fragment.SettingFragment;

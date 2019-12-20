@@ -253,4 +253,45 @@ public class HttpUtil {
             return validCookies;
         }
     };
+
+
+
+    /**
+     * OkHttp 方式访问网络
+     *  API均需附带token
+     *  token存放于http request header   X-auth-token中
+     *  Content-type: application/json
+     * @param address  访问地址
+     * @param callback 回调函数
+     * @param token    token
+     * @param requestBody  请求的主体
+     */
+    public static void sendHttpRequest(final String address, final okhttp3.Callback callback, final String token, final RequestBody requestBody) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient.Builder()
+                        .connectTimeout(100, TimeUnit.SECONDS)//设置连接超时时间
+                        .readTimeout(200, TimeUnit.SECONDS).build();//设置读取超时时间;
+
+                Request request;
+                if(requestBody == null){
+                    request = new Request.Builder()
+                            .addHeader("X-auth-token", token)
+                            .header("Accept-Encoding", "deflate")
+                            .url(address).build();
+                }else{
+                    request = new Request.Builder()
+                            .addHeader("X-auth-token", token)
+                            .header("Accept-Encoding", "deflate")
+                            .post(requestBody)
+                            .url(address).build();
+                }
+                client.newCall(request).enqueue(callback);
+
+            }
+        }).start();
+    }
+
 }

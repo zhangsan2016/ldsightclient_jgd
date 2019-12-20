@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.ldsight.entity.xinjiang.LoginJson;
+import com.ldsight.entity.xinjiangJson.LoginJson;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
 import com.ldsight.util.MapHttpConfiguration;
