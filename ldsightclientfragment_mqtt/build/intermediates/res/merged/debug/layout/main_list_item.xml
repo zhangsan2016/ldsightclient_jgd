@@ -19,7 +19,7 @@
             android:text="灯"
             android:gravity="center"
             android:textColor="#01B087"
-            android:textSize="22sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/txt_life_cycle"

@@ -217,10 +217,10 @@ public class DeviceMainAct extends BaseActivity {
         // 获取传递过来的参数
         Bundle bundle = getIntent().getExtras();
         streetId = bundle.getString("streetId");
-        electricityBox = (ElectricityBox.ElectricityBoxList) bundle.getSerializable("electricityBox");
+      //  electricityBox = (ElectricityBox.ElectricityBoxList) bundle.getSerializable("electricityBox");
 
         // 获取当前电箱状态
-        getElectricityState(electricityBox.getUuid());
+     //   getElectricityState(electricityBox.getUuid());
 
         // 初始化视图
         initView();

@@ -9,19 +9,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.ldsightclient_jgd.R;
-import com.ldsight.entity.xinjiangJson.ProjectJson;
+import com.ldsight.entity.xinjiangJson.DeviceLampJson;
 
 import java.util.List;
 
 public class MainListAdapter extends BaseAdapter {
-	private final List<ProjectJson.DataBeanX.ProjectInfo> electricityBoxList;
+	private final List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList;
 	private Context context;
 	private LayoutInflater mInflater;
 	private int hour;
 	private int minute;
 
 	public MainListAdapter(Context context,
-						   List<ProjectJson.DataBeanX.ProjectInfo> electricityBoxList,
+						   List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList,
 						   List<String> cableIsAbnormal) {
 		this.context = context;
 		this.electricityBoxList = electricityBoxList;
@@ -120,7 +120,7 @@ public class MainListAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-			holder.streetName.setText(electricityBoxList.get(position).getTitle());
+			holder.streetName.setText(electricityBoxList.get(position).getNAME());
 
 			/*	DecimalFormat df = new DecimalFormat("######0.0 ");
 		        holder.ampere.setText(""

@@ -29,6 +29,7 @@ import com.ldsight.act.DeviceMainAct;
 import com.ldsight.adapter.MainListAdapter;
 import com.ldsight.dao.MakeSampleHttpRequest;
 import com.ldsight.entity.StreetAndDevice;
+import com.ldsight.entity.xinjiangJson.DeviceLampJson;
 import com.ldsight.entity.xinjiangJson.LoginJson;
 import com.ldsight.entity.xinjiangJson.ProjectJson;
 import com.ldsight.service.UpdateService;
@@ -43,9 +44,13 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 
@@ -78,7 +83,7 @@ public class MainFragment extends Fragment {
     /**
      * 电箱列表
      */
-    private List<ProjectJson.DataBeanX.ProjectInfo> electricityBoxList = new ArrayList<ProjectJson.DataBeanX.ProjectInfo>();
+    private List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList = new ArrayList<DeviceLampJson.DataBeanX.DeviceLamp>();
 
 
     @Override
@@ -132,6 +137,7 @@ public class MainFragment extends Fragment {
 
         });
 
+
         // 启动心跳包服务
     /*    Intent intent = new Intent(MainFragment.this.getActivity()
                 .getApplicationContext(), OnlineService.class);
@@ -165,7 +171,7 @@ public class MainFragment extends Fragment {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
 
-                        String json = response.body().string();
+                     /*   String json = response.body().string();
                         LogUtil.e("getProject xxx" + "成功" + json);
 
                         // 解析返回过来的json
@@ -184,18 +190,123 @@ public class MainFragment extends Fragment {
                                 //   listView.requestLayout();
                                 adapter.notifyDataSetChanged();
                             }
-                        });
+                        });*/
+
+
+                        String json = response.body().string();
+                        LogUtil.e("getProject xxx" + "成功" + json);
+
+                        // 解析返回过来的json
+                        Gson gson = new Gson();
+                        ProjectJson project = gson.fromJson(json, ProjectJson.class);
+                        List<ProjectJson.DataBeanX.ProjectInfo> projectList = project.getData().getData();
+
+                        for (ProjectJson.DataBeanX.ProjectInfo projectInfo : projectList) {
+
+                            try {
+                                // 用于同步线程
+                                final CountDownLatch latch = new CountDownLatch(1);
+
+                                LogUtil.e("title = " + projectInfo.getTitle());
+
+                                // 获取电箱
+                                getDeviceEbox(projectInfo.getTitle(), token, latch);
+
+                                //阻塞当前线程直到latch中数值为零才执行
+                                latch.await();
+
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
 
                     }
 
-            },token,null);
-        }
+                }, token, null);
+            }
 
-    }).
+        }).start();
 
-    start();
+    }
 
-}
+
+    /**
+     * 获取所有电箱
+     *
+     * @param title 获取的项目名
+     * @param token 服务器token
+     * @param latch
+     */
+    public void getDeviceEbox(final String title, final String token, final CountDownLatch latch) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String url = MapHttpConfiguration.DEVICE_EBOX_URL;
+
+                // 创建请求的参数body
+                //   String postBody = "{\"where\":{\"PROJECT\":" + title + "},\"size\":5000}";
+                String postBody = "{\"where\":{\"PROJECT\":\"" + title + "\"},\"size\":5000}";
+                RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
+
+                LogUtil.e("xxx postBody = " + postBody);
+
+                HttpUtil.sendHttpRequest(url, new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        LogUtil.e("xxx" + "失败" + e.toString());
+                        showToast("连接服务器异常！");
+                        stopProgress();
+
+                        //让latch中的数值减一
+                        latch.countDown();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                        String json = response.body().string();
+                        LogUtil.e("xxx getDeviceEbox " + "成功" + json);
+
+                        // 解析返回过来的json
+                        Gson gson = new Gson();
+                        DeviceLampJson deviceLampJson = gson.fromJson(json, DeviceLampJson.class);
+                        List<DeviceLampJson.DataBeanX.DeviceLamp> projectList = deviceLampJson.getData().getData();
+                        if (projectList == null || projectList.size() == 0) {
+                            return;
+                        }
+                        electricityBoxList.addAll(projectList);
+
+                        // 更新 listview
+                        Activity activity = (Activity) mContext;
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //   listView.requestLayout();
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
+
+                    /*    for (DeviceLampJson.DataBeanX.DeviceLamp deviceLamp : projectList) {
+
+                            if (deviceLamp.getLAT().equals("") || deviceLamp.getLNG().equals("")) {
+                                break;
+                            }
+                        }*/
+
+                        //让latch中的数值减一
+                        latch.countDown();
+
+                    }
+                }, token, body);
+            }
+        }).start();
+
+    }
+
 
     /**
      * 获取项目信息
@@ -381,37 +492,37 @@ public class MainFragment extends Fragment {
     }
 
 
-class checkNewestVersionAsyncTask extends AsyncTask<Void, Void, Boolean> {
-    // 后台执行，比较耗时的操作都放在这个位置
-    @Override
-    protected Boolean doInBackground(Void... params) {
-        // TODO Auto-generated method stub
-        if (postCheckNewestVersionCommand()) {
-            int vercode = CustomUtils.getVersionCode(mContext); // 用到前面第一节写的方法
-            if (newVersionCode > vercode) {
-                return true;
-            } else {
-                return false;
+    class checkNewestVersionAsyncTask extends AsyncTask<Void, Void, Boolean> {
+        // 后台执行，比较耗时的操作都放在这个位置
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            if (postCheckNewestVersionCommand()) {
+                int vercode = CustomUtils.getVersionCode(mContext); // 用到前面第一节写的方法
+                if (newVersionCode > vercode) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
+            return false;
         }
-        return false;
-    }
 
-    @Override
-    protected void onPostExecute(Boolean result) {
-        // TODO Auto-generated method stub
-        if (result) {// 如果有最新版本
-            System.out.println("下载最新版本");
+        @Override
+        protected void onPostExecute(Boolean result) {
+            // TODO Auto-generated method stub
+            if (result) {// 如果有最新版本
+                System.out.println("下载最新版本");
 
-            doNewVersionUpdate(); // 更新新版本
-        } else {
-            // notNewVersionDlgShow(); // 提示当前为最新版本
-            System.out.println("当前最新版本");
+                doNewVersionUpdate(); // 更新新版本
+            } else {
+                // notNewVersionDlgShow(); // 提示当前为最新版本
+                System.out.println("当前最新版本");
+            }
+            super.onPostExecute(result);
         }
-        super.onPostExecute(result);
-    }
 
-}
+    }
 
     /**
      * 从服务器获取当前最新版本号，如果成功返回TURE，如果失败，返回FALSE
