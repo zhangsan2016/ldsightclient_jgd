@@ -11,15 +11,15 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import com.example.ldsightclient_jgd.R;
-import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.StreetAndDevice;
+import com.ldsight.entity.xinjiangJson.DeviceLampJson;
 import com.ldsight.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestPatternListAdapter extends BaseAdapter {
-    private   List<ElectricityBox.ElectricityBoxList> electricityBoxList;
+    private   List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList;
     private Context context;
     private LayoutInflater mInflater;
     private ArrayList<StreetAndDevice> streetAndDevices;
@@ -76,13 +76,15 @@ public class TestPatternListAdapter extends BaseAdapter {
     public void setTags(boolean[] tags) {
         this.tags = tags;
     }
+
+
     public void changeTags(){
         LogUtil.e("electricityBoxList.size() = " + electricityBoxList.size());
         this.tags = new boolean[electricityBoxList.size()];
     }
 
     public TestPatternListAdapter(Context context,
-                                  List<ElectricityBox.ElectricityBoxList> electricityBoxList) {
+                                  List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList) {
         // TODO Auto-generated constructor stub
         this.context = context;
         //	this.streetAndDevices = streetAndDevices;
@@ -132,7 +134,7 @@ public class TestPatternListAdapter extends BaseAdapter {
             }
         });
         //	uuid.setText(streetAndDevices.get(position).getStreetId());
-        streetName.setText(electricityBoxList.get(position).getText());
+        streetName.setText(electricityBoxList.get(position).getNAME());
     /*
         if(electricityBoxList.size() >= position && position != 0){
             streetName.setText(electricityBoxList.get(position).getText());

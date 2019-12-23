@@ -38,19 +38,18 @@ import com.google.gson.Gson;
 import com.ldsight.adapter.TestPatternListAdapter;
 import com.ldsight.application.MyApplication;
 import com.ldsight.base.BaseFragment;
-import com.ldsight.entity.ElectricTransducer;
-import com.ldsight.entity.ElectricityBox;
-import com.ldsight.entity.ProjectItem;
 import com.ldsight.entity.StreetAndDevice;
+import com.ldsight.entity.xinjiangJson.DeviceLampJson;
 import com.ldsight.entity.xinjiangJson.LoginJson;
+import com.ldsight.entity.xinjiangJson.ProjectJson;
 import com.ldsight.entity.zkyjson.DimmingJson;
 import com.ldsight.entity.zkyjson.FirDimmingJson;
-import com.ldsight.entity.zkyjson.RelayStateJson;
 import com.ldsight.entity.zkyjson.SecDimmingJson;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
+import com.ldsight.util.MapHttpConfiguration;
 import com.ldsight.util.StringUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
@@ -58,10 +57,12 @@ import org.ddpush.im.v1.client.appserver.Pusher;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
@@ -108,7 +109,7 @@ public class TestPatternFragment extends BaseFragment {
     /**
      * 电箱列表
      */
-    private List<ElectricityBox.ElectricityBoxList> electricityBoxList = new ArrayList<ElectricityBox.ElectricityBoxList>();
+    private List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList = new ArrayList<DeviceLampJson.DataBeanX.DeviceLamp>();
 
     private Handler myHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -664,7 +665,7 @@ public class TestPatternFragment extends BaseFragment {
      * @param relayOrderNub 开关指令
      */
     private void relaySetting(final int relayOrderNub) {
-        showProgress();
+      /*  showProgress();
         boolean[] tags = adapter.getTags();
         for (int i = 0; i < tags.length; i++) {
             if (tags[i]) {
@@ -728,80 +729,9 @@ public class TestPatternFragment extends BaseFragment {
                stopProgress();
            }
        }).start();
+*/
 
 
-
-     /*   boolean[] tags = adapter.getTags();
-        // 先判断选中路灯是否为null
-        int count = 0;
-        for (boolean b : tags) {
-            if (b) {
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
-            stopProgress();
-            Toast.makeText(TestPatternFragment.this.getActivity().getApplicationContext(), "选中路灯为空!", Toast.LENGTH_SHORT).show();
-        }
-        for (int i = 0; i < tags.length; i++) {
-            if (tags[i]) {
-                final byte[] uuid = streetAndDevices.get(i)
-                        .getByteUuid();
-                new Thread() {
-                    public void run() {
-                        Pusher pusher = null;
-                        try {
-                            byte[] data = new byte[11];
-                            // 获取当前应用的uuid
-                            MyApplication myApplication = MyApplication.getInstance();
-                            byte[] appUuid = myApplication.getAppUuid();
-                            System.arraycopy(appUuid, 0, data, 2, appUuid.length);
-
-                            // 0-开、-1关
-                            data[0] = 29; // 继电器控制指令
-                            data[1] = 0;  // 设备地址
-                            data[10] = (byte) relayOrderNub; // 开关指令
-
-                            pusher = new Pusher(MyApplication.getIp(), 9966,
-                                    5000);
-                            pusher.push0x20Message(uuid, data);
-								*//*	for (int i = 0; i < 2; i++) {
-										Thread.sleep(2000);
-										pusher.push0x20Message(uuid, data);
-									}*//*
-                            pusher.push0x20Message(uuid,
-                                    new byte[]{0});
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            if (pusher != null) {
-                                try {
-                                    pusher.close();
-                                } catch (Exception e) {
-                                }
-                            }
-                        }
-                    }
-
-                    ;
-                }.start();
-            }
-        }
-
-        new Thread() {
-            public void run() {
-                try {
-                    Thread.sleep(1000);
-                    stopProgress();
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            ;
-        }.start();*/
     }
 
 
@@ -819,56 +749,159 @@ public class TestPatternFragment extends BaseFragment {
     }
 
 
-    private synchronized void makeSampleHttpRequest(final String id) {
+    @Override
+    public void onResume() {
+        super.onResume();
+        getProject(loginInfo.getData().getToken().getToken());
+    }
+
+    /**
+     * 获取项目列表
+     */
+    public void getProject(final String token) {
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                RequestBody requestBody = new FormBody.Builder()
-                        .add("strTemplate", "{\"ischeck\":$data.rows}")
-                        .add("ID", id)
-                        .build();
-                String url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyPrject";
-                // url = "http://47.99.168.98:9002/api/IOTDevice.asmx/QueryTopologyPrject";
 
-                HttpUtil.sendSookiePostHttpRequest(url, new Callback() {
+                String url = MapHttpConfiguration.PROJECT_LIST_URL;
+
+                HttpUtil.sendHttpRequest(url, new Callback() {
 
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.e("xxx", "失败" + e.toString());
+                        showToast("连接服务器异常！");
+                        stopProgress();
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        String json = response.body().string();
-                        Log.e("xxx", "成功获取项目信息" + json);
-                        Gson gson = new Gson();
-                        ProjectItem projectItem = gson.fromJson(json, ProjectItem.class);
 
-                        if (projectItem.isB()) {
-                            if (projectItem != null && projectItem.getData() != null && projectItem.getData().size() > 0) {
-                                for (int i = 0; i < projectItem.getData().size(); i++) {
-                                    getElectricTransducer(projectItem.getData().get(i).getId());
-                                }
-                            } else {
-                                showToast("连接服务器失败！");
+
+                        String json = response.body().string();
+                        LogUtil.e("getProject xxx" + "成功" + json);
+
+                        // 解析返回过来的json
+                        Gson gson = new Gson();
+                        ProjectJson project = gson.fromJson(json, ProjectJson.class);
+                        List<ProjectJson.DataBeanX.ProjectInfo> projectList = project.getData().getData();
+
+                        for (ProjectJson.DataBeanX.ProjectInfo projectInfo : projectList) {
+
+                            try {
+                                // 用于同步线程
+                                final CountDownLatch latch = new CountDownLatch(1);
+
+                                LogUtil.e("title = " + projectInfo.getTitle());
+
+                                // 获取电箱
+                                getDeviceEbox(projectInfo.getTitle(), token, latch);
+
+                                //阻塞当前线程直到latch中数值为零才执行
+                                latch.await();
+
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
                             }
-                        } else {
-                            showToast("获取数据失败：" + projectItem.getMsg().toString());
+
                         }
 
+                    }
+
+                }, token, null);
+            }
+
+        }).start();
+
+    }
+
+
+    /**
+     * 获取所有电箱
+     *
+     * @param title 获取的项目名
+     * @param token 服务器token
+     * @param latch
+     */
+    public void getDeviceEbox(final String title, final String token, final CountDownLatch latch) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String url = MapHttpConfiguration.DEVICE_EBOX_URL;
+
+                // 创建请求的参数body
+                //   String postBody = "{\"where\":{\"PROJECT\":" + title + "},\"size\":5000}";
+                String postBody = "{\"where\":{\"PROJECT\":\"" + title + "\"},\"size\":5000}";
+                RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
+
+                LogUtil.e("xxx postBody = " + postBody);
+
+                HttpUtil.sendHttpRequest(url, new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        LogUtil.e("xxx" + "失败" + e.toString());
+                        showToast("连接服务器异常！");
+                        stopProgress();
+
+                        //让latch中的数值减一
+                        latch.countDown();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                        String json = response.body().string();
+                        LogUtil.e("xxx getDeviceEbox " + "成功" + json);
+
+                        // 解析返回过来的json
+                        Gson gson = new Gson();
+                        DeviceLampJson deviceLampJson = gson.fromJson(json, DeviceLampJson.class);
+                        List<DeviceLampJson.DataBeanX.DeviceLamp> projectList = deviceLampJson.getData().getData();
+                        if (projectList == null || projectList.size() == 0) {
+                            return;
+                        }
+                        electricityBoxList.addAll(projectList);
+                        setTags
+
+                        // 更新 listview
+                        Activity activity = (Activity) context;
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //   listView.requestLayout();
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
+
+                    /*    for (DeviceLampJson.DataBeanX.DeviceLamp deviceLamp : projectList) {
+
+                            if (deviceLamp.getLAT().equals("") || deviceLamp.getLNG().equals("")) {
+                                break;
+                            }
+                        }*/
+
+                        //让latch中的数值减一
+                        latch.countDown();
 
                     }
-                }, requestBody);
+                }, token, body);
             }
         }).start();
+
     }
+
+
+
 
     /**
      * 获取变电器
      *
      * @param id 项目id
      */
-    public void getElectricTransducer(final String id) {
+  /*  public void getElectricTransducer(final String id) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -903,11 +936,11 @@ public class TestPatternFragment extends BaseFragment {
         }).start();
     }
 
-    /**
+    *//**
      * 获取电箱
      *
      * @param id 变电器id
-     */
+     *//*
     public void getElectricalBox(final String id) {
 
         RequestBody requestBody = new FormBody.Builder()
@@ -930,9 +963,9 @@ public class TestPatternFragment extends BaseFragment {
                 Gson gson = new Gson();
                 ElectricityBox electricityBox = gson.fromJson(json, ElectricityBox.class);
 
-                    /*    for (int i = 0; i < electricityBox.getData().size(); i++) {
+                    *//*    for (int i = 0; i < electricityBox.getData().size(); i++) {
                             getElectricityState(electricityBox.getData().get(i).getUuid());
-                        }*/
+                        }*//*
 
                 // 保存在 List中
                 electricityBoxList.addAll(electricityBox.getData());
@@ -952,9 +985,7 @@ public class TestPatternFragment extends BaseFragment {
 
             }
         }, requestBody);
-
-
-    }
+    }*/
 
     /*private void showProgress() {
         mProgress = ProgressDialog.show(TestPatternFragment.this.getActivity(),
@@ -993,7 +1024,7 @@ public class TestPatternFragment extends BaseFragment {
         boolean[] tags = adapter.getTags();
         for (int i = 0; i < tags.length; i++) {
             if (tags[i]) {
-                LogUtil.e("i = " + i + "xxx Name = " + electricityBoxList.get(i).getText().trim());
+               // LogUtil.e("i = " + i + "xxx Name = " + electricityBoxList.get(i).getText().trim());
 
                 // 创建json指令
                 Gson gson = new Gson();
@@ -1031,7 +1062,7 @@ public class TestPatternFragment extends BaseFragment {
                         .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
                         .add("uuidFrom", HttpConfiguration._Clientuuid)
                         // .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
-                        .add("uuidTo", electricityBoxList.get(i).getUuid())
+                     //   .add("uuidTo", electricityBoxList.get(i).getUuid())
                         .add("crc", "")
                         .add("data", jsonStr)
                         .build();
