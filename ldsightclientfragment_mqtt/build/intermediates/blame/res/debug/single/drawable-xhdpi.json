@@ -60,12 +60,12 @@
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\locked.png"
     },
     {
-        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\makeoff.png",
-        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\makeoff.png"
-    },
-    {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\login_bt_background.png",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\login_bt_background.png"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\makeoff.png",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\makeoff.png"
     },
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\login_logo.png",
@@ -84,12 +84,12 @@
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\login_user.png"
     },
     {
-        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\parameter_log2.png",
-        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\parameter_log2.png"
-    },
-    {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\left_arrow_grey.png",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\left_arrow_grey.png"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\parameter_log2.png",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\parameter_log2.png"
     },
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\parameter_setting1.png",
@@ -128,12 +128,12 @@
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\setting.png"
     },
     {
-        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\map0.png",
-        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\map0.png"
-    },
-    {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\brighten_main_btn_set_ico.png",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\brighten_main_btn_set_ico.png"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\map0.png",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xhdpi\\map0.png"
     },
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\catalog_lighting_btn_ico.png",

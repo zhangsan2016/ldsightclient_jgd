@@ -19,6 +19,8 @@ public class MapHttpConfiguration {
     public static String REPORT_CONFIG = "device/reportConfig";
     // content-type 单个设备信息
     public static String VIEW_BY_UUID = "device/viewByUUID";
+    // content-type 设备控制
+    public static String DEVICE_CONTROL = "device/control";
 
 
 
@@ -35,6 +37,8 @@ public class MapHttpConfiguration {
     public static String REPORT_CONFIG_URL = URL_BASE + REPORT_CONFIG;
     // 获取获取单个设备信息
     public static String VIEW_BY_UUID_URL = URL_BASE + VIEW_BY_UUID;
+    // 设备控制请求地址
+    public static String DEVICE_CONTROL_URL = URL_BASE + DEVICE_CONTROL;
 
 
 

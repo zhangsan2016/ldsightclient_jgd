@@ -53,6 +53,8 @@ import com.ldsight.util.MapHttpConfiguration;
 import com.ldsight.util.StringUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -671,35 +673,49 @@ public class TestPatternFragment extends BaseFragment {
         boolean flag = false;
         for (int i = 0; i < tags.length; i++) {
             if (tags[i]) {
+                flag = true;
                 break;
             }
         }
+
         if (!flag) {
             showToast("请选择需要控制的电箱。");
+            stopProgress();
         }
         for (int i = 0; i < tags.length; i++) {
             if (tags[i]) {
 
-                String url = "https://iot.sz-luoding.com:888/api/" + "device/viewByUUID";
-                String postBody = "{\"UUID\":\"2016C0312000001200001192\"}";
+                String url = MapHttpConfiguration.DEVICE_CONTROL_URL;
 
+                String postBody = null;
+                try {
+                    JSONObject deviceObj = new JSONObject();
+                    deviceObj.put("SUBID", "2015BA11A000002000000030");
+                    deviceObj.put("Confirm", 512);
+                    JSONObject options = new JSONObject();
+                    options.put("Rel_State", 0);
+                    deviceObj.put("options", options);
+                    postBody = deviceObj.toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
                 RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
-
 
                 HttpUtil.sendHttpRequest(url, new Callback() {
 
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        System.out.println("" + "失败" + e.toString());
+                        LogUtil.e("relaySetting" + "失败" + e.toString());
+                        stopProgress();
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
 
                         String json = response.body().string();
-                        System.out.println("" + "成功" + json);
-
+                        LogUtil.e("relaySetting" + "成功" + json);
+                        stopProgress();
 
                     }
                 }, loginInfo.getData().getToken().getToken(), body);
