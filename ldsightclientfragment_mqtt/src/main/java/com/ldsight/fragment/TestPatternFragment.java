@@ -690,10 +690,10 @@ public class TestPatternFragment extends BaseFragment {
                 String postBody = null;
                 try {
                     JSONObject deviceObj = new JSONObject();
-                    deviceObj.put("SUBID", "2015BA11A000002000000030");
-                    deviceObj.put("Confirm", 512);
+                    deviceObj.put("id", "2016A0E0F000001200000050");
+                    deviceObj.put("Confirm", 260);
                     JSONObject options = new JSONObject();
-                    options.put("Rel_State", 0);
+                    options.put("Dimming", 0);
                     deviceObj.put("options", options);
                     postBody = deviceObj.toString();
                 } catch (JSONException e) {

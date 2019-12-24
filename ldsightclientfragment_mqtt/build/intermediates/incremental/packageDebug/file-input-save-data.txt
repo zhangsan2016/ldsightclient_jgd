@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Dec 24 17:02:39 CST 2019
+#Tue Dec 24 17:07:19 CST 2019
 210.set=ANDROID_RESOURCE
 282.file=I\:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\vpi__tab_unselected_focused_holo.9.png
 14.set=ANDROID_RESOURCE
