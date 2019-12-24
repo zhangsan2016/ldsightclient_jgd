@@ -864,7 +864,8 @@ public class TestPatternFragment extends BaseFragment {
                             return;
                         }
                         electricityBoxList.addAll(projectList);
-                        setTags
+
+                       setTags
 
                         // 更新 listview
                         Activity activity = (Activity) context;
