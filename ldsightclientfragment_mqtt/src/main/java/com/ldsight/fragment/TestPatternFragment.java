@@ -164,7 +164,7 @@ public class TestPatternFragment extends BaseFragment {
 
 
         // 联网获取信息
-       // makeSampleHttpRequest(loginInfo.getData().get(0).getID());
+        // makeSampleHttpRequest(loginInfo.getData().get(0).getID());
 
 
         listView.setOnItemClickListener(new OnItemClickListener() {
@@ -586,8 +586,8 @@ public class TestPatternFragment extends BaseFragment {
                                     pusher = new Pusher(MyApplication.getIp(), 9966,
                                             5000);
                                     pusher.push0x20Message(uuid, data);
-								/*	for (int i = 0; i < 2; i++) {
-										Thread.sleep(2000);
+                                /*	for (int i = 0; i < 2; i++) {
+                                        Thread.sleep(2000);
 										pusher.push0x20Message(uuid, data);
 									}*/
                                     pusher.push0x20Message(uuid,
@@ -665,6 +665,50 @@ public class TestPatternFragment extends BaseFragment {
      * @param relayOrderNub 开关指令
      */
     private void relaySetting(final int relayOrderNub) {
+
+        showProgress();
+        boolean[] tags = adapter.getTags();
+        boolean flag = false;
+        for (int i = 0; i < tags.length; i++) {
+            if (tags[i]) {
+                break;
+            }
+        }
+        if (!flag) {
+            showToast("请选择需要控制的电箱。");
+        }
+        for (int i = 0; i < tags.length; i++) {
+            if (tags[i]) {
+
+                String url = "https://iot.sz-luoding.com:888/api/" + "device/viewByUUID";
+                String postBody = "{\"UUID\":\"2016C0312000001200001192\"}";
+
+
+                RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
+
+
+                HttpUtil.sendHttpRequest(url, new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        System.out.println("" + "失败" + e.toString());
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                        String json = response.body().string();
+                        System.out.println("" + "成功" + json);
+
+
+                    }
+                }, loginInfo.getData().getToken().getToken(), body);
+            }
+        }
+
+
+
+
       /*  showProgress();
         boolean[] tags = adapter.getTags();
         for (int i = 0; i < tags.length; i++) {
@@ -864,8 +908,7 @@ public class TestPatternFragment extends BaseFragment {
                             return;
                         }
                         electricityBoxList.addAll(projectList);
-
-                       setTags
+                        adapter.setTags(new boolean[electricityBoxList.size()]);
 
                         // 更新 listview
                         Activity activity = (Activity) context;
@@ -893,8 +936,6 @@ public class TestPatternFragment extends BaseFragment {
         }).start();
 
     }
-
-
 
 
     /**
@@ -937,7 +978,8 @@ public class TestPatternFragment extends BaseFragment {
         }).start();
     }
 
-    *//**
+    */
+    /**
      * 获取电箱
      *
      * @param id 变电器id
@@ -1025,7 +1067,7 @@ public class TestPatternFragment extends BaseFragment {
         boolean[] tags = adapter.getTags();
         for (int i = 0; i < tags.length; i++) {
             if (tags[i]) {
-               // LogUtil.e("i = " + i + "xxx Name = " + electricityBoxList.get(i).getText().trim());
+                // LogUtil.e("i = " + i + "xxx Name = " + electricityBoxList.get(i).getText().trim());
 
                 // 创建json指令
                 Gson gson = new Gson();
@@ -1063,7 +1105,7 @@ public class TestPatternFragment extends BaseFragment {
                         .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
                         .add("uuidFrom", HttpConfiguration._Clientuuid)
                         // .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
-                     //   .add("uuidTo", electricityBoxList.get(i).getUuid())
+                        //   .add("uuidTo", electricityBoxList.get(i).getUuid())
                         .add("crc", "")
                         .add("data", jsonStr)
                         .build();
