@@ -732,76 +732,6 @@ public class TestPatternFragment extends BaseFragment {
             }
         }
 
-
-
-
-      /*  showProgress();
-        boolean[] tags = adapter.getTags();
-        for (int i = 0; i < tags.length; i++) {
-            if (tags[i]) {
-                // 创建json指令
-                Gson gson = new Gson();
-                RelayStateJson relayStateJson = new RelayStateJson();
-                relayStateJson.setConfirm(512);
-                relayStateJson.setRel_State(relayOrderNub);
-                String jsonStr = gson.toJson(relayStateJson) + "#";
-                LogUtil.e("xxx jsonStr = " + jsonStr);
-                if (ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null) {
-                    showToast("服务器无法连接，请稍后再试！");
-                    stopProgress();
-                    return;
-                }
-                jsonStr = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
-                int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
-                RequestBody requestBody = new FormBody.Builder()
-                        .add("version", "225")
-                        .add("type", type + "")
-                        .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
-                        .add("uuidFrom", HttpConfiguration._Clientuuid)
-                        // .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
-                        .add("uuidTo", electricityBoxList.get(i).getUuid())
-                        .add("crc", "")
-                        .add("data", jsonStr)
-                        .build();
-
-                Log.e("xxx", "设置继电器" + electricityBoxList.get(i).getUuid());
-
-                HttpUtil.sendSookiePostHttpRequest(HttpConfiguration.urlSend, new Callback() {
-
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Log.e("xxx", "设置继电器失败" + e.toString());
-                    }
-
-                    @Override
-                    public void onResponse(Call call, okhttp3.Response response) throws IOException {
-                        String json = response.body().string();
-                        Log.e("xxx", "设置继电器返回  " + json);
-
-
-                    }
-
-
-                }, requestBody);
-
-            }
-        }
-
-       new Thread(new Runnable() {
-           @Override
-           public void run() {
-               try {
-                   Thread.sleep(1000);
-                   stopProgress();
-               } catch (InterruptedException e) {
-                   e.printStackTrace();
-               }
-               stopProgress();
-           }
-       }).start();
-*/
-
-
     }
 
 
@@ -1136,7 +1066,7 @@ public class TestPatternFragment extends BaseFragment {
                     stopProgress();
                 }
 
-                LogUtil.e(" relaySetting postBody = " + postBody);
+
                 if (postBody == null) {
                     stopProgress();
                     return;
