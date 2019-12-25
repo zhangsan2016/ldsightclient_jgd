@@ -42,15 +42,9 @@ import com.ldsight.entity.StreetAndDevice;
 import com.ldsight.entity.xinjiangJson.DeviceLampJson;
 import com.ldsight.entity.xinjiangJson.LoginJson;
 import com.ldsight.entity.xinjiangJson.ProjectJson;
-import com.ldsight.entity.zkyjson.DimmingJson;
-import com.ldsight.entity.zkyjson.FirDimmingJson;
-import com.ldsight.entity.zkyjson.SecDimmingJson;
-import com.ldsight.service.ZkyOnlineService;
-import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
 import com.ldsight.util.MapHttpConfiguration;
-import com.ldsight.util.StringUtil;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
 import org.json.JSONException;
@@ -704,7 +698,7 @@ public class TestPatternFragment extends BaseFragment {
                 String postBody = null;
                 try {
                     JSONObject deviceObj = new JSONObject();
-                    deviceObj.put("UUID",electricityBoxList.get(i).getUUID());
+                    deviceObj.put("UUID", electricityBoxList.get(i).getUUID());
                     deviceObj.put("Confirm", 512);
                     JSONObject options = new JSONObject();
                     options.put("Rel_State", relayOrderNub);
@@ -1095,12 +1089,88 @@ public class TestPatternFragment extends BaseFragment {
     };
 
     public void pushBrightness(final int brightness, int progress, String str) {
+
         showProgress();
         boolean[] tags = adapter.getTags();
         for (int i = 0; i < tags.length; i++) {
             if (tags[i]) {
-                // LogUtil.e("i = " + i + "xxx Name = " + electricityBoxList.get(i).getText().trim());
 
+                String postBody = null;
+                try {
+
+                    // 判断主、辅或者全亮 Dimming，主灯亮度值FirDimming，副灯亮度值SecDimming
+                    if (cbM.isChecked() && cbA.isChecked()) {
+
+                        JSONObject deviceObj = new JSONObject();
+                        deviceObj.put("UUID", electricityBoxList.get(i).getUUID());
+                        deviceObj.put("Confirm", 4);
+                        JSONObject options = new JSONObject();
+                        options.put("Dimming", brightness);
+                        deviceObj.put("options", options);
+                        postBody = deviceObj.toString();
+
+                    } else if (cbM.isChecked()) {
+
+                        JSONObject deviceObj = new JSONObject();
+                        deviceObj.put("UUID", electricityBoxList.get(i).getUUID());
+                        deviceObj.put("Confirm", 4);
+                        JSONObject options = new JSONObject();
+                        options.put("FirDimming", brightness);
+                        deviceObj.put("options", options);
+                        postBody = deviceObj.toString();
+
+                    } else if (cbA.isChecked()) {
+
+                        JSONObject deviceObj = new JSONObject();
+                        deviceObj.put("UUID", electricityBoxList.get(i).getUUID());
+                        deviceObj.put("Confirm", 4);
+                        JSONObject options = new JSONObject();
+                        options.put("SecDimming", brightness);
+                        deviceObj.put("options", options);
+                        postBody = deviceObj.toString();
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    stopProgress();
+                }
+
+                LogUtil.e(" relaySetting postBody = " + postBody);
+                if (postBody == null) {
+                    stopProgress();
+                    return;
+                }
+
+                String url = MapHttpConfiguration.DEVICE_CONTROL_URL;
+                RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
+
+                HttpUtil.sendHttpRequest(url, new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        LogUtil.e("relaySetting" + "失败" + e.toString());
+                        stopProgress();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                        String json = response.body().string();
+                        LogUtil.e("relaySetting" + "成功" + json);
+                        stopProgress();
+
+                    }
+                }, loginInfo.getData().getToken().getToken(), body);
+
+
+            }
+        }
+
+       /* showProgress();
+        boolean[] tags = adapter.getTags();
+        for (int i = 0; i < tags.length; i++) {
+            if (tags[i]) {
                 // 创建json指令
                 Gson gson = new Gson();
                 String jsonStr = "";
@@ -1160,61 +1230,10 @@ public class TestPatternFragment extends BaseFragment {
 
 
                 }, requestBody);
-
-
-
-
-
-            /*    final byte[] uuid = streetAndDevices.get(i)
-                        .getByteUuid();
-                new Thread() {
-                    public void run() {
-                        Pusher pusher = null;
-                        try {
-                            // 获取当前应用的uuid
-                            MyApplication myApplication = MyApplication.getInstance();
-                            byte[] appUuid = myApplication.getAppUuid();
-
-                            byte[] data = new byte[23];
-                            data[0] = -63;  // 指令(C1)
-                            data[1] = 0;     // 设备地址
-                            System.arraycopy(appUuid, 0, data, 2, appUuid.length); // Appuuid
-                            data[10] = (byte) brightness; // 光照
-                            data[11] = 0;  // 空置
-                            data[22] = (byte) getLampsNumber();   // 灯具号 （1主2辅3全）
-
-                            System.out.println(Arrays.toString(data));
-                            pusher = new Pusher(MyApplication.getIp(),
-                                    9966, 5000);
-                            pusher.push0x20Message(uuid, data);
-//							for (int i = 0; i < 2; i++) {
-//								Thread.sleep(1000);
-//								pusher.push0x20Message(uuid, data);
-//							}
-                            pusher.push0x20Message(uuid,
-                                    new byte[]{0});
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            if (pusher != null) {
-                                try {
-                                    pusher.close();
-                                } catch (Exception e) {
-                                }
-                            }
-                        }
-                        // showToast("发送成功");
-                    }
-
-                    ;
-                }.start();*/
             }
-        }
+        }*/
 
-//		Toast.makeText(
-//				TestPatternFragment.this.getActivity()
-//						.getApplicationContext(),
-//						str + progress, 0).show();
+
     }
 
 
