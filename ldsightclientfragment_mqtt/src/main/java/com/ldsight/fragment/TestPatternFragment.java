@@ -704,14 +704,15 @@ public class TestPatternFragment extends BaseFragment {
                 String postBody = null;
                 try {
                     JSONObject deviceObj = new JSONObject();
-                    deviceObj.put("id", "2016A0E0F000001200000050");
-                    deviceObj.put("Confirm", 260);
+                    deviceObj.put("UUID",electricityBoxList.get(i).getUUID());
+                    deviceObj.put("Confirm", 512);
                     JSONObject options = new JSONObject();
-                    options.put("Dimming", 0);
+                    options.put("Rel_State", relayOrderNub);
                     deviceObj.put("options", options);
                     postBody = deviceObj.toString();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    stopProgress();
                 }
 
                 RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
@@ -729,6 +730,7 @@ public class TestPatternFragment extends BaseFragment {
 
                         String json = response.body().string();
                         LogUtil.e("relaySetting" + "成功" + json);
+
                         stopProgress();
 
                     }
