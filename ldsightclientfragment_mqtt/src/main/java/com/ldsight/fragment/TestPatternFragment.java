@@ -724,7 +724,6 @@ public class TestPatternFragment extends BaseFragment {
 
                         String json = response.body().string();
                         LogUtil.e("relaySetting" + "成功" + json);
-
                         stopProgress();
 
                     }
