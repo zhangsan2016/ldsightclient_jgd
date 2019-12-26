@@ -10,7 +10,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -28,13 +27,13 @@ import com.ldsight.base.BaseActivity;
 import com.ldsight.entity.xinjiangJson.DeviceLampJson;
 import com.ldsight.entity.zkyjson.MasterTimingJson;
 import com.ldsight.entity.zkyjson.SubsidiaryTimingJson;
-import com.ldsight.service.ZkyOnlineService;
-import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
-import com.ldsight.util.StringUtil;
+import com.ldsight.util.MapHttpConfiguration;
 
 import org.ddpush.im.v1.client.appserver.Pusher;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -42,6 +41,7 @@ import java.util.Arrays;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 import static com.example.ldsightclient_jgd.R.id.txt_device_main_start_time;
@@ -676,12 +676,10 @@ public class DeviceTiming extends BaseActivity {
 
     private void getTimingParameter() {
 
+       String token =  MyApplication.getLoginInfo().getData().getToken().getToken();
+
         // 保存当前时间
         final long currentRecordTime = System.currentTimeMillis();
-
-        // 定时开始结束时间
-     /*   String txtStartTimeAry = txtStartTime.getText().toString().trim();
-        String txtEndTimeAry = txtEndTime.getText().toString().trim();*/
 
         // 六段调光时间
         String timingTime1 = tv_spacing_start_time1.getText().toString().replaceAll(" ", "");
@@ -701,7 +699,6 @@ public class DeviceTiming extends BaseActivity {
 
 
         // 创建json指令
-        Gson gson = new Gson();
         String jsonStr = "";
         // 判断主辅灯
         if (advocateComplementaryCode == DeviceMainAct.PRINCIPAL) {
@@ -746,7 +743,50 @@ public class DeviceTiming extends BaseActivity {
         }
         LogUtil.e("xxx jsonStr = " + jsonStr);
 
-        if (ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null) {
+        String postBody = null;
+        try {
+            JSONObject deviceObj = new JSONObject();
+            deviceObj.put("UUID", electricityDeviceStatus.getUUID());
+            deviceObj.put("Confirm", 2);
+            JSONObject options = new JSONObject();
+            options.put("Time", date);
+            deviceObj.put("options", options);
+            postBody = deviceObj.toString();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            stopProgress();
+        }
+
+
+        if (postBody == null) {
+            stopProgress();
+            return;
+        }
+
+        LogUtil.e("校时 jsonStr  = " + postBody);
+
+        String url = MapHttpConfiguration.DEVICE_CONTROL_URL;
+        RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
+
+        HttpUtil.sendHttpRequest(url, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                LogUtil.e("xxx relaySetting" + "失败" + e.toString());
+                stopProgress();
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                String json = response.body().string();
+                LogUtil.e("xxx relaySetting" + "成功" + json);
+                stopProgress();
+            }
+
+        }, token, body);
+
+       /* if (ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null) {
             showToast("服务器无法连接，请稍后再试！");
             stopProgress();
             return;
@@ -793,10 +833,8 @@ public class DeviceTiming extends BaseActivity {
             }
 
 
-        }, requestBody);
+        }, requestBody);*/
 
-        // 推送定时到下位机
-        //  pusher(timeData);
 
     }
 

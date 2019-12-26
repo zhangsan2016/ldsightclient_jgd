@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.ldsight.application.MyApplication;
 import com.ldsight.entity.xinjiangJson.LoginJson;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
@@ -161,6 +162,9 @@ public class LoginXinjiangAct extends Activity {
                                 bundle.putSerializable("loginInfo", loginInfo);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
+
+                                // 设置到全局
+                                MyApplication.setLoginInfo(loginInfo);
 
                                 // 关闭当前界面
                                 LoginXinjiangAct.this.finish();
