@@ -173,6 +173,25 @@ public class DeviceLampJson {
             private String Version;
             private double Warning_state;
             private String Alarm_Light_Mode;
+            private String info;
+            private Object config;
+            private Object report_config;
+            private String A_v;
+            private String B_v;
+            private String C_v;
+            private String A_c;
+            private String B_c;
+            private String C_c;
+            private long ts_mqtt;
+            private String Frequency;
+            private String Tot_p_fac;
+            private String Tot_view_p;
+            private String Tot_act_deg;
+            private String Tot_react_deg;
+            private String A_act_p;
+            private String B_act_p;
+            private String C_act_p;
+            private String Tot_act_p;
 
             @Override
             public String toString() {
@@ -538,6 +557,158 @@ public class DeviceLampJson {
 
             public void setAlarm_Light_Mode(String Alarm_Light_Mode) {
                 this.Alarm_Light_Mode = Alarm_Light_Mode;
+            }
+
+            public String getInfo() {
+                return info;
+            }
+
+            public void setInfo(String info) {
+                this.info = info;
+            }
+
+            public Object getConfig() {
+                return config;
+            }
+
+            public void setConfig(Object config) {
+                this.config = config;
+            }
+
+            public Object getReport_config() {
+                return report_config;
+            }
+
+            public void setReport_config(Object report_config) {
+                this.report_config = report_config;
+            }
+
+            public String getA_v() {
+                return A_v;
+            }
+
+            public void setA_v(String a_v) {
+                A_v = a_v;
+            }
+
+            public String getB_v() {
+                return B_v;
+            }
+
+            public void setB_v(String b_v) {
+                B_v = b_v;
+            }
+
+            public String getC_v() {
+                return C_v;
+            }
+
+            public void setC_v(String c_v) {
+                C_v = c_v;
+            }
+
+            public String getA_c() {
+                return A_c;
+            }
+
+            public void setA_c(String a_c) {
+                A_c = a_c;
+            }
+
+            public String getB_c() {
+                return B_c;
+            }
+
+            public void setB_c(String b_c) {
+                B_c = b_c;
+            }
+
+            public String getC_c() {
+                return C_c;
+            }
+
+            public void setC_c(String c_c) {
+                C_c = c_c;
+            }
+
+            public long getTs_mqtt() {
+                return ts_mqtt;
+            }
+
+            public void setTs_mqtt(long ts_mqtt) {
+                this.ts_mqtt = ts_mqtt;
+            }
+
+            public String getFrequency() {
+                return Frequency;
+            }
+
+            public void setFrequency(String frequency) {
+                Frequency = frequency;
+            }
+
+            public String getTot_p_fac() {
+                return Tot_p_fac;
+            }
+
+            public void setTot_p_fac(String tot_p_fac) {
+                Tot_p_fac = tot_p_fac;
+            }
+
+            public String getTot_view_p() {
+                return Tot_view_p;
+            }
+
+            public void setTot_view_p(String tot_view_p) {
+                Tot_view_p = tot_view_p;
+            }
+
+            public String getTot_act_deg() {
+                return Tot_act_deg;
+            }
+
+            public void setTot_act_deg(String tot_act_deg) {
+                Tot_act_deg = tot_act_deg;
+            }
+
+            public String getTot_react_deg() {
+                return Tot_react_deg;
+            }
+
+            public void setTot_react_deg(String tot_react_deg) {
+                Tot_react_deg = tot_react_deg;
+            }
+
+            public String getA_act_p() {
+                return A_act_p;
+            }
+
+            public void setA_act_p(String a_act_p) {
+                A_act_p = a_act_p;
+            }
+
+            public String getB_act_p() {
+                return B_act_p;
+            }
+
+            public void setB_act_p(String b_act_p) {
+                B_act_p = b_act_p;
+            }
+
+            public String getC_act_p() {
+                return C_act_p;
+            }
+
+            public void setC_act_p(String c_act_p) {
+                C_act_p = c_act_p;
+            }
+
+            public String getTot_act_p() {
+                return Tot_act_p;
+            }
+
+            public void setTot_act_p(String tot_act_p) {
+                Tot_act_p = tot_act_p;
             }
         }
     }

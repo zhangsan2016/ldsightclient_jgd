@@ -14,42 +14,42 @@ import com.ldsight.entity.xinjiangJson.DeviceLampJson;
 import java.util.List;
 
 public class MainListAdapter extends BaseAdapter {
-	private final List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList;
-	private Context context;
-	private LayoutInflater mInflater;
-	private int hour;
-	private int minute;
+    private final List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList;
+    private Context context;
+    private LayoutInflater mInflater;
+    private int hour;
+    private int minute;
 
-	public MainListAdapter(Context context,
-						   List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList,
-						   List<String> cableIsAbnormal) {
-		this.context = context;
-		this.electricityBoxList = electricityBoxList;
-		mInflater = LayoutInflater.from(context);
+    public MainListAdapter(Context context,
+                           List<DeviceLampJson.DataBeanX.DeviceLamp> electricityBoxList,
+                           List<String> cableIsAbnormal) {
+        this.context = context;
+        this.electricityBoxList = electricityBoxList;
+        mInflater = LayoutInflater.from(context);
 
-	}
+    }
 
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return electricityBoxList.size();
-	}
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return electricityBoxList.size();
+    }
 
-	@Override
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return electricityBoxList.get(position);
-	}
+    @Override
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return electricityBoxList.get(position);
+    }
 
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-	/*	// 如果数据不是十分钟之内的设置为不显示
-		boolean tenTime = true;  // 标识有无十分种以内的新数据
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+    /*	// 如果数据不是十分钟之内的设置为不显示
+        boolean tenTime = true;  // 标识有无十分种以内的新数据
 		MyData myData1 = new MyData();
 		MyData myData2 = new MyData();
 		String myData = electricityBoxList.get(position).getMb_time();
@@ -92,38 +92,54 @@ public class MainListAdapter extends BaseAdapter {
 		}*/
 
 
+        // 设置View参数
+        ViewHolder holder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.main_list_item, null);
+            holder = new ViewHolder();
+            holder.streetName = (TextView) convertView
+                    .findViewById(R.id.txt_street_name);
+            holder.lifeCycle = (TextView) convertView
+                    .findViewById(R.id.txt_life_cycle);
+            holder.volt = (TextView) convertView.findViewById(R.id.txt_volt);
+            holder.ampere = (TextView) convertView
+                    .findViewById(R.id.txt_ampere);
+            holder.psum = (TextView) convertView.findViewById(R.id.txt_psum);
+            holder.electricBoxState = (TextView) convertView
+                    .findViewById(R.id.tv_electric_box_state);
 
-		// 设置View参数
-		ViewHolder holder;
-		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.main_list_item, null);
-			holder = new ViewHolder();
-			holder.streetName = (TextView) convertView
-					.findViewById(R.id.txt_street_name);
-			holder.lifeCycle = (TextView) convertView
-					.findViewById(R.id.txt_life_cycle);
-			holder.volt = (TextView) convertView.findViewById(R.id.txt_volt);
-			holder.ampere = (TextView) convertView
-					.findViewById(R.id.txt_ampere);
-			holder.psum = (TextView) convertView.findViewById(R.id.txt_psum);
-			holder.electricBoxState = (TextView) convertView
-					.findViewById(R.id.tv_electric_box_state);
-
-			holder.energy = (TextView) convertView
-					.findViewById(R.id.txt_energy);
+            holder.energy = (TextView) convertView
+                    .findViewById(R.id.txt_energy);
 //			holder.power = (RelativeLayout) convertView
 //					.findViewById(R.id.layout_main_list_item_layout);
-			holder.b_volt = (TextView) convertView.findViewById(R.id.txt_Bvolt);
-			holder.c_volt = (TextView) convertView.findViewById(R.id.txt_Cvolt);
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
+            holder.b_volt = (TextView) convertView.findViewById(R.id.txt_Bvolt);
+            holder.c_volt = (TextView) convertView.findViewById(R.id.txt_Cvolt);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        DeviceLampJson.DataBeanX.DeviceLamp deviceLamp = electricityBoxList.get(position);
+        holder.streetName.setText(deviceLamp.getNAME());
+        // 电压
+        holder.volt.setText(deviceLamp.getVoltage() + "V");
+        // 电流
+        holder.ampere.setText(deviceLamp.getCurrent() + "A");
+        // 功率
+        holder.psum.setText(deviceLamp.getPower() + "KW");
+        // 电压B、C
+        if (deviceLamp.getB_v() != null) {
+            holder.b_volt.setText(deviceLamp.getB_v() + "V");
+        } if (deviceLamp.getC_v() != null) {
+            holder.c_volt.setText(deviceLamp.getC_v() + "V");
+        }
 
-			holder.streetName.setText(electricityBoxList.get(position).getNAME());
+
+
+
+
 
 			/*	DecimalFormat df = new DecimalFormat("######0.0 ");
-		        holder.ampere.setText(""
+                holder.ampere.setText(""
 					+ df.format(((long) streetAndDevices.get(position)
 					.getMb_a_Ampere()) / 1000) + "A");
 
@@ -238,94 +254,93 @@ public class MainListAdapter extends BaseAdapter {
 			}
 		});*/
 
-		return convertView;
-	}
+        return convertView;
+    }
 
-	class ViewHolder {
-		TextView streetName;
-		TextView lifeCycle;
-		TextView volt;
-		TextView ampere;
-		TextView psum;
-		TextView electricBoxState;
-		TextView energy;
-		RelativeLayout power;
-		TextView b_volt;
-		TextView c_volt;
+    class ViewHolder {
+        TextView streetName;
+        TextView lifeCycle;
+        TextView volt;
+        TextView ampere;
+        TextView psum;
+        TextView electricBoxState;
+        TextView energy;
+        RelativeLayout power;
+        TextView b_volt;
+        TextView c_volt;
 
-	}
+    }
 
-	/**
-	 * 转换24小时的时间格式
-	 *
-	 * @param checkTime
-	 * @return
-	 */
-	private int checkBig24(int checkTime) {
-		if (checkTime >= 24) {
-			// checkTime = (checkTime % 12) == 0 ? 12 : (checkTime % 12);
-			checkTime = (checkTime % 12);
-		}
-		return checkTime;
-	}
+    /**
+     * 转换24小时的时间格式
+     *
+     * @param checkTime
+     * @return
+     */
+    private int checkBig24(int checkTime) {
+        if (checkTime >= 24) {
+            // checkTime = (checkTime % 12) == 0 ? 12 : (checkTime % 12);
+            checkTime = (checkTime % 12);
+        }
+        return checkTime;
+    }
 
-	/**
-	 * 时间参数内部类
-	 *
-	 * @author Administrator
-	 *
-	 */
-	private class MyData {
-		private int year;// 年份
-		private int month;// 月份
-		private int day;// 获取日
-		private int hour;// 小时
-		private int minute;// 分
+    /**
+     * 时间参数内部类
+     *
+     * @author Administrator
+     */
+    private class MyData {
+        private int year;// 年份
+        private int month;// 月份
+        private int day;// 获取日
+        private int hour;// 小时
+        private int minute;// 分
 
-		public MyData() {
-			super();
-		}
+        public MyData() {
+            super();
+        }
 
-		public int getYear() {
-			return year;
-		}
+        public int getYear() {
+            return year;
+        }
 
-		public void setYear(int year) {
-			this.year = year;
-		}
+        public void setYear(int year) {
+            this.year = year;
+        }
 
-		public int getMonth() {
-			return month;
-		}
+        public int getMonth() {
+            return month;
+        }
 
-		public void setMonth(int month) {
-			this.month = month;
-		}
+        public void setMonth(int month) {
+            this.month = month;
+        }
 
-		public int getDay() {
-			return day;
-		}
+        public int getDay() {
+            return day;
+        }
 
-		public void setDay(int day) {
-			this.day = day;
-		}
+        public void setDay(int day) {
+            this.day = day;
+        }
 
-		public int getHour() {
-			return hour;
-		}
+        public int getHour() {
+            return hour;
+        }
 
-		public void setHour(int hour) {
-			this.hour = hour;
-		}
+        public void setHour(int hour) {
+            this.hour = hour;
+        }
 
-		public int getMinute() {
-			return minute;
-		}
+        public int getMinute() {
+            return minute;
+        }
 
-		public void setMinute(int minute) {
-			this.minute = minute;
-		}
+        public void setMinute(int minute) {
+            this.minute = minute;
+        }
 
-	}
+    }
 
 }
