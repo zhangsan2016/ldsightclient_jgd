@@ -178,7 +178,7 @@ public class DeviceMainAct extends BaseActivity {
             switch (msg.what) {
                 case UPDATE_VIEW:
                     DeviceLampJson.DataBeanX.DeviceLamp deviceLamp = (DeviceLampJson.DataBeanX.DeviceLamp) msg.obj;
-                    LogUtil.e("handler deviceLamp = " + deviceLamp);
+                    electricityBox = deviceLamp;
                     updateView(deviceLamp);
 
                     break;
@@ -1730,11 +1730,11 @@ public class DeviceMainAct extends BaseActivity {
             int enTimeMinute;
             switch (v.getId()) {
                 case R.id.rly_primary_timing:
-                    if (electricityDeviceStatuses != null) {
+                    if (electricityBox != null) {
                         intent = new Intent(DeviceMainAct.this, DeviceTiming.class);
                         Bundle bundle = new Bundle();
                         bundle.putInt("primary_timing", PRINCIPAL);
-                        bundle.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
+                        bundle.putSerializable("electricityDeviceStatus",electricityBox);
                         intent.putExtras(bundle);
                         DeviceMainAct.this.startActivityForResult(intent, 0);
                     } else {
@@ -1743,11 +1743,11 @@ public class DeviceMainAct extends BaseActivity {
 
                     break;
                 case R.id.rly_subsidiary_timing:
-                    if (electricityDeviceStatuses != null) {
+                    if (electricityBox != null) {
                         intent = new Intent(DeviceMainAct.this, DeviceTiming.class);
                         Bundle bundle2 = new Bundle();
                         bundle2.putInt("primary_timing", SUBSIDIARY);
-                        bundle2.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
+                        bundle2.putSerializable("electricityDeviceStatus", electricityBox);
                         intent.putExtras(bundle2);
                         DeviceMainAct.this.startActivityForResult(intent, 0);
                     } else {
