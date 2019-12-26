@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -36,6 +35,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
@@ -46,15 +46,13 @@ import com.ldsight.entity.ElectricityDeviceStatus;
 import com.ldsight.entity.StreetAndDevice;
 import com.ldsight.entity.xinjiangJson.DeviceLampJson;
 import com.ldsight.entity.xinjiangJson.LoginJson;
-import com.ldsight.entity.zkyjson.ZkyJson;
-import com.ldsight.service.ZkyOnlineService;
-import com.ldsight.util.HttpConfiguration;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
-import com.ldsight.util.StringUtil;
+import com.ldsight.util.MapHttpConfiguration;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.ddpush.im.v1.client.appserver.Pusher;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -69,6 +67,7 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 import static com.example.ldsightclient_jgd.R.id.txt_life_cycle;
@@ -178,32 +177,9 @@ public class DeviceMainAct extends BaseActivity {
 
             switch (msg.what) {
                 case UPDATE_VIEW:
-                    if (electricityDeviceStatuses != null) {
-                        // 获取所有当前参数
-                        ElectricityDeviceStatus electricityDeviceStatuse = electricityDeviceStatuses.get(0);
-                        // 设置光照度
-                        guangQiangDu.setText(electricityDeviceStatuse.getIllu() + "");
-                        // 设置湿度
-                        String dimming = electricityDeviceStatuse.getTemp().equals("") ? "NULL" : electricityDeviceStatuse.getTemp() + "";
-                        shiDu.setText(dimming);
-                        // 设置总功率
-                        txtPsum.setText(electricityDeviceStatuse.getTot_p_fac());
-                        // 设置A 、 B 、 C 电压
-                        txtVolt.setText(electricityDeviceStatuse.getA_v());
-                        txtVoltB.setText(electricityDeviceStatuse.getB_v());
-                        txtVoltC.setText(electricityDeviceStatuse.getC_v());
-                        // 设置A 、 B 、 C 电流
-                        txtAmpere.setText(electricityDeviceStatuse.getA_c());
-                        txt_ampereb.setText(electricityDeviceStatuse.getB_c());
-                        txt_amperec.setText(electricityDeviceStatuse.getC_c());
-                        // 设置当前时间
-                        stateDate.setText(electricityDeviceStatuse.getTime());
-                        // 路灯名称
-                        txtStreetName.setText(electricityBox.getNAME());
-                        // 定时时间
-                        txtLifeCycle.setText(electricityDeviceStatuse.getFir_tt_Fir() + " - " + electricityDeviceStatuse.getSix_tt_Fir());
-
-                    }
+                    DeviceLampJson.DataBeanX.DeviceLamp deviceLamp = (DeviceLampJson.DataBeanX.DeviceLamp) msg.obj;
+                    LogUtil.e("handler deviceLamp = " + deviceLamp);
+                    updateView(deviceLamp);
 
                     break;
             }
@@ -242,11 +218,21 @@ public class DeviceMainAct extends BaseActivity {
 
         //	Toast.makeText(this,"name = " + electricityBox.getText()+"uuid = " + electricityBox.getUuid(),Toast.LENGTH_SHORT).show();
 
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(electricityBox == null || electricityBox.getUUID() == null){
+            showToast("uuid 为空");
+            return;
+        }
+        getElectricityState(electricityBox.getUUID());
     }
 
     /**
-     *  更新界面
+     * 更新界面
+     *
      * @param electricityBox
      */
     private void updateView(DeviceLampJson.DataBeanX.DeviceLamp electricityBox) {
@@ -259,19 +245,19 @@ public class DeviceMainAct extends BaseActivity {
         // 设置总功率
         txtPsum.setText(electricityBox.getTot_p_fac());
         // 设置A 、 B 、 C 电压
-        if(electricityBox.getA_v() != null){
+        if (electricityBox.getA_v() != null) {
             txtVolt.setText(electricityBox.getA_v());
-        }else if(electricityBox.getB_v() != null){
+        } else if (electricityBox.getB_v() != null) {
             txtVoltB.setText(electricityBox.getB_v());
-        }else if(electricityBox.getC_v() != null){
+        } else if (electricityBox.getC_v() != null) {
             txtVoltC.setText(electricityBox.getC_v());
         }
         // 设置A 、 B 、 C 电流
-        if(electricityBox.getA_c() != null){
+        if (electricityBox.getA_c() != null) {
             txtAmpere.setText(electricityBox.getA_c());
-        }else if(electricityBox.getB_c() != null){
+        } else if (electricityBox.getB_c() != null) {
             txt_ampereb.setText(electricityBox.getB_c());
-        }else if(electricityBox.getC_c() != null){
+        } else if (electricityBox.getC_c() != null) {
             txt_amperec.setText(electricityBox.getC_c());
         }
 
@@ -280,7 +266,7 @@ public class DeviceMainAct extends BaseActivity {
         // 路灯名称
         txtStreetName.setText(electricityBox.getNAME());
         // 定时时间
-        if(electricityBox.getFir_tt_Fir()!= null && electricityBox.getSix_tt_Fir() != null){
+        if (electricityBox.getFir_tt_Fir() != null && electricityBox.getSix_tt_Fir() != null) {
             txtLifeCycle.setText(electricityBox.getFir_tt_Fir() + " - " + electricityBox.getSix_tt_Fir());
         }
 
@@ -295,7 +281,60 @@ public class DeviceMainAct extends BaseActivity {
      */
     private void getElectricityState(final String uuid) {
 
-        //   Toast.makeText(this, "name = " + electricityBox.getText() + "uuid = " + uuid, Toast.LENGTH_SHORT).show();
+        String postBody = null;
+        try {
+            JSONObject deviceObj = new JSONObject();
+            deviceObj.put("UUID", uuid);
+            postBody = deviceObj.toString();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            stopProgress();
+        }
+
+
+        if (postBody == null) {
+            stopProgress();
+            return;
+        }
+
+        String url = MapHttpConfiguration.VIEW_BY_UUID_URL;
+        RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
+
+        HttpUtil.sendHttpRequest(url, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                LogUtil.e("xxx relaySetting" + "失败" + e.toString());
+                stopProgress();
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                String json = response.body().string();
+                LogUtil.e("xxx relaySetting" + "成功" + json);
+
+                Gson gson = new Gson();
+                JsonElement je = new JsonParser().parse(json);
+                JsonObject jsonObject =  je.getAsJsonObject().get("data").getAsJsonObject();
+
+                DeviceLampJson.DataBeanX.DeviceLamp deviceLamp = gson.fromJson(jsonObject.toString(), DeviceLampJson.DataBeanX.DeviceLamp.class);
+
+
+                // 更新界面
+                Message msg = handler.obtainMessage();
+                msg.obj = deviceLamp;
+                msg.what = UPDATE_VIEW;
+                handler.sendMessage(msg);
+
+                stopProgress();
+
+
+            }
+
+        }, loginInfo.getData().getToken().getToken(), body);
+
+      /*  //   Toast.makeText(this, "name = " + electricityBox.getText() + "uuid = " + uuid, Toast.LENGTH_SHORT).show();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -324,12 +363,12 @@ public class DeviceMainAct extends BaseActivity {
                         String json = response.body().string();
 
                         Log.e("xxx", "成功获取电箱设备状态" + json);
-                    /*    Gson gson = new Gson();
+                    *//*    Gson gson = new Gson();
                         ElectricTransducer electricTransducer = gson.fromJson(json, ElectricTransducer.class);
 
                         for (int i = 0; i < electricTransducer.getData().size(); i++) {
                             getElectricityState(electricTransducer.getData().get(i).getUuid());
-                        }*/
+                        }*//*
                         electricityDeviceStatuses = parseJson(json);
                         // 更新界面
                         handler.sendEmptyMessage(UPDATE_VIEW);
@@ -340,7 +379,7 @@ public class DeviceMainAct extends BaseActivity {
 
                 }, requestBody);
             }
-        }).start();
+        }).start();*/
     }
 
 
@@ -435,8 +474,8 @@ public class DeviceMainAct extends BaseActivity {
                                 // byte[] data2 = new byte[] {0x81,55,55};
                                 System.out.println(Arrays.toString(data));
                                 pusher = new Pusher(MyApplication.getIp(), 9966, 10000);
-								/*
-								 * pusher.push0x20Message(
+                                /*
+                                 * pusher.push0x20Message(
 								 * streetAndDevice.getByteUuid(), data);
 								 */
                                 pusher.push0x20Message(
@@ -483,10 +522,18 @@ public class DeviceMainAct extends BaseActivity {
 
             @Override
             public void onClick(View v) {
+
+                // 获取当前电箱状态
+                if(electricityBox == null || electricityBox.getUUID() == null){
+                    showToast("uuid 为空");
+                    return;
+                }
                 showProgress();
+                getElectricityState(electricityBox.getUUID());
+
+            /*    showProgress();
                 new Thread() {
                     public void run() {
-
                         Pusher pusher = null;
 
                         // 获取当前应用的uuid
@@ -516,7 +563,7 @@ public class DeviceMainAct extends BaseActivity {
                         }
                         // showToast("发送成功");
                     }
-                }.start();
+                }.start();*/
             }
         });
         // 报警灯开关
@@ -582,6 +629,10 @@ public class DeviceMainAct extends BaseActivity {
             @Override
             public void onClick(View view) {
                 // 获取当前电箱状态
+                if(electricityBox == null || electricityBox.getUUID() == null){
+                    showToast("uuid 为空");
+                    return;
+                }
                 showProgress();
                 getElectricityState(electricityBox.getUUID());
             }
@@ -596,8 +647,62 @@ public class DeviceMainAct extends BaseActivity {
      */
     private void setCurrentTime(String uuidTo) {
 
-        showProgress();
 
+        showProgress();
+        // 获取当前日期 ，按照日期格式 19:03:04:03:21:19:01
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yy-MM-dd-");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("-HH-mm-ss");
+        Calendar cal = Calendar.getInstance();
+        int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        cal.setTime(new Date());
+        String date = sdf1.format(new Date()) + week_index + sdf2.format(new Date());
+
+        String postBody = null;
+        try {
+            JSONObject deviceObj = new JSONObject();
+            deviceObj.put("UUID", uuidTo);
+            deviceObj.put("Confirm", 2);
+            JSONObject options = new JSONObject();
+            options.put("Time", date);
+            deviceObj.put("options", options);
+            postBody = deviceObj.toString();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            stopProgress();
+        }
+
+
+        if (postBody == null) {
+            stopProgress();
+            return;
+        }
+
+        LogUtil.e("校时 jsonStr  = " + postBody);
+
+        String url = MapHttpConfiguration.DEVICE_CONTROL_URL;
+        RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
+
+        HttpUtil.sendHttpRequest(url, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                LogUtil.e("xxx relaySetting" + "失败" + e.toString());
+                stopProgress();
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                String json = response.body().string();
+                LogUtil.e("xxx relaySetting" + "成功" + json);
+                stopProgress();
+            }
+
+        }, loginInfo.getData().getToken().getToken(), body);
+
+
+
+       /* showProgress();
         // 创建json指令
         Gson gson = new Gson();
         ZkyJson zkyJson = new ZkyJson();
@@ -657,7 +762,7 @@ public class DeviceMainAct extends BaseActivity {
             }
 
 
-        }, requestBody);
+        }, requestBody);*/
     }
 
     private void initView() {
@@ -732,7 +837,7 @@ public class DeviceMainAct extends BaseActivity {
         // 刷新
         ll_device_main_refresh = (LinearLayout) this.findViewById(R.id.ll_device_main_refresh);
 
-        if(electricityBox!= null){
+        if (electricityBox != null) {
             updateView(electricityBox);
         }
     }
