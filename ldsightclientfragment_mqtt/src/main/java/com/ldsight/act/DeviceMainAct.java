@@ -259,19 +259,31 @@ public class DeviceMainAct extends BaseActivity {
         // 设置总功率
         txtPsum.setText(electricityBox.getTot_p_fac());
         // 设置A 、 B 、 C 电压
-        txtVolt.setText(electricityBox.getA_v());
-        txtVoltB.setText(electricityBox.getB_v());
-        txtVoltC.setText(electricityBox.getC_v());
+        if(electricityBox.getA_v() != null){
+            txtVolt.setText(electricityBox.getA_v());
+        }else if(electricityBox.getB_v() != null){
+            txtVoltB.setText(electricityBox.getB_v());
+        }else if(electricityBox.getC_v() != null){
+            txtVoltC.setText(electricityBox.getC_v());
+        }
         // 设置A 、 B 、 C 电流
-        txtAmpere.setText(electricityBox.getA_c());
-        txt_ampereb.setText(electricityBox.getB_c());
-        txt_amperec.setText(electricityBox.getC_c());
+        if(electricityBox.getA_c() != null){
+            txtAmpere.setText(electricityBox.getA_c());
+        }else if(electricityBox.getB_c() != null){
+            txt_ampereb.setText(electricityBox.getB_c());
+        }else if(electricityBox.getC_c() != null){
+            txt_amperec.setText(electricityBox.getC_c());
+        }
+
         // 设置当前时间
         stateDate.setText(electricityBox.getTime());
         // 路灯名称
         txtStreetName.setText(electricityBox.getNAME());
         // 定时时间
-        txtLifeCycle.setText(electricityBox.getFir_tt_Fir() + " - " + electricityBox.getSix_tt_Fir());
+        if(electricityBox.getFir_tt_Fir()!= null && electricityBox.getSix_tt_Fir() != null){
+            txtLifeCycle.setText(electricityBox.getFir_tt_Fir() + " - " + electricityBox.getSix_tt_Fir());
+        }
+
 
     }
 
