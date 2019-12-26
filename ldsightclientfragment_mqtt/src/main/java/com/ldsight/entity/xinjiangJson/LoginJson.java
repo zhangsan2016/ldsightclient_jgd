@@ -46,6 +46,15 @@ public class LoginJson implements Serializable {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "LoginJson{" +
+                "errno=" + errno +
+                ", errmsg='" + errmsg + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
     public static class DataBean implements Serializable {
         /**
          * token : {"username":"ld","token":"db7413a0-dd15-11e9-8c76-0b68964d4fc9","expired":1569746955738}
@@ -81,6 +90,15 @@ public class LoginJson implements Serializable {
             this.grantedActions = grantedActions;
         }
 
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "token=" + token +
+                    ", userProfile=" + userProfile +
+                    ", grantedActions=" + grantedActions +
+                    '}';
+        }
+
         public static class TokenBean implements Serializable {
             /**
              * username : ld
@@ -114,6 +132,15 @@ public class LoginJson implements Serializable {
 
             public void setExpired(long expired) {
                 this.expired = expired;
+            }
+
+            @Override
+            public String toString() {
+                return "TokenBean{" +
+                        "username='" + username + '\'' +
+                        ", token='" + token + '\'' +
+                        ", expired=" + expired +
+                        '}';
             }
         }
 
@@ -170,6 +197,17 @@ public class LoginJson implements Serializable {
 
             public void setRoles(String roles) {
                 this.roles = roles;
+            }
+
+            @Override
+            public String toString() {
+                return "UserProfileBean{" +
+                        "_id=" + _id +
+                        ", username='" + username + '\'' +
+                        ", phone='" + phone + '\'' +
+                        ", fullname='" + fullname + '\'' +
+                        ", roles='" + roles + '\'' +
+                        '}';
             }
         }
     }

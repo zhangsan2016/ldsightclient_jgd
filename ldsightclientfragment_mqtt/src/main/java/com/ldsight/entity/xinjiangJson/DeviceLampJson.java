@@ -192,6 +192,36 @@ public class DeviceLampJson {
             private String B_act_p;
             private String C_act_p;
             private String Tot_act_p;
+            private int A_react_p;
+            private int B_react_p;
+            private int C_react_p;
+            private int Tot_react_p;
+            private int Rel_State;
+            private String Time;
+            private String Fir_tt_Fir;
+            private int Fir_tp_Fir;
+            private String Sec_tt_Fir;
+            private int Sec_tp_Fir;
+            private String Thir_tt_Fir;
+            private int Thir_tp_Fir;
+            private String Four_tt_Fir;
+            private int Four_tp_Fir;
+            private String Fif_tt_Fir;
+            private int Fif_tp_Fir;
+            private String Six_tt_Fir;
+            private int Six_tp_Fir;
+            private String Fir_tt_Sec;
+            private int Fir_tp_Sec;
+            private String Sec_tt_Sec;
+            private int Sec_tp_Sec;
+            private String Thir_tt_Sec;
+            private int Thir_tp_Sec;
+            private String Four_tt_Sec;
+            private int Four_tp_Sec;
+            private String Fif_tt_Sec;
+            private int Fif_tp_Sec;
+            private String Six_tt_Sec;
+            private int Six_tp_Sec;
 
             @Override
             public String toString() {
@@ -236,6 +266,55 @@ public class DeviceLampJson {
                         ", Version='" + Version + '\'' +
                         ", Warning_state=" + Warning_state +
                         ", Alarm_Light_Mode='" + Alarm_Light_Mode + '\'' +
+                        ", info='" + info + '\'' +
+                        ", config=" + config +
+                        ", report_config=" + report_config +
+                        ", A_v='" + A_v + '\'' +
+                        ", B_v='" + B_v + '\'' +
+                        ", C_v='" + C_v + '\'' +
+                        ", A_c='" + A_c + '\'' +
+                        ", B_c='" + B_c + '\'' +
+                        ", C_c='" + C_c + '\'' +
+                        ", ts_mqtt=" + ts_mqtt +
+                        ", Frequency='" + Frequency + '\'' +
+                        ", Tot_p_fac='" + Tot_p_fac + '\'' +
+                        ", Tot_view_p='" + Tot_view_p + '\'' +
+                        ", Tot_act_deg='" + Tot_act_deg + '\'' +
+                        ", Tot_react_deg='" + Tot_react_deg + '\'' +
+                        ", A_act_p='" + A_act_p + '\'' +
+                        ", B_act_p='" + B_act_p + '\'' +
+                        ", C_act_p='" + C_act_p + '\'' +
+                        ", Tot_act_p='" + Tot_act_p + '\'' +
+                        ", A_react_p=" + A_react_p +
+                        ", B_react_p=" + B_react_p +
+                        ", C_react_p=" + C_react_p +
+                        ", Tot_react_p=" + Tot_react_p +
+                        ", Rel_State=" + Rel_State +
+                        ", Time='" + Time + '\'' +
+                        ", Fir_tt_Fir='" + Fir_tt_Fir + '\'' +
+                        ", Fir_tp_Fir=" + Fir_tp_Fir +
+                        ", Sec_tt_Fir='" + Sec_tt_Fir + '\'' +
+                        ", Sec_tp_Fir=" + Sec_tp_Fir +
+                        ", Thir_tt_Fir='" + Thir_tt_Fir + '\'' +
+                        ", Thir_tp_Fir=" + Thir_tp_Fir +
+                        ", Four_tt_Fir='" + Four_tt_Fir + '\'' +
+                        ", Four_tp_Fir=" + Four_tp_Fir +
+                        ", Fif_tt_Fir='" + Fif_tt_Fir + '\'' +
+                        ", Fif_tp_Fir=" + Fif_tp_Fir +
+                        ", Six_tt_Fir='" + Six_tt_Fir + '\'' +
+                        ", Six_tp_Fir=" + Six_tp_Fir +
+                        ", Fir_tt_Sec='" + Fir_tt_Sec + '\'' +
+                        ", Fir_tp_Sec=" + Fir_tp_Sec +
+                        ", Sec_tt_Sec='" + Sec_tt_Sec + '\'' +
+                        ", Sec_tp_Sec=" + Sec_tp_Sec +
+                        ", Thir_tt_Sec='" + Thir_tt_Sec + '\'' +
+                        ", Thir_tp_Sec=" + Thir_tp_Sec +
+                        ", Four_tt_Sec='" + Four_tt_Sec + '\'' +
+                        ", Four_tp_Sec=" + Four_tp_Sec +
+                        ", Fif_tt_Sec='" + Fif_tt_Sec + '\'' +
+                        ", Fif_tp_Sec=" + Fif_tp_Sec +
+                        ", Six_tt_Sec='" + Six_tt_Sec + '\'' +
+                        ", Six_tp_Sec=" + Six_tp_Sec +
                         '}';
             }
 
@@ -709,6 +788,246 @@ public class DeviceLampJson {
 
             public void setTot_act_p(String tot_act_p) {
                 Tot_act_p = tot_act_p;
+            }
+
+            public int getA_react_p() {
+                return A_react_p;
+            }
+
+            public void setA_react_p(int a_react_p) {
+                A_react_p = a_react_p;
+            }
+
+            public int getB_react_p() {
+                return B_react_p;
+            }
+
+            public void setB_react_p(int b_react_p) {
+                B_react_p = b_react_p;
+            }
+
+            public int getC_react_p() {
+                return C_react_p;
+            }
+
+            public void setC_react_p(int c_react_p) {
+                C_react_p = c_react_p;
+            }
+
+            public int getTot_react_p() {
+                return Tot_react_p;
+            }
+
+            public void setTot_react_p(int tot_react_p) {
+                Tot_react_p = tot_react_p;
+            }
+
+            public int getRel_State() {
+                return Rel_State;
+            }
+
+            public void setRel_State(int rel_State) {
+                Rel_State = rel_State;
+            }
+
+            public String getTime() {
+                return Time;
+            }
+
+            public void setTime(String time) {
+                Time = time;
+            }
+
+            public String getFir_tt_Fir() {
+                return Fir_tt_Fir;
+            }
+
+            public void setFir_tt_Fir(String fir_tt_Fir) {
+                Fir_tt_Fir = fir_tt_Fir;
+            }
+
+            public int getFir_tp_Fir() {
+                return Fir_tp_Fir;
+            }
+
+            public void setFir_tp_Fir(int fir_tp_Fir) {
+                Fir_tp_Fir = fir_tp_Fir;
+            }
+
+            public String getSec_tt_Fir() {
+                return Sec_tt_Fir;
+            }
+
+            public void setSec_tt_Fir(String sec_tt_Fir) {
+                Sec_tt_Fir = sec_tt_Fir;
+            }
+
+            public int getSec_tp_Fir() {
+                return Sec_tp_Fir;
+            }
+
+            public void setSec_tp_Fir(int sec_tp_Fir) {
+                Sec_tp_Fir = sec_tp_Fir;
+            }
+
+            public String getThir_tt_Fir() {
+                return Thir_tt_Fir;
+            }
+
+            public void setThir_tt_Fir(String thir_tt_Fir) {
+                Thir_tt_Fir = thir_tt_Fir;
+            }
+
+            public int getThir_tp_Fir() {
+                return Thir_tp_Fir;
+            }
+
+            public void setThir_tp_Fir(int thir_tp_Fir) {
+                Thir_tp_Fir = thir_tp_Fir;
+            }
+
+            public String getFour_tt_Fir() {
+                return Four_tt_Fir;
+            }
+
+            public void setFour_tt_Fir(String four_tt_Fir) {
+                Four_tt_Fir = four_tt_Fir;
+            }
+
+            public int getFour_tp_Fir() {
+                return Four_tp_Fir;
+            }
+
+            public void setFour_tp_Fir(int four_tp_Fir) {
+                Four_tp_Fir = four_tp_Fir;
+            }
+
+            public String getFif_tt_Fir() {
+                return Fif_tt_Fir;
+            }
+
+            public void setFif_tt_Fir(String fif_tt_Fir) {
+                Fif_tt_Fir = fif_tt_Fir;
+            }
+
+            public int getFif_tp_Fir() {
+                return Fif_tp_Fir;
+            }
+
+            public void setFif_tp_Fir(int fif_tp_Fir) {
+                Fif_tp_Fir = fif_tp_Fir;
+            }
+
+            public String getSix_tt_Fir() {
+                return Six_tt_Fir;
+            }
+
+            public void setSix_tt_Fir(String six_tt_Fir) {
+                Six_tt_Fir = six_tt_Fir;
+            }
+
+            public int getSix_tp_Fir() {
+                return Six_tp_Fir;
+            }
+
+            public void setSix_tp_Fir(int six_tp_Fir) {
+                Six_tp_Fir = six_tp_Fir;
+            }
+
+            public String getFir_tt_Sec() {
+                return Fir_tt_Sec;
+            }
+
+            public void setFir_tt_Sec(String fir_tt_Sec) {
+                Fir_tt_Sec = fir_tt_Sec;
+            }
+
+            public int getFir_tp_Sec() {
+                return Fir_tp_Sec;
+            }
+
+            public void setFir_tp_Sec(int fir_tp_Sec) {
+                Fir_tp_Sec = fir_tp_Sec;
+            }
+
+            public String getSec_tt_Sec() {
+                return Sec_tt_Sec;
+            }
+
+            public void setSec_tt_Sec(String sec_tt_Sec) {
+                Sec_tt_Sec = sec_tt_Sec;
+            }
+
+            public int getSec_tp_Sec() {
+                return Sec_tp_Sec;
+            }
+
+            public void setSec_tp_Sec(int sec_tp_Sec) {
+                Sec_tp_Sec = sec_tp_Sec;
+            }
+
+            public String getThir_tt_Sec() {
+                return Thir_tt_Sec;
+            }
+
+            public void setThir_tt_Sec(String thir_tt_Sec) {
+                Thir_tt_Sec = thir_tt_Sec;
+            }
+
+            public int getThir_tp_Sec() {
+                return Thir_tp_Sec;
+            }
+
+            public void setThir_tp_Sec(int thir_tp_Sec) {
+                Thir_tp_Sec = thir_tp_Sec;
+            }
+
+            public String getFour_tt_Sec() {
+                return Four_tt_Sec;
+            }
+
+            public void setFour_tt_Sec(String four_tt_Sec) {
+                Four_tt_Sec = four_tt_Sec;
+            }
+
+            public int getFour_tp_Sec() {
+                return Four_tp_Sec;
+            }
+
+            public void setFour_tp_Sec(int four_tp_Sec) {
+                Four_tp_Sec = four_tp_Sec;
+            }
+
+            public String getFif_tt_Sec() {
+                return Fif_tt_Sec;
+            }
+
+            public void setFif_tt_Sec(String fif_tt_Sec) {
+                Fif_tt_Sec = fif_tt_Sec;
+            }
+
+            public int getFif_tp_Sec() {
+                return Fif_tp_Sec;
+            }
+
+            public void setFif_tp_Sec(int fif_tp_Sec) {
+                Fif_tp_Sec = fif_tp_Sec;
+            }
+
+            public String getSix_tt_Sec() {
+                return Six_tt_Sec;
+            }
+
+            public void setSix_tt_Sec(String six_tt_Sec) {
+                Six_tt_Sec = six_tt_Sec;
+            }
+
+            public int getSix_tp_Sec() {
+                return Six_tp_Sec;
+            }
+
+            public void setSix_tp_Sec(int six_tp_Sec) {
+                Six_tp_Sec = six_tp_Sec;
             }
         }
     }

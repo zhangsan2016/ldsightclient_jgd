@@ -129,6 +129,7 @@ public class MainFragment extends Fragment {
                /* bundle.putString("streetId", streetAndDevices.get(position)
                         .getStreetId());*/
                 bundle.putSerializable("electricityBox", electricityBoxList.get(position));
+                bundle.putSerializable("loginInfo",loginInfo);
                 intent.putExtras(bundle);
                 // startActivity(intent);
                 startActivityForResult(intent, 1);

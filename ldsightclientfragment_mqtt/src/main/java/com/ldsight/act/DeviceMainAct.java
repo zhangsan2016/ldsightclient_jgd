@@ -42,9 +42,10 @@ import com.google.gson.reflect.TypeToken;
 import com.ldsight.application.MyApplication;
 import com.ldsight.base.BaseActivity;
 import com.ldsight.component.DeviceTable;
-import com.ldsight.entity.ElectricityBox;
 import com.ldsight.entity.ElectricityDeviceStatus;
 import com.ldsight.entity.StreetAndDevice;
+import com.ldsight.entity.xinjiangJson.DeviceLampJson;
+import com.ldsight.entity.xinjiangJson.LoginJson;
 import com.ldsight.entity.zkyjson.ZkyJson;
 import com.ldsight.service.ZkyOnlineService;
 import com.ldsight.util.HttpConfiguration;
@@ -154,13 +155,15 @@ public class DeviceMainAct extends BaseActivity {
     // 主灯、辅灯定时时间
     private byte[] mainSixSectionDimmerIntensity;
     private byte[] assistSixSectionDimmerIntensity;
+    // 登录信息
+    private LoginJson loginInfo;
 
 
     /**
      * 电箱状态
      */
     private List<ElectricityDeviceStatus> electricityDeviceStatuses;
-    private ElectricityBox.ElectricityBoxList electricityBox;
+    private DeviceLampJson.DataBeanX.DeviceLamp electricityBox;
     private LinearLayout ll_prev_device_main;
     // 刷新
     private LinearLayout ll_device_main_refresh;
@@ -196,7 +199,7 @@ public class DeviceMainAct extends BaseActivity {
                         // 设置当前时间
                         stateDate.setText(electricityDeviceStatuse.getTime());
                         // 路灯名称
-                        txtStreetName.setText(electricityBox.getText());
+                        txtStreetName.setText(electricityBox.getNAME());
                         // 定时时间
                         txtLifeCycle.setText(electricityDeviceStatuse.getFir_tt_Fir() + " - " + electricityDeviceStatuse.getSix_tt_Fir());
 
@@ -217,10 +220,19 @@ public class DeviceMainAct extends BaseActivity {
         // 获取传递过来的参数
         Bundle bundle = getIntent().getExtras();
         streetId = bundle.getString("streetId");
-      //  electricityBox = (ElectricityBox.ElectricityBoxList) bundle.getSerializable("electricityBox");
+        electricityBox = (DeviceLampJson.DataBeanX.DeviceLamp) bundle.getSerializable("electricityBox");
+        loginInfo = (LoginJson) bundle.getSerializable("loginInfo");
+
+
+
+      /*  if(loginInfo != null){
+            LogUtil.e("xxx loginInfo = " + loginInfo.toString());
+            LogUtil.e("xxx electricityBox = " + electricityBox.toString());
+        }*/
+
 
         // 获取当前电箱状态
-     //   getElectricityState(electricityBox.getUuid());
+        //   getElectricityState(electricityBox.getUuid());
 
         // 初始化视图
         initView();
@@ -230,6 +242,36 @@ public class DeviceMainAct extends BaseActivity {
 
         //	Toast.makeText(this,"name = " + electricityBox.getText()+"uuid = " + electricityBox.getUuid(),Toast.LENGTH_SHORT).show();
 
+
+    }
+
+    /**
+     *  更新界面
+     * @param electricityBox
+     */
+    private void updateView(DeviceLampJson.DataBeanX.DeviceLamp electricityBox) {
+
+        // 设置光照度
+        guangQiangDu.setText(electricityBox.getIllu() + "");
+        // 设置湿度
+        String dimming = electricityBox.getTemp() + "";
+        shiDu.setText(dimming);
+        // 设置总功率
+        txtPsum.setText(electricityBox.getTot_p_fac());
+        // 设置A 、 B 、 C 电压
+        txtVolt.setText(electricityBox.getA_v());
+        txtVoltB.setText(electricityBox.getB_v());
+        txtVoltC.setText(electricityBox.getC_v());
+        // 设置A 、 B 、 C 电流
+        txtAmpere.setText(electricityBox.getA_c());
+        txt_ampereb.setText(electricityBox.getB_c());
+        txt_amperec.setText(electricityBox.getC_c());
+        // 设置当前时间
+        stateDate.setText(electricityBox.getTime());
+        // 路灯名称
+        txtStreetName.setText(electricityBox.getNAME());
+        // 定时时间
+        txtLifeCycle.setText(electricityBox.getFir_tt_Fir() + " - " + electricityBox.getSix_tt_Fir());
 
     }
 
@@ -330,7 +372,7 @@ public class DeviceMainAct extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // 校时
-                setCurrentTime(electricityBox.getUuid());
+                setCurrentTime(electricityBox.getUUID());
             }
         });
 
@@ -352,7 +394,7 @@ public class DeviceMainAct extends BaseActivity {
                                 System.out.println(Arrays.toString(data));
                                 pusher = new Pusher(MyApplication.getIp(), 9966, 10000);
                                 /*
-								 * pusher.push0x20Message(
+                                 * pusher.push0x20Message(
 								 * streetAndDevice.getByteUuid(), data);
 								 */
                                 pusher.push0x20Message(
@@ -529,7 +571,7 @@ public class DeviceMainAct extends BaseActivity {
             public void onClick(View view) {
                 // 获取当前电箱状态
                 showProgress();
-                getElectricityState(electricityBox.getUuid());
+                getElectricityState(electricityBox.getUUID());
             }
         });
 
@@ -564,22 +606,22 @@ public class DeviceMainAct extends BaseActivity {
         String jsonStr = gson.toJson(zkyJson) + "#";
         LogUtil.e("校时 jsonStr = " + jsonStr);
 
-        if(ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null){
+        if (ZkyOnlineService.heartbeatStatis == null || ZkyOnlineService.heartbeatStatis.getData() == null) {
             showToast("服务器无法连接，请稍后再试！");
             stopProgress();
-           return;
+            return;
         }
-        jsonStr  = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
+        jsonStr = StringUtil.stringToHexString(jsonStr, ZkyOnlineService.heartbeatStatis.getData().getBKey());
 
         LogUtil.e("uuidTo = " + uuidTo);
         int type = (HttpConfiguration.PushType.pushData << 4 | HttpConfiguration.NET);
         RequestBody requestBody = new FormBody.Builder()
                 .add("version", "225")
-                .add("type",  type + "")
+                .add("type", type + "")
                 .add("key", String.valueOf(ZkyOnlineService.heartbeatStatis.getData().getISessionKey()))
                 .add("uuidFrom", HttpConfiguration._Clientuuid)
-               // .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
-               .add("uuidTo", electricityDeviceStatuses.get(0).getUUID())
+                // .add("uuidTo", "05,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99")
+                .add("uuidTo", electricityDeviceStatuses.get(0).getUUID())
                 .add("crc", "")
                 .add("data", jsonStr)
                 .build();
@@ -677,6 +719,10 @@ public class DeviceMainAct extends BaseActivity {
         ll_prev_device_main = (LinearLayout) this.findViewById(R.id.ll_prev_device_main);
         // 刷新
         ll_device_main_refresh = (LinearLayout) this.findViewById(R.id.ll_device_main_refresh);
+
+        if(electricityBox!= null){
+            updateView(electricityBox);
+        }
     }
 
 
@@ -1574,7 +1620,7 @@ public class DeviceMainAct extends BaseActivity {
                         bundle.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
                         intent.putExtras(bundle);
                         DeviceMainAct.this.startActivityForResult(intent, 0);
-                    }else{
+                    } else {
                         showToast("当前状态为空！");
                     }
 
@@ -1587,7 +1633,7 @@ public class DeviceMainAct extends BaseActivity {
                         bundle2.putSerializable("electricityDeviceStatus", electricityDeviceStatuses.get(0));
                         intent.putExtras(bundle2);
                         DeviceMainAct.this.startActivityForResult(intent, 0);
-                    }else{
+                    } else {
                         showToast("当前状态为空！");
                     }
                     break;
@@ -1611,8 +1657,6 @@ public class DeviceMainAct extends BaseActivity {
 
         }
     }
-
-
 
 
 }
