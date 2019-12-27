@@ -776,6 +776,7 @@ public class DeviceTiming extends BaseActivity {
             return;
         }
 
+        LogUtil.e("postBody = " + postBody);
 
         String url = MapHttpConfiguration.DEVICE_CONTROL_URL;
         RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);

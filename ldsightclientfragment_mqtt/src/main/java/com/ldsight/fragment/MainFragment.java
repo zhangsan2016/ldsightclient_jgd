@@ -260,8 +260,6 @@ public class MainFragment extends Fragment {
                 String postBody = "{\"where\":{\"PROJECT\":\"" + title + "\"},\"size\":5000}";
                 RequestBody body = FormBody.create(MediaType.parse("application/json"), postBody);
 
-                LogUtil.e("xxx postBody = " + postBody);
-
                 HttpUtil.sendHttpRequest(url, new Callback() {
 
                     @Override
