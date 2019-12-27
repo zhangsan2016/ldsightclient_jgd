@@ -160,7 +160,7 @@ public class DeviceTiming extends BaseActivity {
 
                 // 主灯获取开始时间和结束时间
                 String[] startTimeArrays = electricityDeviceStatus.getFir_tt_Fir().split(":");
-                if (startTimeArrays != null || startTimeArrays.length != 2) {
+                if (startTimeArrays == null || startTimeArrays.length != 2) {
                     // 时间为空时设置一个默认的时间
                     startTimeH = "18";
                     startTimeM = "00";
@@ -217,6 +217,25 @@ public class DeviceTiming extends BaseActivity {
 
                 // 辅灯获取开始时间和结束时间
                 String[] startTimeArrays = electricityDeviceStatus.getFir_tt_Sec().split(":");
+                if (startTimeArrays == null || startTimeArrays.length != 2) {
+                    // 时间为空时设置一个默认的时间
+                    startTimeH = "18";
+                    startTimeM = "00";
+                    endTimeH = "08";
+                    endTimeM = "00";
+                    timeTwoH = "21";
+                    timeTwoM = "23";
+                    timeThirH = "01";
+                    timeThirM = "00";
+                    timeFourH = "03";
+                    timeFourM = "00";
+                    timeFifH = "05";
+                    timeFifM = "00";
+                    timeSixH = endTimeH;
+                    timeSixM = endTimeM;
+
+                    return;
+                }
                 startTimeH = String.format("%02d", Integer.parseInt(startTimeArrays[0]));
                 startTimeM = String.format("%02d", Integer.parseInt(startTimeArrays[1]));
                 brightness1 = electricityDeviceStatus.getFir_tp_Sec();
@@ -316,7 +335,7 @@ public class DeviceTiming extends BaseActivity {
         // 设置六段定时时间
         tv_spacing_start_time1.setText(startTimeH + ":" + startTimeM);
         tv_spacing_start_time2.setText(timeTwoH + ":" + timeTwoM);
-        tv_spacing_start_time3.setText(timeFifH + ":" + timeFifM);
+        tv_spacing_start_time3.setText(timeThirH + ":" + timeThirM);
         tv_spacing_start_time4.setText(timeFourH + ":" + timeFourM);
         tv_spacing_start_time5.setText(timeFifH + ":" + timeFifM);
         tv_spacing_start_time6.setText(timeSixH + ":" + timeSixM);

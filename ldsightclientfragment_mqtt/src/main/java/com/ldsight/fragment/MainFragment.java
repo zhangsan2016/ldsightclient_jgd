@@ -154,7 +154,6 @@ public class MainFragment extends Fragment {
      */
     public void getProject(final String token) {
 
-        LogUtil.e("xxx getProject 被调用");
 
         new Thread(new Runnable() {
             @Override
@@ -250,7 +249,6 @@ public class MainFragment extends Fragment {
      */
     public void getDeviceEbox(final String title, final String token, final CountDownLatch latch) {
 
-        LogUtil.e("xxx getDeviceEbox 被调用");
 
         new Thread(new Runnable() {
             @Override
