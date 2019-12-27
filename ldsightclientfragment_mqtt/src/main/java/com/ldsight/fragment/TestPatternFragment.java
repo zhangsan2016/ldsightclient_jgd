@@ -776,6 +776,8 @@ public class TestPatternFragment extends BaseFragment {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
 
+                        // 清理历史列表
+                        electricityBoxList.clear();
 
                         String json = response.body().string();
                         LogUtil.e("getProject xxx" + "成功" + json);

@@ -107,13 +107,13 @@ public class MainFragment extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.main_list);
 
         streetAndDevices = new ArrayList<StreetAndDevice>();
-        if (!updata) {
+      /*  if (!updata) {
             // showProgress();
             //   makeSampleHttpRequest(loginInfo.getData().get(0).getID());
             getProject(loginInfo.getData().getToken().getToken());
-        }
+            updata = true;
+        }*/
 
-        electricityBoxList.clear();
         adapter = new MainListAdapter(MainFragment.this.getActivity(),
                 electricityBoxList, cableIsAbnormal);
 
@@ -154,6 +154,8 @@ public class MainFragment extends Fragment {
      */
     public void getProject(final String token) {
 
+        LogUtil.e("xxx getProject 被调用");
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -192,6 +194,7 @@ public class MainFragment extends Fragment {
                             }
                         });*/
 
+                        electricityBoxList.clear();
 
                         String json = response.body().string();
                         LogUtil.e("getProject xxx" + "成功" + json);
@@ -231,6 +234,12 @@ public class MainFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        // 获取所有的项目
+        getProject(loginInfo.getData().getToken().getToken());
+    }
 
     /**
      * 获取所有电箱
@@ -240,6 +249,8 @@ public class MainFragment extends Fragment {
      * @param latch
      */
     public void getDeviceEbox(final String title, final String token, final CountDownLatch latch) {
+
+        LogUtil.e("xxx getDeviceEbox 被调用");
 
         new Thread(new Runnable() {
             @Override
@@ -257,7 +268,6 @@ public class MainFragment extends Fragment {
 
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        LogUtil.e("xxx" + "失败" + e.toString());
                         showToast("连接服务器异常！");
                         stopProgress();
 
@@ -269,7 +279,6 @@ public class MainFragment extends Fragment {
                     public void onResponse(Call call, Response response) throws IOException {
 
                         String json = response.body().string();
-                        LogUtil.e("xxx getDeviceEbox " + "成功" + json);
 
                         // 解析返回过来的json
                         Gson gson = new Gson();
