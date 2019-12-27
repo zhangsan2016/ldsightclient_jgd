@@ -152,30 +152,34 @@ public class DeviceTiming extends BaseActivity {
     private void initTime() {
 
         // 开关灯时间
-        if (electricityDeviceStatus == null) {
+        if (electricityDeviceStatus == null || electricityDeviceStatus.getFir_tt_Fir() == null) {
+
+            // 时间为空时设置一个默认的时间
+            startTimeH = "18";
+            startTimeM = "00";
+            endTimeH = "08";
+            endTimeM = "00";
+            timeTwoH = "21";
+            timeTwoM = "23";
+            timeThirH = "01";
+            timeThirM = "00";
+            timeFourH = "03";
+            timeFourM = "00";
+            timeFifH = "05";
+            timeFifM = "00";
+            timeSixH = endTimeH;
+            timeSixM = endTimeM;
+
             return;
         } else {
             // 判断设置主灯还是辅灯
             if (advocateComplementaryCode == DeviceMainAct.PRINCIPAL) {
 
+                LogUtil.e("electricityDeviceStatus = " + electricityDeviceStatus.toString());
+
                 // 主灯获取开始时间和结束时间
                 String[] startTimeArrays = electricityDeviceStatus.getFir_tt_Fir().split(":");
                 if (startTimeArrays == null || startTimeArrays.length != 2) {
-                    // 时间为空时设置一个默认的时间
-                    startTimeH = "18";
-                    startTimeM = "00";
-                    endTimeH = "08";
-                    endTimeM = "00";
-                    timeTwoH = "21";
-                    timeTwoM = "23";
-                    timeThirH = "01";
-                    timeThirM = "00";
-                    timeFourH = "03";
-                    timeFourM = "00";
-                    timeFifH = "05";
-                    timeFifM = "00";
-                    timeSixH = endTimeH;
-                    timeSixM = endTimeM;
 
                     return;
                 }
@@ -785,7 +789,7 @@ public class DeviceTiming extends BaseActivity {
                 long delayedTime = (System.currentTimeMillis() - currentRecordTime) < stopProgressTime ? stopProgressTime - (System.currentTimeMillis() - currentRecordTime) : 0;
                 LogUtil.e("delayedTime = " + delayedTime);
                 delayedStopsendProgress(delayedTime);
-              //  showToast("定时指令发送失败！");
+                //  showToast("定时指令发送失败！");
             }
 
             @Override
