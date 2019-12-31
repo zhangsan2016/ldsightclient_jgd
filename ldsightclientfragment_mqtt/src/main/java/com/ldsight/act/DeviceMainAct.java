@@ -70,6 +70,7 @@ import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
+import static com.example.ldsightclient_jgd.R.id.txt_energy;
 import static com.example.ldsightclient_jgd.R.id.txt_life_cycle;
 import static com.example.ldsightclient_jgd.R.id.txt_volt;
 
@@ -223,7 +224,7 @@ public class DeviceMainAct extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(electricityBox == null || electricityBox.getUUID() == null){
+        if (electricityBox == null || electricityBox.getUUID() == null) {
             showToast("uuid 为空");
             return;
         }
@@ -243,21 +244,25 @@ public class DeviceMainAct extends BaseActivity {
         String dimming = electricityBox.getTemp() + "";
         shiDu.setText(dimming);
         // 设置总功率
-        txtPsum.setText(electricityBox.getTot_p_fac());
+        txtPsum.setText(electricityBox.getTot_act_p());
         // 设置A 、 B 、 C 电压
         if (electricityBox.getA_v() != null) {
             txtVolt.setText(electricityBox.getA_v());
-        } else if (electricityBox.getB_v() != null) {
+        }
+        if (electricityBox.getB_v() != null) {
             txtVoltB.setText(electricityBox.getB_v());
-        } else if (electricityBox.getC_v() != null) {
+        }
+        if (electricityBox.getC_v() != null) {
             txtVoltC.setText(electricityBox.getC_v());
         }
         // 设置A 、 B 、 C 电流
         if (electricityBox.getA_c() != null) {
             txtAmpere.setText(electricityBox.getA_c());
-        } else if (electricityBox.getB_c() != null) {
+        }
+        if (electricityBox.getB_c() != null) {
             txt_ampereb.setText(electricityBox.getB_c());
-        } else if (electricityBox.getC_c() != null) {
+        }
+        if (electricityBox.getC_c() != null) {
             txt_amperec.setText(electricityBox.getC_c());
         }
 
@@ -270,6 +275,10 @@ public class DeviceMainAct extends BaseActivity {
             txtLifeCycle.setText(electricityBox.getFir_tt_Fir() + " - " + electricityBox.getSix_tt_Fir());
         }
 
+        // 节能状态
+/*        TextView energySavingState = (TextView) DeviceMainAct.this
+                .findViewById(txt_energy);
+        energySavingState.setText();*/
 
     }
 
@@ -316,7 +325,7 @@ public class DeviceMainAct extends BaseActivity {
 
                 Gson gson = new Gson();
                 JsonElement je = new JsonParser().parse(json);
-                JsonObject jsonObject =  je.getAsJsonObject().get("data").getAsJsonObject();
+                JsonObject jsonObject = je.getAsJsonObject().get("data").getAsJsonObject();
 
                 DeviceLampJson.DataBeanX.DeviceLamp deviceLamp = gson.fromJson(jsonObject.toString(), DeviceLampJson.DataBeanX.DeviceLamp.class);
 
@@ -508,7 +517,7 @@ public class DeviceMainAct extends BaseActivity {
                         SingleLightAct.class);
                 Bundle mBundle = new Bundle();
                 mBundle.putByteArray("uuid", streetAndDevice.getByteUuid());
-				/*
+                /*
 				 * // 测试 System.out.println("streetAndDevice.getByteUuid() = " +
 				 * Arrays.toString(streetAndDevice.getByteUuid()));
 				 */
@@ -524,7 +533,7 @@ public class DeviceMainAct extends BaseActivity {
             public void onClick(View v) {
 
                 // 获取当前电箱状态
-                if(electricityBox == null || electricityBox.getUUID() == null){
+                if (electricityBox == null || electricityBox.getUUID() == null) {
                     showToast("uuid 为空");
                     return;
                 }
@@ -629,7 +638,7 @@ public class DeviceMainAct extends BaseActivity {
             @Override
             public void onClick(View view) {
                 // 获取当前电箱状态
-                if(electricityBox == null || electricityBox.getUUID() == null){
+                if (electricityBox == null || electricityBox.getUUID() == null) {
                     showToast("uuid 为空");
                     return;
                 }
@@ -1438,7 +1447,7 @@ public class DeviceMainAct extends BaseActivity {
 
     private void setEnergySavingState() {
         TextView energySavingState = (TextView) DeviceMainAct.this
-                .findViewById(R.id.txt_energy);
+                .findViewById(txt_energy);
 
         // 设置节能状态
         // 根据当前时间判断节能状态
@@ -1734,7 +1743,7 @@ public class DeviceMainAct extends BaseActivity {
                         intent = new Intent(DeviceMainAct.this, DeviceTiming.class);
                         Bundle bundle = new Bundle();
                         bundle.putInt("primary_timing", PRINCIPAL);
-                        bundle.putSerializable("electricityDeviceStatus",electricityBox);
+                        bundle.putSerializable("electricityDeviceStatus", electricityBox);
                         intent.putExtras(bundle);
                         DeviceMainAct.this.startActivityForResult(intent, 0);
                     } else {
