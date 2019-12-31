@@ -125,25 +125,39 @@ public class MainListAdapter extends BaseAdapter {
         // 电压
         if (deviceLamp.getA_v() != null) {
             holder.volt.setText(deviceLamp.getA_v() + "V");
+        }else{
+            holder.volt.setText(" ???");
         }
         // 电流
         if (deviceLamp.getA_c() != null) {
             holder.ampere.setText(deviceLamp.getA_c() + "A");
+        }else{
+            holder.ampere.setText(" ???");
         }
         // 功率
         if (deviceLamp.getTot_act_p() != null) {
             holder.psum.setText(deviceLamp.getTot_act_p() + "KW");
+        }else{
+            holder.psum.setText(" ???");
         }
 
         // 电压B、C
         if (deviceLamp.getB_v() != null) {
             holder.b_volt.setText(deviceLamp.getB_v() + "V");
+        }else{
+            holder.b_volt.setText(" ???");
         }
         if (deviceLamp.getC_v() != null) {
             holder.c_volt.setText(deviceLamp.getC_v() + "V");
+        }else {
+            holder.c_volt.setText(" ???");
         }
+
+      //  LogUtil.e("xxxname = " + deviceLamp.getNAME()  +"  ||  "+ "Fir_tt_Fir ="  + deviceLamp.getFir_tt_Fir() + " - " + deviceLamp.getSix_tt_Fir());
         if (deviceLamp.getSix_tt_Fir() != null && deviceLamp.getFir_tt_Fir() != null) {
             holder.lifeCycle.setText(deviceLamp.getFir_tt_Fir() + "-" + deviceLamp.getSix_tt_Fir());
+        }else{
+            holder.lifeCycle.setText("18:30-06:30");
         }
 
 
