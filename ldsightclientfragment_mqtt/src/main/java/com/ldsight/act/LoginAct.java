@@ -409,7 +409,7 @@ public class LoginAct extends Activity {
 		protected Boolean doInBackground(Void... params) {
 			// TODO Auto-generated method stub
 			if (postCheckNewestVersionCommand()) {
-				int vercode = CustomUtils.getVersionCode(LoginAct.this); // 用到前面第一节写的方法
+				int vercode = CustomUtils.getVersionCode(LoginAct.this);
 				if (newVersionCode > vercode) {
 					return true;
 				} else {
