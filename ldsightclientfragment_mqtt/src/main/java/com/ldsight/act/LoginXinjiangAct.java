@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,18 +63,18 @@ public class LoginXinjiangAct extends Activity {
 
 
         preferences = getSharedPreferences(CLIENT_STATE, 0);
-   /*     username = preferences.getString("username", "");
+       username = preferences.getString("username", "");
         password = preferences.getString("password", "");
 
         if (!TextUtils.isEmpty(username) &&
                 !TextUtils.isEmpty(password)) {
             ((EditText) findViewById(R.id.txt_user_name)).setText(username);
             ((EditText) findViewById(R.id.txt_pass_word)).setText(password);
-        }*/
+        }
 
         // ld:ld9102
-        ((EditText) findViewById(R.id.txt_user_name)).setText("ld");
-        ((EditText) findViewById(R.id.txt_pass_word)).setText("ld9102");
+     //   ((EditText) findViewById(R.id.txt_user_name)).setText("ld");
+      //  ((EditText) findViewById(R.id.txt_pass_word)).setText("ld9102");
 
 
         Button loginBtn = (Button) findViewById(R.id.btn_login);
@@ -150,9 +151,13 @@ public class LoginXinjiangAct extends Activity {
 
                             if (loginInfo.getErrno() == 0) {
 
+
                                 // 保存登录成功后的登录信息
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.putString(CLIENT_STATE, json);
+                                // 保存用户名和密码
+                                editor.putString("username", username);
+                                editor.putString("password", password);
                                 editor.commit();
 
                                 // 跳转到主界面

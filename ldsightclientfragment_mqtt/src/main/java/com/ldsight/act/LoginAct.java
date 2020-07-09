@@ -45,6 +45,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 
+
 public class LoginAct extends Activity {
 	private static final String LOGIN_RIGHT = "login_right"; // 登录成功
 	private static final String ERORR_PASSWORD = "error_password"; // 密码错误
@@ -82,16 +83,16 @@ public class LoginAct extends Activity {
 
 		if(!TextUtils.isEmpty(username) &&
 				!TextUtils.isEmpty(password)){
-			((EditText) findViewById(R.id.txt_user_name)).setText(username);
-			((EditText) findViewById(R.id.txt_pass_word)).setText(password);
+			((EditText) findViewById(com.example.ldsightclient_jgd.R.id.txt_user_name)).setText(username);
+			((EditText) findViewById(com.example.ldsightclient_jgd.R.id.txt_pass_word)).setText(password);
 		}
 
 
 
 
 		// 测试
-		((EditText) findViewById(R.id.txt_user_name)).setText("ldshow");
-		((EditText) findViewById(R.id.txt_pass_word)).setText("123456");
+		//((EditText) findViewById(R.id.txt_user_name)).setText("ldshow");
+		//((EditText) findViewById(R.id.txt_pass_word)).setText("123456");
 
 		mVolleyQueue = Volley.newRequestQueue(this);
 

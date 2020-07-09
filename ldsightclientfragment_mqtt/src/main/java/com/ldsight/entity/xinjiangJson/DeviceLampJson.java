@@ -140,7 +140,7 @@ public class DeviceLampJson {
             private double TYPE;
             private String PROJECT;
             private String SUBGROUP;
-            private double _id;
+            private String _id;
             private String FUUID;
             private String smsphone;
             private String subgroups;
@@ -374,11 +374,11 @@ public class DeviceLampJson {
                 this.SUBGROUP = SUBGROUP;
             }
 
-            public double get_id() {
+            public String get_id() {
                 return _id;
             }
 
-            public void set_id(double _id) {
+            public void set_id(String _id) {
                 this._id = _id;
             }
 
