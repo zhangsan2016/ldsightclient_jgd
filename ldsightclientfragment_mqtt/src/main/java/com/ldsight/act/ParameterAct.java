@@ -254,7 +254,11 @@ public class ParameterAct extends FragmentActivity {
 			if (flag) {
 				flag = false;
 				handler.sendEmptyMessageDelayed(0, 2000);
-				Toast.makeText(this,"再按一次退出！",Toast.LENGTH_SHORT).show();
+			//	Toast.makeText(this,"再按一次退出！",Toast.LENGTH_SHORT).show();
+
+				Toast	toast = Toast.makeText(this, null, Toast.LENGTH_SHORT);
+				toast.setText("再按一次退出~");
+				toast.show();
 				return true;
 			}
 
