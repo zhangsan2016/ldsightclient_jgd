@@ -23,15 +23,13 @@ import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.ldsight.application.MyApplication;
-import com.ldsight.dao.MakeSampleHttpRequest;
+import com.ldsight.entity.VersionInfo;
 import com.ldsight.entity.xinjiangJson.LoginJson;
 import com.ldsight.service.UpdateService;
 import com.ldsight.util.CustomUtils;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
 import com.ldsight.util.MapHttpConfiguration;
-
-import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -124,14 +122,12 @@ public class LoginXinjiangAct extends Activity {
      *
      * @return
      */
-    private Boolean postCheckNewestVersionCommand() {
+   /* private Boolean postCheckNewestVersionCommand() {
         MakeSampleHttpRequest mshr = new MakeSampleHttpRequest(
                 this);
         // JSONObject response = mshr.getVersion();
         JSONObject response = mshr.post_to_server();
         try {
-
-            Log.e("xxx","updatedir = " + response.toString());
 
             newVersionCode = response.getInt("versionCode");
             newVersionName = response.getString("versionName");
@@ -145,7 +141,7 @@ public class LoginXinjiangAct extends Activity {
 
             return false;
         }
-    }
+    }*/
 
 
     private void makeSampleHttpRequest() {
@@ -247,7 +243,26 @@ public class LoginXinjiangAct extends Activity {
             int clientCount = preferences.getInt("client_count", 0);
             if (clientCount % 2 == 0) {
                 // 检测版本更新
-                new checkNewestVersionAsyncTask().execute();
+
+                HttpUtil.sendGetSookieHttpRequest("http://121.40.194.91:8089/APP/getUpdate", new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                            String json = response.body().string();
+                            VersionInfo ver = new Gson().fromJson(json, VersionInfo.class);
+                            newVersionCode = Integer.parseInt(ver.getVersionCode());
+                            newVersionName = ver.getVersionName();
+                            updatedir = ver.getUpdatedir();
+                            new checkNewestVersionAsyncTask().execute();
+
+
+                    }
+                });
+
                 clientCount++;
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putInt("client_count", clientCount);
@@ -266,16 +281,12 @@ public class LoginXinjiangAct extends Activity {
         @Override
         protected Boolean doInBackground(Void... params) {
 
-            if (postCheckNewestVersionCommand()) {
                 int vercode = CustomUtils.getVersionCode(LoginXinjiangAct.this);
-                Log.e("xxx ","vercode = " + vercode);
                 if (newVersionCode > vercode) {
                     return true;
                 } else {
                     return false;
                 }
-            }
-            return false;
         }
 
         @Override

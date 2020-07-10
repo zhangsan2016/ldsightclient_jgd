@@ -7,16 +7,18 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.example.ldsightclient_jgd.R;
-import com.ldsight.act.ParameterAct;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -78,20 +80,26 @@ public class UpdateService extends Service {
 					.getString(titleId) + ".apk");
 		}
 
-		this.updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		this.updateNotification = new Notification();
-
+	/*	this.updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		this.updateNotification = 	new NotificationCompat.Builder(getApplication())
+				.setContentTitle( "洛丁智慧城市app 0%" )
+				.setContentText("")
+				.setSmallIcon(R.drawable.download_notification_logo2)
+				.setContentIntent(updatePendingIntent)
+				.build();
 		// 设置下载过程中，点击通知栏，回到主界面
 		updateIntent = new Intent(this, ParameterAct.class);
 		updatePendingIntent = PendingIntent.getActivity(this, 0, updateIntent,
 				0);
+		updateNotificationManager.notify(0, updateNotification);*/
+
 		// 设置通知栏显示内容
-		updateNotification.icon = R.drawable.download_notification_logo;
+	/*	updateNotification.icon = R.drawable.download_notification_logo2;
 		updateNotification.tickerText = "开始下载";
 		updateNotification.setLatestEventInfo(this, "洛丁智慧城市app", "0%",
 				updatePendingIntent);
 		// 发出通知
-		updateNotificationManager.notify(0, updateNotification);
+		updateNotificationManager.notify(0, updateNotification);*/
 
 		// 开启一个新的线程下载，如果使用Service同步下载，会导致ANR问题，Service本身也会阻塞
 		new Thread(new updateRunnable()).start();// 这个是下载的重点，是下载的过程
@@ -128,11 +136,26 @@ public class UpdateService extends Service {
 					updatePendingIntent = PendingIntent.getActivity(
 							UpdateService.this, 0, installIntent, 0);
 
-					updateNotification.defaults = Notification.DEFAULT_SOUND;// 铃声提醒
+					/*updateNotification.defaults = Notification.DEFAULT_SOUND;// 铃声提醒
 					updateNotification.flags = Notification.FLAG_AUTO_CANCEL;
 					updateNotification.setLatestEventInfo(UpdateService.this,
 							"洛丁光电app", "下载完成,点击安装。", updatePendingIntent);
-					updateNotificationManager.notify(0, updateNotification);
+					updateNotificationManager.notify(0, updateNotification);*/
+
+					Bitmap abcd =  BitmapFactory.decodeResource(getResources(), R.drawable.download_notification_logo2);
+					Notification noti = new NotificationCompat.Builder(getApplication())
+							.setContentTitle( "下载完成,点击安装。 " )
+							.setContentText("")
+							.setSmallIcon(R.drawable.download_notification_logo2)
+							.setLargeIcon(abcd)
+							.setContentIntent(updatePendingIntent)
+							.build();
+					updateNotificationManager.notify(0, noti);
+
+				/*	NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+							getApplication()).setSmallIcon(R.drawable.download_notification_logo2)
+					                .setContentTitle("下载完成,点击安装。 ")
+							.setLargeIcon(abcd);*/
 
 					// 停止服务
 					stopService(updateIntent);
@@ -140,12 +163,12 @@ public class UpdateService extends Service {
 					break;
 				case DOWNLOAD_FAIL:
 					// 下载失败
-					if (msg.arg1 == -1) {
+					/*if (msg.arg1 == -1) {
 						updateNotification.flags = Notification.FLAG_AUTO_CANCEL;
 						updateNotification.setLatestEventInfo(UpdateService.this,
 								"洛丁光电app", "下载失败", updatePendingIntent);
 						updateNotificationManager.notify(0, updateNotification);
-					}
+					}*/
 					break;
 				default:
 					stopService(updateIntent);
@@ -183,9 +206,11 @@ public class UpdateService extends Service {
 			byte buffer[] = new byte[4096];
 			int readsize = 0;
 			totalSize = 0;
+
+
 			updateNotification.contentView = new RemoteViews(getPackageName(),
 					R.layout.download_notification_layout);
-			updateNotification.contentView.setTextColor(R.id.name, 0xffffffff);
+		//	updateNotification.contentView.setTextColor(R.id.name, 0xffffffff);
 			updateNotification.contentView.setTextViewText(R.id.name,
 					"洛丁光电app 正在下载...");
 			// 发送广播关闭下载事件
@@ -194,6 +219,7 @@ public class UpdateService extends Service {
 					0, btnCancelIntent, 0);
 			updateNotification.contentView.setOnClickPendingIntent(
 					R.id.ivDelete, pendButtonIntent);
+
 			while ( (readsize = is.read(buffer)) > 0 && !canceledDownload) {
 				fos.write(buffer, 0, readsize);
 				totalSize += readsize;
@@ -291,7 +317,7 @@ public class UpdateService extends Service {
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
-		// canceledDownload = true;
+		 canceledDownload = true;
 		// 测试
 		System.out.println("service onDestroy执行");
 		super.onDestroy();

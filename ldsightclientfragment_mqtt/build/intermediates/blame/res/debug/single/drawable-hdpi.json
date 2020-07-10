@@ -14,5 +14,9 @@
     {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\icon_gcoding.png",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-hdpi\\icon_gcoding.png"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\download_notification_logo2.png",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-hdpi\\download_notification_logo2.png"
     }
 ]

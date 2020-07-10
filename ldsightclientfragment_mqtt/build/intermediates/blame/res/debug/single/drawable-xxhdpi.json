@@ -12,6 +12,10 @@
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xxhdpi\\parameter_setting2.png"
     },
     {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\download_notification_logo2.png",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xxhdpi\\download_notification_logo2.png"
+    },
+    {
         "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\login_user.png",
         "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-xxhdpi\\login_user.png"
     },

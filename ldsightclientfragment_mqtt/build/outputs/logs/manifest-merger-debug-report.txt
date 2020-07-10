@@ -19,8 +19,18 @@ ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfra
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:3:5-35
 uses-sdk
 ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:11:5-13:41
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5af551029f4de47a79156284e27f86ed406b105d\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\708bc7dae1d85f65302acbc4fad73ed85c9d7474\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\ae0ea0a5284cba213c88cc803aaa76ebf09d5dd7\output\AndroidManifest.xml:20:5-44
 MERGED from [ldsightclient_jgd:ViewPagerIndicator_library:unspecified] I:\Programming information\project\ldsightclient_jgd\ViewPagerIndicator_library\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:40
-MERGED from [com.android.support:support-v4:20.0.0] C:\Users\ldgd\.android\build-cache\65dd0f3b75e932a53ebfe5974baf02b9a00f7c28\output\AndroidManifest.xml:16:5-42
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\1f022bfef679768da8feff72aa9f7c4ad7f68365\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\3d4b355b53c0608335afbd87d9aa7fb09ef844eb\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\8e1c685a8310e563207c9aeeea275dd8ab81e5e3\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5cea066ba406e886a03cc95287adb5032cb74708\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\0193a5b10e721d334fc05e26d58a184afe9bf5ac\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\57841a42a11108c1ad5ebda69429e065ee38f2b7\output\AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5af551029f4de47a79156284e27f86ed406b105d\output\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:13:9-38
 		INJECTED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml
@@ -31,7 +41,15 @@ MERGED from [com.android.support:support-v4:20.0.0] C:\Users\ldgd\.android\build
 		INJECTED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml
 application
 ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:15:5-107:19
-MERGED from [com.android.support:support-v4:20.0.0] C:\Users\ldgd\.android\build-cache\65dd0f3b75e932a53ebfe5974baf02b9a00f7c28\output\AndroidManifest.xml:17:5-19
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5af551029f4de47a79156284e27f86ed406b105d\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\708bc7dae1d85f65302acbc4fad73ed85c9d7474\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\ae0ea0a5284cba213c88cc803aaa76ebf09d5dd7\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\1f022bfef679768da8feff72aa9f7c4ad7f68365\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\3d4b355b53c0608335afbd87d9aa7fb09ef844eb\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\8e1c685a8310e563207c9aeeea275dd8ab81e5e3\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5cea066ba406e886a03cc95287adb5032cb74708\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\0193a5b10e721d334fc05e26d58a184afe9bf5ac\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\57841a42a11108c1ad5ebda69429e065ee38f2b7\output\AndroidManifest.xml:29:5-20
 	android:label
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:19:9-41
 	android:allowBackup
@@ -286,3 +304,17 @@ uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
 ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:124:5-84
 	android:name
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:124:22-81
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5af551029f4de47a79156284e27f86ed406b105d\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\708bc7dae1d85f65302acbc4fad73ed85c9d7474\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\ae0ea0a5284cba213c88cc803aaa76ebf09d5dd7\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\1f022bfef679768da8feff72aa9f7c4ad7f68365\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\3d4b355b53c0608335afbd87d9aa7fb09ef844eb\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\8e1c685a8310e563207c9aeeea275dd8ab81e5e3\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5cea066ba406e886a03cc95287adb5032cb74708\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\0193a5b10e721d334fc05e26d58a184afe9bf5ac\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\57841a42a11108c1ad5ebda69429e065ee38f2b7\output\AndroidManifest.xml:25:5-27:41
+	android:value
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5af551029f4de47a79156284e27f86ed406b105d\output\AndroidManifest.xml:27:9-38
+	android:name
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5af551029f4de47a79156284e27f86ed406b105d\output\AndroidManifest.xml:26:9-47

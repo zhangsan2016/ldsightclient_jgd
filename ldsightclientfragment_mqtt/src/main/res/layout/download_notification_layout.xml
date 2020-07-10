@@ -22,7 +22,7 @@
                 android:id="@+id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/download_notification_logo" />
+                android:background="@drawable/download_notification_logo2" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -44,6 +44,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="xxxx.apk"
+                        android:textStyle="bold"
                         android:textColor="#000" />
 
                     <TextView
@@ -53,7 +54,7 @@
                         android:layout_gravity="center_vertical"
                         android:gravity="center"
                         android:minWidth="60dp"
-                        android:textColor="#ffffffff" />
+                        android:textColor="#000" />
                 </LinearLayout>
 
                 <ProgressBar
@@ -82,6 +83,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/btn_cancel01"
             android:layout_gravity="center_vertical"
+            android:visibility="invisible"
             />
         </LinearLayout>
     </LinearLayout>

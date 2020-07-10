@@ -1,6 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    /**
+    * Dex方法超过64K的限制
+    * */
+    dexOptions {
+        jumboMode true
+    }
     signingConfigs {
         config {
             keyAlias 'ldgd'
@@ -9,12 +16,12 @@ android {
             storePassword '12345678'
         }
     }
-    compileSdkVersion 20
+    compileSdkVersion 26
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.example.ldsightclient_mqtt"
-        minSdkVersion 11
-        targetSdkVersion 19
+        minSdkVersion 16
+        targetSdkVersion 26
     }
     buildTypes {
         release {
@@ -42,7 +49,8 @@ android {
 
 dependencies {
     // compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support:support-v4:20.+'
+    compile 'com.android.support:appcompat-v7:26.+'
+    // compile 'com.android.support:support-v4:20.+'
     compile files('libs/achartengine-1.1.0.jar')
     compile files('libs/commons-lang3-3.4.jar')
     compile files('libs/httpmime-4.1.2.jar')
@@ -58,6 +66,4 @@ dependencies {
     compile 'com.squareup.okio:okio:1.12.0'
     /* Gson */
     compile 'com.google.code.gson:gson:2.8.4'
-
-
 }

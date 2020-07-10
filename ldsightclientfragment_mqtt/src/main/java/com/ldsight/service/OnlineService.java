@@ -38,7 +38,6 @@ import com.ldsight.act.SingleLightDialogItemAct;
 import com.ldsight.act.SingleLightSettingAct;
 import com.ldsight.act.WarningInformationAct;
 import com.ldsight.application.MyApplication;
-import com.ldsight.fragment.SettingFragment;
 import com.ldsight.fragment.TestPatternFragment;
 import com.ldsight.util.LogUtil;
 import com.ldsight.util.Util;
@@ -291,7 +290,7 @@ public class OnlineService extends Service {
 
 	public void notifyUser(int id, String title, String content,
 						   String tickerText) {
-		NotificationManager notificationManager = (NotificationManager) this
+	/*	NotificationManager notificationManager = (NotificationManager) this
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 		Notification n = new Notification();
 		Intent intent = new Intent(this, MainAct.class);
@@ -313,7 +312,7 @@ public class OnlineService extends Service {
 		n.icon = R.drawable.luoding_logo;
 		n.when = System.currentTimeMillis();
 		n.tickerText = tickerText;
-		notificationManager.notify(id, n);
+		notificationManager.notify(id, n);*/
 	}
 
 	public void notifyUser2(int id, String title, String content,
