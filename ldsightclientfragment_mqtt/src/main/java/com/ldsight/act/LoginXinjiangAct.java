@@ -1,9 +1,13 @@
 package com.ldsight.act;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -19,10 +23,15 @@ import com.example.ldsightclient_jgd.R;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.ldsight.application.MyApplication;
+import com.ldsight.dao.MakeSampleHttpRequest;
 import com.ldsight.entity.xinjiangJson.LoginJson;
+import com.ldsight.service.UpdateService;
+import com.ldsight.util.CustomUtils;
 import com.ldsight.util.HttpUtil;
 import com.ldsight.util.LogUtil;
 import com.ldsight.util.MapHttpConfiguration;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -47,6 +56,7 @@ public class LoginXinjiangAct extends Activity {
      */
     private int newVersionCode;
     private String newVersionName;
+    private String updatedir;  // 版本更新地址
 
     private SharedPreferences preferences;
     String username, password;
@@ -104,7 +114,37 @@ public class LoginXinjiangAct extends Activity {
             }
         });
 
+        // 检测版本更新
+        versionUpdates();
 
+    }
+
+    /**
+     * 从服务器获取当前最新版本号，如果成功返回TURE，如果失败，返回FALSE
+     *
+     * @return
+     */
+    private Boolean postCheckNewestVersionCommand() {
+        MakeSampleHttpRequest mshr = new MakeSampleHttpRequest(
+                this);
+        // JSONObject response = mshr.getVersion();
+        JSONObject response = mshr.post_to_server();
+        try {
+
+            Log.e("xxx","updatedir = " + response.toString());
+
+            newVersionCode = response.getInt("versionCode");
+            newVersionName = response.getString("versionName");
+             updatedir = response.getString("updatedir");
+
+            return true;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            LogUtil.e("xxx postCheckNewestVersionCommand = " + e.getMessage().toString());
+            e.printStackTrace();
+
+            return false;
+        }
     }
 
 
@@ -199,6 +239,108 @@ public class LoginXinjiangAct extends Activity {
 
     }
 
+   private void  versionUpdates(){
+        // 版本更新
+        // 判断是否有网络
+        if (CustomUtils.isNetworkConnected(this)) {
+            // 根据登录的次数判断是否检测更新
+            int clientCount = preferences.getInt("client_count", 0);
+            if (clientCount % 2 == 0) {
+                // 检测版本更新
+                new checkNewestVersionAsyncTask().execute();
+                clientCount++;
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("client_count", clientCount);
+                editor.commit();
+            } else {
+                clientCount++;
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("client_count", clientCount);
+                editor.commit();
+            }
+        }
+    }
+
+    class checkNewestVersionAsyncTask extends AsyncTask<Void, Void, Boolean> {
+        // 后台执行，比较耗时的操作都放在这个位置
+        @Override
+        protected Boolean doInBackground(Void... params) {
+
+            if (postCheckNewestVersionCommand()) {
+                int vercode = CustomUtils.getVersionCode(LoginXinjiangAct.this);
+                Log.e("xxx ","vercode = " + vercode);
+                if (newVersionCode > vercode) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            // TODO Auto-generated method stub
+            if (result) {// 如果有最新版本
+                System.out.println("下载最新版本");
+
+                doNewVersionUpdate(); // 更新新版本
+            } else {
+                // notNewVersionDlgShow(); // 提示当前为最新版本
+             Log.e("xxx","当前最新版本");
+            }
+            super.onPostExecute(result);
+        }
+    }
+    /*
+     * 提示更新新版本
+	 */
+    private void doNewVersionUpdate() {
+        int verCode = CustomUtils.getVersionCode(this);
+        String verName = CustomUtils.getVersionName(this);
+
+		/*
+		 * String str=
+		 * "当前版本："+verName+" Code:"+verCode+" ,发现新版本："+newVersionName+
+		 * " Code:"+newVersionCode+" ,是否更新？";
+		 */
+        String str = "发现新版本,是否更新？";
+        Dialog dialog = new AlertDialog.Builder(this)
+                .setTitle("软件更新")
+                .setMessage(str)
+                // 设置内容
+                .setPositiveButton("更新",// 设置确定按钮
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+
+
+                                // 开启更新服务UpdateService
+                                // 这里为了把update更好模块化，可以传一些updateService依赖的值
+                                // 如布局ID，资源ID，动态获取的标题,这里以app_name为例
+                                Intent updateIntent = new Intent(
+                                        LoginXinjiangAct.this,
+                                        UpdateService.class);
+                                updateIntent.putExtra("titleId", R.string.app_name);
+                                updateIntent.putExtra("updatedir", updatedir);
+                                LoginXinjiangAct.this.startService(
+                                        updateIntent);
+                                dialog.dismiss();
+                            }
+                        })
+                .setNegativeButton("暂不更新",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int whichButton) {
+                                // 点击"取消"按钮之后退出程序
+                                // dialog.finish();
+                            }
+                        }).create();// 创建
+        // 显示对话框
+        dialog.show();
+    }
+
 
     private void showToast(final String msg) {
         runOnUiThread(new Runnable() {
@@ -216,6 +358,9 @@ public class LoginXinjiangAct extends Activity {
     private void showProgress() {
         mProgress = ProgressDialog.show(this, "", "Loading...");
     }
+
+
+
 
 
 }

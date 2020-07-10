@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.example.ldsightclient_jgd.R;
@@ -64,6 +65,10 @@ public class UpdateService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// 获取传值
 		titleId = intent.getIntExtra("titleId", 0);
+		String updatedir = intent.getStringExtra("updatedir");
+		if(updatedir != null && updatedir!= ""){
+			downloadPath = updatedir;
+		}
 		// 创建文件
 		if (android.os.Environment.MEDIA_MOUNTED.equals(android.os.Environment
 				.getExternalStorageState())) {
@@ -83,7 +88,7 @@ public class UpdateService extends Service {
 		// 设置通知栏显示内容
 		updateNotification.icon = R.drawable.download_notification_logo;
 		updateNotification.tickerText = "开始下载";
-		updateNotification.setLatestEventInfo(this, "洛丁光电app", "0%",
+		updateNotification.setLatestEventInfo(this, "洛丁智慧城市app", "0%",
 				updatePendingIntent);
 		// 发出通知
 		updateNotificationManager.notify(0, updateNotification);
@@ -221,6 +226,8 @@ public class UpdateService extends Service {
 		if(canceledDownload){
 			return;
 		}
+
+		Log.e("xxx","totalSize = " + totalSize + "    updateTotalSize = " + updateTotalSize);
 		if(totalSize == updateTotalSize){
 			// 下载成功
 			message.what = DOWNLOAD_COMPLETE;
@@ -284,7 +291,7 @@ public class UpdateService extends Service {
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
-		canceledDownload = true;
+		// canceledDownload = true;
 		// 测试
 		System.out.println("service onDestroy执行");
 		super.onDestroy();

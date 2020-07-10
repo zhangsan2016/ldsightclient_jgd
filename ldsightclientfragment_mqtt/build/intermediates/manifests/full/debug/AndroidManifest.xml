@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ldsightclient_mqtt"
     android:installLocation="auto"
-    android:versionCode="3"
-    android:versionName="1.0" > <!-- 版本：使用中科院新接口版本     功能： -->
+    android:versionCode="4"
+    android:versionName="1.1.1" > <!-- android:versionCode="5" -->
+    <!-- 版本：使用中科院新接口版本     功能： -->
     <!-- 帐号：csazf -->
     <uses-sdk
         android:minSdkVersion="11"

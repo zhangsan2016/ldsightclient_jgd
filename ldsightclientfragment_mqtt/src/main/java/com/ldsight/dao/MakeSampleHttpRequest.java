@@ -25,7 +25,7 @@ import com.ldsight.entity.CheckUser;
 import com.ldsight.entity.StreetAndDevice;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -399,13 +399,15 @@ public class MakeSampleHttpRequest {
 	 * @return
 	 */
 	public JSONObject post_to_server() {
-		String ip = mActivity.getString(R.string.ip);
-		String url = "http://" + ip + ":8080/Androidnew/Androidnew";
+		// String ip = mActivity.getString(R.string.ip);
+		// String url = "http://" + ip + ":8080/Androidnew/Androidnew";
+
+		String url = "http://121.40.194.91:8089/APP/getUpdate";
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		try {
 			HttpResponse response = null;
 			// 创建httpost.访问本地服务器网址
-			HttpPost httpost = new HttpPost(url);
+			HttpGet httpost = new HttpGet(url);
 			StringBuilder builder = new StringBuilder();
 
 			// httpost.setEntity(new UrlEncodedFormEntity(vps, HTTP.UTF_8));
@@ -421,6 +423,7 @@ public class MakeSampleHttpRequest {
 				}
 			}
 			JSONObject mJSONObject = new JSONObject(builder.toString());
+			Log.e("xxxx","mJSONObject = " + mJSONObject.toString());
 			return mJSONObject;
 
 		} catch (Exception e) {
