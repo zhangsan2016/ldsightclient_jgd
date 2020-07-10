@@ -14,11 +14,12 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.example.ldsightclient_jgd.R;
+import com.ldsight.act.ParameterAct;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -80,7 +81,7 @@ public class UpdateService extends Service {
 					.getString(titleId) + ".apk");
 		}
 
-	/*	this.updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		this.updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		this.updateNotification = 	new NotificationCompat.Builder(getApplication())
 				.setContentTitle( "洛丁智慧城市app 0%" )
 				.setContentText("")
@@ -91,8 +92,7 @@ public class UpdateService extends Service {
 		updateIntent = new Intent(this, ParameterAct.class);
 		updatePendingIntent = PendingIntent.getActivity(this, 0, updateIntent,
 				0);
-		updateNotificationManager.notify(0, updateNotification);*/
-
+		updateNotificationManager.notify(0, updateNotification);
 		// 设置通知栏显示内容
 	/*	updateNotification.icon = R.drawable.download_notification_logo2;
 		updateNotification.tickerText = "开始下载";
@@ -219,6 +219,7 @@ public class UpdateService extends Service {
 					0, btnCancelIntent, 0);
 			updateNotification.contentView.setOnClickPendingIntent(
 					R.id.ivDelete, pendButtonIntent);
+
 
 			while ( (readsize = is.read(buffer)) > 0 && !canceledDownload) {
 				fos.write(buffer, 0, readsize);
