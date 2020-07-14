@@ -16,6 +16,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -168,11 +169,19 @@ public class UpdateService extends Service {
 					break;
 				case DOWNLOAD_COMPLETE:
 
-					if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+					if (android.os.Build.VERSION.SDK_INT  >= Build.VERSION_CODES.N) {
+
+						Uri apkUri = FileProvider.getUriForFile(getApplicationContext(), "com.example.ldsightclient.FileProvider", updateFile);
+						Intent installIntent = new Intent(Intent.ACTION_VIEW);
+						installIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+						installIntent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, installIntent, 0);
+
 						// 更新通知内容
 						updateNotificationManager.cancel(NOTIFICATION_PROGRESS_ID);  // 清除通知
 						builder.setProgress(0, 0, false); // 取消进度条
 						builder.setContentText("点击安装");
+						builder.setContentIntent(updatePendingIntent);
 						builder.setContentTitle("洛丁光电app 下载完成");
 						Notification n = builder.build();
 						updateNotificationManager.notify(NOTIFICATION_PROGRESS_ID, n);
@@ -215,8 +224,9 @@ public class UpdateService extends Service {
 		}
 	};
 
-	private int lastRate = 0;
 
+
+	private int lastRate = 0;
 	public void downloadUpdateFile(String downloadUrl, File saveFile)
 			throws Exception {
 
