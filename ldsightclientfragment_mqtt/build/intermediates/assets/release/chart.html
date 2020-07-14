@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+    <style type="text/css">
+
+        body {
+        margin: 0px;
+        padding: 0px;
+
+        }
+
+        #container {
+
+        width : 320px;
+
+        height: 350px;
+
+
+        margin: 8px auto 0px auto;
+
+
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+<div id="container"></div>
+
+<script type="text/javascript" src="flotr2.min.js"></script>
+
+<script type="text/javascript">
+    function drawChart(data,option){
+       var container = document.getElementById("container");
+       Flotr.draw(container, data, option);
+      }
+
+</script>
+</body>
+</html>

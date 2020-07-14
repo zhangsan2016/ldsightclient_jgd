@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout-v11\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout-v11\\notification_media_action.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
+    }
+]

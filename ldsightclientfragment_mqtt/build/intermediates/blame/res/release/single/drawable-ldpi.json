@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\drawable-ldpi\\btn_continue01.png",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-ldpi\\btn_continue01.png"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\drawable-ldpi\\btn_continue02.png",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-ldpi\\btn_continue02.png"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\drawable-ldpi\\btn_cancel01.png",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\drawable-ldpi\\btn_cancel01.png"
+    }
+]

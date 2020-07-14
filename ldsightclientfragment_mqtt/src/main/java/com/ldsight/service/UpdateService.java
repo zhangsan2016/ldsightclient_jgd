@@ -172,14 +172,7 @@ public class UpdateService extends Service {
 
 					if (android.os.Build.VERSION.SDK_INT  >= Build.VERSION_CODES.O) {
 
-					/*	Uri apkUri = FileProvider.getUriForFile(getApplicationContext(), "com.example.ldsightclient.FileProvider", updateFile);
-						Intent installIntent = new Intent(Intent.ACTION_VIEW);
-						installIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-						installIntent.setDataAndType(apkUri, "application/vnd.android.package-archive");
-						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, installIntent, 0);*/
-
 						Intent intent = new Intent(Intent.ACTION_VIEW);
-						// 仅需改变这一行
 						FileProvider8.setIntentDataAndType(getApplicationContext(),
 								intent, "application/vnd.android.package-archive", updateFile, true);
 						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, intent, 0);
@@ -196,7 +189,6 @@ public class UpdateService extends Service {
 
 						// 兼顾 6.0 以上安装
 						Intent intent = new Intent(Intent.ACTION_VIEW);
-						// 仅需改变这一行
 						FileProvider8.setIntentDataAndType(getApplicationContext(),
 								intent, "application/vnd.android.package-archive", updateFile, true);
 						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, intent, 0);

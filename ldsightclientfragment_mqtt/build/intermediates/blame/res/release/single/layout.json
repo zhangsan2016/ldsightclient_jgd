@@ -1,0 +1,402 @@
+[
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\net_monitor_fragment.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\net_monitor_fragment.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\parameter_main.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\parameter_main.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\login.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\login.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\test_pattern_list_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\test_pattern_list_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\activity_single_light_control.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\activity_single_light_control.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\single_light_control_activity1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\single_light_control_activity1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\download_notification_layout.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\download_notification_layout.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\test_pattern_fragment.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\test_pattern_fragment.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\add_device_list_item1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\add_device_list_item1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\electric_box_dialog.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\electric_box_dialog.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\single_light_control_activity.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\single_light_control_activity.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\monitor_main_fragment.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\monitor_main_fragment.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\add_user.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\add_user.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\parameter_main1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\parameter_main1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\device_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\device_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\brighten_main_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\brighten_main_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\jurisdiction_login.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\jurisdiction_login.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\alarm_record_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\alarm_record_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\alert_manage_main.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\alert_manage_main.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\system_log_fragment.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\system_log_fragment.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\login1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\login1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\brighten_mainlist_dialog.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\brighten_mainlist_dialog.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\add_device.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\add_device.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\setting_fragment.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\setting_fragment.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\add_user1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\add_user1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\add_device_list_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\add_device_list_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\single_light_setting_activity.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\single_light_setting_activity.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\add_device1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\add_device1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\device_param1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\device_param1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\main_list_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\main_list_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_search_view.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\brighten_timing.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\brighten_timing.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\device_param.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\device_param.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\tourist_main.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\tourist_main.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\add_electric_box1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\add_electric_box1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\device_main.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\device_main.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\test_pattern_list_item1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\test_pattern_list_item1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\brighten_main_activity.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\brighten_main_activity.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\activity_alarm_record.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\activity_alarm_record.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\aasdfsdf.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\aasdfsdf.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\single_light_control_dialog.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\single_light_control_dialog.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\check.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\check.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\user_information.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\user_information.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\baidu_map_marker_info_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\baidu_map_marker_info_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\add_electric_box.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\add_electric_box.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\main_fragment.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\main_fragment.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\single_light_control_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\single_light_control_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\device_timing_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\device_timing_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\native_monitor_login_layout.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\native_monitor_login_layout.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\activity_warning.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\activity_warning.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\alert_manage_list_item1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\alert_manage_list_item1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\device_timing.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\device_timing.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\main.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\brighten_timing_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\brighten_timing_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\baidu_map_activity.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\baidu_map_activity.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\alert_manage_list_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\alert_manage_list_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\native_monitor_fragment.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\native_monitor_fragment.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\catalog_activity.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\catalog_activity.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\setting_fragment1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\setting_fragment1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\notification_action.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\ldgd\\.android\\build-cache\\5af551029f4de47a79156284e27f86ed406b105d\\output\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\alert_manage_main1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\alert_manage_main1.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\device_main_item.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\device_main_item.xml"
+    },
+    {
+        "merged": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\build\\intermediates\\res\\merged\\release\\layout\\test_pattern_fragment1.xml",
+        "source": "I:\\Programming information\\project\\ldsightclient_jgd\\ldsightclientfragment_mqtt\\src\\main\\res\\layout\\test_pattern_fragment1.xml"
+    }
+]
