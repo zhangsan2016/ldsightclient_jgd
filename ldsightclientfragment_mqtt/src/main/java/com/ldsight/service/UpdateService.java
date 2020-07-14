@@ -102,7 +102,7 @@ public class UpdateService extends Service {
 			builder.setContentTitle("洛丁光电app 正在下载...");
 			builder.setContentText("");
 			builder.setNumber(2);
-
+			builder.setProgress(100, 0, true);
 			updateNotification = builder.build();
 
 		}else {
@@ -167,25 +167,22 @@ public class UpdateService extends Service {
 					// }
 					break;
 				case DOWNLOAD_COMPLETE:
-					// 点击安装PendingIntent
-					Uri uri = Uri.fromFile(updateFile);
-					Intent installIntent = new Intent(Intent.ACTION_VIEW);
-					installIntent.setDataAndType(uri,
-							"application/vnd.android.package-archive");
-
-					updatePendingIntent = PendingIntent.getActivity(
-							UpdateService.this, 0, installIntent, 0);
-
 
 					if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 						// 更新通知内容
 						updateNotificationManager.cancel(NOTIFICATION_PROGRESS_ID);  // 清除通知
 						builder.setProgress(0, 0, false); // 取消进度条
-						builder.setContentText("下载完毕");
+						builder.setContentText("点击安装");
 						builder.setContentTitle("洛丁光电app 下载完成");
 						Notification n = builder.build();
 						updateNotificationManager.notify(NOTIFICATION_PROGRESS_ID, n);
 					}else {
+						// 点击安装PendingIntent
+						Uri uri = Uri.fromFile(updateFile);
+						Intent installIntent = new Intent(Intent.ACTION_VIEW);
+						installIntent.setDataAndType(uri, "application/vnd.android.package-archive");
+						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, installIntent, 0);
+
 						Bitmap abcd =  BitmapFactory.decodeResource(getResources(), R.drawable.download_notification_logo2);
 						Notification noti = new NotificationCompat.Builder(getApplication())
 								.setContentTitle( "下载完成,点击安装。 " )
