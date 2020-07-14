@@ -95,14 +95,15 @@ public class UpdateService extends Service {
 			NotificationChannel notificationChannel=new NotificationChannel(channelId,"app load", NotificationManager.IMPORTANCE_LOW);
 			updateNotificationManager.createNotificationChannel(notificationChannel);
 
+			Bitmap abcd =  BitmapFactory.decodeResource(getResources(), R.drawable.download_notification_logo2);
 			builder=new Notification.Builder(getApplicationContext(),"app load");
 			builder.setSmallIcon(R.drawable.download_notification_logo2);
+			builder.setLargeIcon(abcd);
 			builder.setAutoCancel(true);
 			builder.setChannelId(channelId);
-			builder.setWhen(System.currentTimeMillis());
+		//	builder.setWhen(System.currentTimeMillis());
 			builder.setContentTitle("洛丁光电app 正在下载...");
-			builder.setContentText("");
-			builder.setNumber(2);
+			builder.setContentText("0%");
 			builder.setProgress(100, 0, true);
 			updateNotification = builder.build();
 
@@ -148,8 +149,8 @@ public class UpdateService extends Service {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 				case SET_PROGRESS:
-					int rate = msg.arg1;
 
+					int rate = msg.arg1;
 					if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 
 						// 发通知：带有进度条
