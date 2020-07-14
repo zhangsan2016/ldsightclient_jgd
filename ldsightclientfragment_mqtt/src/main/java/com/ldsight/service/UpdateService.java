@@ -10,19 +10,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.example.ldsightclient_jgd.R;
 import com.ldsight.act.ParameterAct;
+import com.ldsight.util.FileProvider8;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -170,13 +169,20 @@ public class UpdateService extends Service {
 					break;
 				case DOWNLOAD_COMPLETE:
 
-					if (android.os.Build.VERSION.SDK_INT  >= Build.VERSION_CODES.N) {
 
-						Uri apkUri = FileProvider.getUriForFile(getApplicationContext(), "com.example.ldsightclient.FileProvider", updateFile);
+					if (android.os.Build.VERSION.SDK_INT  >= Build.VERSION_CODES.O) {
+
+					/*	Uri apkUri = FileProvider.getUriForFile(getApplicationContext(), "com.example.ldsightclient.FileProvider", updateFile);
 						Intent installIntent = new Intent(Intent.ACTION_VIEW);
 						installIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 						installIntent.setDataAndType(apkUri, "application/vnd.android.package-archive");
-						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, installIntent, 0);
+						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, installIntent, 0);*/
+
+						Intent intent = new Intent(Intent.ACTION_VIEW);
+						// 仅需改变这一行
+						FileProvider8.setIntentDataAndType(getApplicationContext(),
+								intent, "application/vnd.android.package-archive", updateFile, true);
+						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, intent, 0);
 
 						// 更新通知内容
 						updateNotificationManager.cancel(NOTIFICATION_PROGRESS_ID);  // 清除通知
@@ -187,16 +193,18 @@ public class UpdateService extends Service {
 						Notification n = builder.build();
 						updateNotificationManager.notify(NOTIFICATION_PROGRESS_ID, n);
 					}else {
-						// 点击安装PendingIntent
-						Uri uri = Uri.fromFile(updateFile);
-						Intent installIntent = new Intent(Intent.ACTION_VIEW);
-						installIntent.setDataAndType(uri, "application/vnd.android.package-archive");
-						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, installIntent, 0);
+
+						// 兼顾 6.0 以上安装
+						Intent intent = new Intent(Intent.ACTION_VIEW);
+						// 仅需改变这一行
+						FileProvider8.setIntentDataAndType(getApplicationContext(),
+								intent, "application/vnd.android.package-archive", updateFile, true);
+						updatePendingIntent = PendingIntent.getActivity(UpdateService.this, 0, intent, 0);
 
 						Bitmap abcd =  BitmapFactory.decodeResource(getResources(), R.drawable.download_notification_logo2);
 						Notification noti = new NotificationCompat.Builder(getApplication())
-								.setContentTitle( "下载完成,点击安装。 " )
-								.setContentText("")
+								.setContentTitle( "洛丁光电app,下载完成。 " )
+								.setContentText("点击安装")
 								.setSmallIcon(R.drawable.download_notification_logo2)
 								.setLargeIcon(abcd)
 								.setContentIntent(updatePendingIntent)

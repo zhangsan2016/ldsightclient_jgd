@@ -6,6 +6,7 @@
     android:versionName="1.1.1" > <!-- android:versionCode="5" -->
     <!-- 版本：使用中科院新接口版本     功能： -->
     <!-- 帐号：csazf -->
+    <!-- 帐号：azf -->
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="26" />
@@ -126,7 +127,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.ldsightclient.FileProvider"
+            android:authorities="com.example.ldsightclient_mqtt.android8.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
