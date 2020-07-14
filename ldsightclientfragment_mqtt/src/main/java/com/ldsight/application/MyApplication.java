@@ -18,8 +18,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         // TODO Auto-generated method stub
         super.onCreate();
-        // appUuid = Util.getUuid(127, -127);
-        appUuid = Util.getUuid(this);
+        // 生成uuid
+//        appUuid = Util.getUuid(this);
         instance = this;
         // 测试
         System.out.println("appuuid = " + Arrays.toString(appUuid));

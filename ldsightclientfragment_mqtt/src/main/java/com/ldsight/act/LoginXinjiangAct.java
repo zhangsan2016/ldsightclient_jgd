@@ -298,7 +298,7 @@ public class LoginXinjiangAct extends Activity {
                 doNewVersionUpdate(); // 更新新版本
             } else {
                 // notNewVersionDlgShow(); // 提示当前为最新版本
-             Log.e("xxx","当前最新版本");
+             Log.e("","当前最新版本");
             }
             super.onPostExecute(result);
         }

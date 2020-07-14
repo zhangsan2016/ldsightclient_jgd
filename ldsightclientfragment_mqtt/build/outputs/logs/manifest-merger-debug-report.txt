@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:1:1-127:12
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:1:1-128:12
 	package
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:2:5-44
 		INJECTED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml
@@ -297,13 +297,17 @@ ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfra
 	android:name
 		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:121:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:123:5-81
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:122:5-81
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:123:22-78
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:122:22-78
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:124:5-84
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:123:5-84
 	android:name
-		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:124:22-81
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:123:22-81
+uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
+ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:124:5-83
+	android:name
+		ADDED from I:\Programming information\project\ldsightclient_jgd\ldsightclientfragment_mqtt\src\main\AndroidManifest.xml:124:22-80
 meta-data#android.support.VERSION
 ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\5af551029f4de47a79156284e27f86ed406b105d\output\AndroidManifest.xml:25:5-27:41
 MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\ldgd\.android\build-cache\708bc7dae1d85f65302acbc4fad73ed85c9d7474\output\AndroidManifest.xml:22:5-24:41

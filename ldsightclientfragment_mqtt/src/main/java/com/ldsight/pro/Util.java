@@ -24,7 +24,12 @@ public class Util {
 		// 获取设备独一无二的uuid
 		TelephonyManager tm = (TelephonyManager) context
 				.getSystemService(context.TELEPHONY_SERVICE);
-		String tmDevice = "" + tm.getDeviceId();
+		String tmDevice = null;
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+			tmDevice = "" + tm.getImei();
+		}else{
+			 tmDevice = "" + tm.getDeviceId();
+		}
 		String tmSerial = "" + tm.getSimSerialNumber();
 		String androidId = ""
 				+ android.provider.Settings.Secure.getString(
